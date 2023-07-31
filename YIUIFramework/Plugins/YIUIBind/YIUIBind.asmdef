@@ -1,0 +1,21 @@
+{
+    "name": "YIUIBind",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9164bd8532cf0564fa669dd541667b44",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:735c8f008d0ad4caa9cdc4306f1c3042",
+        "GUID:e75d4a2731496564eb0daba652cc9515",
+        "GUID:cdb0b0c99dc40c34ea38faf85f56f8eb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

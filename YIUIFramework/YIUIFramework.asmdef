@@ -1,0 +1,24 @@
+{
+    "name": "YIUIFramework",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e75d4a2731496564eb0daba652cc9515",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:88d87321fb40a054dbc26a07c402da0b",
+        "GUID:9164bd8532cf0564fa669dd541667b44",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:4cb3d026f894e0848915792ba21abbb0",
+        "GUID:cdb0b0c99dc40c34ea38faf85f56f8eb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

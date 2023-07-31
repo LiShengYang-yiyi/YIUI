@@ -1,0 +1,17 @@
+{
+    "name": "YIUIMono",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e75d4a2731496564eb0daba652cc9515",
+        "GUID:9164bd8532cf0564fa669dd541667b44"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

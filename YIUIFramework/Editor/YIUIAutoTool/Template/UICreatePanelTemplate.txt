@@ -1,0 +1,64 @@
+﻿using System;
+using YIUIBind;
+using YIUIFramework;
+using UnityEngine;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+
+namespace ${Namespace}.${PkgName}
+{
+    /// <summary>
+    /// Author  ${Author}
+    /// Date    ${CreateDate}
+    /// </summary>
+    public sealed partial class ${ResName}:${ResName}Base
+    {
+    
+        #region 生命周期
+        
+        protected override void Initialize()
+        {
+            Debug.Log($"${ResName} Initialize");
+        }
+
+        protected override void Start()
+        {
+            Debug.Log($"${ResName} Start");
+        }
+
+        protected override void OnEnable()
+        {
+            Debug.Log($"${ResName} OnEnable");
+        }
+
+        protected override void OnDisable()
+        {
+            Debug.Log($"${ResName} OnDisable");
+        }
+
+        protected override void OnDestroy()
+        {
+            Debug.Log($"${ResName} OnDestroy");
+        }
+
+        protected override async UniTask<bool> OnOpen()
+        {
+            await UniTask.CompletedTask;
+            Debug.Log($"${ResName} OnOpen");
+            return true;
+        }
+
+        protected override async UniTask<bool> OnOpen(ParamVo param)
+        {
+            return await base.OnOpen(param);
+        }
+        
+        #endregion
+
+        #region Event开始
+
+
+        #endregion Event结束
+
+    }
+}

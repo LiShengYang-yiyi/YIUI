@@ -1,0 +1,23 @@
+﻿using System;
+using YIUIBind;
+using YIUIFramework;
+using UnityEngine;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+
+namespace ${Namespace}.${PkgName}
+{
+    /// <summary>
+    /// Author  ${Author}
+    /// Date    ${CreateDate}
+    /// </summary>
+    public sealed partial class ${ResName}:${ResName}Base
+    {
+
+        #region Event开始
+
+
+        #endregion Event结束
+
+    }
+}

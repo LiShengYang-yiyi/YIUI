@@ -1,0 +1,37 @@
+﻿using System;
+using YIUIBind;
+using YIUIFramework;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+
+namespace ${Namespace}.${PkgName}
+{
+
+${PanelViewEnum}
+
+    /// <summary>
+    /// 由YIUI工具自动创建 请勿手动修改
+    /// </summary>
+    public abstract class ${ResName}Base:${BaseClass}
+    {
+        public const string PkgName = "${PkgName}";
+        public const string ResName = "${ResName}";
+        
+${Variables}
+        
+        protected sealed override void UIBind()
+        {
+${UIBind}
+        }
+
+        protected sealed override void UnUIBind()
+        {
+${UIUnBind}
+        }
+     
+${VirtualMethod}   
+   
+    }
+}
