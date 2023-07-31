@@ -1,6 +1,8 @@
 # YIUI
 基于Unity3D UGUI的框架
 
+# 视频教程
+https://www.bilibili.com/video/BV1cz4y1s7QS
 
 
 # YIUI框架讨论群
