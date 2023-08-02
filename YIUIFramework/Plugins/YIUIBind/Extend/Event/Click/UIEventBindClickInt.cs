@@ -22,7 +22,6 @@ namespace YIUIBind
         [LabelText("额外int参数值")]
         private int m_ExtraParam;
 
-        #if UNITY_EDITOR
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
@@ -33,7 +32,6 @@ namespace YIUIBind
         {
             return m_FilterParamType;
         }
-        #endif
 
         protected override void OnUIEvent(PointerEventData eventData)
         {

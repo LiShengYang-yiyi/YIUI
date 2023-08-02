@@ -48,14 +48,12 @@ namespace YIUIBind
             }
         }
 
-        #if UNITY_EDITOR
         private List<EUIEventParamType> m_BaseFilterParamType = new List<EUIEventParamType> { };
 
         protected override List<EUIEventParamType> GetFilterParamType()
         {
             return m_BaseFilterParamType;
         }
-        #endif
 
         private void Awake()
         {

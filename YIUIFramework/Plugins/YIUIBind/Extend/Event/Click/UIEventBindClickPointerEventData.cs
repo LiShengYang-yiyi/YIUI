@@ -17,7 +17,6 @@ namespace YIUIBind
     [AddComponentMenu("YIUIBind/Event/点击 【ClickPointerEventData】 UIEventBindClickPointerEventData")]
     public class UIEventBindClickPointerEventData : UIEventBindClick
     {
-        #if UNITY_EDITOR
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
@@ -28,7 +27,6 @@ namespace YIUIBind
         {
             return m_FilterParamType;
         }
-        #endif
 
         protected override void OnUIEvent(PointerEventData eventData)
         {
