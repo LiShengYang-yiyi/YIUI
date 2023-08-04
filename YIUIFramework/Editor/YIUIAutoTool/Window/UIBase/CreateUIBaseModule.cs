@@ -55,6 +55,7 @@ namespace YIUIFramework.Editor
         {
             if (!UIOperationHelper.CheckUIOperation()) return;
 
+            UIPublishModule.CreateUIBindProvider();
             EditorHelper.CreateExistsDirectory(UIGenerationPath);
             EditorHelper.CreateExistsDirectory(UIProjectResPath);
             EditorHelper.CreateExistsDirectory(UICodeScriptsPath);
