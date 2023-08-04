@@ -110,7 +110,6 @@ namespace YIUIFramework
             m_UIBindVo   = uiBindVo;
             m_PanelMgr   = PanelMgr.Inst;
             CDETable.BindUIBase(this);
-            InitCycle();
             UIBaseInitialize();
             return true;
         }
@@ -133,16 +132,7 @@ namespace YIUIFramework
         #endregion
 
         #region 生命周期
-
-        //注入回调
-        private void InitCycle()
-        {
-            CDETable.UIBaseStart     = UIBaseStart;
-            CDETable.UIBaseOnEnable  = UIBaseOnEnable;
-            CDETable.UIBaseOnDisable = UIBaseOnDisable;
-            CDETable.UIBaseOnDestroy = UIBaseOnDestroy;
-        }
-
+        
         //UIBase 生命周期顺序 2
         protected virtual void UIBind()
         {
@@ -155,6 +145,8 @@ namespace YIUIFramework
 
         private void UIBaseInitialize()
         {
+            CDETable.UIBaseStart     = UIBaseStart;
+            CDETable.UIBaseOnDestroy = UIBaseOnDestroy;
             SealedInitialize();
             UIBind();
             try
@@ -177,6 +169,8 @@ namespace YIUIFramework
         {
             SealedStart();
             Start();
+            CDETable.UIBaseOnEnable  = UIBaseOnEnable;
+            CDETable.UIBaseOnDisable = UIBaseOnDisable;
         }
 
         //UIBase 生命周期顺序 4
