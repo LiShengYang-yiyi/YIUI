@@ -115,7 +115,20 @@ namespace YIUIFramework.Editor
         [LabelText("用户名")]
         [Required("请填写用户名")]
         [ShowInInspector]
-        public static string Author;
+        private static string m_Author;
+        
+        public static string Author
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(m_Author))
+                {
+                    m_Author = UserNamePrefs.Value;
+                }
+
+                return m_Author;
+            }
+        }
 
         [HideLabel]
         [HideReferenceObjectPicker]
@@ -125,11 +138,10 @@ namespace YIUIFramework.Editor
         [BoxGroup("全局图集设置", centerLabel: true)]
         [ShowInInspector]
         internal UIAtlasModule AtlasModule = new UIAtlasModule();
-
+        
         protected override void Initialize()
         {
             base.Initialize();
-            Author = UserNamePrefs.Value;
             m_UIBaseModule?.Initialize();
             AtlasModule?.Initialize();
         }
