@@ -28,7 +28,7 @@ namespace YIUIFramework.Editor
                 return;
             }
 
-            var path = $"{UIStaticHelper.UIFrameworkPath}/Plugins/LoopScrollRect/Editor/TemplatePrefabs/{name}.prefab";
+            var path = $"{UIStaticHelper.UIFrameworkPath}/Plugins/LoopScrollRect/YIUIEditor/TemplatePrefabs/{name}.prefab";
 
             Selection.activeObject = UIMenuItemHelper.CloneGameObjectByPath(path, activeObject.transform);
         }

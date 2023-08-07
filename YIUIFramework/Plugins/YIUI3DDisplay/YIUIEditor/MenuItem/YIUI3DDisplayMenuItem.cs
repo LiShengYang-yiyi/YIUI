@@ -18,7 +18,7 @@ namespace YIUIFramework.Editor
             }
 
             var path =
-                $"{UIStaticHelper.UIFrameworkPath}/Plugins/YIUI3DDisplay/Editor/TemplatePrefabs/YIUI3DDisplay.prefab";
+                $"{UIStaticHelper.UIFrameworkPath}/Plugins/YIUI3DDisplay/YIUIEditor/TemplatePrefabs/YIUI3DDisplay.prefab";
 
             Selection.activeObject = UIMenuItemHelper.CloneGameObjectByPath(path, activeObject.transform);
         }

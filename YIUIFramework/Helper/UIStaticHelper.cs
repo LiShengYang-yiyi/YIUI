@@ -33,10 +33,10 @@ namespace YIUIFramework
         public const string UIFrameworkPath = "Assets/Plugins/YIUIFramework";
 
         [LabelText("YIUI项目代码模板路径")]
-        public const string UITemplatePath = UIFrameworkPath + "/Editor/YIUIAutoTool/Template";
+        public const string UITemplatePath = UIFrameworkPath + "/YIUIEditor/YIUIAutoTool/Template";
 
         public const string UIRootPrefabPath =
-            UIFrameworkPath + "/Editor/UIRootPrefab/" + PanelMgr.UIRootName + ".prefab";
+            UIFrameworkPath + "/YIUIEditor/UIRootPrefab/" + PanelMgr.UIRootName + ".prefab";
 
         public const string UIBaseName               = nameof(UIBase);
         public const string UIBasePanelName          = nameof(BasePanel);

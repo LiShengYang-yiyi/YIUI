@@ -8,7 +8,7 @@ namespace YIUIFramework
     /// <summary>
     /// 点击按钮影响组件大小
     /// </summary>
-    public class TsfClickEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class YIUIClickEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [Tooltip("被影响的目标")]
         public RectTransform targetTsf;
