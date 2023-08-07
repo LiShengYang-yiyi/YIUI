@@ -142,6 +142,7 @@ namespace YIUIFramework.Editor
         protected override void Initialize()
         {
             base.Initialize();
+			m_Author = UserNamePrefs.Value;
             m_UIBaseModule?.Initialize();
             AtlasModule?.Initialize();
         }
