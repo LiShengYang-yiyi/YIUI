@@ -70,6 +70,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-YIUIFramework/Plugins/I2Localization/
-YIUIFramework/Plugins/I2Localization.meta
-*.meta
+YIUIFramework/Plugins/CoEvent/
+YIUIFramework/Plugins/CoEvent.meta
