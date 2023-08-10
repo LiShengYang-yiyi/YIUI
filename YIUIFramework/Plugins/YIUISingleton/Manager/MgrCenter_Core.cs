@@ -50,6 +50,13 @@ namespace YIUIFramework
 
                 m_MgrList.Add(manager);
 
+                if (manager is DisposerMonoSingleton)
+                {
+                    //Mono单例无需检查UP 所以写了也不给你跑
+                    //MonoUP自行管理
+                    return true;
+                }
+                
                 if (manager is IManagerUpdate update)
                 {
                     m_MgrUpdateList.Add(update);

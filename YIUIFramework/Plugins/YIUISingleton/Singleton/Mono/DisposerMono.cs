@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace YIUIFramework
 {
     //基类使用odin 方便做一些显示
     //没有的不需要的可以改为UnityEngine.MonoBehaviour
-    public abstract class DisposerMonoSingleton : SerializedMonoBehaviour, ISingleton
+    public abstract class DisposerMonoSingleton : SerializedMonoBehaviour,IManagerAsyncInit
     {
         private bool m_Disposed;
         public  bool Disposed => m_Disposed;
@@ -74,6 +75,41 @@ namespace YIUIFramework
         //每次使用前回调
         protected virtual void OnUseSingleton()
         {
+        }
+        
+
+        public bool Enabled => true; //在mono中无效
+
+        private bool m_InitedSucceed;
+
+        public bool InitedSucceed => m_InitedSucceed;
+
+        public async UniTask<bool> ManagerAsyncInit()
+        {
+            if (m_InitedSucceed)
+            {
+                Debug.LogError($"{gameObject.name}已成功初始化过 请勿重复初始化");
+                return true;
+            }
+
+            var result = await MgrAsyncInit();
+            if (!result)
+            {
+                Debug.LogError($"{gameObject.name} 初始化失败");
+            }
+            else
+            {
+                //成功初始化才记录
+                m_InitedSucceed = true;
+            }
+
+            return result;
+        }
+        
+        protected virtual async UniTask<bool> MgrAsyncInit()
+        {
+            await UniTask.CompletedTask;
+            return true;
         }
     }
 }

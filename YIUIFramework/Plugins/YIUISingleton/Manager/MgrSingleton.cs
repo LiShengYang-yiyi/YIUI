@@ -4,7 +4,7 @@ using UnityEngine;
 namespace YIUIFramework
 {
     //与Singleton 相比 mgr的单例可以受mgrcenter管理 可实现IManagerUpdate等操作
-    public abstract class MgrSingleton<T> : Singleton<T>, IManager, IManagerAsyncInit where T : MgrSingleton<T>, new()
+    public abstract class MgrSingleton<T> : Singleton<T>, IManagerAsyncInit where T : MgrSingleton<T>, new()
     {
         private bool m_Enabled;
 
@@ -46,7 +46,7 @@ namespace YIUIFramework
             //密封初始化方法 必须使用异步
         }
 
-        protected async virtual UniTask<bool> MgrAsyncInit()
+        protected virtual async UniTask<bool> MgrAsyncInit()
         {
             await UniTask.CompletedTask;
             return true;

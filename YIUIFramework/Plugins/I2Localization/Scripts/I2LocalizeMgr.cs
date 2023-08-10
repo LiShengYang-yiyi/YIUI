@@ -101,7 +101,7 @@ namespace I2.Loc
 
         #endregion
 
-        public async UniTask Initialized()
+        protected override async UniTask<bool> MgrAsyncInit()
         {
             if (string.IsNullOrEmpty(m_DefaultLanguage))
             {
@@ -109,7 +109,7 @@ namespace I2.Loc
                 //TODO 初始化时还需要配合如果没有这个语言需要从服务器拉取的情况
                 //TODO 也可以在语言设置界面 如果设置某个语言 发现没有这些数据 当时就加载 然后重启游戏
                 Debug.LogError($"必须设置默认语言");
-                return;
+                return false;
             }
 
             #if UNITY_EDITOR
@@ -128,8 +128,10 @@ namespace I2.Loc
                 m_SourceData.Awake();
                 await LoadLanguage(m_DefaultLanguage, true);
             #endif
-        }
 
+            return true;
+        }
+        
         //根据需求可提前加载语言
         public async UniTask LoadLanguage(string language, bool setCurrent = false)
         {
