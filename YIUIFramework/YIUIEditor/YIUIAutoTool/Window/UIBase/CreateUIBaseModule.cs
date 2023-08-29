@@ -40,11 +40,11 @@ namespace YIUIFramework.Editor
         [ShowInInspector]
         private CreateUIBaseEditorData UIBaseData = new CreateUIBaseEditorData();
 
-        internal override void Initialize()
+        public override void Initialize()
         {
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
         }
 
@@ -55,7 +55,6 @@ namespace YIUIFramework.Editor
         {
             if (!UIOperationHelper.CheckUIOperation()) return;
 
-            UIPublishModule.CreateUIBindProvider();
             EditorHelper.CreateExistsDirectory(UIGenerationPath);
             EditorHelper.CreateExistsDirectory(UIProjectResPath);
             EditorHelper.CreateExistsDirectory(UICodeScriptsPath);

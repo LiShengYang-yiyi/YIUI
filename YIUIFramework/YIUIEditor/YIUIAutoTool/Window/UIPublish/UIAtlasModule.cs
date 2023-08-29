@@ -101,7 +101,7 @@ namespace YIUIFramework.Editor
         }
 
         private const string GlobalSaveSpriteAtlasSettingsPath =
-            UIStaticHelper.UIProjectResPath + "/GlobalSpriteAtlasSettings.bytes";
+            UIStaticHelper.UIProjectResPath + "/GlobalSpriteAtlasSettings.text";
 
         private class GlobalSpriteAtlasSettings
         {
@@ -112,7 +112,7 @@ namespace YIUIFramework.Editor
             public UIPlatformSettings    iPhone;
         }
 
-        internal override void Initialize()
+        public override void Initialize()
         {
             var data = OdinSerializationUtility.Load<GlobalSpriteAtlasSettings>(GlobalSaveSpriteAtlasSettingsPath);
             if (data == null) return;
@@ -124,7 +124,7 @@ namespace YIUIFramework.Editor
             iPhone              = data.iPhone;
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
             OdinSerializationUtility.Save(m_GlobalSpriteAtlasSettings, GlobalSaveSpriteAtlasSettingsPath);
         }

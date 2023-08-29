@@ -104,13 +104,13 @@ namespace YIUIFramework.Editor
             UnityTipsHelper.CallBackOk("YIUI全部 发布完毕", YIUIAutoTool.CloseWindowRefresh);
         }
 
-        internal override void Initialize()
+        public override void Initialize()
         {
             AddAllPkg();
             CreateResModule?.Initialize();
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
             CreateResModule?.OnDestroy();
         }

@@ -12,25 +12,6 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        public static T Instantiate<T>(RectTransform parent = null) where T : UIBase
-        {
-            var data = UIBindHelper.GetBindVoByType<T>();
-            if (data == null) return null;
-            var vo = data.Value;
-
-            return Instantiate<T>(vo, parent);
-        }
-
-        public static T Instantiate<T>(UIBindVo vo, RectTransform parent = null) where T : UIBase
-        {
-            var instance = (T)Create(vo);
-            if (instance == null) return null;
-
-            SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
-
-            return instance;
-        }
-
         private static void SetParent(RectTransform self, RectTransform parent)
         {
             self.SetParent(parent, false);

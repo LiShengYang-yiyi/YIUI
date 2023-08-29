@@ -87,6 +87,13 @@ namespace YIUIBind
         private async UniTaskVoid ChangeSprite(string resName)
         {
             ReleaseLastSprite();
+            
+            if (!YIUILoadHelper.VerifyAssetValidity(resName))
+            {
+                Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                return;
+            }
+            
             var sprite = await YIUILoadHelper.LoadAssetAsync<Sprite>(resName);
             if (m_Image != null)
             {

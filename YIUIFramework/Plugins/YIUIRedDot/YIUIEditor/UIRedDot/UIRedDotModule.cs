@@ -72,7 +72,7 @@ namespace YIUIFramework.Editor
         [ShowIf("m_EUIRedDotViewType", EUIRedDotViewType.Config)]
         private UIRedDotConfigView m_ConfigView;
 
-        internal override void Initialize()
+        public override void Initialize()
         {
             m_EUIRedDotViewType = m_EUIRedDotViewTypePrefs.Value;
             LoadRedDotKeyAsset();
@@ -83,7 +83,7 @@ namespace YIUIFramework.Editor
             m_ConfigView.Initialize();
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
             m_KeyView.OnDestroy();
             m_ConfigView.OnDestroy();

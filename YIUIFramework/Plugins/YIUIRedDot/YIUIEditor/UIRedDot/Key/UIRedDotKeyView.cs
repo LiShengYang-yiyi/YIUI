@@ -64,7 +64,7 @@ namespace YIUIFramework.Editor
             m_AllRedDotKey   = m_RedDotKeyAsset.AllRedDotDic;
         }
 
-        internal override void Initialize()
+        public override void Initialize()
         {
             NewAddRedDataKeyData();
             m_ERedDotKeyViewIndexType = m_ERedDotKeyViewIndexTypePrefs.Value;
@@ -108,7 +108,7 @@ namespace YIUIFramework.Editor
             }
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
             m_UIRedDotModule.OnChangeViewSetIndex -= OnChangeViewSetIndex;
             if (m_WaitCreate)

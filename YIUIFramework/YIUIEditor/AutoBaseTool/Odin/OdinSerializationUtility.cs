@@ -9,13 +9,13 @@ namespace YIUIFramework.Editor
     /// </summary>
     public static class OdinSerializationUtility
     {
-        public static void Save<T>(T data, string path)
+        public static void Save<T>(T data, string path, DataFormat dataFormat = DataFormat.JSON)
         {
-            var bytes = SerializationUtility.SerializeValue(data, DataFormat.Binary);
+            var bytes = SerializationUtility.SerializeValue(data, dataFormat);
             EditorHelper.WriteAllBytes(path, bytes);
         }
 
-        public static T Load<T>(string path)
+        public static T Load<T>(string path, DataFormat dataFormat = DataFormat.JSON)
         {
             var bytes = EditorHelper.ReadAllBytes(path);
             if (bytes == null)
@@ -23,7 +23,7 @@ namespace YIUIFramework.Editor
                 return default;
             }
 
-            var data = SerializationUtility.DeserializeValue<T>(bytes, DataFormat.Binary);
+            var data = SerializationUtility.DeserializeValue<T>(bytes, dataFormat);
             if (data == null)
             {
                 Debug.LogError($"反序列化错误 {path}");

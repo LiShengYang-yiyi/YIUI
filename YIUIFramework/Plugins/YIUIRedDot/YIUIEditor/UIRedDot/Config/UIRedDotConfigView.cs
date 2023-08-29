@@ -34,7 +34,7 @@ namespace YIUIFramework.Editor
             m_RedDotConfigAsset = redDotModule.m_RedDotConfigAsset;
         }
 
-        internal override void Initialize()
+        public override void Initialize()
         {
             m_ERedDotConfigViewIndexType = m_ERedDotConfigViewIndexTypePrefs.Value;
             NewAddConfigEditorData();
@@ -42,7 +42,7 @@ namespace YIUIFramework.Editor
             m_UIRedDotModule.OnChangeViewSetIndex += OnChangeViewSetIndex;
         }
 
-        internal override void OnDestroy()
+        public override void OnDestroy()
         {
             m_UIRedDotModule.OnChangeViewSetIndex -= OnChangeViewSetIndex;
             AutoSyncEditorData();

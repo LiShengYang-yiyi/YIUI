@@ -11,11 +11,11 @@ namespace YIUIFramework.Editor
     [HideReferenceObjectPicker]
     public abstract class BaseCreateModule
     {
-        internal virtual void Initialize()
+        public virtual void Initialize()
         {
         }
 
-        internal virtual void OnDestroy()
+        public virtual void OnDestroy()
         {
         }
     }

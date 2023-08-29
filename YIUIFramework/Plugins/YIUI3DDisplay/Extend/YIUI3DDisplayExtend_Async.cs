@@ -33,7 +33,7 @@ namespace YIUIFramework
 
         private async UniTask<GameObject> CreateObjectAsync(string resName)
         {
-            var obj = await YIUIFactory.InstantiateAsync("", resName);
+            var obj = await YIUIFactory.InstantiateGameObjectAsync("", resName);
             if (obj == null)
             {
                 Debug.LogError($"实例化失败 {resName}  请检查为何没有加载成功 是否配置");

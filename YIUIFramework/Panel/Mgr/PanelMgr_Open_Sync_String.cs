@@ -13,49 +13,23 @@ namespace YIUIFramework
 
         public void OpenPanel(string panelName, object param1, object param2)
         {
-            var paramList = ListPool<object>.Get();
-            paramList.Add(param1);
-            paramList.Add(param2);
-            OpenPanel(panelName, paramList);
-            ListPool<object>.Put(paramList);
+            OpenPanelAsync(panelName, param1, param2).Forget();
         }
 
         public void OpenPanel(string panelName, object param1, object param2, object param3)
         {
-            var paramList = ListPool<object>.Get();
-            paramList.Add(param1);
-            paramList.Add(param2);
-            paramList.Add(param3);
-            OpenPanel(panelName, paramList);
-            ListPool<object>.Put(paramList);
+            OpenPanelAsync(panelName, param1, param2, param3).Forget();
         }
 
         public void OpenPanel(string panelName, object param1, object param2, object param3, object param4)
         {
-            var paramList = ListPool<object>.Get();
-            paramList.Add(param1);
-            paramList.Add(param2);
-            paramList.Add(param3);
-            paramList.Add(param4);
-            OpenPanel(panelName, paramList);
-            ListPool<object>.Put(paramList);
+            OpenPanelAsync(panelName, param1, param2, param3, param4).Forget();
         }
 
         public void OpenPanel(string          panelName, object param1, object param2, object param3, object param4,
                               params object[] paramMore)
         {
-            var paramList = ListPool<object>.Get();
-            paramList.Add(param1);
-            paramList.Add(param2);
-            paramList.Add(param3);
-            paramList.Add(param4);
-            if (paramMore.Length > 0)
-            {
-                paramList.AddRange(paramMore);
-            }
-
-            OpenPanel(panelName, paramList);
-            ListPool<object>.Put(paramList);
+            OpenPanelAsync(panelName, param1, param2, param3, param4, paramMore).Forget();
         }
     }
 }
