@@ -1,0 +1,25 @@
+﻿    
+    
+    public static partial class ${ResName}ComponentSystem
+    {
+        [ObjectSystem]
+        public class ${ResName}ComponentYIUIAwakeSystem: AwakeSystem<${ResName}Component,UIBase>
+        {
+            protected override void Awake(${ResName}Component self, UIBase uiBase)
+            {
+                self.UI             = (${ResName})uiBase;
+                self.UI.UIComponent = self;
+            }
+        }
+        
+        [ObjectSystem]
+        public class ${ResName}ComponentYIUIDestroySystem: DestroySystem<${ResName}Component>
+        {
+            protected override void Destroy(${ResName}Component self)
+            {
+                self.UI.EntityOnDestroy();
+            }
+        }
+    }
+    
+    

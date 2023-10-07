@@ -1,0 +1,34 @@
+﻿using System;
+using YIUIFramework;
+using System.Collections.Generic;
+
+namespace ${Namespace}
+{
+    /// <summary>
+    /// Author  ${Author}
+    /// Date    ${CreateDate}
+    /// Desc
+    /// </summary>
+    [FriendOf(typeof(${ResName}Component))]
+    public static partial class ${ResName}ComponentSystem
+    {
+        [ObjectSystem]
+        public class ${ResName}ComponentInitializeSystem: YIUIInitializeSystem<${ResName}Component>
+        {
+            protected override void YIUIInitialize(${ResName}Component self)
+            {
+            }
+        }
+        
+        [ObjectSystem]
+        public class ${ResName}ComponentDestroySystem: DestroySystem<${ResName}Component>
+        {
+            protected override void Destroy(${ResName}Component self)
+            {
+            }
+        }
+        
+        #region YIUIEvent开始
+        #endregion YIUIEvent结束
+    }
+}

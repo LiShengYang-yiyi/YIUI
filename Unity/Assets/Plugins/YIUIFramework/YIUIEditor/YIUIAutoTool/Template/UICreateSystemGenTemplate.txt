@@ -1,0 +1,28 @@
+﻿using System;
+using YIUIFramework;
+using System.Collections.Generic;
+
+namespace ${Namespace}
+{
+    /// <summary>
+    /// 由YIUI工具自动创建 请勿修改
+    /// </summary>
+${UIFriendOf}
+    public static partial class ${ResName}ComponentSystem
+    {
+        [ObjectSystem]
+        public class ${ResName}ComponentYIUIBindSystem: YIUIBindSystem<${ResName}Component>
+        {
+            protected override void YIUIBind(${ResName}Component self)
+            {
+                self.UIBind();
+            }
+        }
+        
+        private static void UIBind(this ${ResName}Component self)
+        {
+${UIBase}
+${UIBind}
+        }
+    }
+}

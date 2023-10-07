@@ -1,0 +1,27 @@
+{
+    "name": "Unity.ModelView.Codes",
+    "rootNamespace": "ET",
+    "references": [
+        "Unity.ThirdParty",
+        "Unity.Core",
+        "Unity.Model.Codes",
+        "Unity.Mathematics",
+        "Unity.Loader",
+        "YIUIFramework",
+        "YooAsset",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ENABLE_CODES"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
