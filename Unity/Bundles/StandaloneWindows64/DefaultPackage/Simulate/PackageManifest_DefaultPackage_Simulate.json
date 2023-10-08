@@ -160,11 +160,27 @@
             "DependIDs": []
         },
         {
+            "Address": "TextTipsAnimation_01",
+            "AssetPath": "Assets/GameRes/YIUI/Tips/Animation/TextTipsAnimation_01.anim",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 12,
+            "DependIDs": []
+        },
+        {
             "Address": "MessageTipsView",
             "AssetPath": "Assets/GameRes/YIUI/Tips/Prefabs/MessageTipsView.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
+            "DependIDs": []
+        },
+        {
+            "Address": "TextTipsView",
+            "AssetPath": "Assets/GameRes/YIUI/Tips/Prefabs/TextTipsView.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 13,
             "DependIDs": []
         },
         {
@@ -172,7 +188,7 @@
             "AssetPath": "Assets/GameRes/YIUI/Tips/Prefabs/TipsPanel.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependIDs": []
         },
         {
@@ -180,7 +196,7 @@
             "AssetPath": "Assets/GameRes/YIUI/Tips/Source/TipsPanelSource.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependIDs": []
         },
         {
@@ -188,7 +204,7 @@
             "AssetPath": "Assets/GameRes/RedDot/RedDotConfigAsset.asset",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 14,
+            "BundleID": 15,
             "DependIDs": []
         },
         {
@@ -196,7 +212,7 @@
             "AssetPath": "Assets/GameRes/RedDot/RedDotKeyAsset.asset",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 14,
+            "BundleID": 15,
             "DependIDs": []
         },
         {
@@ -204,7 +220,7 @@
             "AssetPath": "Assets/GameRes/I2Localization/I2_Chinese.csv",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 15,
+            "BundleID": 16,
             "DependIDs": []
         },
         {
@@ -212,7 +228,7 @@
             "AssetPath": "Assets/GameRes/I2Localization/I2_English.csv",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 15,
+            "BundleID": 16,
             "DependIDs": []
         }
     ],
@@ -340,6 +356,17 @@
         },
         {
             "BundleName": "defaultpackage_assets_gameres_yiui_reddot_source.bundle",
+            "UnityCRC": 0,
+            "FileHash": "00000000000000000000000000000000",
+            "FileCRC": "00000000",
+            "FileSize": 0,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_yiui_tips_animation.bundle",
             "UnityCRC": 0,
             "FileHash": "00000000000000000000000000000000",
             "FileCRC": "00000000",

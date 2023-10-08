@@ -102,4 +102,23 @@ namespace ET.Client
             return true;
         }
     }
+    
+    [GM(EGMType.Test, 1, "弹窗测试-飘字消息")]
+    public class GM_TipsTest5: IGMCommand
+    {
+        public List<GMParamInfo> GetParams()
+        {
+            return new()
+            {
+                new GMParamInfo(EGMParamType.String, "消息内容"),
+            };
+        }
+
+        public async ETTask<bool> Run(Scene clientScene, ParamVo paramVo)
+        {
+            TipsHelper.OpenSync<TextTipsViewComponent>(paramVo);
+            await ETTask.CompletedTask;
+            return true;
+        }
+    }
 }
