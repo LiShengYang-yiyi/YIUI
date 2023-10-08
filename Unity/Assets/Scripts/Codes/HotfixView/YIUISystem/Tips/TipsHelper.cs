@@ -19,6 +19,12 @@ namespace ET.Client
             ParamVo.Put(vo);
         }
 
+        //扩展同步方法
+        public static void OpenSync<T>(params object[] paramMore) where T : Entity
+        {
+            Open<T>(paramMore).Coroutine();
+        }
+
         //使用paramvo参数打开
         public static async ETTask Open<T>(ParamVo vo) where T : Entity
         {
@@ -30,7 +36,7 @@ namespace ET.Client
         {
             Open2NewVo<T>(vo).Coroutine();
         }
-        
+
         //在外部vo会被回收 所以不能使用同对象 所以这里会创建一个新的防止空对象
         private static async ETTask Open2NewVo<T>(ParamVo vo) where T : Entity
         {
@@ -38,17 +44,17 @@ namespace ET.Client
             await YIUIMgrComponent.Inst.OpenPanelAsync<TipsPanelComponent, Type, ParamVo>(typeof (T), newVo);
             ParamVo.Put(newVo);
         }
-        
+
         //关闭某个Tips通用方法
         public static async ETTask CloseTipsView(Entity view, bool tween = true)
         {
             await YIUIEventSystem.Event(new EventPutTipsView() { View = view, Tween = tween });
         }
-        
+
         //同步方法 只是为了少写个Coroutine好看
         public static void CloseTipsViewSync(Entity view, bool tween = true)
         {
-            CloseTipsView(view,tween).Coroutine();
+            CloseTipsView(view, tween).Coroutine();
         }
     }
 }
