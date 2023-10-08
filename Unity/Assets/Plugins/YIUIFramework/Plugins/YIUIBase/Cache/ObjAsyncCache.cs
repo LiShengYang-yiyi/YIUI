@@ -9,21 +9,21 @@ namespace YIUIFramework
     /// </summary>
     public class ObjAsyncCache<T>
     {
-        private   Stack<T>         m_pool;
-        protected Func<ETTask<T>> m_createCallback;
+        private Stack<T>        m_pool;
+        private Func<ETTask<T>> m_createCallback;
 
         public ObjAsyncCache(Func<ETTask<T>> createCallback, int capacity = 0)
         {
             m_pool = capacity > 0
-                ? new Stack<T>(capacity)
-                : new Stack<T>();
+                    ? new Stack<T>(capacity)
+                    : new Stack<T>();
 
             m_createCallback = createCallback;
         }
 
         public async ETTask<T> Get()
         {
-            return m_pool.Count > 0 ? m_pool.Pop() : await m_createCallback();
+            return m_pool.Count > 0? m_pool.Pop() : await m_createCallback();
         }
 
         public void Put(T value)
