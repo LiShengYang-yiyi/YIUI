@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace YIUIFramework
 {
-    public class ContentSizeFilterByChildren : UIBehaviour, ILayoutElement, ILayoutSelfController, ILayoutGroup
+    public class ContentSizeFilterByChildren: UIBehaviour, ILayoutElement, ILayoutSelfController, ILayoutGroup
     {
         public enum FitMode
         {
@@ -27,8 +27,14 @@ namespace YIUIFramework
 
         public FitMode fit
         {
-            get { return m_Fit; }
-            set { m_Fit = value; }
+            get
+            {
+                return m_Fit;
+            }
+            set
+            {
+                m_Fit = value;
+            }
         }
 
         [SerializeField]
@@ -36,8 +42,14 @@ namespace YIUIFramework
 
         public float maxSize
         {
-            get { return m_MaxSize; }
-            set { m_MaxSize = value; }
+            get
+            {
+                return m_MaxSize;
+            }
+            set
+            {
+                m_MaxSize = value;
+            }
         }
 
         [SerializeField]
@@ -45,8 +57,14 @@ namespace YIUIFramework
 
         public int layoutPriority
         {
-            get { return m_layoutPriority; }
-            set { m_layoutPriority = value; }
+            get
+            {
+                return m_layoutPriority;
+            }
+            set
+            {
+                m_layoutPriority = value;
+            }
         }
 
         [SerializeField]
@@ -54,8 +72,14 @@ namespace YIUIFramework
 
         public float minWidth
         {
-            get { return m_minWidth; }
-            set { m_minWidth = value; }
+            get
+            {
+                return m_minWidth;
+            }
+            set
+            {
+                m_minWidth = value;
+            }
         }
 
         [SerializeField]
@@ -63,8 +87,14 @@ namespace YIUIFramework
 
         public float minHeight
         {
-            get { return m_minHeight; }
-            set { m_minHeight = value; }
+            get
+            {
+                return m_minHeight;
+            }
+            set
+            {
+                m_minHeight = value;
+            }
         }
 
         [SerializeField]
@@ -107,7 +137,10 @@ namespace YIUIFramework
 
         float ILayoutElement.minWidth
         {
-            get { return m_minWidth; }
+            get
+            {
+                return m_minWidth;
+            }
         }
 
         float ILayoutElement.preferredWidth
@@ -164,6 +197,10 @@ namespace YIUIFramework
                         size = max;
 
                     size = Mathf.Min(maxSize, size);
+                    if (minWidth > 0)
+                    {
+                        size = Mathf.Max(minWidth, size);
+                    }
                 }
 
                 return size;
@@ -172,12 +209,18 @@ namespace YIUIFramework
 
         float ILayoutElement.flexibleWidth
         {
-            get { return -1; }
+            get
+            {
+                return -1;
+            }
         }
 
         float ILayoutElement.minHeight
         {
-            get { return m_minHeight; }
+            get
+            {
+                return m_minHeight;
+            }
         }
 
         float ILayoutElement.preferredHeight
@@ -227,6 +270,10 @@ namespace YIUIFramework
                     if (m_Size == SizeMode.Max)
                         size = max;
                     size = Mathf.Min(maxSize, size);
+                    if (minHeight > 0)
+                    {
+                        size = Mathf.Max(minHeight, size);
+                    }
                 }
 
                 return size;
@@ -235,12 +282,18 @@ namespace YIUIFramework
 
         float ILayoutElement.flexibleHeight
         {
-            get { return -1; }
+            get
+            {
+                return -1;
+            }
         }
 
         int ILayoutElement.layoutPriority
         {
-            get { return m_layoutPriority; }
+            get
+            {
+                return m_layoutPriority;
+            }
         }
 
         void ILayoutElement.CalculateLayoutInputHorizontal()
