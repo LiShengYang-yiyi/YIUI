@@ -32,6 +32,7 @@ namespace YIUIFramework.Editor
     }
 
     [Serializable]
+    [MacroAttribute]
     public class UIMacroData : MacroDataBase<EYIUIMacroType>
     {
         protected override void Init()

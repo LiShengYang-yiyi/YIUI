@@ -1,17 +1,18 @@
 ﻿#if UNITY_EDITOR
 
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-
 
 namespace YIUIFramework.Editor
 {
     /// <summary>
     ///  宏
     /// </summary>
-    public class UIMacroModule : BaseYIUIToolModule
+    public class UIMacroModule: BaseYIUIToolModule
     {
         [GUIColor(0.4f, 0.8f, 1)]
         [BoxGroup("目标平台切换", centerLabel: true)]
@@ -61,29 +62,33 @@ namespace YIUIFramework.Editor
         {
             MacroStaticData = new MacroCurrentData(SelfInitialize);
 
-            AllMacroData = new List<MacroDataBase>
-            {
-                new UIMacroData(),
-            };
-        }
+            AllMacroData = new List<MacroDataBase>();
 
+            var allMacro = AssemblyHelper.GetClassesWithAttribute<MacroAttribute>();
+
+            foreach (var macroData in allMacro)
+            {
+                AllMacroData.Add((MacroDataBase)Activator.CreateInstance(macroData));
+            }
+        }
+        
         private static BuildTargetGroup GetCurrentBuildPlatform()
         {
             var buildTargetName = EditorUserBuildSettings.activeBuildTarget.ToString();
             buildTargetName = buildTargetName.ToLower();
-            if (buildTargetName.IndexOf("standalone") >= 0)
+            if (buildTargetName.IndexOf("standalone", StringComparison.Ordinal) >= 0)
             {
                 return BuildTargetGroup.Standalone;
             }
-            else if (buildTargetName.IndexOf("android") >= 0)
+            else if (buildTargetName.IndexOf("android", StringComparison.Ordinal) >= 0)
             {
                 return BuildTargetGroup.Android;
             }
-            else if (buildTargetName.IndexOf("iphone") >= 0)
+            else if (buildTargetName.IndexOf("iphone", StringComparison.Ordinal) >= 0)
             {
                 return BuildTargetGroup.iOS;
             }
-            else if (buildTargetName.IndexOf("ios") >= 0)
+            else if (buildTargetName.IndexOf("ios", StringComparison.Ordinal) >= 0)
             {
                 return BuildTargetGroup.iOS;
             }
