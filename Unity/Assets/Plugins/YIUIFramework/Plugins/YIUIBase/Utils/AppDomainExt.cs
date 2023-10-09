@@ -11,9 +11,6 @@ namespace YIUIFramework
         /// 得到对应Assembly名字内所有type的集合
         /// 例: GetTypesByDllName("Framework")
         /// </summary>
-        /// <param name="owner"></param>
-        /// <param name="names"></param>
-        /// <returns></returns>
         public static Type[] GetTypesByAssemblyName(this AppDomain owner, params string[] names)
         {
             if (names.Length < 1)
@@ -42,6 +39,18 @@ namespace YIUIFramework
             return allType.ToArray();
         }
 
+        public static Type[] GetAllTypes(this AppDomain owner)
+        {
+            List<Type> allType     = new List<Type>();
+            Assembly[] assemblyArr = owner.GetAssemblies();
+            foreach (Assembly assembly in assemblyArr)
+            {
+                allType.AddRange(assembly.GetTypes());
+            }
+
+            return allType.ToArray();
+        }
+        
         /// <summary>
         /// 得到一个域下的所有实现interfaceType的类型
         /// </summary>
