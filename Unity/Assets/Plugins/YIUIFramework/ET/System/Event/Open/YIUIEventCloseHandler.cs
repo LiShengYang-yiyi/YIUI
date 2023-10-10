@@ -7,8 +7,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelCloseBefore arg)
         {
             YIUIEventComponent.Inst.Run(typeof (YIUIEventPanelCloseBefore), arg.UIComponentName, arg);
-            YIUIEventSystem.Event(arg);
-            await ETTask.CompletedTask;
+            await YIUIEventSystem.Event(arg);
         }
     }
 
@@ -19,8 +18,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelCloseAfter arg)
         {
             YIUIEventComponent.Inst.Run(typeof (YIUIEventPanelCloseAfter), arg.UIComponentName, arg);
-            YIUIEventSystem.Event(arg);
-            await ETTask.CompletedTask;
+            await YIUIEventSystem.Event(arg);
         }
     }
 
@@ -31,8 +29,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelDestroy arg)
         {
             YIUIEventComponent.Inst.Run(typeof (YIUIEventPanelDestroy), arg.UIComponentName, arg);
-            YIUIEventSystem.Event(arg);
-            await ETTask.CompletedTask;
+            await YIUIEventSystem.Event(arg);
         }
     }
 }

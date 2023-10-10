@@ -7,8 +7,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelOpenBefore arg)
         {
             YIUIEventComponent.Inst.Run(typeof (YIUIEventPanelOpenBefore), arg.UIComponentName, arg);
-            YIUIEventSystem.Event(arg);
-            await ETTask.CompletedTask;
+            await YIUIEventSystem.Event(arg);
         }
     }
 
@@ -19,8 +18,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelOpenAfter arg)
         {
             YIUIEventComponent.Inst.Run(typeof (YIUIEventPanelOpenAfter), arg.UIComponentName, arg);
-            YIUIEventSystem.Event(arg);
-            await ETTask.CompletedTask;
+            await YIUIEventSystem.Event(arg);
         }
     }
 }
