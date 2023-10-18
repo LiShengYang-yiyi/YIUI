@@ -65,6 +65,7 @@ namespace YIUIFramework.Editor
                 PkgName       = cdeTable.PkgName,
                 ResName       = cdeTable.ResName,
                 CodeType      = cdeTable.UICodeType,
+                PanelLayer    = cdeTable.PanelLayer,
                 Variables     = UICreateVariables.Get(cdeTable),
                 UIFriend      = UICreateBind.GetFriend(cdeTable),
                 UIBase        = UICreateBind.GetBase(cdeTable),
@@ -76,9 +77,10 @@ namespace YIUIFramework.Editor
 
             //自定义的component
             new UICreateComponentCode(out var resultComponent, YIUIAutoTool.Author, createBaseData);
+
             //生成的system
             new UICreateSystemGenCode(out var resultSystemGen, YIUIAutoTool.Author, createBaseData);
-            
+
             //system信息
             var createSystemData = new UICreateSystemData
             {
@@ -90,7 +92,7 @@ namespace YIUIFramework.Editor
                 OverrideDic = UICreateMethod.GetSystemEventOverrideDic(cdeTable),
                 CoverDic    = UICreateMethod.CoverSystemDefaultEventDic(cdeTable),
             };
-            
+
             //生成的component
             //自定义的system
             //目前看上去3个都一样 是特意设定的 以后可独立扩展
@@ -119,7 +121,7 @@ namespace YIUIFramework.Editor
             {
                 Debug.LogError($"是新增了 新类型嘛????? {cdeTable.UICodeType}");
             }
-            
+
             AssetDatabase.Refresh();
         }
 

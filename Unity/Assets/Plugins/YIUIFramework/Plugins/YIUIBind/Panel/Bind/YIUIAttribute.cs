@@ -1,5 +1,6 @@
 ﻿using System;
 using ET;
+using UnityEngine;
 
 namespace YIUIFramework
 {
@@ -10,11 +11,16 @@ namespace YIUIFramework
     [AttributeUsage(AttributeTargets.Class)]
     public class YIUIAttribute: BaseAttribute
     {
+        //组件类型
         public EUICodeType YIUICodeType { get; }
-        
-        public YIUIAttribute(EUICodeType codeType)
+
+        //层级类型 如果不是panel则无效
+        public EPanelLayer YIUIPanelLayer { get; }
+
+        public YIUIAttribute(EUICodeType codeType, EPanelLayer panelLayer = EPanelLayer.Any)
         {
-            YIUICodeType = codeType;
+            YIUICodeType   = codeType;
+            YIUIPanelLayer = panelLayer;
         }
     }
 }

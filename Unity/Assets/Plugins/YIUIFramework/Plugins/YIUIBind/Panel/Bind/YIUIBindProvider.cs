@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace YIUIFramework
 {
@@ -51,7 +52,7 @@ namespace YIUIFramework
 
                 foreach (var attribute in uiAttributes)
                 {
-                    if (GetBindVo(out var bindVo,attribute.YIUICodeType, type))
+                    if (GetBindVo(out var bindVo, attribute, type))
                     {
                         binds.Add(bindVo);
                     }
@@ -62,7 +63,7 @@ namespace YIUIFramework
         }
 
         private static bool GetBindVo(out YIUIBindVo bindVo,
-                                      EUICodeType    codeType,
+                                      YIUIAttribute  attribute,
                                       Type           componentType)
         {
             bindVo = new YIUIBindVo();
@@ -73,17 +74,23 @@ namespace YIUIFramework
                 return false;
             }
 
-            bindVo.CodeType      = codeType;
             bindVo.ComponentType = componentType;
+            bindVo.CodeType      = attribute.YIUICodeType;
+            bindVo.PanelLayer    = attribute.YIUIPanelLayer;
+            if (bindVo is { CodeType: EUICodeType.Panel, PanelLayer: EPanelLayer.Any })
+            {
+                Debug.LogError($"{componentType.Name} 错误的设定 既然是Panel 那必须设定所在层级 不能是Any 请检查重新导出");
+            }
             return true;
         }
 
         public void WriteCode(YIUIBindVo info, StringBuilder sb)
         {
             sb.Append("            {\r\n");
-            sb.AppendFormat("                PkgName     = {0}.PkgName,\r\n", info.ComponentType.FullName);
-            sb.AppendFormat("                ResName     = {0}.ResName,\r\n", info.ComponentType.FullName);
-            sb.AppendFormat("                CodeType    = EUICodeType.{0},\r\n", info.CodeType.ToString());
+            sb.AppendFormat("                PkgName       = {0}.PkgName,\r\n", info.ComponentType.FullName);
+            sb.AppendFormat("                ResName       = {0}.ResName,\r\n", info.ComponentType.FullName);
+            sb.AppendFormat("                CodeType      = EUICodeType.{0},\r\n", info.CodeType.ToString());
+            sb.AppendFormat("                PanelLayer    = EPanelLayer.{0},\r\n", info.PanelLayer.ToString());
             sb.AppendFormat("                ComponentType = typeof({0}),\r\n", info.ComponentType.FullName);
             sb.Append("            };\r\n");
         }

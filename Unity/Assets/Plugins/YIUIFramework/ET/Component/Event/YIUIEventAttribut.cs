@@ -15,19 +15,17 @@ namespace ET.Client
         }
     }
 
-    /*
-
-    案例:
-
-    //1:监听某个panel打开前的消息  2:这个panel是LoginPanel
-    [YIUIEventAttribut(typeof(YIUIEventPanelOpenBefore),typeof(LoginPanelComponent))]
-    public class YIUIEventPanelOpenLoginPanelBefore : IYIUICommonEvent
+    
+    /*//案例:
+    //1:监听某个panel打开前的消息  2:这个panel是XXPanel
+    [YIUIEventAttribut(typeof(YIUIEventPanelOpenBefore),typeof(XXPanel))]
+    public class YIUIEventPanelOpenLoginPanelBefore : YIUICommonEventSystem<YIUIEventPanelOpenBefore>
     {
-        public void Run(Scene uiScene,object message)
+        protected override async ETTask Event(Scene uiScene, YIUIEventPanelOpenBefore message)
         {
-            Log.Error($"打开前");
+            await ETTask.CompletedTask;
+            Log.Error($" XXPanel 打开前");
         }
-    }
-
-    */
+    }*/
+    
 }

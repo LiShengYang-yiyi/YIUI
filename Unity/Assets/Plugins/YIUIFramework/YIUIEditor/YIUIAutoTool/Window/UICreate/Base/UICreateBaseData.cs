@@ -17,6 +17,7 @@ namespace YIUIFramework.Editor
         public string      VirtualMethod; //所有虚方法  Event里面的那些注册方法
         public string      PanelViewEnum; //枚举生成
         public EUICodeType CodeType;      //UI类型
+        public EPanelLayer PanelLayer;    //当是panel时所在层级
     }
 }
 #endif

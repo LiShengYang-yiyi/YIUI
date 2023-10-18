@@ -76,11 +76,15 @@ namespace ET.Client
                 return;
             }
 
-            EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelCloseAfter()
-            {
-                UIPkgName = panelInfo.PkgName, UIResName = panelInfo.ResName, UIComponentName = panelInfo.Name,
-            });
-            
+            EventSystem.Instance.Publish(this.DomainScene(),
+                new YIUIEventPanelCloseAfter()
+                {
+                    UIPkgName       = panelInfo.PkgName,
+                    UIResName       = panelInfo.ResName,
+                    UIComponentName = panelInfo.Name,
+                    PanelLayer      = panelInfo.PanelLayer
+                });
+
             var uiBase       = panelInfo.UIBase;
             var uiPanel      = panelInfo.UIPanel;
             var foreverCache = uiPanel.PanelForeverCache;
@@ -119,21 +123,22 @@ namespace ET.Client
                 return;
             }
 
-            EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelDestroy()
-            {
-                UIPkgName = panelInfo.PkgName, UIResName = panelInfo.ResName, UIComponentName = panelInfo.Name,
-            });
-            
             var uiObj = panelInfo.UIBase?.OwnerGameObject;
             if (uiObj == null)
             {
-                Debug.LogError($"移除错误 uiObj 不可能null {panelName}");
-            }
-            else
-            {
-                UnityEngine.Object.Destroy(uiObj);
+                return;
             }
 
+            EventSystem.Instance.Publish(this.DomainScene(),
+                new YIUIEventPanelDestroy()
+                {
+                    UIPkgName       = panelInfo.PkgName,
+                    UIResName       = panelInfo.ResName,
+                    UIComponentName = panelInfo.Name,
+                    PanelLayer      = panelInfo.PanelLayer
+                });
+
+            UnityEngine.Object.Destroy(uiObj);
             panelInfo.ResetUI(null);
             panelInfo.ResetEntity(null);
         }

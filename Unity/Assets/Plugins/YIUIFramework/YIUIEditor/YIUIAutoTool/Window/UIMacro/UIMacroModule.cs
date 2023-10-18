@@ -64,7 +64,7 @@ namespace YIUIFramework.Editor
 
             AllMacroData = new List<MacroDataBase>();
 
-            var allMacro = AssemblyHelper.GetClassesWithAttribute<MacroAttribute>();
+            var allMacro = AssemblyHelper.GetClassesWithAttribute<MacroAttribute>(Assembly.GetExecutingAssembly());
 
             foreach (var macroData in allMacro)
             {

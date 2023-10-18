@@ -6,7 +6,7 @@ namespace ET.Client
     /// <summary>
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
-    [YIUI(EUICodeType.Panel)]
+    [YIUI(EUICodeType.Panel, EPanelLayer.Panel)]
     public partial class LobbyPanelComponent : Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize, IYIUIOpen
     {
         public const string PkgName = "Lobby";

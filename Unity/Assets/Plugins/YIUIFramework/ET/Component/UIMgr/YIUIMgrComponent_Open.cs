@@ -105,9 +105,9 @@ namespace ET.Client
 
             EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenBefore
             {
-                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name,
+                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name, PanelLayer = info.PanelLayer,
             });
-            
+
             if (info.UIBase == null)
             {
                 if (PanelIsOpening(panelName))
@@ -172,7 +172,11 @@ namespace ET.Client
 
             EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenAfter
             {
-                Success = success, UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name,
+                Success         = success,
+                UIPkgName       = info.PkgName,
+                UIResName       = info.ResName,
+                UIComponentName = info.Name,
+                PanelLayer      = info.PanelLayer,
             });
         }
 

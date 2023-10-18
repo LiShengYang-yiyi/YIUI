@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using YIUIFramework;
 
 namespace ET.Client
 {
@@ -17,6 +18,7 @@ namespace ET.Client
 
             Scene clientScene = await SceneFactory.CreateClientScene(1, "Game");
 
+            YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get;
             await clientScene.AddComponent<YIUIMgrComponent>().Initialize();
 
             #region 根据需求自行处理

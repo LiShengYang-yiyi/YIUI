@@ -27,10 +27,10 @@ namespace YIUIFramework
 
         //获取目标程序集下指定的所有特性
         //如果没有传入程序集默认使用当前程序集
-        public static List<Type> GetClassesWithAttribute<TAttribute>(Assembly targetAssembly = null) where TAttribute : Attribute
+        public static List<Type> GetClassesWithAttribute<TAttribute>(Assembly targetAssembly) where TAttribute : Attribute
         {
             var classes  = new List<Type>();
-            var assembly = targetAssembly ??= Assembly.GetExecutingAssembly();
+            var assembly = targetAssembly ??= Assembly.GetExecutingAssembly(); //默认的程序集是当前框架 其他程序集使用请传入自己的程序集
             var types    = assembly.GetTypes();
 
             foreach (Type type in types)

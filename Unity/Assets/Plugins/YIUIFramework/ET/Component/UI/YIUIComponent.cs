@@ -238,7 +238,6 @@ namespace ET.Client
         }
 
         //UI对象被移除时
-        //
         private void UIBaseOnDestroy()
         {
             if (!this.IsDisposed)

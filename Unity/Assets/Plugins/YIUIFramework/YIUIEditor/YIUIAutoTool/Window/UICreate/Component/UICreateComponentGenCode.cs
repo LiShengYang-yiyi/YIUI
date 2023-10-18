@@ -33,7 +33,14 @@ namespace YIUIFramework.Editor
             ValueDic["VirtualMethod"] = codeData.VirtualMethod;
             ValueDic["PanelViewEnum"] = codeData.PanelViewEnum;
             ValueDic["CodeType"]      = codeData.CodeType.ToString();
-            
+            var panelLayer = "";
+            if (codeData.CodeType == EUICodeType.Panel)
+            {
+                panelLayer = $", EPanelLayer.{codeData.PanelLayer}";
+            }
+
+            ValueDic["PanelLayer"] = panelLayer;
+
             result = CreateNewFile();
         }
     }

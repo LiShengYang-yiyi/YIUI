@@ -32,7 +32,7 @@ namespace YIUIFramework
 
         //改为dll过后 提供给外部的方法
         //1 从UI工具中自动生成绑定代码
-        //2 外部请直接调用此方法 UIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.UIBindProvider.Get;
+        //2 外部请直接调用此方法 YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get;
         public static Func<YIUIBindVo[]> InternalGameGetUIBindVoFunc { internal get; set; }
 
         //初始化记录

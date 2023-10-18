@@ -23,9 +23,9 @@ namespace ET.Client
 
             EventSystem.Instance.Publish(self.DomainScene(), new YIUIEventPanelCloseBefore
             {
-                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name,
+                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name, PanelLayer = info.PanelLayer,
             });
-            
+
             if (info.UIPanel.PanelOption.HasFlag(EPanelOption.DisClose))
             {
                 var allowClose = false; //是否允许关闭

@@ -39,6 +39,11 @@ namespace YIUIFramework
         /// C#文件名 因为有可能存在Res名称与文件名不一致的问题
         /// </summary>
         public string Name => this.BindVo.ComponentType.Name;
+        
+        /// <summary>
+        /// 所在层级 如果不是panel则无效
+        /// </summary>
+        public EPanelLayer PanelLayer => this.BindVo.PanelLayer;
 
         internal PanelInfo(YIUIBindVo vo)
         {

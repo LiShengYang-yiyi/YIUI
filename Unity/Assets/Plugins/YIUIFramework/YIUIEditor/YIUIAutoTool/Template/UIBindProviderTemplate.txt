@@ -4,15 +4,12 @@ namespace YIUICodeGenerated
 {
     /// <summary>
     /// 由YIUI工具自动创建 请勿修改
-    /// 用法: UIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.UIBindProvider.Get;
+    /// 用法: YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get;
     /// </summary>
     public static class YIUIBindProvider
     {
         public static YIUIBindVo[] Get()
         {
-            var BasePanel     = typeof(BasePanel);
-            var BaseView      = typeof(BaseView);
-            var BaseCommon    = typeof(BaseCommon);
             var list          = new YIUIBindVo[${Count}];
 ${Content}
 

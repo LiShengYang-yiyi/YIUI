@@ -63,8 +63,9 @@ namespace ET.Client
             }
         }
 
-        public static void Run(this YIUIEventComponent self, Type eventType, string componentName, object data)
+        public static async ETTask Run<T>(this YIUIEventComponent self, string componentName, T data)
         {
+            var eventType = typeof (T);
             if (!self._AllEventInfo.TryGetValue(eventType, out var componentDic))
             {
                 return;
@@ -77,7 +78,7 @@ namespace ET.Client
 
             foreach (var info in eventInfos)
             {
-                info.UIEvent.Run(self.DomainScene(), data);
+                await info.UIEvent.Run(self.DomainScene(), data);
             }
         }
     }

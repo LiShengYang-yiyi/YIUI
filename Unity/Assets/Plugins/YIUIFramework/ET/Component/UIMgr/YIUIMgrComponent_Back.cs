@@ -41,6 +41,15 @@ namespace ET.Client
                     back.DoBackClose(info);
                 }
 
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelCloseBefore
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
+
                 switch (child.UIPanel.StackOption)
                 {
                     case EPanelStackOption.Omit:
@@ -64,6 +73,15 @@ namespace ET.Client
                         child.UIBase.SetActive(false);
                         break;
                 }
+
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelCloseAfter
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
             }
         }
 
@@ -96,6 +114,15 @@ namespace ET.Client
                     back.DoBackAdd(info);
                 }
 
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenBefore
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
+
                 var isBreak = true;
                 switch (child.UIPanel.StackOption)
                 {
@@ -117,6 +144,15 @@ namespace ET.Client
                         child.UIBase.SetActive(true);
                         break;
                 }
+
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenAfter
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
 
                 if (isBreak)
                     break;
@@ -161,6 +197,15 @@ namespace ET.Client
                     continue;
                 }
 
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenBefore
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
+
                 switch (child.UIPanel.StackOption)
                 {
                     case EPanelStackOption.Omit:
@@ -178,6 +223,15 @@ namespace ET.Client
                         child.UIBase.SetActive(true);
                         break;
                 }
+
+                EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenAfter
+                {
+                    UIPkgName       = child.PkgName,
+                    UIResName       = child.ResName,
+                    UIComponentName = child.Name,
+                    StackOption     = true,
+                    PanelLayer      = child.PanelLayer,
+                });
             }
 
             return true;
