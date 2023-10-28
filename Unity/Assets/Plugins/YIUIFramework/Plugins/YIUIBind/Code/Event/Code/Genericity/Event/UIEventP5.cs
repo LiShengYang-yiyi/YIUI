@@ -44,6 +44,8 @@ namespace YIUIFramework
             }
         }
 
+        public override bool IsTaskEvent => false;
+        
         public override bool Clear()
         {
             if (m_UIEventDelegates == null) return false;

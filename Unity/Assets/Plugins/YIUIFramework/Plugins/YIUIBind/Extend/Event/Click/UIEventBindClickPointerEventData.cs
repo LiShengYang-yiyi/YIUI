@@ -19,11 +19,8 @@ namespace YIUIFramework
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.Object, };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
-
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
+        
         protected override void OnUIEvent(PointerEventData eventData)
         {
             //额外添加 如果想要这个点击事件 使用此监听

@@ -19,15 +19,15 @@ namespace YIUIFramework
         [LabelText("滚动条")]
         private Scrollbar m_Scrollbar;
 
+        protected override bool IsTaskEvent => false;
+        
+        [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
             EUIEventParamType.Float
         };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         private void Awake()
         {

@@ -5,7 +5,7 @@ using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
-    public class UIEventP0 : UIEventBase, IUIEventInvoke
+    public class UIEventP0: UIEventBase, IUIEventInvoke
     {
         private LinkedList<UIEventHandleP0> m_UIEventDelegates;
         public  LinkedList<UIEventHandleP0> UIEventDelegates => m_UIEventDelegates;
@@ -14,7 +14,7 @@ namespace YIUIFramework
         {
         }
 
-        public UIEventP0(string name) : base(name)
+        public UIEventP0(string name): base(name)
         {
         }
 
@@ -43,6 +43,8 @@ namespace YIUIFramework
                 itr = next;
             }
         }
+
+        public override bool IsTaskEvent => false;
 
         public override bool Clear()
         {

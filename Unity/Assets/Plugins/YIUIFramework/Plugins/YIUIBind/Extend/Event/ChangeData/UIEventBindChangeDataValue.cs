@@ -14,22 +14,17 @@ namespace YIUIFramework
     [InfoBox("提示: 可用事件参数 0个")]
     [LabelText("数据改变<null>")]
     [AddComponentMenu("YIUIBind/Event/数据改变 【ChangeDataValue】 UIEventBindChangeDataValue")]
-    [RequireComponent(typeof(UIDataBindChange))]
-    public class UIEventBindChangeDataValue : UIEventBind
+    [RequireComponent(typeof (UIDataBindChange))]
+    public class UIEventBindChangeDataValue: UIEventBind
     {
         [SerializeField]
         [ReadOnly]
         [Required("必须有此组件")]
         private UIDataBindChange m_UIDataBindChange;
-
-        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
-        {
-        };
-
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override bool IsTaskEvent => false;
+        [NonSerialized]
+        private            List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { };
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         private void Start()
         {

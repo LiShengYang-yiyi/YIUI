@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
@@ -11,17 +10,15 @@ namespace YIUIFramework
     [AddComponentMenu("YIUIBind/Event/显隐 【Active】 UIEventBindActive")]
     public class UIEventBindActive : UIEventBind
     {
-        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
+        protected override bool IsTaskEvent => false;
+        [NonSerialized]
+        private readonly List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
             EUIEventParamType.UnityGameObject,
             EUIEventParamType.Bool,
         };
-
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
-
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
+        
         private void OnEnable()
         {
             try

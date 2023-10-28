@@ -38,9 +38,15 @@ namespace ET.Client
             foreach (var type in types)
             {
                 object[] attrs = type.GetCustomAttributes(typeof (YIUIEventAttribut), false);
-                foreach (object attr in attrs)
+                for (int i = 0; i < attrs.Length; i++)
                 {
-                    var eventAttribut = (YIUIEventAttribut)attr;
+                    if (i >= 1)
+                    {
+                        Log.Error($"ConfigExtendAttribute特性写一个就可以了 {types}");
+                        break; 
+                    }
+                    
+                    var eventAttribut = (YIUIEventAttribut)attrs[i];
                     var obj           = (IYIUICommonEvent)Activator.CreateInstance(type);
                     var eventType     = eventAttribut.EventType;
                     var componentName = eventAttribut.ComponentType.Name;

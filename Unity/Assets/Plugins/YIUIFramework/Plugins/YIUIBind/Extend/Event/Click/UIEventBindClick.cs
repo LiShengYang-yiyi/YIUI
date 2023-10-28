@@ -46,13 +46,11 @@ namespace YIUIFramework
                 throw;
             }
         }
-
+        
+        protected override bool IsTaskEvent => false;
+        [NonSerialized]
         private List<EUIEventParamType> m_BaseFilterParamType = new List<EUIEventParamType> { };
-
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_BaseFilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_BaseFilterParamType;
 
         private void Awake()
         {

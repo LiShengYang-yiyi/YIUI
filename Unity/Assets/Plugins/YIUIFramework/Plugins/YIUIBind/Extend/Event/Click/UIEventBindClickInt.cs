@@ -24,10 +24,7 @@ namespace YIUIFramework
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.Int, };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         protected override void OnUIEvent(PointerEventData eventData)
         {

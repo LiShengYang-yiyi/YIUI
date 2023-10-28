@@ -20,13 +20,12 @@ namespace YIUIFramework
         [LabelText("可选组件")]
         private Selectable m_Selectable;
 
+        protected override bool IsTaskEvent => false;
+        
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.Object, };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         private void Awake()
         {

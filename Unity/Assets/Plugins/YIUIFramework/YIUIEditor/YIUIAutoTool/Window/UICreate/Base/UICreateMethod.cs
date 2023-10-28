@@ -174,13 +174,21 @@ namespace YIUIFramework.Editor
                 if (string.IsNullOrEmpty(name)) continue;
                 var uiEventBase = value.Value;
                 if (uiEventBase == null) continue;
-                var onEvent          = $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}";
-                var eventParam       = GetEventMethodParam(uiEventBase);
-                var systemEventParam = string.IsNullOrEmpty(eventParam)? "" : $", {eventParam}";
-                var methodParam      = $"Action(this {cdeTable.ResName}Component self{systemEventParam})";
-                var check            = $"{onEvent}{methodParam}";
-                var firstContent     = $"\r\n        private static void {onEvent}{methodParam}";
-                var content          = firstContent + "\r\n        {\r\n            \r\n        }\r\n        ";
+                var    onEvent          = $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}";
+                var    eventParam       = GetEventMethodParam(uiEventBase);
+                var    systemEventParam = string.IsNullOrEmpty(eventParam)? "" : $", {eventParam}";
+                var    methodParam      = $"Action(this {cdeTable.ResName}Component self{systemEventParam})";
+                string check;
+                if (uiEventBase.IsTaskEvent)
+                    check = $"private static async ETTask {onEvent}{methodParam}";
+                else
+                    check = $"private static void {onEvent}{methodParam}";
+                var firstContent = $"\r\n        {check}";
+                string content;
+                if (uiEventBase.IsTaskEvent)
+                    content = firstContent + "\r\n        {\r\n            await ETTask.CompletedTask;\r\n        }\r\n        ";
+                else
+                    content = firstContent + "\r\n        {\r\n            \r\n        }\r\n        ";
                 newList.Add(new Dictionary<string, string> { { check, content } });
             }
 

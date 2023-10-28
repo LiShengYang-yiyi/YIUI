@@ -29,6 +29,8 @@ namespace YIUIFramework
         #endif
         public List<EUIEventParamType> AllEventParamType = new List<EUIEventParamType>();
 
+        public abstract bool IsTaskEvent { get;}
+
         public void RefreshAllEventParamType(List<EUIEventParamType> targetType)
         {
             AllEventParamType.Clear();

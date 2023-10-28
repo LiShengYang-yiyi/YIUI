@@ -29,7 +29,7 @@ namespace YIUIFramework
         #endif
         [PropertyOrder(-99)]
         protected string m_EventName = null;
-
+        
         /// <summary>
         /// 当前的UI事件
         /// </summary>
@@ -60,7 +60,9 @@ namespace YIUIFramework
             return uiEvent;
         }
 
-        protected abstract List<EUIEventParamType> GetFilterParamType();
+        protected abstract bool IsTaskEvent { get; }
+
+        protected abstract List<EUIEventParamType> GetFilterParamType { get; }
 
         private bool m_Binded;
 

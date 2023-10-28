@@ -19,15 +19,15 @@ namespace YIUIFramework
         [LabelText("下拉菜单")]
         private TMP_Dropdown m_Dropdown;
 
+        protected override bool IsTaskEvent => false;
+        
+        [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
             EUIEventParamType.Int
         };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         private void Awake()
         {

@@ -19,15 +19,15 @@ namespace YIUIFramework
         [LabelText("输入栏")]
         private TMP_InputField m_InputField;
 
+        protected override bool IsTaskEvent => false;
+        
+        [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
             EUIEventParamType.String
         };
 
-        protected override List<EUIEventParamType> GetFilterParamType()
-        {
-            return m_FilterParamType;
-        }
+        protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
 
         private void Awake()
         {
