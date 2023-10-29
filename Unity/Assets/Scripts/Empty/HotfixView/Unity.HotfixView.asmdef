@@ -8,7 +8,10 @@
         "Unity.ModelView",
         "Unity.Core",
         "Unity.Mathematics",
-        "Unity.Loader"
+        "Unity.Loader",
+        "YIUIFramework",
+        "YooAsset",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"

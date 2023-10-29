@@ -25,7 +25,7 @@ namespace ET
                         "Assets/Scripts/Codes/Model/Generate/Client/",
                         "Assets/Scripts/Codes/Model/Share/",
                         "Assets/Scripts/Codes/Model/Client/",
-                        "Assets/Scripts/Codes/ModelView/Client/",
+                        "Assets/Scripts/Codes/ModelView/",
                     };
                     break;
                 case CodeMode.Server:
@@ -42,7 +42,7 @@ namespace ET
                     {
                         "Assets/Scripts/Codes/Model/Share/",
                         "Assets/Scripts/Codes/Model/Client/",
-                        "Assets/Scripts/Codes/ModelView/Client/",
+                        "Assets/Scripts/Codes/ModelView/",
                         "Assets/Scripts/Codes/Model/Generate/ClientServer/",
                         "Assets/Scripts/Codes/Model/Server/",
                     };
@@ -77,13 +77,15 @@ namespace ET
                     {
                         "Assets/Scripts/Codes/Hotfix/Share/",
                         "Assets/Scripts/Codes/Hotfix/Client/",
-                        "Assets/Scripts/Codes/HotfixView/Client/",
+                        "Assets/Scripts/Codes/HotfixView/",
                     };
                     break;
                 case CodeMode.Server:
                     codes = new List<string>()
                     {
-                        "Assets/Scripts/Codes/Hotfix/Share/", "Assets/Scripts/Codes/Hotfix/Server/", "Assets/Scripts/Codes/Hotfix/Client/",
+                        "Assets/Scripts/Codes/Hotfix/Share/", 
+                        "Assets/Scripts/Codes/Hotfix/Server/", 
+                        "Assets/Scripts/Codes/Hotfix/Client/",
                     };
                     break;
                 case CodeMode.ClientServer:
@@ -91,7 +93,7 @@ namespace ET
                     {
                         "Assets/Scripts/Codes/Hotfix/Share/",
                         "Assets/Scripts/Codes/Hotfix/Client/",
-                        "Assets/Scripts/Codes/HotfixView/Client/",
+                        "Assets/Scripts/Codes/HotfixView/",
                         "Assets/Scripts/Codes/Hotfix/Server/",
                     };
                     break;
@@ -99,8 +101,14 @@ namespace ET
                     throw new Exception("not found enum");
             }
 
-            BuildAssembliesHelper.BuildMuteAssembly("Hotfix", codes, new[] { Path.Combine(Define.BuildOutputDir, "Model.dll") }, codeOptimization,
-                globalConfig.CodeMode);
+            BuildAssembliesHelper.BuildMuteAssembly
+            (
+                "Hotfix", 
+                codes, 
+                new[] { Path.Combine(Define.BuildOutputDir, "Model.dll") }, 
+                codeOptimization,
+                globalConfig.CodeMode
+                );
 
             File.Copy(Path.Combine(Define.BuildOutputDir, "Hotfix.dll"), Path.Combine(CodeDir, $"Hotfix.dll.bytes"), true);
             File.Copy(Path.Combine(Define.BuildOutputDir, "Hotfix.pdb"), Path.Combine(CodeDir, $"Hotfix.pdb.bytes"), true);

@@ -51,7 +51,7 @@ namespace YIUIFramework
                 return false;
             }
 
-            #if !UNITY_EDITOR || YIUIMACRO_SIMULATE_NONEEDITOR
+            #if !UNITY_EDITOR || YIUIMACRO_SIMULATE_NONEEDITOR || !ENABLE_CODES
             if (InternalGameGetUIBindVoFunc == null)
             {
                 Debug.LogError($"使用非反射注册绑定 但是方法未实现 请检查");
@@ -62,7 +62,7 @@ namespace YIUIFramework
             var binds = new YIUIBindProvider().Get();
             #endif
 
-            if (binds == null || binds.Length <= 0)
+            if (binds is not { Length: > 0 })
             {
                 //如果才接入框架 第一个UI都没有生成是无法运行的 先生成一个UI吧
                 Debug.LogError("没有找到绑定信息 或者 没有绑定信息 请检查");

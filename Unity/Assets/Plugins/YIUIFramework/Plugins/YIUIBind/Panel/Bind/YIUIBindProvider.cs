@@ -3,6 +3,9 @@
 //#define YIUI_GETALL_ASSEMBLY
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 
@@ -35,10 +38,31 @@ namespace YIUIFramework
         #endif
 
         #endregion
-
+        
+        public Type[] GetLogicTypesByDll()
+        {
+            var buildOutputDir = "./Temp/Bin/Debug";
+            string[] logicFiles     = Directory.GetFiles(buildOutputDir, "Model.dll");
+            if (logicFiles.Length != 1)
+            {
+                throw new Exception("Logic dll count != 1");
+            }
+            string logicName = Path.GetFileNameWithoutExtension(logicFiles[0]);
+            var assBytes = File.ReadAllBytes(Path.Combine(buildOutputDir, $"{logicName}.dll"));
+            var pdbBytes = File.ReadAllBytes(Path.Combine(buildOutputDir, $"{logicName}.pdb"));
+            var model = Assembly.Load(assBytes, pdbBytes);
+            var typesDic = AssemblyHelper.GetAssemblyTypes(model);
+            return typesDic.Values.ToArray();
+        }
+        
         public YIUIBindVo[] Get()
         {
+            #if ENABLE_CODES
             var types = GetLogicTypes();
+            #else
+            var types = GetLogicTypesByDll();
+            #endif
+            
             var binds = new List<YIUIBindVo>();
 
             foreach (var type in types)

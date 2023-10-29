@@ -6,7 +6,8 @@
         "Unity.Core",
         "HybridCLR.Runtime",
         "BetterStreamingAssets",
-        "YooAsset"
+        "YooAsset",
+        "YIUIFramework"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
