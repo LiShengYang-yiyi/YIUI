@@ -162,9 +162,9 @@ namespace ET.Client
 
             UICamera.clearFlags   = CameraClearFlags.Depth;
             UICamera.orthographic = true;
-            UICamera.farClipPlane =
-                    ((len + 1) * YIUIMgrComponent.LayerDistance) * UICanvasRoot.transform.localScale.x; //没必要设置的很大 不需要可以注释
-
+            //根据需求可以修改摄像机的远裁剪平面大小 没必要设置的很大
+            //UICamera.farClipPlane = ((len + 1) * YIUIMgrComponent.LayerDistance) * UICanvasRoot.transform.localScale.x;
+            
             return true;
         }
 

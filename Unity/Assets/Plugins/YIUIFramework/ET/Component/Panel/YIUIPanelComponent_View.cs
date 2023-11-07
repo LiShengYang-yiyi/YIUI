@@ -18,9 +18,10 @@ namespace ET.Client
         #region 下面公开的方法之所以放到component就是 如果你不确定你不应该使用
 
         /// <summary>
-        /// 当前已打开的UI 不包含弹窗
+        /// 当前已打开的UI View 不包含弹窗
         /// </summary>
         internal Entity u_CurrentOpenView;
+
         public Entity CurrentOpenView => u_CurrentOpenView;
 
         /// <summary>
@@ -183,6 +184,71 @@ namespace ET.Client
             return view;
         }
 
+        internal (bool, Entity) ExistView<T>() where T : Entity
+        {
+            if (this.UIBase.OwnerUIEntity == null)
+            {
+                Log.Error($"没有找到ET UI组件");
+                return (false, null);
+            }
+
+            var data = YIUIBindHelper.GetBindVoByType<T>();
+            if (data == null) return (false, null);
+            var vo = data.Value;
+            if (vo.CodeType != EUICodeType.View)
+            {
+                Log.Error($"打开错误必须是一个view类型");
+                return (false, null);
+            }
+
+            var viewName   = vo.ResName;
+            var viewParent = GetViewParent(viewName);
+            if (viewParent == null)
+            {
+                Debug.LogError($"不存在这个View  请检查 {viewName}");
+                return (false, null);
+            }
+
+            if (this.m_ExistView.TryGetValue(viewName, out var baseView))
+            {
+                return (true, baseView);
+            }
+
+            return (false, null);
+        }
+
+        internal (bool, Entity) ExistView(string resName)
+        {
+            if (this.UIBase.OwnerUIEntity == null)
+            {
+                Log.Error($"没有找到ET UI组件");
+                return (false, null);
+            }
+
+            var data = YIUIBindHelper.GetBindVoByResName(resName);
+            if (data == null) return (false, null);
+            var vo = data.Value;
+            if (vo.CodeType != EUICodeType.View)
+            {
+                Log.Error($"打开错误必须是一个view类型");
+                return (false, null);
+            }
+
+            var viewParent = GetViewParent(resName);
+            if (viewParent == null)
+            {
+                Debug.LogError($"不存在这个View  请检查 {resName}");
+                return (false, null);
+            }
+
+            if (this.m_ExistView.TryGetValue(resName, out var baseView))
+            {
+                return (true, baseView);
+            }
+
+            return (false, null);
+        }
+
         /// <summary>
         /// 打开之前
         /// </summary>
@@ -218,7 +284,7 @@ namespace ET.Client
         /// <param name="view">当前</param>
         private async ETTask CloseLastView(Entity view)
         {
-            //其他需要被忽略
+            //其他需要被忽略 Panel下的view 如果是窗口类型 那么他只能同时存在一个  弹窗层可以存在多个
             if (view.GetParent<YIUIComponent>().GetComponent<YIUIViewComponent>().ViewWindowType != EViewWindowType.View)
             {
                 return;
@@ -227,7 +293,7 @@ namespace ET.Client
             //View只有切换没有关闭
             var skipTween = view.GetParent<YIUIComponent>().GetComponent<YIUIWindowComponent>().WindowSkipOtherCloseTween;
 
-            if (u_CurrentOpenView != null && u_CurrentOpenView != view)
+            if (u_CurrentOpenView != null && u_CurrentOpenView != view && CurrentOpenViewActiveSelf)
             {
                 var uibase = u_CurrentOpenView.GetParent<YIUIComponent>();
 

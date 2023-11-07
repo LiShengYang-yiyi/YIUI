@@ -59,7 +59,7 @@ namespace YIUIFramework.Editor
             //component信息
             var createBaseData = new UICreateBaseData
             {
-                AutoRefresh   = refresh,
+                AutoRefresh   = false,
                 ShowTips      = tips,
                 Namespace     = UIStaticHelper.UINamespace,
                 PkgName       = cdeTable.PkgName,
@@ -84,7 +84,7 @@ namespace YIUIFramework.Editor
             //system信息
             var createSystemData = new UICreateSystemData
             {
-                AutoRefresh = refresh,
+                AutoRefresh = false,
                 ShowTips    = tips,
                 Namespace   = UIStaticHelper.UINamespace,
                 PkgName     = cdeTable.PkgName,
@@ -122,7 +122,8 @@ namespace YIUIFramework.Editor
                 Debug.LogError($"是新增了 新类型嘛????? {cdeTable.UICodeType}");
             }
 
-            AssetDatabase.Refresh();
+            if (refresh)
+                AssetDatabase.Refresh();
         }
 
         private static string GetRegionEvent(UIBindCDETable cdeTable)

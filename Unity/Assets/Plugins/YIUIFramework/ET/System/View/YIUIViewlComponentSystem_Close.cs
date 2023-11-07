@@ -2,7 +2,7 @@
 {
     public static partial class YIUIViewComponentSystem
     {
-        public static void Close(this YIUIViewComponent self, bool tween = true, bool ignoreElse = false)
+        public static void Close(this YIUIViewComponent self, bool tween = true)
         {
             self.CloseAsync(tween).Coroutine();
         }

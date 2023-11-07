@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ET;
+using ET.Client;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +25,10 @@ namespace YIUIFramework
         [SerializeField]
         [LabelText("可选组件")]
         private Selectable m_Selectable;
+
+        [SerializeField]
+        [LabelText("响应中 屏蔽所有操作")]
+        private bool m_BanLayerOption = true;
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -69,9 +74,21 @@ namespace YIUIFramework
         protected async ETTask TaskEvent(PointerEventData eventData)
         {
             if (m_UIEvent == null) return;
+
+            var banLayerCode = 0;
+            if (m_BanLayerOption)
+            {
+                banLayerCode = YIUIMgrComponent.Inst.BanLayerOptionForever();
+            }
+
             ClickTasking = true;
             await OnUIEvent(eventData);
             ClickTasking = false;
+
+            if (m_BanLayerOption)
+            {
+                YIUIMgrComponent.Inst.RecoverLayerOptionForever(banLayerCode);
+            }
         }
 
         protected virtual async ETTask OnUIEvent(PointerEventData eventData)

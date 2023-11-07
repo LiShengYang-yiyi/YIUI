@@ -201,9 +201,9 @@ namespace YIUIFramework
         internal void CreateUICode()
         {
             if (!UIOperationHelper.CheckUIOperation(this)) return;
-
-            //消息太多这里强制关闭了所有tips弹窗
-            CreateUICode(true, false);
+            
+            CreateUICode(false, false);
+            AssetDatabase.Refresh();
         }
 
         private bool ShowPanelSourceSplit()

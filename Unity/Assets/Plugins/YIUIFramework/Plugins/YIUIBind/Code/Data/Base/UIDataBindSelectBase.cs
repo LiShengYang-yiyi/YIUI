@@ -17,7 +17,7 @@ namespace YIUIFramework
     /// 基类 都需要选择绑定数据时
     /// </summary>
     [Serializable]
-    public abstract partial class UIDataBindSelectBase : UIDataBind
+    public abstract partial class UIDataBindSelectBase: UIDataBind
     {
         [OdinSerialize]
         [LabelText("所有已绑定数据")]
@@ -36,19 +36,39 @@ namespace YIUIFramework
 
         protected T GetFirstValue<T>(T defaultValue = default)
         {
-            if (DataSelectDic.Count <= 0) return default;
+            if (DataSelectDic.Count <= 0) return defaultValue;
 
             var data = DataSelectDic?.First().Value?.Data;
-            return data == null ? default : data.GetValue<T>(defaultValue);
+            return data == null? defaultValue : data.GetValue(defaultValue);
         }
 
         protected void SetFirstValue<T>(T value, bool force = false)
         {
             if (DataSelectDic.Count <= 0) return;
 
-            DataSelectDic?.First().Value?.Data?.Set<T>(value, force);
+            DataSelectDic?.First().Value?.Data?.Set(value, force);
         }
 
+        [NonSerialized]
+        [HideInEditorMode]
+        private List<UIDataSelect> m_DataSelectList;
+
+        private List<UIDataSelect> DataSelectList => m_DataSelectList ??= DataSelectDic.Values.ToList();
+        
+        protected T GetValue<T>(int index, T defaultValue = default)
+        {
+            if (DataSelectList.Count <= 0 || (index + 1) > DataSelectList.Count) return defaultValue;
+            var data = DataSelectList[index]?.Data;
+            return data == null? defaultValue : data.GetValue(defaultValue);
+        }
+
+        protected void SetValue<T>(int index, T value, bool force = false)
+        {
+            if (DataSelectList.Count <= 0 || (index + 1) > DataSelectList.Count) return;
+            var data = DataSelectList[index]?.Data;
+            data?.Set(value,force);
+        }
+        
         #endregion
 
         #region 绑定

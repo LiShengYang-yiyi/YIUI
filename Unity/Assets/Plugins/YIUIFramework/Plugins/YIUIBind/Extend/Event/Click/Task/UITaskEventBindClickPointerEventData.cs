@@ -18,10 +18,10 @@ namespace YIUIFramework
     public class UITaskEventBindClickPointerEventData: UITaskEventBindClick
     {
         [NonSerialized]
-        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.Object, };
+        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.Object };
 
         protected override List<EUIEventParamType> GetFilterParamType => m_FilterParamType;
-        
+
         protected override async ETTask OnUIEvent(PointerEventData eventData)
         {
             //额外添加 如果想要这个点击事件 使用此监听
