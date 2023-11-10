@@ -126,7 +126,13 @@ namespace ET
             this.fibers.TryGetValue(id, out Fiber fiber);
             return fiber;
         }
-
+        
+        //临时处理功能 获取主线程
+        public Fiber GetMainFiber()
+        {
+            return Get(-1);
+        }
+        
         public int Count()
         {
             return this.fibers.Count;
