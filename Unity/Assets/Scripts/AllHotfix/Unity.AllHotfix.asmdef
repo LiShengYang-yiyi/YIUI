@@ -8,7 +8,8 @@
         "Unity.Loader",
         "MemoryPack",
         "Unity.AllModel",
-        "YooAsset"
+        "YooAsset",
+        "YIUIFramework"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

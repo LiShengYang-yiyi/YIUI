@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-//using YIUIFramework;
+using YIUIFramework;
 
 namespace ET.Client
 {
@@ -21,14 +21,14 @@ namespace ET.Client
             SceneType sceneType = EnumHelper.FromString<SceneType>(globalComponent.GlobalConfig.AppType.ToString());
             root.SceneType = sceneType;
             
-            /*YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get;
-            await clientScene.AddComponent<YIUIMgrComponent>().Initialize();
+            YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get;
+            await root.AddComponent<YIUIMgrComponent>().Initialize();
             #region 根据需求自行处理
             //在editor下自动打开  也可以根据各种外围配置 或者 GM等级打开
             #if UNITY_EDITOR
-            clientScene.AddComponent<GMCommandComponent>();
+            //root.AddComponent<GMCommandComponent>();
             #endif
-            #endregion*/
+            #endregion
             
             await EventSystem.Instance.PublishAsync(root, new AppStartInitFinish());
         }

@@ -848,7 +848,7 @@ PlayerSettings:
     PS5: TextMeshPro
     Server: UNITY;ENABLE_DLL;ENABLE_VIEW
     Stadia: TextMeshPro
-    Standalone: UNITY;ENABLE_VIEW;ENABLE_DLL;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;TextMeshPro
+    Standalone: UNITY;ENABLE_VIEW;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;TextMeshPro
     WebGL: UNITY;ENABLE_DLL;ENABLE_VIEW;TextMeshPro
     Windows Store Apps: TextMeshPro
     XboxOne: TextMeshPro

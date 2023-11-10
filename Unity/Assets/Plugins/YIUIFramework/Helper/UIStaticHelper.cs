@@ -25,16 +25,16 @@ namespace YIUIFramework
         public const string UIProjectResPath = "Assets/GameRes/" + UIProjectName; //玩家的预设/图片等资源存放的地方
 
         [LabelText("YIUI项目脚本路径")]
-        public const string UIETComponentGenPath = "Assets/Scripts/Codes/ModelView/YIUIGen"; //自动生成的代码会覆盖不可修改
+        public const string UIETComponentGenPath = "Assets/Scripts/ModelView/YIUIGen"; //自动生成的代码会覆盖不可修改
 
         [LabelText("YIUI项目ET组件路径")]
-        public const string UIETComponentPath = "Assets/Scripts/Codes/ModelView/YIUIComponent"; //玩家可编写的核心代码部分 ET系统
+        public const string UIETComponentPath = "Assets/Scripts/ModelView/YIUIComponent"; //玩家可编写的核心代码部分 ET系统
 
         [LabelText("YIUI项目自定义脚本路径")]
-        public const string UIETSystemGenPath = "Assets/Scripts/Codes/HotfixView/YIUIGen"; //自动生成的代码会覆盖不可修改
+        public const string UIETSystemGenPath = "Assets/Scripts/HotfixView/YIUIGen"; //自动生成的代码会覆盖不可修改
 
         [LabelText("YIUI项目ET系统路径")]
-        public const string UIETSystemPath = "Assets/Scripts/Codes/HotfixView/YIUISystem"; //玩家可编写的核心代码部分 ET系统
+        public const string UIETSystemPath = "Assets/Scripts/HotfixView/YIUISystem"; //玩家可编写的核心代码部分 ET系统
 
         [LabelText("YIUI框架所处位置路径")]
         public const string UIFrameworkPath = "Assets/Plugins/YIUIFramework";
