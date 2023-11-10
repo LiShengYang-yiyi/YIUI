@@ -839,11 +839,21 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: UNITY;ENABLE_DLL
+    Android: UNITY;ENABLE_DLL;TextMeshPro
+    EmbeddedLinux: TextMeshPro
+    GameCoreXboxOne: TextMeshPro
+    Lumin: TextMeshPro
+    Nintendo Switch: TextMeshPro
+    PS4: TextMeshPro
+    PS5: TextMeshPro
     Server: UNITY;ENABLE_DLL;ENABLE_VIEW
-    Standalone: UNITY;ENABLE_VIEW;ENABLE_DLL;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1
-    WebGL: UNITY;ENABLE_DLL;ENABLE_VIEW
-    iPhone: UNITY;ENABLE_DLL;ENABLE_VIEW
+    Stadia: TextMeshPro
+    Standalone: UNITY;ENABLE_VIEW;ENABLE_DLL;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;TextMeshPro
+    WebGL: UNITY;ENABLE_DLL;ENABLE_VIEW;TextMeshPro
+    Windows Store Apps: TextMeshPro
+    XboxOne: TextMeshPro
+    iPhone: UNITY;ENABLE_DLL;ENABLE_VIEW;TextMeshPro
+    tvOS: TextMeshPro
   additionalCompilerArguments: {}
   platformArchitecture:
     iPhone: 1
