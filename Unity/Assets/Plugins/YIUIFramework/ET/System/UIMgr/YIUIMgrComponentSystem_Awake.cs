@@ -15,7 +15,7 @@ namespace ET.Client
         public static async ETTask Initialize(this YIUIMgrComponent self)
         {
             //初始化其他UI框架中的管理器
-            await MgrCenter.Inst.Register(CountDownMgr.Inst);
+            Game.AddSingleton<CountDownMgr>();
             await MgrCenter.Inst.Register(I2LocalizeMgr.Inst);
             await MgrCenter.Inst.Register(RedDotMgr.Inst);
 

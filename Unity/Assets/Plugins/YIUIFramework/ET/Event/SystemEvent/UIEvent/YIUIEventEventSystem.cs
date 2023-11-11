@@ -29,14 +29,22 @@ namespace ET.Client
                     continue;
                 }
 
+                var componentType = component.GetType();
+                
+                List<object> iBaseEventSystems = EventSystem.Instance.typeSystems.GetSystems(componentType, typeof (IYIUIEvent));
+                if (iBaseEventSystems == null)
+                {
+                    continue;
+                }
+                
                 queue.Enqueue(instanceId);
 
-                List<object> iEventSystems = EventSystem.Instance.typeSystems.GetSystems(component.GetType(), typeof (IYIUIEventSystem<P1>));
+                List<object> iEventSystems = EventSystem.Instance.typeSystems.GetSystems(componentType, typeof (IYIUIEventSystem<P1>));
                 if (iEventSystems == null)
                 {
                     continue;
                 }
-
+                
                 foreach (IYIUIEventSystem<P1> iEventSystem in iEventSystems)
                 {
                     list.Add(iEventSystem.Run(component, message));

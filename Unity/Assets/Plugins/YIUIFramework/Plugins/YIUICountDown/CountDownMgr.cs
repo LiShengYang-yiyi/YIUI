@@ -25,7 +25,7 @@ namespace YIUIFramework
     /// 匿名函数                      否                          是                          (匿名函数也可以被暂停 移除等操作)
     /// ......
     /// </summary>
-    public partial class CountDownMgr: MgrSingleton<CountDownMgr>
+    public partial class CountDownMgr: ET.Singleton<CountDownMgr>, ISingletonLateUpdate
     {
         /// <summary>
         /// 回调方法
@@ -69,49 +69,18 @@ namespace YIUIFramework
         /// </summary>
         private int m_AtCount = 0;
         
-        protected override async ETTask<bool> MgrAsyncInit()
-        {
-            Initialize();
-            return await base.MgrAsyncInit();
-        }
-
-        //初始化
-        private void Initialize()
-        {
-            m_AllCountDown.Clear();
-            m_RemoveGuid.Clear();
-            m_ToAddCountDown.Clear();
-            m_CallbackGuidDic.Clear();
-            UpdateAsync().Coroutine();
-        }
-
-        //摧毁
-        protected override void OnDispose()
-        {
-        }
-
         //统一所有取时间都用这个 且方便修改
         private static float GetTime()
         {
             //这是一个倒计时时间不受暂停影响的
             return Time.realtimeSinceStartup;
         }
-
-        //更新频率毫秒
-        private int m_UpdataAsyncDelay = (int)(1000f / 30f);
-
-        //使用异步控制频率更新 并没有使用调度器
-        //调度器是mono update 不需要这么高的频率
-        private async ETTask UpdateAsync()
+        
+        public void LateUpdate()
         {
-            while (true)
-            {
-                if (Disposed) return;
-                ManagerUpdate();
-                await TimerComponent.Instance.WaitAsync(m_UpdataAsyncDelay);
-            }
+            ManagerUpdate();
         }
-
+        
         //为了不受mono暂停影响 所以使用异步调用
         public void ManagerUpdate()
         {
@@ -296,5 +265,6 @@ namespace YIUIFramework
         }
 
         #endregion
+        
     }
 }
