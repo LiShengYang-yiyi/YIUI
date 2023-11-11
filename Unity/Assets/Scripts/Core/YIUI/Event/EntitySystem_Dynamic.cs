@@ -26,11 +26,20 @@ namespace ET
                 {
                     continue;
                 }
+                
+                var componentType = component.GetType();
 
+                List<object> iBaseEventSystems = 
+                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(componentType, typeof (IDynamicEvent));
+                if (iBaseEventSystems == null)
+                {
+                    continue;
+                }
+                
                 queue.Enqueue(component);
 
                 List<object> iEventSystems =
-                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IDynamicEvent<P1>));
+                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(componentType, typeof (IDynamicEvent<P1>));
                 if (iEventSystems == null)
                 {
                     continue;

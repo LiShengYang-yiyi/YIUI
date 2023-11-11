@@ -2,6 +2,10 @@ using System;
 
 namespace ET
 {
+    public interface IDynamicEvent
+    {
+    }
+
     public interface IDynamicEvent<in A> where A : struct
     {
     }

@@ -7,7 +7,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelOpenBefore arg)
         {
             await YIUIEventComponent.Inst.Run(arg.UIComponentName, arg);
-            await YIUIEventSystem.Event(scene, arg);
+            await scene.Fiber().UIEvent(arg);
         }
     }
 
@@ -18,7 +18,7 @@
         protected override async ETTask Run(Scene scene, YIUIEventPanelOpenAfter arg)
         {
             await YIUIEventComponent.Inst.Run(arg.UIComponentName, arg);
-            await YIUIEventSystem.Event(scene, arg);
+            await scene.Fiber().UIEvent(arg);
         }
     }
 }

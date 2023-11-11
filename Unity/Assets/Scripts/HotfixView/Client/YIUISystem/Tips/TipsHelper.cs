@@ -48,7 +48,7 @@ namespace ET.Client
         //关闭某个Tips通用方法
         public static async ETTask CloseTipsView(Entity view, bool tween = true)
         {
-            await YIUIEventSystem.Event(view.Fiber().Root, new EventPutTipsView() { View = view, Tween = tween });
+            await view.Fiber().UIEvent(new EventPutTipsView() { View = view, Tween = tween });
         }
 
         //同步方法 只是为了少写个Coroutine好看
