@@ -3,11 +3,11 @@
 namespace ET
 {
     /// <summary>
+    /// 为YIUI扩展的
     /// 主要是无法使用泛型的创建 用于YIUI添加能保证一定是Entity
     /// </summary>
     public partial class Entity
     {
-        //为YIUI扩展的
         public Entity AddYIUIChild(Type childType, bool isFromPool = false)
         {
             var component = Create(childType, isFromPool);

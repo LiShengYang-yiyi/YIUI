@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using ET;
+using ET.Client;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -108,7 +109,7 @@ namespace YIUIFramework
             {
                 if (Disposed) return;
                 ManagerUpdate();
-                await FiberManager.Instance.GetMainFiber().TimerComponent.WaitAsync(m_UpdataAsyncDelay);
+                await YIUIMgrComponent.Inst.Fiber().TimerComponent.WaitAsync(m_UpdataAsyncDelay);
             }
         }
 

@@ -2,6 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 using ET;
+using ET.Client;
 using UnityEditor.SearchService;
 
 namespace YIUIFramework
@@ -27,8 +28,7 @@ namespace YIUIFramework
 
             if (load.WaitAsync)
             {
-                
-                await FiberManager.Instance.GetMainFiber().TimerComponent.WaitUntil(() => !load.WaitAsync);
+                await YIUIMgrComponent.Inst.Fiber().TimerComponent.WaitUntil(() => !load.WaitAsync);
 
                 loadObj = load.Object;
                 if (loadObj != null)
