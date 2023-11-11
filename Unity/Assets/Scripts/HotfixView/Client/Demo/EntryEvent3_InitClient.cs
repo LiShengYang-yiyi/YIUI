@@ -26,7 +26,7 @@ namespace ET.Client
             #region 根据需求自行处理
             //在editor下自动打开  也可以根据各种外围配置 或者 GM等级打开
             #if UNITY_EDITOR
-            //root.AddComponent<GMCommandComponent>();
+            root.AddComponent<GMCommandComponent>();
             #endif
             #endregion
             
