@@ -19,7 +19,7 @@ namespace YIUIFramework
 
         //业务代码相关程序集的名字
         //默认有Unity默认程序集 可以根据需求修改
-        private static readonly string[] LogicAssemblyNames = { "Unity.ModelView.Codes" };
+        private static readonly string[] LogicAssemblyNames = { "Unity.ModelView" };
 
         private static Type[] GetLogicTypes()
         {
@@ -57,7 +57,7 @@ namespace YIUIFramework
         
         public YIUIBindVo[] Get()
         {
-            #if ENABLE_CODES
+            #if !ENABLE_DLL
             var types = GetLogicTypes();
             #else
             var types = GetLogicTypesByDll();

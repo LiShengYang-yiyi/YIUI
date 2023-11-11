@@ -51,7 +51,7 @@ namespace YIUIFramework
                 return false;
             }
 
-            #if !UNITY_EDITOR || YIUIMACRO_SIMULATE_NONEEDITOR || !ENABLE_CODES
+            #if !UNITY_EDITOR || YIUIMACRO_SIMULATE_NONEEDITOR || ENABLE_DLL
             if (InternalGameGetUIBindVoFunc == null)
             {
                 Debug.LogError($"使用非反射注册绑定 但是方法未实现 请检查");

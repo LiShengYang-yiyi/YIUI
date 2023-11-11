@@ -11,6 +11,7 @@
         "Unity.Hotfix",
         "Unity.ModelView",
         "YooAsset",
+        "Unity.TextMeshPro",
         "YIUIFramework"
     ],
     "includePlatforms": [],

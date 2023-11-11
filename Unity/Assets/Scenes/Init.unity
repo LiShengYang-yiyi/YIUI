@@ -466,6 +466,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 575235020}
     m_Modifications:
+    - target: {fileID: 1988200853512594089, guid: ad062aaea8647864b84b2ce1f52e12bc,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2332302725259316870, guid: ad062aaea8647864b84b2ce1f52e12bc,
         type: 3}
       propertyPath: m_RootOrder
@@ -520,6 +525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859560651751803310, guid: ad062aaea8647864b84b2ce1f52e12bc,
+        type: 3}
+      propertyPath: m_CameraType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6169965348914158598, guid: ad062aaea8647864b84b2ce1f52e12bc,
         type: 3}
@@ -816,13 +826,19 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 0
+  m_HDR: 1
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!20 &1373703446 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4699533514212283412, guid: ad062aaea8647864b84b2ce1f52e12bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 580229084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1439952248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1109,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
-  - {fileID: 1245951406}
+  - {fileID: 1373703446}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
