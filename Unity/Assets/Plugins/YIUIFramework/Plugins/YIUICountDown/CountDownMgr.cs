@@ -6,11 +6,32 @@
 
 using System.Collections.Generic;
 using ET;
-using ET.Client;
 using UnityEngine;
 
 namespace YIUIFramework
 {
+    
+    public static class CountDownMgrSystem
+    {
+        [EntitySystem]
+        public class CountDownMgr_AwakeSystem: AwakeSystem<CountDownMgr>
+        {
+            protected override void Awake(CountDownMgr self)
+            {
+                CountDownMgr.Inst = self;
+            }
+        }
+        
+        [EntitySystem]
+        public class CountDownMgr_LateUpdateSystem: LateUpdateSystem<CountDownMgr>
+        {
+            protected override void LateUpdate(CountDownMgr self)
+            {
+                self.LateUpdate();
+            }
+        }
+    }
+    
     /// <summary>
     /// 倒计时管理器
     /// 区别于Times 个人认为更适合UI上的时间倒计时
@@ -26,8 +47,10 @@ namespace YIUIFramework
     /// 匿名函数                      否                          是                          (匿名函数也可以被暂停 移除等操作)
     /// ......
     /// </summary>
-    public partial class CountDownMgr: MgrSingleton<CountDownMgr>
+    public partial class CountDownMgr: Entity, IAwake, ILateUpdate
     {
+        public static CountDownMgr Inst;
+        
         /// <summary>
         /// 回调方法
         /// </summary>
@@ -70,49 +93,18 @@ namespace YIUIFramework
         /// </summary>
         private int m_AtCount = 0;
         
-        protected override async ETTask<bool> MgrAsyncInit()
-        {
-            Initialize();
-            return await base.MgrAsyncInit();
-        }
-
-        //初始化
-        private void Initialize()
-        {
-            m_AllCountDown.Clear();
-            m_RemoveGuid.Clear();
-            m_ToAddCountDown.Clear();
-            m_CallbackGuidDic.Clear();
-            UpdateAsync().Coroutine();
-        }
-
-        //摧毁
-        protected override void OnDispose()
-        {
-        }
-
         //统一所有取时间都用这个 且方便修改
         private static float GetTime()
         {
             //这是一个倒计时时间不受暂停影响的
             return Time.realtimeSinceStartup;
         }
-
-        //更新频率毫秒
-        private int m_UpdataAsyncDelay = (int)(1000f / 30f);
-
-        //使用异步控制频率更新 并没有使用调度器
-        //调度器是mono update 不需要这么高的频率
-        private async ETTask UpdateAsync()
+        
+        public void LateUpdate()
         {
-            while (true)
-            {
-                if (Disposed) return;
-                ManagerUpdate();
-                await YIUIMgrComponent.Inst.Fiber().TimerComponent.WaitAsync(m_UpdataAsyncDelay);
-            }
+            ManagerUpdate();
         }
-
+        
         //为了不受mono暂停影响 所以使用异步调用
         public void ManagerUpdate()
         {
@@ -297,5 +289,6 @@ namespace YIUIFramework
         }
 
         #endregion
+        
     }
 }
