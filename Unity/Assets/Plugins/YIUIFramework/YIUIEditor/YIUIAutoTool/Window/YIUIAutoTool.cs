@@ -63,10 +63,14 @@ namespace YIUIFramework.Editor
             m_AllMenuItem.Add(
                 new TreeMenuItem<UII2LocalizationModule>(this, m_OdinMenuTree,
                     "多语言", EditorIcons.SpeechBubblesRound));
-
+            
             m_AllMenuItem.Add(
                 new TreeMenuItem<UIMacroModule>(this, m_OdinMenuTree,
                     "宏设置", EditorIcons.SettingsCog));
+
+            m_AllMenuItem.Add(
+                new TreeMenuItem<UIETScriptModule>(this, m_OdinMenuTree,
+                    "ET生成", EditorIcons.SettingsCog));
 
             m_OdinMenuTree.Add("全局设置", this, EditorIcons.SettingsCog);
 
