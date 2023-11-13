@@ -7,6 +7,7 @@
         LateUpdate,
         Load,
         UIEvent,
+        Dynamic,
         Max,
     }
 }

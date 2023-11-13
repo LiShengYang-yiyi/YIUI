@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ET
 {
-    public class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate
+    public partial class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate
     {
         public class OneTypeSystems
         {

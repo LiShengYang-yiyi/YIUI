@@ -2,11 +2,7 @@ using System;
 
 namespace ET.Client
 {
-    public interface IYIUIEvent
-    {
-    }
-
-    public interface IYIUIEvent<in A>: IYIUIEvent where A : struct
+    public interface IYIUIEvent<in A> where A : struct
     {
     }
 
