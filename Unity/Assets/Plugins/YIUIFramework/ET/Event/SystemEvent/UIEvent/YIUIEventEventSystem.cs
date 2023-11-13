@@ -11,11 +11,11 @@ namespace ET.Client
         //P1 = 消息类型 = 如:YIUIEventPanelOpenBefore
         public static async ETTask UIEvent<P1>(this Fiber fiber, P1 message) where P1 : struct
         {
-            using ListComponent<ETTask> list = ListComponent<ETTask>.Create();
-
             var queue = fiber.EntitySystem.Queues[InstanceQueueIndex.UIEvent];
             int count = queue.Count;
-            
+            if (count <= 0) return;
+
+            using ListComponent<ETTask> list = ListComponent<ETTask>.Create();
             while (count-- > 0)
             {
                 Entity component = queue.Dequeue();
@@ -29,19 +29,10 @@ namespace ET.Client
                     continue;
                 }
                 
-                var componentType = component.GetType();
-                
-                List<object> iBaseEventSystems = 
-                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(componentType, typeof (IYIUIEvent));
-                if (iBaseEventSystems == null)
-                {
-                    continue;
-                }
-                
                 queue.Enqueue(component);
 
                 List<object> iEventSystems =
-                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(componentType, typeof (IYIUIEventSystem<P1>));
+                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIEventSystem<P1>));
                 if (iEventSystems == null)
                 {
                     continue;
