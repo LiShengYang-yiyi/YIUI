@@ -42,7 +42,7 @@ namespace ET.Client
 
         private void RemoveLastCountDown()
         {
-            CountDownMgr.Inst.Remove(ref m_LastCountDownGuid);
+            CountDownMgr.Inst?.Remove(ref m_LastCountDownGuid);
         }
 
         //初始化添加屏蔽模块
@@ -103,7 +103,7 @@ namespace ET.Client
             {
                 m_LastRecoverOptionTime = currentRecoverOptionTime;
                 RemoveLastCountDown();
-                CountDownMgr.Inst.Add(ref m_LastCountDownGuid, time, OnCountDownLayerOption);
+                CountDownMgr.Inst?.Add(ref m_LastCountDownGuid, time, OnCountDownLayerOption);
             }
         }
 
