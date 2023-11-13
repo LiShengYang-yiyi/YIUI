@@ -20,7 +20,7 @@ namespace YIUIFramework
         private void InitAsyncDirty()
         {
             m_DirtyData = new HashSet<RedDotData>();
-            CountDownMgr.Instance.Add(RedDotUpdateRefresh,10000,1f / m_RedDotDirtyFrame,true);
+            CountDownMgr.Instance?.Add(RedDotUpdateRefresh,10000,1f / m_RedDotDirtyFrame,true);
         }
 
         private void RedDotUpdateRefresh(double residuetime, double elapsetime, double totaltime)
@@ -30,7 +30,7 @@ namespace YIUIFramework
 
         private void DisposeDirty()
         {
-            CountDownMgr.Instance.Remove(RedDotUpdateRefresh);
+            CountDownMgr.Instance?.Remove(RedDotUpdateRefresh);
         }
 
         private bool TryDirtySetCount(RedDotData data, int count)

@@ -60,12 +60,12 @@ namespace YIUIFramework
                 return;
             }
 
-            CountDownMgr.Instance.Add(PressEnd, m_PressTime);
+            CountDownMgr.Instance?.Add(PressEnd, m_PressTime);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            CountDownMgr.Instance.Remove(PressEnd);
+            CountDownMgr.Instance?.Remove(PressEnd);
         }
 
         private void PressEnd(double residuetime, double elapsetime, double totaltime)
