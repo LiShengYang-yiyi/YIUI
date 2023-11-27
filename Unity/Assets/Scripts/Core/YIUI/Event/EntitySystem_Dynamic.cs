@@ -30,7 +30,7 @@ namespace ET
                 queue.Enqueue(component);
 
                 List<object> iEventSystems =
-                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IDynamicEvent<P1>));
+                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IDynamicEventSystem<P1>));
                 if (iEventSystems == null)
                 {
                     continue;
