@@ -31,7 +31,7 @@ namespace ET
 
                 queue.Enqueue(instanceId);
 
-                List<object> iEventSystems = this.typeSystems.GetSystems(component.GetType(), typeof (IDynamicEvent<P1>));
+                List<object> iEventSystems = this.typeSystems.GetSystems(component.GetType(), typeof (IDynamicEventSystem<P1>));
                 if (iEventSystems == null)
                 {
                     continue;
