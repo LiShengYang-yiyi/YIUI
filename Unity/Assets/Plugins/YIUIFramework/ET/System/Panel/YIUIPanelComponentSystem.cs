@@ -10,15 +10,13 @@ namespace ET.Client
     /// UI面板组件
     /// </summary>
     [FriendOf(typeof (YIUIPanelComponent))]
+    [EntitySystemOf(typeof (YIUIPanelComponent))]
     public static partial class YIUIPanelComponentSystem
     {
         [EntitySystem]
-        public class YIUIPanelComponentInitializeSystem: YIUIInitializeSystem<YIUIPanelComponent>
+        public static void YIUIInitialize(this YIUIPanelComponent self)
         {
-            protected override void YIUIInitialize(YIUIPanelComponent self)
-            {
-                self.InitPanelViewData();
-            }
+            self.InitPanelViewData();
         }
     }
 }
