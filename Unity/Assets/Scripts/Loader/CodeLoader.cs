@@ -10,6 +10,7 @@ namespace ET
     public class CodeLoader : Singleton<CodeLoader>, ISingletonAwake
     {
         private Assembly assembly;
+        private Assembly uiAssembly;
 
         private Dictionary<string, TextAsset> dlls;
         private Dictionary<string, TextAsset> aotDlls;
@@ -80,10 +81,20 @@ namespace ET
                 }
 
                 this.assembly = Assembly.Load(assBytes, pdbBytes);
+                
+                Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                foreach (Assembly ass in assemblies)
+                {
+                    if (ass.GetName().Name == "YIUIFramework")
+                    {
+                        this.uiAssembly = ass;
+                        break;
+                    }
+                }
 
                 Assembly hotfixAssembly = this.LoadHotfix();
 
-                World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[] { typeof(World).Assembly, typeof(Init).Assembly, this.assembly, hotfixAssembly });
+                World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[] { typeof(World).Assembly, typeof(Init).Assembly, this.assembly, this.uiAssembly, hotfixAssembly });
             }
 
             IStaticMethod start = new StaticMethod(this.assembly, "ET.Entry", "Start");
