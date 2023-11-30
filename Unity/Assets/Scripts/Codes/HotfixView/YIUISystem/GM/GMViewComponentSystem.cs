@@ -13,7 +13,7 @@ namespace ET.Client
         {
             protected override void YIUIInitialize(GMViewComponent self)
             {
-                self.CommandComponent = self.ClientScene().GetComponent<GMCommandComponent>();
+                self.m_CommandComponent = self.ClientScene().GetComponent<GMCommandComponent>();
                 self.GMTypeName       = self.CommandComponent.GMTypeName;
                 self.GMTypeLoop       = new YIUILoopScroll<EGMType, GMTypeItemComponent>(self, self.u_ComGMTypeLoop, self.GMTypeTitleRenderer);
                 self.GMTypeLoop.SetOnClickInfo("u_EventSelect", self.OnClickTitle);

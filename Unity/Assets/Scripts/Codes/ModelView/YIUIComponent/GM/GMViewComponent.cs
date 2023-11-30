@@ -10,6 +10,7 @@ namespace ET.Client
         public YIUILoopScroll<EGMType, GMTypeItemComponent>          GMTypeLoop;
         public YIUILoopScroll<GMCommandInfo, GMCommandItemComponent> GMCommandLoop;
         public Dictionary<string, string>                            GMTypeName;
-        public GMCommandComponent                                    CommandComponent;
+        public EntityRef<GMCommandComponent>                         m_CommandComponent;
+        public GMCommandComponent                                    CommandComponent => m_CommandComponent;
     }
 }

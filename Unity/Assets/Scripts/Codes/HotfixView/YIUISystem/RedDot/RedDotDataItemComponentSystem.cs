@@ -23,9 +23,8 @@ namespace ET.Client
             }
         }
 
-        public static void RefreshData(this RedDotDataItemComponent self, RedDotPanelComponent panel, RedDotData data)
+        public static void RefreshData(this RedDotDataItemComponent self, RedDotData data)
         {
-            self.m_RedDotPanel = panel;
             self.m_Data        = data;
             self.u_DataCount.SetValue(data.Count);
             self.u_DataName.SetValue(RedDotMgr.Inst.GetKeyDes(data.Key));
@@ -45,17 +44,17 @@ namespace ET.Client
 
         private static void OnEventParentAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickParentList(self.m_Data);
+            YIUIEventSystem.Event(new OnClickParentListEvent() { Data = self.m_Data }).Coroutine();
         }
 
         private static void OnEventClickItemAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickItem(self.m_Data);
+            YIUIEventSystem.Event(new OnClickItemEvent { Data = self.m_Data }).Coroutine();
         }
 
         private static void OnEventChildAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickChildList(self.m_Data);
+            YIUIEventSystem.Event(new OnClickChildListEvent { Data = self.m_Data }).Coroutine();
         }
 
         #endregion YIUIEvent结束

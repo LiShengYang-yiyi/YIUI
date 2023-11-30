@@ -27,7 +27,7 @@ namespace ET.Client
         
         private static void OnEventShowStackAction(this RedDotStackItemComponent self)
         {
-            self.ShowStackAction?.Invoke();
+            self.u_ComStackText.text = self.RedDotStackData?.GetStackContent() ?? "";
         }
         #endregion YIUIEvent结束
     }
