@@ -52,7 +52,7 @@ namespace ET.Client
             self.Account = p1;
         }
         
-        private static async void OnEventLoginAction(this LoginPanelComponent self)
+        private static async ETTask OnEventLoginAction(this LoginPanelComponent self)
         {
             Log.Info($"登录");
             var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();

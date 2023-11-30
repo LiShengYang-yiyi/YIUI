@@ -21,7 +21,7 @@ namespace ET.Client
         
         private static void UIBind(this RedDotDataItemComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
 
             self.u_DataKeyId = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueInt>("u_DataKeyId");
             self.u_DataCount = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueInt>("u_DataCount");

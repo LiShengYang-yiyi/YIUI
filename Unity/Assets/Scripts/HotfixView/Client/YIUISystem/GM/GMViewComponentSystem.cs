@@ -13,9 +13,9 @@ namespace ET.Client
         {
             protected override void YIUIInitialize(GMViewComponent self)
             {
-                self.CommandComponent = self.Root().GetComponent<GMCommandComponent>();
-                self.GMTypeName       = self.CommandComponent.GMTypeName;
-                self.GMTypeLoop       = new YIUILoopScroll<EGMType, GMTypeItemComponent>(self, self.u_ComGMTypeLoop, self.GMTypeTitleRenderer);
+                self.m_CommandComponent = self.Root().GetComponent<GMCommandComponent>();
+                self.GMTypeName         = self.CommandComponent.GMTypeName;
+                self.GMTypeLoop         = new YIUILoopScroll<EGMType, GMTypeItemComponent>(self, self.u_ComGMTypeLoop, self.GMTypeTitleRenderer);
                 self.GMTypeLoop.SetOnClickInfo("u_EventSelect", self.OnClickTitle);
                 self.GMTypeData = new List<EGMType>();
                 foreach (EGMType gmType in Enum.GetValues(typeof (EGMType)))

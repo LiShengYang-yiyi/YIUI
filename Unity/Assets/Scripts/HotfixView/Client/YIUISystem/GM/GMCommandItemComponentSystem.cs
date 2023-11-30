@@ -27,7 +27,7 @@ namespace ET.Client
 
         public static void ResetItem(this GMCommandItemComponent self, GMCommandComponent commandComponent, GMCommandInfo info)
         {
-            self.CommandComponent = commandComponent;
+            self.m_CommandComponent = commandComponent;
             self.Info             = info;
             self.u_DataName.SetValue(info.GMName);
             self.u_DataDesc.SetValue(info.GMDesc);
@@ -51,7 +51,7 @@ namespace ET.Client
 
         private static void OnEventRunAction(this GMCommandItemComponent self)
         {
-            self.CommandComponent.Run(self.Info).Coroutine();
+            self.CommandComponent?.Run(self.Info).Coroutine();
         }
 
         #endregion YIUIEvent结束

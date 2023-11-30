@@ -116,12 +116,19 @@ namespace YIUIFramework.Editor
             switch (self.UICodeType)
             {
                 case EUICodeType.Common:
-                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
+                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
                     return;
                 case EUICodeType.Panel:
-                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
-                    sb.AppendFormat("        public YIUIWindowComponent UIWindow;\r\n");
-                    sb.AppendFormat("        public YIUIPanelComponent UIPanel;\r\n");
+                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
+                    
+                    sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
+                    sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
+
+                    sb.AppendFormat("        public EntityRef<YIUIPanelComponent> u_UIPanel;\r\n");
+                    sb.AppendFormat("        public YIUIPanelComponent UIPanel => u_UIPanel;\r\n");
+
                     /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
                     sb.AppendFormat("        public EPanelLayer Layer = EPanelLayer.{0};\r\n",
@@ -137,9 +144,15 @@ namespace YIUIFramework.Editor
                             self.CachePanelTime);*/
                     break;
                 case EUICodeType.View:
-                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
-                    sb.AppendFormat("        public YIUIWindowComponent UIWindow;\r\n");
-                    sb.AppendFormat("        public YIUIViewComponent UIView;\r\n");
+                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
+                    
+                    sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
+                    sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
+
+                    sb.AppendFormat("        public EntityRef<YIUIViewComponent> u_UIView;\r\n");
+                    sb.AppendFormat("        public YIUIViewComponent UIView => u_UIView;\r\n");
+
                     /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
                     sb.AppendFormat(

@@ -21,7 +21,7 @@ namespace ET.Client
         
         private static void UIBind(this GMTypeItemComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
 
             self.u_DataTypeName = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueString>("u_DataTypeName");
             self.u_DataSelect = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueBool>("u_DataSelect");

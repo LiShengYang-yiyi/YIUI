@@ -21,7 +21,7 @@ namespace ET.Client
         
         private static void UIBind(this RedDotStackItemComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
 
             self.u_ComStackText = self.UIBase.ComponentTable.FindComponent<TMPro.TextMeshProUGUI>("u_ComStackText");
             self.u_DataShowStack = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueBool>("u_DataShowStack");

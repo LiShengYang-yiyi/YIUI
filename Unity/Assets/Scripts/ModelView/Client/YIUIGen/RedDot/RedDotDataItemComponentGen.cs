@@ -12,7 +12,8 @@ namespace ET.Client
         public const string PkgName = "RedDot";
         public const string ResName = "RedDotDataItem";
 
-        public YIUIComponent UIBase;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
         public YIUIFramework.UIDataValueInt u_DataKeyId;
         public YIUIFramework.UIDataValueInt u_DataCount;
         public YIUIFramework.UIDataValueString u_DataName;

@@ -35,13 +35,14 @@ namespace ET.Client
         
         #region YIUIEvent开始
         
-        private static async void OnEventEnterAction(this LobbyPanelComponent self)
+        private static async ETTask OnEventEnterAction(this LobbyPanelComponent self)
         {
             var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
             await EnterMapHelper.EnterMapAsync(self.Root());
             YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
             self.UIPanel.Close(false,true);
         }
+        
         #endregion YIUIEvent结束
     }
 }

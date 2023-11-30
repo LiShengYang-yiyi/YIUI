@@ -23,9 +23,9 @@ namespace ET.Client
         
         private static void UIBind(this LobbyPanelComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIPanel.Layer = EPanelLayer.Panel;
             self.UIPanel.PanelOption = EPanelOption.TimeCache;
@@ -33,7 +33,7 @@ namespace ET.Client
             self.UIPanel.Priority = 0;
             self.UIPanel.CachePanelTime = 10;
 
-            self.u_EventEnter = self.UIBase.EventTable.FindEvent<UIEventP0>("u_EventEnter");
+            self.u_EventEnter = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventEnter");
             self.u_EventEnterHandle = self.u_EventEnter.Add(self.OnEventEnterAction);
 
         }

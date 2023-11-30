@@ -21,7 +21,7 @@ namespace ET.Client
         
         private static void UIBind(this GMParamItemComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
 
             self.u_ComInputField = self.UIBase.ComponentTable.FindComponent<TMPro.TMP_InputField>("u_ComInputField");
             self.u_ComToggle = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Toggle>("u_ComToggle");

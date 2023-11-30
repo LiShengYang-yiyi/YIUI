@@ -12,7 +12,8 @@ namespace ET.Client
         public const string PkgName = "GM";
         public const string ResName = "GMCommandItem";
 
-        public YIUIComponent UIBase;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
         public UnityEngine.UI.LoopHorizontalScrollRect u_ComParamLoop;
         public YIUIFramework.UIDataValueString u_DataName;
         public YIUIFramework.UIDataValueBool u_DataShowParamLoop;

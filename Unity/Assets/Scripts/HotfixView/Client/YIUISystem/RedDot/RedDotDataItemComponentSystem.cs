@@ -45,17 +45,17 @@ namespace ET.Client
 
         private static void OnEventParentAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickParentList(self.m_Data);
+            self.RedDotPanel?.OnClickParentList(self.m_Data);
         }
 
         private static void OnEventClickItemAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickItem(self.m_Data);
+            self.RedDotPanel?.OnClickItem(self.m_Data);
         }
 
         private static void OnEventChildAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickChildList(self.m_Data);
+            self.RedDotPanel?.OnClickChildList(self.m_Data);
         }
 
         #endregion YIUIEvent结束

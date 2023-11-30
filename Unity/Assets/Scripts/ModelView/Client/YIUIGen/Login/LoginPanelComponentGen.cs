@@ -12,11 +12,14 @@ namespace ET.Client
         public const string PkgName = "Login";
         public const string ResName = "LoginPanel";
 
-        public YIUIComponent UIBase;
-        public YIUIWindowComponent UIWindow;
-        public YIUIPanelComponent UIPanel;
-        public UIEventP0 u_EventLogin;
-        public UIEventHandleP0 u_EventLoginHandle;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
+        public EntityRef<YIUIWindowComponent> u_UIWindow;
+        public YIUIWindowComponent UIWindow => u_UIWindow;
+        public EntityRef<YIUIPanelComponent> u_UIPanel;
+        public YIUIPanelComponent UIPanel => u_UIPanel;
+        public UITaskEventP0 u_EventLogin;
+        public UITaskEventHandleP0 u_EventLoginHandle;
         public UIEventP1<string> u_EventAccount;
         public UIEventHandleP1<string> u_EventAccountHandle;
         public UIEventP1<string> u_EventPassword;
