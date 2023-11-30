@@ -136,14 +136,9 @@ namespace ET.Client
             item.u_DataOs.SetValue(data.GetOS(self.m_InfoData));
             item.u_DataSource.SetValue(data.GetSource());
             item.u_DataShowStack.SetValue(false);
-            item.ShowStackAction = () => { self.ShowStackInfo(data, item); };
+            item.RedDotStackData = data;
         }
-
-        private static void ShowStackInfo(this RedDotPanelComponent self, RedDotStack data, RedDotStackItemComponent item)
-        {
-            item.u_ComStackText.text = data.GetStackContent();
-        }
-
+        
         private static void ResetStackInfo(this RedDotPanelComponent self, RedDotData data)
         {
             if (self.m_InfoData == data)

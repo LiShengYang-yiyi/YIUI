@@ -5,6 +5,6 @@ namespace ET.Client
 {
     public partial class RedDotStackItemComponent : Entity
     {
-        public Action ShowStackAction;
+        public RedDotStack RedDotStackData;
     }
 }
