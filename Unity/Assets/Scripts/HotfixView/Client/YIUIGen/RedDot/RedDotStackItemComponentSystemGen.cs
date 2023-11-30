@@ -8,15 +8,13 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [FriendOf(typeof(YIUIComponent))]
+    [EntitySystemOf(typeof(RedDotStackItemComponent))]
     public static partial class RedDotStackItemComponentSystem
     {
         [EntitySystem]
-        public class RedDotStackItemComponentYIUIBindSystem: YIUIBindSystem<RedDotStackItemComponent>
+        public static void YIUIBind(this RedDotStackItemComponent self)
         {
-            protected override void YIUIBind(RedDotStackItemComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this RedDotStackItemComponent self)

@@ -9,39 +9,34 @@ namespace ET.Client
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
-        public class TextTipsViewComponentInitializeSystem: YIUIInitializeSystem<TextTipsViewComponent>
+        public static void YIUIInitialize(this TextTipsViewComponent self)
         {
-            protected override void YIUIInitialize(TextTipsViewComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class TextTipsViewComponentDestroySystem: DestroySystem<TextTipsViewComponent>
+        public static void Awake(this TextTipsViewComponent self)
         {
-            protected override void Destroy(TextTipsViewComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        [FriendOf(typeof (TextTipsViewComponent))]
-        public class TextTipsViewComponentOpenParamSystem: YIUIOpenSystem<TextTipsViewComponent, ParamVo>
+        public static void Destroy(this TextTipsViewComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(TextTipsViewComponent self, ParamVo vo)
-            {
-                await ETTask.CompletedTask;
-                var content = vo.Get<string>();
-                if (string.IsNullOrEmpty(content))
-                {
-                    Debug.LogError($"TextTipsView 必须有消息内容 请检查");
-                    return false;
-                }
+        }
 
-                self.u_DataMessageContent.SetValue(content);
-                self.PlayAnimation().Coroutine();
-                return true;
+        [EntitySystem]
+        public static async ETTask<bool> YIUIOpen(this TextTipsViewComponent self, ParamVo vo)
+        {
+            await ETTask.CompletedTask;
+            var content = vo.Get<string>();
+            if (string.IsNullOrEmpty(content))
+            {
+                Debug.LogError($"TextTipsView 必须有消息内容 请检查");
+                return false;
             }
+
+            self.u_DataMessageContent.SetValue(content);
+            self.PlayAnimation().Coroutine();
+            return true;
         }
 
         private static async ETTask PlayAnimation(this TextTipsViewComponent self)

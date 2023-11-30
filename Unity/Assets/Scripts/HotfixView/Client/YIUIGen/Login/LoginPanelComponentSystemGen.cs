@@ -10,15 +10,13 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIPanelComponent))]
+    [EntitySystemOf(typeof(LoginPanelComponent))]
     public static partial class LoginPanelComponentSystem
     {
         [EntitySystem]
-        public class LoginPanelComponentYIUIBindSystem: YIUIBindSystem<LoginPanelComponent>
+        public static void YIUIBind(this LoginPanelComponent self)
         {
-            protected override void YIUIBind(LoginPanelComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this LoginPanelComponent self)

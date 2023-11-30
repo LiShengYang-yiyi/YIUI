@@ -11,39 +11,32 @@ namespace ET.Client
     public static partial class TipsPanelComponentSystem
     {
         [EntitySystem]
-        public class TipsPanelComponentInitializeSystem: YIUIInitializeSystem<TipsPanelComponent>
+        public static void YIUIInitialize(this TipsPanelComponent self)
         {
-            protected override void YIUIInitialize(TipsPanelComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class TipsPanelComponentDestroySystem: DestroySystem<TipsPanelComponent>
+        public static void Awake(this TipsPanelComponent self)
         {
-            protected override void Destroy(TipsPanelComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class TipsPanelComponentOpenSystem: YIUIOpenSystem<TipsPanelComponent, Type, ParamVo>
+        public static void Destroy(this TipsPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(TipsPanelComponent self, Type viewType, ParamVo vo)
-            {
-                return await self.OpenTips(viewType, vo);
-            }
         }
 
         [EntitySystem]
-        public class TipsPanelComponentEventSystem: YIUIEventSystem<TipsPanelComponent, EventPutTipsView>
+        public static async ETTask<bool> YIUIOpen(this TipsPanelComponent self, Type viewType, ParamVo vo)
         {
-            //消息 回收对象
-            protected override async ETTask YIUIEvent(TipsPanelComponent self, EventPutTipsView message)
-            {
-                await self.PutTips(message.View,message.Tween);
-                self.CheckRefCount();
-            }
+            return await self.OpenTips(viewType, vo);
+        }
+
+        [EntitySystem]
+        //消息 回收对象
+        public static async ETTask YIUIEvent(this TipsPanelComponent self, EventPutTipsView message)
+        {
+            await self.PutTips(message.View, message.Tween);
+            self.CheckRefCount();
         }
 
         //对象池的实例化过程

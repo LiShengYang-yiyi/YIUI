@@ -22,22 +22,16 @@ namespace ${Namespace}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public class ${ResName}ComponentYIUIAwakeSystem: AwakeSystem<${ResName}Component,UIBase>
+        public static void Awake(this ${ResName}Component self, UIBase uiBase)
         {
-            protected override void Awake(${ResName}Component self, UIBase uiBase)
-            {
-                self.UI             = (${ResName})uiBase;
-                self.UI.UIComponent = self;
-            }
+            self.UI             = (${ResName})uiBase;
+            self.UI.UIComponent = self;
         }
         
         [EntitySystem]
-        public class ${ResName}ComponentYIUIDestroySystem: DestroySystem<${ResName}Component>
+        public static void Destroy(this ${ResName}Component self)
         {
-            protected override void Destroy(${ResName}Component self)
-            {
-                self.UI.EntityOnDestroy();
-            }
+            self.UI.EntityOnDestroy();
         }
     }
     
