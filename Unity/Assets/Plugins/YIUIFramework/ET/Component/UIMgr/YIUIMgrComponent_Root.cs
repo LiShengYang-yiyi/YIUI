@@ -14,10 +14,10 @@ namespace ET.Client
         public        RectTransform UILayerRoot;
         public        Camera        UICamera;
         public        Canvas        UICanvas;
-        public const  int           DesignScreenWidth    = 1080;
-        public const  int           DesignScreenHeight   = 1920;
-        public const  float         DesignScreenWidth_F  = 1080f;
-        public const  float         DesignScreenHeight_F = 1920f;
+        public const  int           DesignScreenWidth    = 1920;
+        public const  int           DesignScreenHeight   = 1080;
+        public const  float         DesignScreenWidth_F  = 1920f;
+        public const  float         DesignScreenHeight_F = 1080f;
 
         public const int RootPosOffset = 1000;
         public const int LayerDistance = 1000;
