@@ -10,6 +10,7 @@ namespace ET.Client
     public static partial class RedDotPanelComponentSystem
     {
         [EntitySystem]
+        [FriendOf(typeof (RedDotPanelComponent))]
         public class RedDotPanelComponentInitializeSystem: YIUIInitializeSystem<RedDotPanelComponent>
         {
             protected override void YIUIInitialize(RedDotPanelComponent self)

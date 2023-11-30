@@ -8,6 +8,7 @@
         "Unity.Loader",
         "MemoryPack",
         "YooAsset",
+        "Unity.TextMeshPro",
         "YIUIFramework"
     ],
     "includePlatforms": [],

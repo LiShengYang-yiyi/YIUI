@@ -9,6 +9,7 @@ namespace ET.Client
     public static partial class GMViewComponentSystem
     {
         [EntitySystem]
+        [FriendOf(typeof (GMViewComponent))]
         public class GMViewComponentInitializeSystem: YIUIInitializeSystem<GMViewComponent>
         {
             protected override void YIUIInitialize(GMViewComponent self)
@@ -45,6 +46,7 @@ namespace ET.Client
         }
 
         [EntitySystem]
+        [FriendOf(typeof (GMViewComponent))]
         public class GMViewComponentOpenSystem: YIUIOpenSystem<GMViewComponent>
         {
             protected override async ETTask<bool> YIUIOpen(GMViewComponent self)

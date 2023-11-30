@@ -28,6 +28,7 @@ namespace ET.Client
         }
 
         [EntitySystem]
+        [FriendOf(typeof (GMPanelComponent))]
         public class GMPanelComponentOpenSystem: YIUIOpenSystem<GMPanelComponent>
         {
             protected override async ETTask<bool> YIUIOpen(GMPanelComponent self)

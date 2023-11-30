@@ -9,6 +9,7 @@ namespace ET.Client
     public static partial class GMCommandItemComponentSystem
     {
         [EntitySystem]
+        [FriendOf(typeof (GMCommandItemComponent))]
         public class GMCommandItemComponentInitializeSystem: YIUIInitializeSystem<GMCommandItemComponent>
         {
             protected override void YIUIInitialize(GMCommandItemComponent self)

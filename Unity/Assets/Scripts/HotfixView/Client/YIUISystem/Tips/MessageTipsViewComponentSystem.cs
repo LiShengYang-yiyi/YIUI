@@ -53,6 +53,7 @@ namespace ET.Client
         }
 
         [EntitySystem]
+        [FriendOf(typeof (MessageTipsViewComponent))]
         public class MessageTipsViewComponentOpenParamVoSystem: YIUIOpenSystem<MessageTipsViewComponent, ParamVo>
         {
             protected override async ETTask<bool> YIUIOpen(MessageTipsViewComponent self, ParamVo vo)
