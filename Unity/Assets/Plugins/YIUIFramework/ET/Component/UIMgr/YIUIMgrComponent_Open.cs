@@ -166,8 +166,8 @@ namespace ET.Client
                 #endif
 
                 //如果打开失败直接屏蔽
-                info.UIBase.SetActive(false);
-                info.UIPanel.Close();
+                info?.UIBase?.SetActive(false);
+                info?.UIPanel?.Close();
             }
 
             EventSystem.Instance.Publish(this.DomainScene(), new YIUIEventPanelOpenAfter
