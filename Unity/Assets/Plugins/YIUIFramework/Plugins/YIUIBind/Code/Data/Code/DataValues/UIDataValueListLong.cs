@@ -29,6 +29,11 @@ namespace YIUIFramework
 
         protected override void SetValueFrom(List<long> value)
         {
+            if (GetValue() == null)
+            {
+                base.SetValueFrom(value);
+                return;
+            }
             GetValue().Clear();
             GetValue().AddRange(value);
         }
@@ -37,7 +42,7 @@ namespace YIUIFramework
 
         private bool EqualsList(List<long> value)
         {
-            if (GetValue().Count != value.Count)
+            if (GetValue()?.Count != value.Count)
             {
                 return false;
             }
