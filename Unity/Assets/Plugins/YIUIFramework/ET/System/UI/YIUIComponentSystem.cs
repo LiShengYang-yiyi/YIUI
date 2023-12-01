@@ -17,13 +17,13 @@ namespace ET.Client
     public static partial class YIUIComponentSystem
     {
         [EntitySystem]
-        public static void Awake(this YIUIComponent self, YIUIBindVo uiBindVo, GameObject obj)
+        private static void Awake(this YIUIComponent self, YIUIBindVo uiBindVo, GameObject obj)
         {
             self.InitUIBase(uiBindVo, obj);
         }
 
         [EntitySystem]
-        public static void Destroy(this YIUIComponent self)
+        private static void Destroy(this YIUIComponent self)
         {
             if (self.OwnerGameObject != null)
                 UnityEngine.Object.Destroy(self.OwnerGameObject);

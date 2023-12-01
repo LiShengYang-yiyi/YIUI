@@ -12,7 +12,7 @@ ${UIFriendOf}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this ${ResName}Component self)
+        private static void YIUIBind(this ${ResName}Component self)
         {
             self.UIBind();
         }

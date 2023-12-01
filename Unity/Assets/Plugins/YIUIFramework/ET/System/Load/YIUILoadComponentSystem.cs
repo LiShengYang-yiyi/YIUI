@@ -14,18 +14,19 @@ namespace ET.Client
     public static partial class YIUILoadComponentSystem
     {
         [EntitySystem]
-        public static void Awake(this YIUILoadComponent self)
+        private static void Awake(this YIUILoadComponent self)
         {
             self.Awake();
         }
 
-        public static void Awake(this YIUILoadComponent self, string packageName)
+        [EntitySystem]
+        private static void Awake(this YIUILoadComponent self, string packageName)
         {
             self.Awake(packageName);
         }
 
         [EntitySystem]
-        public static void Destroy(this YIUILoadComponent self)
+        private static void Destroy(this YIUILoadComponent self)
         {
             self.Destroy();
         }

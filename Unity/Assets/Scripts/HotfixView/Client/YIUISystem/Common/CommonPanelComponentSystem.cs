@@ -13,22 +13,22 @@ namespace ET.Client
     public static partial class CommonPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this CommonPanelComponent self)
+        private static void YIUIInitialize(this CommonPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Awake(this CommonPanelComponent self)
+        private static void Awake(this CommonPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Destroy(this CommonPanelComponent self)
+        private static void Destroy(this CommonPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this CommonPanelComponent self)
+        private static async ETTask<bool> YIUIOpen(this CommonPanelComponent self)
         {
             await ETTask.CompletedTask;
             return true;

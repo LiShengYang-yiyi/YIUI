@@ -13,22 +13,22 @@ namespace ${Namespace}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this ${ResName}Component self)
+        private static void YIUIInitialize(this ${ResName}Component self)
         {
         }
         
         [EntitySystem]
-        public static void Awake(this ${ResName}Component self)
+        private static void Awake(this ${ResName}Component self)
         {
         }
         
         [EntitySystem]
-        public static void Destroy(this ${ResName}Component self)
+        private static void Destroy(this ${ResName}Component self)
         {
         }
         
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this ${ResName}Component self)
+        private static async ETTask<bool> YIUIOpen(this ${ResName}Component self)
         {
             await ETTask.CompletedTask;
             return true;

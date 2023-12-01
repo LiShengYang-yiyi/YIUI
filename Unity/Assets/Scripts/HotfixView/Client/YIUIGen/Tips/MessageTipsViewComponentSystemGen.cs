@@ -14,7 +14,7 @@ namespace ET.Client
     public static partial class MessageTipsViewComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this MessageTipsViewComponent self)
+        private static void YIUIBind(this MessageTipsViewComponent self)
         {
             self.UIBind();
         }

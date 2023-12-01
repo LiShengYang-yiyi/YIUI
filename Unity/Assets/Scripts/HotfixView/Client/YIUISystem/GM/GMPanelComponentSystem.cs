@@ -15,22 +15,22 @@ namespace ET.Client
     public static partial class GMPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this GMPanelComponent self)
+        private static void YIUIInitialize(this GMPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Awake(this GMPanelComponent self)
+        private static void Awake(this GMPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Destroy(this GMPanelComponent self)
+        private static void Destroy(this GMPanelComponent self)
         {
         }
         
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this GMPanelComponent self)
+        private static async ETTask<bool> YIUIOpen(this GMPanelComponent self)
         {
             var rect = self.u_ComLimitRange.rect;
             self._LimitSize = new Vector2(rect.width, rect.height);
@@ -44,7 +44,7 @@ namespace ET.Client
         }
         
         [EntitySystem]
-        public static void Update(this GMPanelComponent self)
+        private static void Update(this GMPanelComponent self)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {

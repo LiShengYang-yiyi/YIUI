@@ -9,22 +9,22 @@ namespace ET.Client
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this TextTipsViewComponent self)
+        private static void YIUIInitialize(this TextTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this TextTipsViewComponent self)
+        private static void Awake(this TextTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this TextTipsViewComponent self)
+        private static void Destroy(this TextTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this TextTipsViewComponent self, ParamVo vo)
+        private static async ETTask<bool> YIUIOpen(this TextTipsViewComponent self, ParamVo vo)
         {
             await ETTask.CompletedTask;
             var content = vo.Get<string>();

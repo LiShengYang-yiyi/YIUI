@@ -8,17 +8,17 @@ namespace ET.Client
     public static partial class GMTypeItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this GMTypeItemComponent self)
+        private static void YIUIInitialize(this GMTypeItemComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Awake(this GMTypeItemComponent self)
+        private static void Awake(this GMTypeItemComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this GMTypeItemComponent self)
+        private static void Destroy(this GMTypeItemComponent self)
         {
         }
 

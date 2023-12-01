@@ -13,22 +13,22 @@ namespace ET.Client
     public static partial class LoginPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this LoginPanelComponent self)
+        private static void YIUIInitialize(this LoginPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this LoginPanelComponent self)
+        private static void Awake(this LoginPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this LoginPanelComponent self)
+        private static void Destroy(this LoginPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
+        private static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
         {
             await ETTask.CompletedTask;
             return true;

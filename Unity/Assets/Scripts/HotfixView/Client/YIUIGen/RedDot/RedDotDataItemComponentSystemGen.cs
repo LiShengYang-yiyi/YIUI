@@ -12,7 +12,7 @@ namespace ET.Client
     public static partial class RedDotDataItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this RedDotDataItemComponent self)
+        private static void YIUIBind(this RedDotDataItemComponent self)
         {
             self.UIBind();
         }

@@ -14,14 +14,14 @@ namespace ET.Client
     public static partial class YIUIEventComponentSystem
     {
         [EntitySystem]
-        public static void Awake(this YIUIEventComponent self)
+        private static void Awake(this YIUIEventComponent self)
         {
             YIUIEventComponent.Inst = self;
             self.Init();
         }
 
         [EntitySystem]
-        public static void Destroy(this YIUIEventComponent self)
+        private static void Destroy(this YIUIEventComponent self)
         {
         }
 

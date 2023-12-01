@@ -11,29 +11,29 @@ namespace ET.Client
     public static partial class TipsPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this TipsPanelComponent self)
+        private static void YIUIInitialize(this TipsPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this TipsPanelComponent self)
+        private static void Awake(this TipsPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this TipsPanelComponent self)
+        private static void Destroy(this TipsPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this TipsPanelComponent self, Type viewType, ParamVo vo)
+        private static async ETTask<bool> YIUIOpen(this TipsPanelComponent self, Type viewType, ParamVo vo)
         {
             return await self.OpenTips(viewType, vo);
         }
 
         [EntitySystem]
         //消息 回收对象
-        public static async ETTask YIUIEvent(this TipsPanelComponent self, EventPutTipsView message)
+        private static async ETTask YIUIEvent(this TipsPanelComponent self, EventPutTipsView message)
         {
             await self.PutTips(message.View, message.Tween);
             self.CheckRefCount();

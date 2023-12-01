@@ -8,17 +8,17 @@ namespace ET.Client
     public static partial class RedDotStackItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this RedDotStackItemComponent self)
+        private static void YIUIInitialize(this RedDotStackItemComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this RedDotStackItemComponent self)
+        private static void Awake(this RedDotStackItemComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this RedDotStackItemComponent self)
+        private static void Destroy(this RedDotStackItemComponent self)
         {
         }
 
