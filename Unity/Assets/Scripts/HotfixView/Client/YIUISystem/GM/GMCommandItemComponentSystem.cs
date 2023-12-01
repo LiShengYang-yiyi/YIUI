@@ -13,18 +13,18 @@ namespace ET.Client
     public static partial class GMCommandItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this GMCommandItemComponent self)
+        private static void YIUIInitialize(this GMCommandItemComponent self)
         {
             self.GMParamLoop = new YIUILoopScroll<GMParamInfo, GMParamItemComponent>(self, self.u_ComParamLoop, self.GMParamRenderer);
         }
          
         [EntitySystem]
-        public static void Awake(this GMCommandItemComponent self)
+        private static void Awake(this GMCommandItemComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Destroy(this GMCommandItemComponent self)
+        private static void Destroy(this GMCommandItemComponent self)
         {
         }
 

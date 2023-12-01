@@ -9,41 +9,41 @@ namespace ET.Client
     public static partial class MessageTipsViewComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this MessageTipsViewComponent self)
+        private static void YIUIInitialize(this MessageTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this MessageTipsViewComponent self)
+        private static void Awake(this MessageTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this MessageTipsViewComponent self)
+        private static void Destroy(this MessageTipsViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self)
+        private static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self)
         {
             await ETTask.CompletedTask;
             return true;
         }
 
         [EntitySystem]
-        public static async ETTask YIUIOpenTween(this MessageTipsViewComponent self)
+        private static async ETTask YIUIOpenTween(this MessageTipsViewComponent self)
         {
             await WindowFadeAnim.In(self.UIBase);
         }
 
         [EntitySystem]
-        public static async ETTask YIUICloseTween(this MessageTipsViewComponent self)
+        private static async ETTask YIUICloseTween(this MessageTipsViewComponent self)
         {
             await WindowFadeAnim.Out(self.UIBase);
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self, ParamVo vo)
+        private static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self, ParamVo vo)
         {
             await ETTask.CompletedTask;
             var content = vo.Get<string>();

@@ -10,17 +10,17 @@ namespace ET.Client
     public static partial class GMParamItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this GMParamItemComponent self)
+        private static void YIUIInitialize(this GMParamItemComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Awake(this GMParamItemComponent self)
+        private static void Awake(this GMParamItemComponent self)
         {
         }
         
         [EntitySystem]
-        public static void Destroy(this GMParamItemComponent self)
+        private static void Destroy(this GMParamItemComponent self)
         {
         }
         

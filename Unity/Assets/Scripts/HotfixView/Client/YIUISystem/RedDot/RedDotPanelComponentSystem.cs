@@ -10,7 +10,7 @@ namespace ET.Client
     public static partial class RedDotPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this RedDotPanelComponent self)
+        private static void YIUIInitialize(this RedDotPanelComponent self)
         {
             self.InitInfo();
             self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
@@ -18,40 +18,40 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        public static void Awake(this RedDotPanelComponent self)
+        private static void Awake(this RedDotPanelComponent self)
         {
             self.RemoveInfoChanged();
         }
 
         [EntitySystem]
-        public static void Destroy(this RedDotPanelComponent self)
+        private static void Destroy(this RedDotPanelComponent self)
         {
             self.RemoveInfoChanged();
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this RedDotPanelComponent self)
+        private static async ETTask<bool> YIUIOpen(this RedDotPanelComponent self)
         {
             await ETTask.CompletedTask;
             return true;
         }
 
         [EntitySystem]
-        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickParentListEvent message)
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickParentListEvent message)
         {
             await ETTask.CompletedTask;
             self.OnClickParentList(message.Data);
         }
 
         [EntitySystem]
-        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickChildListEvent message)
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickChildListEvent message)
         {
             await ETTask.CompletedTask;
             self.OnClickChildList(message.Data);
         }
 
         [EntitySystem]
-        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickItemEvent message)
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickItemEvent message)
         {
             await ETTask.CompletedTask;
             self.OnClickItem(message.Data);

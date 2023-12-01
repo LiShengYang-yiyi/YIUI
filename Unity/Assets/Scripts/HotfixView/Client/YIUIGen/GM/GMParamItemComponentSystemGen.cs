@@ -12,7 +12,7 @@ namespace ET.Client
     public static partial class GMParamItemComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this GMParamItemComponent self)
+        private static void YIUIBind(this GMParamItemComponent self)
         {
             self.UIBind();
         }

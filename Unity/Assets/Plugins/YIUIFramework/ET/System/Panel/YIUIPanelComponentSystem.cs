@@ -14,7 +14,7 @@ namespace ET.Client
     public static partial class YIUIPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this YIUIPanelComponent self)
+        private static void YIUIInitialize(this YIUIPanelComponent self)
         {
             self.InitPanelViewData();
         }

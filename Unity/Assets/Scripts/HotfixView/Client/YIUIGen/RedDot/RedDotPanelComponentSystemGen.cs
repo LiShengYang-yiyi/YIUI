@@ -14,7 +14,7 @@ namespace ET.Client
     public static partial class RedDotPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this RedDotPanelComponent self)
+        private static void YIUIBind(this RedDotPanelComponent self)
         {
             self.UIBind();
         }

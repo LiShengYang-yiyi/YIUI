@@ -14,7 +14,7 @@ namespace ET.Client
     public static partial class LobbyPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIBind(this LobbyPanelComponent self)
+        private static void YIUIBind(this LobbyPanelComponent self)
         {
             self.UIBind();
         }

@@ -8,22 +8,22 @@ namespace ET.Client
     public static partial class LobbyPanelComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this LobbyPanelComponent self)
+        private static void YIUIInitialize(this LobbyPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Awake(this LobbyPanelComponent self)
+        private static void Awake(this LobbyPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this LobbyPanelComponent self)
+        private static void Destroy(this LobbyPanelComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this LobbyPanelComponent self)
+        private static async ETTask<bool> YIUIOpen(this LobbyPanelComponent self)
         {
             await ETTask.CompletedTask;
             return true;

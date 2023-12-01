@@ -9,7 +9,7 @@ namespace ET.Client
     public static partial class GMViewComponentSystem
     {
         [EntitySystem]
-        public static void YIUIInitialize(this GMViewComponent self)
+        private static void YIUIInitialize(this GMViewComponent self)
         {
             self.m_CommandComponent = self.Root().GetComponent<GMCommandComponent>();
             self.GMTypeName = self.CommandComponent.GMTypeName;
@@ -25,23 +25,23 @@ namespace ET.Client
         }
         
         [EntitySystem]
-        public static void Awake(this GMViewComponent self)
+        private static void Awake(this GMViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static void Destroy(this GMViewComponent self)
+        private static void Destroy(this GMViewComponent self)
         {
         }
 
         [EntitySystem]
-        public static async ETTask YIUIEvent(this GMViewComponent self, OnGMEventClose message)
+        private static async ETTask YIUIEvent(this GMViewComponent self, OnGMEventClose message)
         {
             await self.UIView.CloseAsync();
         }
 
         [EntitySystem]
-        public static async ETTask<bool> YIUIOpen(this GMViewComponent self)
+        private static async ETTask<bool> YIUIOpen(this GMViewComponent self)
         {
             if (self.Opened) return true;
             self.GMTypeLoop.ClearSelect();

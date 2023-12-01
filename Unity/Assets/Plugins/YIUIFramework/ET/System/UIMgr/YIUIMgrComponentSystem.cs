@@ -11,7 +11,7 @@ namespace ET.Client
     public static partial class YIUIMgrComponentSystem
     {
         [EntitySystem]
-        public static void Awake(this YIUIMgrComponent self)
+        private static void Awake(this YIUIMgrComponent self)
         {
             YIUIMgrComponent.Inst = self;
             self.InitAllBind();
@@ -20,7 +20,7 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        public static void Destroy(this YIUIMgrComponent self)
+        private static void Destroy(this YIUIMgrComponent self)
         {
             self.OnBlockDispose();
         }
