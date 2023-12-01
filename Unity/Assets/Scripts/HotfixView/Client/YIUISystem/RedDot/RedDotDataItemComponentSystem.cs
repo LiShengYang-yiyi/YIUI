@@ -8,19 +8,18 @@ namespace ET.Client
     public static partial class RedDotDataItemComponentSystem
     {
         [EntitySystem]
-        public class RedDotDataItemComponentInitializeSystem: YIUIInitializeSystem<RedDotDataItemComponent>
+        public static void YIUIInitialize(this RedDotDataItemComponent self)
         {
-            protected override void YIUIInitialize(RedDotDataItemComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class RedDotDataItemComponentDestroySystem: DestroySystem<RedDotDataItemComponent>
+        public static void Awake(this RedDotDataItemComponent self)
         {
-            protected override void Destroy(RedDotDataItemComponent self)
-            {
-            }
+        }
+
+        [EntitySystem]
+        public static void Destroy(this RedDotDataItemComponent self)
+        {
         }
 
         public static void RefreshData(this RedDotDataItemComponent self, RedDotData data)

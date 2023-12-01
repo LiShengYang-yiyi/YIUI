@@ -13,19 +13,18 @@ namespace ${Namespace}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public class ${ResName}ComponentInitializeSystem: YIUIInitializeSystem<${ResName}Component>
+        public static void YIUIInitialize(this ${ResName}Component self)
         {
-            protected override void YIUIInitialize(${ResName}Component self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class ${ResName}ComponentDestroySystem: DestroySystem<${ResName}Component>
+        public static void Awake(this ${ResName}Component self)
         {
-            protected override void Destroy(${ResName}Component self)
-            {
-            }
+        }
+        
+        [EntitySystem]
+        public static void Destroy(this ${ResName}Component self)
+        {
         }
         
         #region YIUIEvent开始

@@ -8,31 +8,27 @@ namespace ET.Client
     public static partial class LobbyPanelComponentSystem
     {
         [EntitySystem]
-        public class LobbyPanelComponentInitializeSystem: YIUIInitializeSystem<LobbyPanelComponent>
+        public static void YIUIInitialize(this LobbyPanelComponent self)
         {
-            protected override void YIUIInitialize(LobbyPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LobbyPanelComponentDestroySystem: DestroySystem<LobbyPanelComponent>
+        public static void Awake(this LobbyPanelComponent self)
         {
-            protected override void Destroy(LobbyPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LobbyPanelComponentOpenSystem: YIUIOpenSystem<LobbyPanelComponent>
+        public static void Destroy(this LobbyPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(LobbyPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
-        
+
+        [EntitySystem]
+        public static async ETTask<bool> YIUIOpen(this LobbyPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
         #region YIUIEvent开始
         
         private static async ETTask OnEventEnterAction(this LobbyPanelComponent self)

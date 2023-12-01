@@ -7,27 +7,22 @@
 namespace ET.Client
 {
     [FriendOf(typeof (YIUIMgrComponent))]
+    [EntitySystemOf(typeof (YIUIMgrComponent))]
     public static partial class YIUIMgrComponentSystem
     {
         [EntitySystem]
-        public class YIUIMgrComponentAwakeSystem: AwakeSystem<YIUIMgrComponent>
+        public static void Awake(this YIUIMgrComponent self)
         {
-            protected override void Awake(YIUIMgrComponent self)
-            {
-                YIUIMgrComponent.Inst = self;
-                self.InitAllBind();
-                self.AddComponent<YIUIEventComponent>();
-                self.AddComponent<YIUILoadComponent>();
-            }
+            YIUIMgrComponent.Inst = self;
+            self.InitAllBind();
+            self.AddComponent<YIUIEventComponent>();
+            self.AddComponent<YIUILoadComponent>();
         }
 
         [EntitySystem]
-        public class YIUIMgrComponentDestroySystem: DestroySystem<YIUIMgrComponent>
+        public static void Destroy(this YIUIMgrComponent self)
         {
-            protected override void Destroy(YIUIMgrComponent self)
-            {
-                self.OnBlockDispose();
-            }
+            self.OnBlockDispose();
         }
     }
 }

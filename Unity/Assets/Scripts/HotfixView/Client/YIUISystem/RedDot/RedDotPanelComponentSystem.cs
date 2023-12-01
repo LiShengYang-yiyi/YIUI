@@ -10,64 +10,51 @@ namespace ET.Client
     public static partial class RedDotPanelComponentSystem
     {
         [EntitySystem]
-        [FriendOf(typeof (RedDotPanelComponent))]
-        public class RedDotPanelComponentInitializeSystem: YIUIInitializeSystem<RedDotPanelComponent>
+        public static void YIUIInitialize(this RedDotPanelComponent self)
         {
-            protected override void YIUIInitialize(RedDotPanelComponent self)
-            {
-                self.InitInfo();
-                self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
-                self.InitDropdownSearchDic();
-            }
+            self.InitInfo();
+            self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
+            self.InitDropdownSearchDic();
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentDestroySystem: DestroySystem<RedDotPanelComponent>
+        public static void Awake(this RedDotPanelComponent self)
         {
-            protected override void Destroy(RedDotPanelComponent self)
-            {
-                self.RemoveInfoChanged();
-            }
+            self.RemoveInfoChanged();
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentOpenSystem: YIUIOpenSystem<RedDotPanelComponent>
+        public static void Destroy(this RedDotPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(RedDotPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
+            self.RemoveInfoChanged();
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentOnClickParentListEventSystem: YIUIEventSystem<RedDotPanelComponent, OnClickParentListEvent>
+        public static async ETTask<bool> YIUIOpen(this RedDotPanelComponent self)
         {
-            protected override async ETTask YIUIEvent(RedDotPanelComponent self, OnClickParentListEvent message)
-            {
-                await ETTask.CompletedTask;
-                self.OnClickParentList(message.Data);
-            }
+            await ETTask.CompletedTask;
+            return true;
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentOnClickChildListEventSystem: YIUIEventSystem<RedDotPanelComponent, OnClickChildListEvent>
+        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickParentListEvent message)
         {
-            protected override async ETTask YIUIEvent(RedDotPanelComponent self, OnClickChildListEvent message)
-            {
-                await ETTask.CompletedTask;
-                self.OnClickChildList(message.Data);
-            }
+            await ETTask.CompletedTask;
+            self.OnClickParentList(message.Data);
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentOnClickItemEventSystem: YIUIEventSystem<RedDotPanelComponent, OnClickItemEvent>
+        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickChildListEvent message)
         {
-            protected override async ETTask YIUIEvent(RedDotPanelComponent self, OnClickItemEvent message)
-            {
-                await ETTask.CompletedTask;
-                self.OnClickItem(message.Data);
-            }
+            await ETTask.CompletedTask;
+            self.OnClickChildList(message.Data);
+        }
+
+        [EntitySystem]
+        public static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickItemEvent message)
+        {
+            await ETTask.CompletedTask;
+            self.OnClickItem(message.Data);
         }
 
         #region Search

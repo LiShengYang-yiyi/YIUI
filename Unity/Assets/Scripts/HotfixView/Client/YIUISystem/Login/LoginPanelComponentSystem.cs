@@ -13,31 +13,27 @@ namespace ET.Client
     public static partial class LoginPanelComponentSystem
     {
         [EntitySystem]
-        public class LoginPanelComponentInitializeSystem: YIUIInitializeSystem<LoginPanelComponent>
+        public static void YIUIInitialize(this LoginPanelComponent self)
         {
-            protected override void YIUIInitialize(LoginPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LoginPanelComponentDestroySystem: DestroySystem<LoginPanelComponent>
+        public static void Awake(this LoginPanelComponent self)
         {
-            protected override void Destroy(LoginPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LoginPanelComponentOpenSystem: YIUIOpenSystem<LoginPanelComponent>
+        public static void Destroy(this LoginPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(LoginPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
-        
+
+        [EntitySystem]
+        public static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
         #region YIUIEvent开始
         
         private static void OnEventPasswordAction(this LoginPanelComponent self, string p1)

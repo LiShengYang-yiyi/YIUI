@@ -10,24 +10,19 @@ using System.Collections.Generic;
 namespace ET.Client
 {
     [FriendOf(typeof (YIUIEventComponent))]
+    [EntitySystemOf(typeof (YIUIEventComponent))]
     public static partial class YIUIEventComponentSystem
     {
         [EntitySystem]
-        public class YIUIEventComponentAwakeSystem: AwakeSystem<YIUIEventComponent>
+        public static void Awake(this YIUIEventComponent self)
         {
-            protected override void Awake(YIUIEventComponent self)
-            {
-                YIUIEventComponent.Inst = self;
-                self.Init();
-            }
+            YIUIEventComponent.Inst = self;
+            self.Init();
         }
 
         [EntitySystem]
-        public class YIUIEventComponentDestroySystem: DestroySystem<YIUIEventComponent>
+        public static void Destroy(this YIUIEventComponent self)
         {
-            protected override void Destroy(YIUIEventComponent self)
-            {
-            }
         }
 
         private static void Init(this YIUIEventComponent self)
