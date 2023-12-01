@@ -22,7 +22,7 @@ namespace ${Namespace}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public class ${ResName}ComponentYIUIAwakeSystem: AwakeSystem<${ResName}Component,UIBase>
+        private class ${ResName}ComponentYIUIAwakeSystem: AwakeSystem<${ResName}Component,UIBase>
         {
             protected override void Awake(${ResName}Component self, UIBase uiBase)
             {
@@ -32,7 +32,7 @@ namespace ${Namespace}
         }
         
         [EntitySystem]
-        public class ${ResName}ComponentYIUIDestroySystem: DestroySystem<${ResName}Component>
+        private class ${ResName}ComponentYIUIDestroySystem: DestroySystem<${ResName}Component>
         {
             protected override void Destroy(${ResName}Component self)
             {

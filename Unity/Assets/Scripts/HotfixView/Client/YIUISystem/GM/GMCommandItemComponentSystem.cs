@@ -1,29 +1,31 @@
 ﻿using System;
 using YIUIFramework;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace ET.Client
 {
-    [FriendOf(typeof (GMCommandItemComponent))]
+    /// <summary>
+    /// Author  YIUI
+    /// Date    2023.11.30
+    /// Desc
+    /// </summary>
+    [FriendOf(typeof(GMCommandItemComponent))]
     public static partial class GMCommandItemComponentSystem
     {
         [EntitySystem]
-        [FriendOf(typeof (GMCommandItemComponent))]
-        public class GMCommandItemComponentInitializeSystem: YIUIInitializeSystem<GMCommandItemComponent>
+        private static void YIUIInitialize(this GMCommandItemComponent self)
         {
-            protected override void YIUIInitialize(GMCommandItemComponent self)
-            {
-                self.GMParamLoop = new YIUILoopScroll<GMParamInfo, GMParamItemComponent>(self, self.u_ComParamLoop, self.GMParamRenderer);
-            }
+            self.GMParamLoop = new YIUILoopScroll<GMParamInfo, GMParamItemComponent>(self, self.u_ComParamLoop, self.GMParamRenderer);
         }
-
+         
         [EntitySystem]
-        public class GMCommandItemComponentDestroySystem: DestroySystem<GMCommandItemComponent>
+        private static void Awake(this GMCommandItemComponent self)
         {
-            protected override void Destroy(GMCommandItemComponent self)
-            {
-            }
+        }
+        
+        [EntitySystem]
+        private static void Destroy(this GMCommandItemComponent self)
+        {
         }
 
         public static void ResetItem(this GMCommandItemComponent self, GMCommandComponent commandComponent, GMCommandInfo info)
@@ -38,23 +40,22 @@ namespace ET.Client
         }
 
         private static async ETTask WaitRefresh(this GMCommandItemComponent self)
-        {
+        {            
             await self.Fiber().TimerComponent.WaitAsync(500);
             self.GMParamLoop.RefreshCells();
         }
-
+        
         private static void GMParamRenderer(this GMCommandItemComponent self, int index, GMParamInfo data, GMParamItemComponent item, bool select)
         {
             item.ResetItem(data);
         }
-
+        
         #region YIUIEvent开始
-
+        
         private static void OnEventRunAction(this GMCommandItemComponent self)
         {
             self.CommandComponent?.Run(self.Info).Coroutine();
         }
-
         #endregion YIUIEvent结束
     }
 }

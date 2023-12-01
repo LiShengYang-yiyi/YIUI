@@ -8,31 +8,27 @@ namespace ET.Client
     public static partial class MainPanelComponentSystem
     {
         [EntitySystem]
-        public class MainPanelComponentInitializeSystem: YIUIInitializeSystem<MainPanelComponent>
+        private static void YIUIInitialize(this MainPanelComponent self)
         {
-            protected override void YIUIInitialize(MainPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class MainPanelComponentDestroySystem: DestroySystem<MainPanelComponent>
+        private static void Awake(this MainPanelComponent self)
         {
-            protected override void Destroy(MainPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class MainPanelComponentOpenSystem: YIUIOpenSystem<MainPanelComponent>
+        private static void Destroy(this MainPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(MainPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
-        
+
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this MainPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
         #region YIUIEvent开始
         #endregion YIUIEvent结束
     }

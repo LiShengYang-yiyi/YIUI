@@ -8,21 +8,20 @@ namespace ET.Client
     public static partial class GMTypeItemComponentSystem
     {
         [EntitySystem]
-        public class GMTypeItemComponentInitializeSystem: YIUIInitializeSystem<GMTypeItemComponent>
+        private static void YIUIInitialize(this GMTypeItemComponent self)
         {
-            protected override void YIUIInitialize(GMTypeItemComponent self)
-            {
-            }
+        }
+        
+        [EntitySystem]
+        private static void Awake(this GMTypeItemComponent self)
+        {
         }
 
         [EntitySystem]
-        public class GMTypeItemComponentDestroySystem: DestroySystem<GMTypeItemComponent>
+        private static void Destroy(this GMTypeItemComponent self)
         {
-            protected override void Destroy(GMTypeItemComponent self)
-            {
-            }
         }
-        
+
         public static void ResetItem(this GMTypeItemComponent self,string name, EGMType data)
         {
             self.u_DataTypeName.SetValue(name);

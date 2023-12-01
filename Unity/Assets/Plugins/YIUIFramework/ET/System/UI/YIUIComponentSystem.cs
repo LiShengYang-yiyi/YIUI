@@ -13,25 +13,20 @@ namespace ET.Client
     /// UI主体
     /// </summary>
     [FriendOf(typeof (YIUIComponent))]
+    [EntitySystemOf(typeof (YIUIComponent))]
     public static partial class YIUIComponentSystem
     {
         [EntitySystem]
-        public class YIUIComponentAwakeSystem: AwakeSystem<YIUIComponent, YIUIBindVo, GameObject>
+        private static void Awake(this YIUIComponent self, YIUIBindVo uiBindVo, GameObject obj)
         {
-            protected override void Awake(YIUIComponent self, YIUIBindVo uiBindVo, GameObject obj)
-            {
-                self.InitUIBase(uiBindVo, obj);
-            }
+            self.InitUIBase(uiBindVo, obj);
         }
 
         [EntitySystem]
-        public class YIUIComponentDestroySystem: DestroySystem<YIUIComponent>
+        private static void Destroy(this YIUIComponent self)
         {
-            protected override void Destroy(YIUIComponent self)
-            {
-                if (self.OwnerGameObject != null)
-                    UnityEngine.Object.Destroy(self.OwnerGameObject);
-            }
+            if (self.OwnerGameObject != null)
+                UnityEngine.Object.Destroy(self.OwnerGameObject);
         }
     }
 }

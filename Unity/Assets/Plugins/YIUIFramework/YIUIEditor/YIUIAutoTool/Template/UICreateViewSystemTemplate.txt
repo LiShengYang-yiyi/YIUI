@@ -13,29 +13,20 @@ namespace ${Namespace}
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public class ${ResName}ComponentInitializeSystem: YIUIInitializeSystem<${ResName}Component>
+        private static void YIUIInitialize(this ${ResName}Component self)
         {
-            protected override void YIUIInitialize(${ResName}Component self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class ${ResName}ComponentDestroySystem: DestroySystem<${ResName}Component>
+        private static void Destroy(this ${ResName}Component self)
         {
-            protected override void Destroy(${ResName}Component self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class ${ResName}ComponentOpenSystem: YIUIOpenSystem<${ResName}Component>
+        private static async ETTask<bool> YIUIOpen(this ${ResName}Component self)
         {
-            protected override async ETTask<bool> YIUIOpen(${ResName}Component self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
+            await ETTask.CompletedTask;
+            return true;
         }
         
         #region YIUIEvent开始

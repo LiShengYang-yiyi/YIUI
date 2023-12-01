@@ -10,15 +10,13 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIViewComponent))]
+    [EntitySystemOf(typeof(GMViewComponent))]
     public static partial class GMViewComponentSystem
     {
         [EntitySystem]
-        public class GMViewComponentYIUIBindSystem: YIUIBindSystem<GMViewComponent>
+        private static void YIUIBind(this GMViewComponent self)
         {
-            protected override void YIUIBind(GMViewComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this GMViewComponent self)

@@ -10,15 +10,13 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIViewComponent))]
+    [EntitySystemOf(typeof(TextTipsViewComponent))]
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
-        public class TextTipsViewComponentYIUIBindSystem: YIUIBindSystem<TextTipsViewComponent>
+        private static void YIUIBind(this TextTipsViewComponent self)
         {
-            protected override void YIUIBind(TextTipsViewComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this TextTipsViewComponent self)

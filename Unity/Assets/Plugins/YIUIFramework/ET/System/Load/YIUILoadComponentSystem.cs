@@ -10,32 +10,25 @@ namespace ET.Client
     /// UI面板组件
     /// </summary>
     [FriendOf(typeof (YIUILoadComponent))]
+    [EntitySystemOf(typeof (YIUILoadComponent))]
     public static partial class YIUILoadComponentSystem
     {
         [EntitySystem]
-        public class YIUILoadComponentAwakeSystem: AwakeSystem<YIUILoadComponent>
+        private static void Awake(this YIUILoadComponent self)
         {
-            protected override void Awake(YIUILoadComponent self)
-            {
-                self.Awake();
-            }
-        }
-
-        public class YIUILoadComponentAwake2System: AwakeSystem<YIUILoadComponent, string>
-        {
-            protected override void Awake(YIUILoadComponent self, string packageName)
-            {
-                self.Awake(packageName);
-            }
+            self.Awake();
         }
 
         [EntitySystem]
-        public class YIUILoadComponentDestroySystem: DestroySystem<YIUILoadComponent>
+        private static void Awake(this YIUILoadComponent self, string packageName)
         {
-            protected override void Destroy(YIUILoadComponent self)
-            {
-                self.Destroy();
-            }
+            self.Awake(packageName);
+        }
+
+        [EntitySystem]
+        private static void Destroy(this YIUILoadComponent self)
+        {
+            self.Destroy();
         }
     }
 }

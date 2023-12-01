@@ -8,15 +8,13 @@ namespace ${Namespace}
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
 ${UIFriendOf}
+    [EntitySystemOf(typeof(${ResName}Component))]
     public static partial class ${ResName}ComponentSystem
     {
         [EntitySystem]
-        public class ${ResName}ComponentYIUIBindSystem: YIUIBindSystem<${ResName}Component>
+        private static void YIUIBind(this ${ResName}Component self)
         {
-            protected override void YIUIBind(${ResName}Component self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this ${ResName}Component self)

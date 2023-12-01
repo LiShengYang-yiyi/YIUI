@@ -8,21 +8,20 @@ namespace ET.Client
     public static partial class RedDotStackItemComponentSystem
     {
         [EntitySystem]
-        public class RedDotStackItemComponentInitializeSystem: YIUIInitializeSystem<RedDotStackItemComponent>
+        private static void YIUIInitialize(this RedDotStackItemComponent self)
         {
-            protected override void YIUIInitialize(RedDotStackItemComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class RedDotStackItemComponentDestroySystem: DestroySystem<RedDotStackItemComponent>
+        private static void Awake(this RedDotStackItemComponent self)
         {
-            protected override void Destroy(RedDotStackItemComponent self)
-            {
-            }
         }
-        
+
+        [EntitySystem]
+        private static void Destroy(this RedDotStackItemComponent self)
+        {
+        }
+
         #region YIUIEvent开始
         
         private static void OnEventShowStackAction(this RedDotStackItemComponent self)

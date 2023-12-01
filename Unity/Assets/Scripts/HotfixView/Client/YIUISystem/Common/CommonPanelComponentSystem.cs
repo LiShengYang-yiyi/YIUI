@@ -5,37 +5,33 @@ using System.Collections.Generic;
 namespace ET.Client
 {
     /// <summary>
-    /// Author  Lsy
-    /// Date    2023.11.10
+    /// Author  YIUI
+    /// Date    2023.11.30
     /// Desc
     /// </summary>
     [FriendOf(typeof(CommonPanelComponent))]
     public static partial class CommonPanelComponentSystem
     {
         [EntitySystem]
-        public class CommonPanelComponentInitializeSystem: YIUIInitializeSystem<CommonPanelComponent>
+        private static void YIUIInitialize(this CommonPanelComponent self)
         {
-            protected override void YIUIInitialize(CommonPanelComponent self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class CommonPanelComponentDestroySystem: DestroySystem<CommonPanelComponent>
+        private static void Awake(this CommonPanelComponent self)
         {
-            protected override void Destroy(CommonPanelComponent self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class CommonPanelComponentOpenSystem: YIUIOpenSystem<CommonPanelComponent>
+        private static void Destroy(this CommonPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(CommonPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
+        }
+        
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this CommonPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
         }
         
         #region YIUIEvent开始

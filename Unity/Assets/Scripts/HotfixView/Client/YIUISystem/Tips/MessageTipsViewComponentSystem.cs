@@ -9,72 +9,59 @@ namespace ET.Client
     public static partial class MessageTipsViewComponentSystem
     {
         [EntitySystem]
-        public class MessageTipsViewComponentInitializeSystem: YIUIInitializeSystem<MessageTipsViewComponent>
+        private static void YIUIInitialize(this MessageTipsViewComponent self)
         {
-            protected override void YIUIInitialize(MessageTipsViewComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class MessageTipsViewComponentDestroySystem: DestroySystem<MessageTipsViewComponent>
+        private static void Awake(this MessageTipsViewComponent self)
         {
-            protected override void Destroy(MessageTipsViewComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class MessageTipsViewComponentOpenSystem: YIUIOpenSystem<MessageTipsViewComponent>
+        private static void Destroy(this MessageTipsViewComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(MessageTipsViewComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
 
         [EntitySystem]
-        public class MessageTipsViewComponentOpenTweenSystem: YIUIOpenTweenSystem<MessageTipsViewComponent>
+        private static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self)
         {
-            protected override async ETTask YIUIOpenTween(MessageTipsViewComponent self)
-            {
-                await WindowFadeAnim.In(self.UIBase);
-            }
+            await ETTask.CompletedTask;
+            return true;
         }
 
         [EntitySystem]
-        public class MessageTipsViewComponentCloseTweenSystem: YIUICloseTweenSystem<MessageTipsViewComponent>
+        private static async ETTask YIUIOpenTween(this MessageTipsViewComponent self)
         {
-            protected override async ETTask YIUICloseTween(MessageTipsViewComponent self)
-            {
-                await WindowFadeAnim.Out(self.UIBase);
-            }
+            await WindowFadeAnim.In(self.UIBase);
         }
 
         [EntitySystem]
-        [FriendOf(typeof (MessageTipsViewComponent))]
-        public class MessageTipsViewComponentOpenParamVoSystem: YIUIOpenSystem<MessageTipsViewComponent, ParamVo>
+        private static async ETTask YIUICloseTween(this MessageTipsViewComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(MessageTipsViewComponent self, ParamVo vo)
-            {
-                await ETTask.CompletedTask;
-                var content = vo.Get<string>();
-                if (string.IsNullOrEmpty(content))
-                {
-                    Debug.LogError($"MessageTipsView 必须有消息内容 请检查");
-                    return false;
-                }
-                self.ExtraData = vo.Get(1,new MessageTipsExtraData());
-                self.u_DataMessageContent.SetValue(content);
-                self.u_DataShowCancel.SetValue(self.ExtraData.CancelCallBack != null);
-                self.u_DataShowClose.SetValue(self.ExtraData.CloseCallBack != null);
-                self.u_DataConfirmName.SetValue(string.IsNullOrEmpty(self.ExtraData.ConfirmName)? "确定" : self.ExtraData.ConfirmName);
-                self.u_DataCancelName.SetValue(string.IsNullOrEmpty(self.ExtraData.CancelName)? "取消" : self.ExtraData.CancelName);
-                return true;
-            }
+            await WindowFadeAnim.Out(self.UIBase);
         }
-        
+
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this MessageTipsViewComponent self, ParamVo vo)
+        {
+            await ETTask.CompletedTask;
+            var content = vo.Get<string>();
+            if (string.IsNullOrEmpty(content))
+            {
+                Debug.LogError($"MessageTipsView 必须有消息内容 请检查");
+                return false;
+            }
+
+            self.ExtraData = vo.Get(1, new MessageTipsExtraData());
+            self.u_DataMessageContent.SetValue(content);
+            self.u_DataShowCancel.SetValue(self.ExtraData.CancelCallBack != null);
+            self.u_DataShowClose.SetValue(self.ExtraData.CloseCallBack != null);
+            self.u_DataConfirmName.SetValue(string.IsNullOrEmpty(self.ExtraData.ConfirmName)? "确定" : self.ExtraData.ConfirmName);
+            self.u_DataCancelName.SetValue(string.IsNullOrEmpty(self.ExtraData.CancelName)? "取消" : self.ExtraData.CancelName);
+            return true;
+        }
+
         #region YIUIEvent开始
 
         private static void OnEventConfirmAction(this MessageTipsViewComponent self)

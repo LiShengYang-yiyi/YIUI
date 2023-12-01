@@ -9,56 +9,47 @@ namespace ET.Client
     public static partial class GMViewComponentSystem
     {
         [EntitySystem]
-        [FriendOf(typeof (GMViewComponent))]
-        public class GMViewComponentInitializeSystem: YIUIInitializeSystem<GMViewComponent>
+        private static void YIUIInitialize(this GMViewComponent self)
         {
-            protected override void YIUIInitialize(GMViewComponent self)
+            self.m_CommandComponent = self.Root().GetComponent<GMCommandComponent>();
+            self.GMTypeName = self.CommandComponent.GMTypeName;
+            self.GMTypeLoop = new YIUILoopScroll<EGMType, GMTypeItemComponent>(self, self.u_ComGMTypeLoop, self.GMTypeTitleRenderer);
+            self.GMTypeLoop.SetOnClickInfo("u_EventSelect", self.OnClickTitle);
+            self.GMTypeData = new List<EGMType>();
+            foreach (EGMType gmType in Enum.GetValues(typeof (EGMType)))
             {
-                self.m_CommandComponent = self.Root().GetComponent<GMCommandComponent>();
-                self.GMTypeName         = self.CommandComponent.GMTypeName;
-                self.GMTypeLoop         = new YIUILoopScroll<EGMType, GMTypeItemComponent>(self, self.u_ComGMTypeLoop, self.GMTypeTitleRenderer);
-                self.GMTypeLoop.SetOnClickInfo("u_EventSelect", self.OnClickTitle);
-                self.GMTypeData = new List<EGMType>();
-                foreach (EGMType gmType in Enum.GetValues(typeof (EGMType)))
-                {
-                    self.GMTypeData.Add(gmType);
-                }
-
-                self.GMCommandLoop = new YIUILoopScroll<GMCommandInfo, GMCommandItemComponent>(self, self.u_ComGMCommandLoop, self.GMCommandRenderer);
+                self.GMTypeData.Add(gmType);
             }
+
+            self.GMCommandLoop = new YIUILoopScroll<GMCommandInfo, GMCommandItemComponent>(self, self.u_ComGMCommandLoop, self.GMCommandRenderer);
+        }
+        
+        [EntitySystem]
+        private static void Awake(this GMViewComponent self)
+        {
         }
 
         [EntitySystem]
-        public class GMViewComponentDestroySystem: DestroySystem<GMViewComponent>
+        private static void Destroy(this GMViewComponent self)
         {
-            protected override void Destroy(GMViewComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class GMViewComponentEventCloseSystem: YIUIEventSystem<GMViewComponent, OnGMEventClose>
+        private static async ETTask YIUIEvent(this GMViewComponent self, OnGMEventClose message)
         {
-            protected override async ETTask YIUIEvent(GMViewComponent self, OnGMEventClose message)
-            {
-                await self.UIView.CloseAsync();
-            }
+            await self.UIView.CloseAsync();
         }
 
         [EntitySystem]
-        [FriendOf(typeof (GMViewComponent))]
-        public class GMViewComponentOpenSystem: YIUIOpenSystem<GMViewComponent>
+        private static async ETTask<bool> YIUIOpen(this GMViewComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(GMViewComponent self)
-            {
-                if (self.Opened) return true;
-                self.GMTypeLoop.ClearSelect();
-                self.GMTypeLoop.SetDataRefresh(self.GMTypeData, 0);
-                self.GMTypeLoop.RefreshCells();
-                self.Opened = true;
-                await ETTask.CompletedTask;
-                return true;
-            }
+            if (self.Opened) return true;
+            self.GMTypeLoop.ClearSelect();
+            self.GMTypeLoop.SetDataRefresh(self.GMTypeData, 0);
+            self.GMTypeLoop.RefreshCells();
+            self.Opened = true;
+            await ETTask.CompletedTask;
+            return true;
         }
 
         private static void OnClickTitle(this GMViewComponent self, int index, EGMType data, GMTypeItemComponent item, bool select)

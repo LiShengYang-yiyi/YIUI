@@ -8,15 +8,13 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [FriendOf(typeof(YIUIComponent))]
+    [EntitySystemOf(typeof(GMTypeItemComponent))]
     public static partial class GMTypeItemComponentSystem
     {
         [EntitySystem]
-        public class GMTypeItemComponentYIUIBindSystem: YIUIBindSystem<GMTypeItemComponent>
+        private static void YIUIBind(this GMTypeItemComponent self)
         {
-            protected override void YIUIBind(GMTypeItemComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this GMTypeItemComponent self)
