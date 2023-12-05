@@ -14,6 +14,7 @@ namespace ET.Client
 
         internal void CacheTimeCountDownDestroyPanel()
         {
+            StopCountDownDestroyPanel();
             m_Token = new ETCancellationToken();
             DoCountDownDestroyPanel(m_Token).Coroutine();
         }
