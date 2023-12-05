@@ -267,6 +267,7 @@ namespace YIUIFramework
         {
             data.ElapseTime       = 0;
             data.LastCallBackTime = GetTime();
+            data.StartTime        = data.LastCallBackTime;
             data.EndTime          = data.LastCallBackTime + data.TotalTime;
             return true;
         }
