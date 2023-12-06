@@ -128,20 +128,6 @@ namespace YIUIFramework.Editor
 
                     sb.AppendFormat("        public EntityRef<YIUIPanelComponent> u_UIPanel;\r\n");
                     sb.AppendFormat("        public YIUIPanelComponent UIPanel => u_UIPanel;\r\n");
-
-                    /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
-                        self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
-                    sb.AppendFormat("        public EPanelLayer Layer = EPanelLayer.{0};\r\n",
-                        self.PanelLayer);
-                    sb.AppendFormat("        public EPanelOption PanelOption = EPanelOption.{0};\r\n",
-                        self.PanelOption.ToString().Replace(", ", "|EPanelOption."));
-                    sb.AppendFormat(
-                        "        public EPanelStackOption StackOption = EPanelStackOption.{0};\r\n",
-                        self.PanelStackOption);
-                    sb.AppendFormat("        public int Priority = {0};\r\n", self.Priority);
-                    if (self.PanelOption.HasFlag(EPanelOption.TimeCache))
-                        sb.AppendFormat("        public float CachePanelTime = {0};\r\n\r\n",
-                            self.CachePanelTime);*/
                     break;
                 case EUICodeType.View:
                     sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
@@ -152,14 +138,6 @@ namespace YIUIFramework.Editor
 
                     sb.AppendFormat("        public EntityRef<YIUIViewComponent> u_UIView;\r\n");
                     sb.AppendFormat("        public YIUIViewComponent UIView => u_UIView;\r\n");
-
-                    /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
-                        self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
-                    sb.AppendFormat(
-                        "        public EViewWindowType ViewWindowType = EViewWindowType.{0};\r\n",
-                        self.ViewWindowType);
-                    sb.AppendFormat("        public EViewStackOption StackOption = EViewStackOption.{0};\r\n",
-                        self.ViewStackOption);*/
                     break;
                 default:
                     Debug.LogError($"新增类型未实现 {self.UICodeType}");
