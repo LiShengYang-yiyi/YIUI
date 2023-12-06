@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using ET.Client;
 using HybridCLR;
 using UnityEngine;
 
@@ -82,19 +83,16 @@ namespace ET
 
                 this.assembly = Assembly.Load(assBytes, pdbBytes);
                 
-                Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                foreach (Assembly ass in assemblies)
-                {
-                    if (ass.GetName().Name == "YIUIFramework")
-                    {
-                        this.uiAssembly = ass;
-                        break;
-                    }
-                }
-
                 Assembly hotfixAssembly = this.LoadHotfix();
 
-                World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[] { typeof(World).Assembly, typeof(Init).Assembly, this.assembly, this.uiAssembly, hotfixAssembly });
+                World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[]
+                {
+                    typeof(YIUIComponent).Assembly,
+                    typeof(World).Assembly, 
+                    typeof(Init).Assembly, 
+                    this.assembly, 
+                    hotfixAssembly
+                });
             }
 
             IStaticMethod start = new StaticMethod(this.assembly, "ET.Entry", "Start");
@@ -128,7 +126,15 @@ namespace ET
         {
             Assembly hotfixAssembly = this.LoadHotfix();
 
-            CodeTypes codeTypes = World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[] { typeof(World).Assembly, typeof(Init).Assembly, this.assembly, hotfixAssembly });
+            CodeTypes codeTypes = World.Instance.AddSingleton<CodeTypes, Assembly[]>(
+                new[]
+                {
+                    typeof(YIUIComponent).Assembly,
+                    typeof(World).Assembly, 
+                    typeof(Init).Assembly, 
+                    this.assembly, 
+                    hotfixAssembly
+                });
             codeTypes.CreateCode();
 
             Log.Debug($"reload dll finish!");
