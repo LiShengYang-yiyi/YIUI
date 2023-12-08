@@ -68,9 +68,10 @@ namespace YIUIFramework
                 SetEnabled(false);
                 return;
             }
-
+            
             if (m_LastSpriteName == dataValue)
             {
+                SetEnabled(true);
                 return;
             }
 
@@ -88,23 +89,34 @@ namespace YIUIFramework
         {
             ReleaseLastSprite();
             
+            #if UNITY_EDITOR
             if (!YIUILoadHelper.VerifyAssetValidity(resName))
             {
                 Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
-            }
+            }            
+            #endif
             
             var sprite = await YIUILoadHelper.LoadAssetAsync<Sprite>(resName);
-            if (m_Image != null)
+            
+            if (m_Image != null && sprite != null)
             {
                 m_LastSprite   = sprite;
                 m_Image.sprite = sprite;
                 if (m_SetNativeSize)
                     m_Image.SetNativeSize();
+                
+                SetEnabled(true);
             }
-
-            SetEnabled(true);
+            else
+            {
+                if (m_Image == null)
+                    Logger.LogError($"{this.gameObject.name} m_Image == null");
+                if (sprite == null)
+                    Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                SetEnabled(false);
+            }
         }
 
         protected override void UnBindData()
@@ -114,7 +126,6 @@ namespace YIUIFramework
             {
                 return;
             }
-
             ReleaseLastSprite();
         }
 
