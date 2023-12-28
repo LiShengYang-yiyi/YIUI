@@ -7,10 +7,10 @@ namespace ET.Client
     //LabelText特性标记转换为显示名称
     public enum EGMType
     {
-        [LabelText("公共")]
+        [GMGroup("公共")]
         Common = 1,
 
-        [LabelText("案列")]
+        [GMGroup("案列")]
         Test = 999,
     }
 }
