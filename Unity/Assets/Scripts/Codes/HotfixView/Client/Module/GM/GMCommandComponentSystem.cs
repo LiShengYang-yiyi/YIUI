@@ -39,11 +39,10 @@ namespace ET.Client
 
             foreach (FieldInfo field in fields)
             {
-                LabelTextAttribute attribute = (LabelTextAttribute)Attribute.GetCustomAttribute(field, typeof (LabelTextAttribute));
+                GMGroupAttribute attribute = (GMGroupAttribute)Attribute.GetCustomAttribute(field, typeof (GMGroupAttribute));
                 if (attribute != null)
                 {
-                    string labelText = attribute.Text;
-                    self.GMTypeName.Add(field.Name, labelText);
+                    self.GMTypeName.Add(field.Name, attribute.Name);
                 }
             }
         }
