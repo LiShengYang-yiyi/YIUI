@@ -52,20 +52,13 @@ namespace ET.Client
             var types = CodeTypes.Instance.GetTypes(typeof (GMAttribute));
             foreach (var type in types)
             {
-                if (!type.IsSubclassOf(typeof(IGMCommand)))
-                {
-                    Log.Error($"错误 没有继承IGMCommand接口 {type.Name}");
-                    continue;
-                }
-
-                var gmCommandInfo = new GMCommandInfo();
-
                 object[] attrs = type.GetCustomAttributes(typeof (GMAttribute), false);
                 if (attrs.Length >= 2)
                 {
                     Debug.LogError($"{type.Name} 有多个相同特性 只允许有一个 GMAttribute 默认取第一个");
                 }
 
+                var gmCommandInfo = new GMCommandInfo();
                 var eventAttribut = (GMAttribute)attrs[0];
                 var obj           = (IGMCommand)Activator.CreateInstance(type);
                 gmCommandInfo.GMType = eventAttribut.GMType;
