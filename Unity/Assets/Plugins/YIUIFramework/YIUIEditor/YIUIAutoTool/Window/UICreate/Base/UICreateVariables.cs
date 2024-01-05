@@ -92,8 +92,10 @@ namespace YIUIFramework.Editor
                 }
 
                 existName.Add(newName);
-                sb.AppendFormat("        public {0} {1};\r\n",                
-                    $"{UIStaticHelper.UINamespace}.{resName}Component", newName);
+                sb.AppendFormat("        public {0} {1};\r\n",
+                    $"EntityRef<{UIStaticHelper.UINamespace}.{resName}Component>", newName);
+                sb.AppendFormat("        public {0} {1} => {2};\r\n",
+                    $"{UIStaticHelper.UINamespace}.{resName}Component", newName.Replace(NameUtility.FirstName, ""), newName);
             }
         }
 
@@ -122,7 +124,7 @@ namespace YIUIFramework.Editor
                 case EUICodeType.Panel:
                     sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
                     sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
-                    
+
                     sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
                     sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
 
@@ -132,7 +134,7 @@ namespace YIUIFramework.Editor
                 case EUICodeType.View:
                     sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
                     sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
-                    
+
                     sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
                     sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
 
