@@ -10,11 +10,6 @@ namespace YIUIFramework
 {
     public partial class CountDownMgr
     {
-        private bool RemoveByData(CountDownData data)
-        {
-            return m_CallbackGuidDic.Remove(data.TimerCallback);
-        }
-
         private bool TryAddCallback(TimerCallback timerCallback)
         {
             if (m_CallbackGuidDic.ContainsKey(timerCallback))
@@ -36,8 +31,9 @@ namespace YIUIFramework
                 return false;
             }
 
-            var callbackGuid = m_CallbackGuidDic[timerCallback];
-            return Remove(callbackGuid);
+            Remove(m_CallbackGuidDic[timerCallback]);
+            m_CallbackGuidDic.Remove(timerCallback);
+            return true;
         }
 
         /// <summary>
@@ -125,6 +121,25 @@ namespace YIUIFramework
             }
 
             return result;
+        }
+        
+        /// <summary>
+        /// 判断这个倒计时是否存在
+        /// </summary>
+        public bool ExistTimerCallback(TimerCallback timerCallback)
+        {
+            return m_CallbackGuidDic.ContainsKey(timerCallback);
+        }
+
+        /// <summary>
+        /// 获取一个倒计时的GUID 如果存在则有
+        /// </summary>
+        public int GetTimerCallbackGuid(TimerCallback timerCallback)
+        {
+            if (!m_CallbackGuidDic.TryGetValue(timerCallback, out int guid))
+                return 0;
+
+            return guid;
         }
 
         /// <summary>
