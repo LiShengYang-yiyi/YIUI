@@ -19,7 +19,7 @@ namespace ET.Client
         private YIUIComponent _UiBase;
 
         private ETTask _LastETTask;
-        
+
         public YIUIComponent UIBase
         {
             get
@@ -156,7 +156,7 @@ namespace ET.Client
             {
                 await this._LastETTask;
             }
-            
+
             _LastETTask = ETTask.Create(true);
             var tweent = await YIUIEventSystem.OpenTween(this.UIBase.OwnerUIEntity);
             if (!tweent)
@@ -167,7 +167,9 @@ namespace ET.Client
                 if (this.UIBase.UIBindVo.CodeType == EUICodeType.Panel)
                     await WindowFadeAnim.In(this.UIBase);
             }
-            _LastETTask.SetResult();
+
+            if (this.IsDisposed) return;
+            _LastETTask?.SetResult();
             _LastETTask = null;
         }
 
@@ -177,7 +179,7 @@ namespace ET.Client
             {
                 await this._LastETTask;
             }
-            
+
             _LastETTask = ETTask.Create(true);
             var tweent = await YIUIEventSystem.CloseTween(this.UIBase.OwnerUIEntity);
             if (!tweent)
@@ -185,7 +187,9 @@ namespace ET.Client
                 if (this.UIBase.UIBindVo.CodeType == EUICodeType.Panel)
                     await WindowFadeAnim.Out(this.UIBase);
             }
-            _LastETTask.SetResult();
+
+            if (this.IsDisposed) return;
+            _LastETTask?.SetResult();
             _LastETTask = null;
         }
     }
