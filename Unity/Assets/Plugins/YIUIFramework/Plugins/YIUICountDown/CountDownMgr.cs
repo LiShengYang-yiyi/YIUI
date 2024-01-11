@@ -68,19 +68,19 @@ namespace YIUIFramework
         /// 当然已经存在的倒计时数量
         /// </summary>
         private int m_AtCount = 0;
-        
+
         //统一所有取时间都用这个 且方便修改
         private static float GetTime()
         {
             //这是一个倒计时时间不受暂停影响的
             return Time.realtimeSinceStartup;
         }
-        
+
         public void LateUpdate()
         {
             ManagerUpdate();
         }
-        
+
         //为了不受mono暂停影响 所以使用异步调用
         public void ManagerUpdate()
         {
@@ -197,7 +197,6 @@ namespace YIUIFramework
 
             var data = m_AllCountDown[guid];
             m_AllCountDown.Remove(guid);
-            RemoveByData(data);
             RefPool.Put(data);
             m_AtCount--;
 
@@ -266,6 +265,5 @@ namespace YIUIFramework
         }
 
         #endregion
-        
     }
 }
