@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ET.Analyzer;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -164,6 +165,15 @@ namespace {{namespaceName}}
                 string argsTypesVarsWithout0 = string.Join(", ", argsTypeVarsWithout0List);
 
                 SpeicalProcessForArgs();
+                
+                if (methodSymbol.ReturnType.ToDisplayString() == "void")
+                {
+                    code = code.Replace("$returnType$", "void");
+                    code = code.Replace("$return$", "");
+                }else{
+                    code = code.Replace("$returnType$", methodSymbol.ReturnType.ToDisplayString());
+                    code = code.Replace("$return$", "return ");
+                }
                 
                 code = code.Replace("$attribute$", attributeString);
                 code = code.Replace("$attributeType$", attributeType);
