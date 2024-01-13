@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MemoryPack;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace ET
 {
@@ -32,7 +34,8 @@ namespace ET
 
             // 注册Mongo type
             MongoRegister.Init();
-
+            // 注册Entity序列化器
+            EntitySerializeRegister.Init();
             World.Instance.AddSingleton<IdGenerater>();
             World.Instance.AddSingleton<OpcodeType>();
             World.Instance.AddSingleton<ObjectPool>();
@@ -43,6 +46,8 @@ namespace ET
             
             // 创建需要reload的code singleton
             CodeTypes.Instance.CreateCode();
+            
+            await World.Instance.AddSingleton<ConfigLoader>().LoadAsync();
 
             await FiberManager.Instance.Create(SchedulerType.Main, ConstFiberId.Main, 0, SceneType.Main, "");
         }

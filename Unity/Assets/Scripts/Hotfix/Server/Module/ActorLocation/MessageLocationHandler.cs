@@ -9,7 +9,6 @@ namespace ET.Server
 
         public async ETTask Handle(Entity entity, Address fromAddress, MessageObject actorMessage)
         {
-            using MessageObject _ = actorMessage;
             Fiber fiber = entity.Fiber();
             if (actorMessage is not Message message)
             {
@@ -23,7 +22,8 @@ namespace ET.Server
                 return;
             }
             
-            MessageResponse response = new() {RpcId = message.RpcId};
+            MessageResponse response = ObjectPool.Instance.Fetch<MessageResponse>();
+            response.RpcId = message.RpcId;
             fiber.Root.GetComponent<ProcessInnerSender>().Reply(fromAddress, response);
 
             await this.Run(e, message);
@@ -51,7 +51,6 @@ namespace ET.Server
         {
             try
             {
-                using MessageObject _ = actorMessage;
                 Fiber fiber = entity.Fiber();
                 if (actorMessage is not Request request)
                 {
@@ -82,7 +81,7 @@ namespace ET.Server
                     response.Message = exception.ToString();
                 }
                 response.RpcId = rpcId;
-                fiber.ProcessInnerSender.Reply(fromAddress, response);
+                fiber.Root.GetComponent<ProcessInnerSender>().Reply(fromAddress, response);
             }
             catch (Exception e)
             {

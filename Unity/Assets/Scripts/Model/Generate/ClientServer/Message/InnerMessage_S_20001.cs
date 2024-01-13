@@ -9,9 +9,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectQueryRequest: MessageObject, IRequest
 	{
-		public static ObjectQueryRequest Create(bool isFromPool = true) 
+		public static ObjectQueryRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectQueryRequest() : ObjectPool.Instance.Fetch(typeof(ObjectQueryRequest)) as ObjectQueryRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectQueryRequest), isFromPool) as ObjectQueryRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -40,9 +40,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2A_Reload: MessageObject, IRequest
 	{
-		public static M2A_Reload Create(bool isFromPool = true) 
+		public static M2A_Reload Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2A_Reload() : ObjectPool.Instance.Fetch(typeof(M2A_Reload)) as M2A_Reload; 
+			return ObjectPool.Instance.Fetch(typeof(M2A_Reload), isFromPool) as M2A_Reload; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -62,9 +62,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class A2M_Reload: MessageObject, IResponse
 	{
-		public static A2M_Reload Create(bool isFromPool = true) 
+		public static A2M_Reload Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new A2M_Reload() : ObjectPool.Instance.Fetch(typeof(A2M_Reload)) as A2M_Reload; 
+			return ObjectPool.Instance.Fetch(typeof(A2M_Reload), isFromPool) as A2M_Reload; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -93,9 +93,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2G_LockRequest: MessageObject, IRequest
 	{
-		public static G2G_LockRequest Create(bool isFromPool = true) 
+		public static G2G_LockRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2G_LockRequest() : ObjectPool.Instance.Fetch(typeof(G2G_LockRequest)) as G2G_LockRequest; 
+			return ObjectPool.Instance.Fetch(typeof(G2G_LockRequest), isFromPool) as G2G_LockRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -123,9 +123,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2G_LockResponse: MessageObject, IResponse
 	{
-		public static G2G_LockResponse Create(bool isFromPool = true) 
+		public static G2G_LockResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2G_LockResponse() : ObjectPool.Instance.Fetch(typeof(G2G_LockResponse)) as G2G_LockResponse; 
+			return ObjectPool.Instance.Fetch(typeof(G2G_LockResponse), isFromPool) as G2G_LockResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -154,9 +154,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2G_LockReleaseRequest: MessageObject, IRequest
 	{
-		public static G2G_LockReleaseRequest Create(bool isFromPool = true) 
+		public static G2G_LockReleaseRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2G_LockReleaseRequest() : ObjectPool.Instance.Fetch(typeof(G2G_LockReleaseRequest)) as G2G_LockReleaseRequest; 
+			return ObjectPool.Instance.Fetch(typeof(G2G_LockReleaseRequest), isFromPool) as G2G_LockReleaseRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -184,9 +184,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2G_LockReleaseResponse: MessageObject, IResponse
 	{
-		public static G2G_LockReleaseResponse Create(bool isFromPool = true) 
+		public static G2G_LockReleaseResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2G_LockReleaseResponse() : ObjectPool.Instance.Fetch(typeof(G2G_LockReleaseResponse)) as G2G_LockReleaseResponse; 
+			return ObjectPool.Instance.Fetch(typeof(G2G_LockReleaseResponse), isFromPool) as G2G_LockReleaseResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -215,9 +215,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectAddRequest: MessageObject, IRequest
 	{
-		public static ObjectAddRequest Create(bool isFromPool = true) 
+		public static ObjectAddRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectAddRequest() : ObjectPool.Instance.Fetch(typeof(ObjectAddRequest)) as ObjectAddRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectAddRequest), isFromPool) as ObjectAddRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -249,9 +249,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectAddResponse: MessageObject, IResponse
 	{
-		public static ObjectAddResponse Create(bool isFromPool = true) 
+		public static ObjectAddResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectAddResponse() : ObjectPool.Instance.Fetch(typeof(ObjectAddResponse)) as ObjectAddResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectAddResponse), isFromPool) as ObjectAddResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -280,9 +280,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectLockRequest: MessageObject, IRequest
 	{
-		public static ObjectLockRequest Create(bool isFromPool = true) 
+		public static ObjectLockRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectLockRequest() : ObjectPool.Instance.Fetch(typeof(ObjectLockRequest)) as ObjectLockRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectLockRequest), isFromPool) as ObjectLockRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -318,9 +318,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectLockResponse: MessageObject, IResponse
 	{
-		public static ObjectLockResponse Create(bool isFromPool = true) 
+		public static ObjectLockResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectLockResponse() : ObjectPool.Instance.Fetch(typeof(ObjectLockResponse)) as ObjectLockResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectLockResponse), isFromPool) as ObjectLockResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -349,9 +349,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectUnLockRequest: MessageObject, IRequest
 	{
-		public static ObjectUnLockRequest Create(bool isFromPool = true) 
+		public static ObjectUnLockRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectUnLockRequest() : ObjectPool.Instance.Fetch(typeof(ObjectUnLockRequest)) as ObjectUnLockRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectUnLockRequest), isFromPool) as ObjectUnLockRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -387,9 +387,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectUnLockResponse: MessageObject, IResponse
 	{
-		public static ObjectUnLockResponse Create(bool isFromPool = true) 
+		public static ObjectUnLockResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectUnLockResponse() : ObjectPool.Instance.Fetch(typeof(ObjectUnLockResponse)) as ObjectUnLockResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectUnLockResponse), isFromPool) as ObjectUnLockResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -418,9 +418,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectRemoveRequest: MessageObject, IRequest
 	{
-		public static ObjectRemoveRequest Create(bool isFromPool = true) 
+		public static ObjectRemoveRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectRemoveRequest() : ObjectPool.Instance.Fetch(typeof(ObjectRemoveRequest)) as ObjectRemoveRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectRemoveRequest), isFromPool) as ObjectRemoveRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -448,9 +448,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectRemoveResponse: MessageObject, IResponse
 	{
-		public static ObjectRemoveResponse Create(bool isFromPool = true) 
+		public static ObjectRemoveResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectRemoveResponse() : ObjectPool.Instance.Fetch(typeof(ObjectRemoveResponse)) as ObjectRemoveResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectRemoveResponse), isFromPool) as ObjectRemoveResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -479,9 +479,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectGetRequest: MessageObject, IRequest
 	{
-		public static ObjectGetRequest Create(bool isFromPool = true) 
+		public static ObjectGetRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectGetRequest() : ObjectPool.Instance.Fetch(typeof(ObjectGetRequest)) as ObjectGetRequest; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectGetRequest), isFromPool) as ObjectGetRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -509,9 +509,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectGetResponse: MessageObject, IResponse
 	{
-		public static ObjectGetResponse Create(bool isFromPool = true) 
+		public static ObjectGetResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectGetResponse() : ObjectPool.Instance.Fetch(typeof(ObjectGetResponse)) as ObjectGetResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectGetResponse), isFromPool) as ObjectGetResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -548,9 +548,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class R2G_GetLoginKey: MessageObject, IRequest
 	{
-		public static R2G_GetLoginKey Create(bool isFromPool = true) 
+		public static R2G_GetLoginKey Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new R2G_GetLoginKey() : ObjectPool.Instance.Fetch(typeof(R2G_GetLoginKey)) as R2G_GetLoginKey; 
+			return ObjectPool.Instance.Fetch(typeof(R2G_GetLoginKey), isFromPool) as R2G_GetLoginKey; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -574,9 +574,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2R_GetLoginKey: MessageObject, IResponse
 	{
-		public static G2R_GetLoginKey Create(bool isFromPool = true) 
+		public static G2R_GetLoginKey Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2R_GetLoginKey() : ObjectPool.Instance.Fetch(typeof(G2R_GetLoginKey)) as G2R_GetLoginKey; 
+			return ObjectPool.Instance.Fetch(typeof(G2R_GetLoginKey), isFromPool) as G2R_GetLoginKey; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -612,9 +612,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2M_SessionDisconnect: MessageObject, ILocationMessage
 	{
-		public static G2M_SessionDisconnect Create(bool isFromPool = true) 
+		public static G2M_SessionDisconnect Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2M_SessionDisconnect() : ObjectPool.Instance.Fetch(typeof(G2M_SessionDisconnect)) as G2M_SessionDisconnect; 
+			return ObjectPool.Instance.Fetch(typeof(G2M_SessionDisconnect), isFromPool) as G2M_SessionDisconnect; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -634,9 +634,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class ObjectQueryResponse: MessageObject, IResponse
 	{
-		public static ObjectQueryResponse Create(bool isFromPool = true) 
+		public static ObjectQueryResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new ObjectQueryResponse() : ObjectPool.Instance.Fetch(typeof(ObjectQueryResponse)) as ObjectQueryResponse; 
+			return ObjectPool.Instance.Fetch(typeof(ObjectQueryResponse), isFromPool) as ObjectQueryResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -669,9 +669,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2M_UnitTransferRequest: MessageObject, IRequest
 	{
-		public static M2M_UnitTransferRequest Create(bool isFromPool = true) 
+		public static M2M_UnitTransferRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2M_UnitTransferRequest() : ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferRequest)) as M2M_UnitTransferRequest; 
+			return ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferRequest), isFromPool) as M2M_UnitTransferRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -703,9 +703,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2M_UnitTransferResponse: MessageObject, IResponse
 	{
-		public static M2M_UnitTransferResponse Create(bool isFromPool = true) 
+		public static M2M_UnitTransferResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2M_UnitTransferResponse() : ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferResponse)) as M2M_UnitTransferResponse; 
+			return ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferResponse), isFromPool) as M2M_UnitTransferResponse; 
 		}
 
 		[MemoryPackOrder(0)]

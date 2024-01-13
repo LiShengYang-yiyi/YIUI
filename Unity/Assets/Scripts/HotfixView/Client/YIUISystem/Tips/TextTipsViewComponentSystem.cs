@@ -42,7 +42,7 @@ namespace ET.Client
         private static async ETTask PlayAnimation(this TextTipsViewComponent self)
         {
             self.u_ComAnimation.Play(self.u_ComAnimation.clip.name);
-            await self.Fiber().TimerComponent.WaitAsync((long)(self.u_ComAnimation.clip.length * 1000));
+            await self.Root().GetComponent<TimerComponent>().WaitAsync((long)(self.u_ComAnimation.clip.length * 1000));
             await TipsHelper.CloseTipsView(self);
         }
 

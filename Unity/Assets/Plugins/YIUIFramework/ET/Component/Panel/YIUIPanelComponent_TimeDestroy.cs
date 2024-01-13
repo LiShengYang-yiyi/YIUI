@@ -31,7 +31,7 @@ namespace ET.Client
         {
             try
             {
-                await this.Fiber().TimerComponent.WaitAsync((long)(CachePanelTime * 1000), token);
+                await this.Root().GetComponent<TimerComponent>().WaitAsync((long)(CachePanelTime * 1000), token);
                 if (token.IsCancel()) //取消倒计时
                 {
                     return;

@@ -7,9 +7,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class HttpGetRouterResponse: MessageObject
 	{
-		public static HttpGetRouterResponse Create(bool isFromPool = true) 
+		public static HttpGetRouterResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new HttpGetRouterResponse() : ObjectPool.Instance.Fetch(typeof(HttpGetRouterResponse)) as HttpGetRouterResponse; 
+			return ObjectPool.Instance.Fetch(typeof(HttpGetRouterResponse), isFromPool) as HttpGetRouterResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -33,9 +33,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class RouterSync: MessageObject
 	{
-		public static RouterSync Create(bool isFromPool = true) 
+		public static RouterSync Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new RouterSync() : ObjectPool.Instance.Fetch(typeof(RouterSync)) as RouterSync; 
+			return ObjectPool.Instance.Fetch(typeof(RouterSync), isFromPool) as RouterSync; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -60,9 +60,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_TestRequest: MessageObject, ILocationRequest
 	{
-		public static C2M_TestRequest Create(bool isFromPool = true) 
+		public static C2M_TestRequest Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_TestRequest() : ObjectPool.Instance.Fetch(typeof(C2M_TestRequest)) as C2M_TestRequest; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_TestRequest), isFromPool) as C2M_TestRequest; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -86,9 +86,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_TestResponse: MessageObject, IResponse
 	{
-		public static M2C_TestResponse Create(bool isFromPool = true) 
+		public static M2C_TestResponse Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_TestResponse() : ObjectPool.Instance.Fetch(typeof(M2C_TestResponse)) as M2C_TestResponse; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_TestResponse), isFromPool) as M2C_TestResponse; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -121,9 +121,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2G_EnterMap: MessageObject, ISessionRequest
 	{
-		public static C2G_EnterMap Create(bool isFromPool = true) 
+		public static C2G_EnterMap Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2G_EnterMap() : ObjectPool.Instance.Fetch(typeof(C2G_EnterMap)) as C2G_EnterMap; 
+			return ObjectPool.Instance.Fetch(typeof(C2G_EnterMap), isFromPool) as C2G_EnterMap; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -143,9 +143,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_EnterMap: MessageObject, ISessionResponse
 	{
-		public static G2C_EnterMap Create(bool isFromPool = true) 
+		public static G2C_EnterMap Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_EnterMap() : ObjectPool.Instance.Fetch(typeof(G2C_EnterMap)) as G2C_EnterMap; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_EnterMap), isFromPool) as G2C_EnterMap; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -178,9 +178,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class MoveInfo: MessageObject
 	{
-		public static MoveInfo Create(bool isFromPool = true) 
+		public static MoveInfo Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new MoveInfo() : ObjectPool.Instance.Fetch(typeof(MoveInfo)) as MoveInfo; 
+			return ObjectPool.Instance.Fetch(typeof(MoveInfo), isFromPool) as MoveInfo; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -208,9 +208,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class UnitInfo: MessageObject
 	{
-		public static UnitInfo Create(bool isFromPool = true) 
+		public static UnitInfo Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new UnitInfo() : ObjectPool.Instance.Fetch(typeof(UnitInfo)) as UnitInfo; 
+			return ObjectPool.Instance.Fetch(typeof(UnitInfo), isFromPool) as UnitInfo; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -254,9 +254,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_CreateUnits: MessageObject, IMessage
 	{
-		public static M2C_CreateUnits Create(bool isFromPool = true) 
+		public static M2C_CreateUnits Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_CreateUnits() : ObjectPool.Instance.Fetch(typeof(M2C_CreateUnits)) as M2C_CreateUnits; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_CreateUnits), isFromPool) as M2C_CreateUnits; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -276,9 +276,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_CreateMyUnit: MessageObject, IMessage
 	{
-		public static M2C_CreateMyUnit Create(bool isFromPool = true) 
+		public static M2C_CreateMyUnit Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_CreateMyUnit() : ObjectPool.Instance.Fetch(typeof(M2C_CreateMyUnit)) as M2C_CreateMyUnit; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_CreateMyUnit), isFromPool) as M2C_CreateMyUnit; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -298,9 +298,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_StartSceneChange: MessageObject, IMessage
 	{
-		public static M2C_StartSceneChange Create(bool isFromPool = true) 
+		public static M2C_StartSceneChange Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_StartSceneChange() : ObjectPool.Instance.Fetch(typeof(M2C_StartSceneChange)) as M2C_StartSceneChange; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_StartSceneChange), isFromPool) as M2C_StartSceneChange; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -324,9 +324,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_RemoveUnits: MessageObject, IMessage
 	{
-		public static M2C_RemoveUnits Create(bool isFromPool = true) 
+		public static M2C_RemoveUnits Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_RemoveUnits() : ObjectPool.Instance.Fetch(typeof(M2C_RemoveUnits)) as M2C_RemoveUnits; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_RemoveUnits), isFromPool) as M2C_RemoveUnits; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -346,9 +346,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_PathfindingResult: MessageObject, ILocationMessage
 	{
-		public static C2M_PathfindingResult Create(bool isFromPool = true) 
+		public static C2M_PathfindingResult Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_PathfindingResult() : ObjectPool.Instance.Fetch(typeof(C2M_PathfindingResult)) as C2M_PathfindingResult; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_PathfindingResult), isFromPool) as C2M_PathfindingResult; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -372,9 +372,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_Stop: MessageObject, ILocationMessage
 	{
-		public static C2M_Stop Create(bool isFromPool = true) 
+		public static C2M_Stop Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_Stop() : ObjectPool.Instance.Fetch(typeof(C2M_Stop)) as C2M_Stop; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_Stop), isFromPool) as C2M_Stop; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -394,9 +394,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_PathfindingResult: MessageObject, IMessage
 	{
-		public static M2C_PathfindingResult Create(bool isFromPool = true) 
+		public static M2C_PathfindingResult Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_PathfindingResult() : ObjectPool.Instance.Fetch(typeof(M2C_PathfindingResult)) as M2C_PathfindingResult; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_PathfindingResult), isFromPool) as M2C_PathfindingResult; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -424,9 +424,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_Stop: MessageObject, IMessage
 	{
-		public static M2C_Stop Create(bool isFromPool = true) 
+		public static M2C_Stop Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_Stop() : ObjectPool.Instance.Fetch(typeof(M2C_Stop)) as M2C_Stop; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_Stop), isFromPool) as M2C_Stop; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -459,9 +459,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2G_Ping: MessageObject, ISessionRequest
 	{
-		public static C2G_Ping Create(bool isFromPool = true) 
+		public static C2G_Ping Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2G_Ping() : ObjectPool.Instance.Fetch(typeof(C2G_Ping)) as C2G_Ping; 
+			return ObjectPool.Instance.Fetch(typeof(C2G_Ping), isFromPool) as C2G_Ping; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -481,9 +481,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_Ping: MessageObject, ISessionResponse
 	{
-		public static G2C_Ping Create(bool isFromPool = true) 
+		public static G2C_Ping Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_Ping() : ObjectPool.Instance.Fetch(typeof(G2C_Ping)) as G2C_Ping; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_Ping), isFromPool) as G2C_Ping; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -515,9 +515,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_Test: MessageObject, ISessionMessage
 	{
-		public static G2C_Test Create(bool isFromPool = true) 
+		public static G2C_Test Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_Test() : ObjectPool.Instance.Fetch(typeof(G2C_Test)) as G2C_Test; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_Test), isFromPool) as G2C_Test; 
 		}
 
 		public override void Dispose() 
@@ -534,9 +534,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_Reload: MessageObject, ISessionRequest
 	{
-		public static C2M_Reload Create(bool isFromPool = true) 
+		public static C2M_Reload Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_Reload() : ObjectPool.Instance.Fetch(typeof(C2M_Reload)) as C2M_Reload; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_Reload), isFromPool) as C2M_Reload; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -564,9 +564,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_Reload: MessageObject, ISessionResponse
 	{
-		public static M2C_Reload Create(bool isFromPool = true) 
+		public static M2C_Reload Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_Reload() : ObjectPool.Instance.Fetch(typeof(M2C_Reload)) as M2C_Reload; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_Reload), isFromPool) as M2C_Reload; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -595,9 +595,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2R_Login: MessageObject, ISessionRequest
 	{
-		public static C2R_Login Create(bool isFromPool = true) 
+		public static C2R_Login Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2R_Login() : ObjectPool.Instance.Fetch(typeof(C2R_Login)) as C2R_Login; 
+			return ObjectPool.Instance.Fetch(typeof(C2R_Login), isFromPool) as C2R_Login; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -625,9 +625,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class R2C_Login: MessageObject, ISessionResponse
 	{
-		public static R2C_Login Create(bool isFromPool = true) 
+		public static R2C_Login Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new R2C_Login() : ObjectPool.Instance.Fetch(typeof(R2C_Login)) as R2C_Login; 
+			return ObjectPool.Instance.Fetch(typeof(R2C_Login), isFromPool) as R2C_Login; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -668,9 +668,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2G_LoginGate: MessageObject, ISessionRequest
 	{
-		public static C2G_LoginGate Create(bool isFromPool = true) 
+		public static C2G_LoginGate Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2G_LoginGate() : ObjectPool.Instance.Fetch(typeof(C2G_LoginGate)) as C2G_LoginGate; 
+			return ObjectPool.Instance.Fetch(typeof(C2G_LoginGate), isFromPool) as C2G_LoginGate; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -698,9 +698,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_LoginGate: MessageObject, ISessionResponse
 	{
-		public static G2C_LoginGate Create(bool isFromPool = true) 
+		public static G2C_LoginGate Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_LoginGate() : ObjectPool.Instance.Fetch(typeof(G2C_LoginGate)) as G2C_LoginGate; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_LoginGate), isFromPool) as G2C_LoginGate; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -732,9 +732,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_TestHotfixMessage: MessageObject, ISessionMessage
 	{
-		public static G2C_TestHotfixMessage Create(bool isFromPool = true) 
+		public static G2C_TestHotfixMessage Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_TestHotfixMessage() : ObjectPool.Instance.Fetch(typeof(G2C_TestHotfixMessage)) as G2C_TestHotfixMessage; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_TestHotfixMessage), isFromPool) as G2C_TestHotfixMessage; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -755,9 +755,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_TestRobotCase: MessageObject, ILocationRequest
 	{
-		public static C2M_TestRobotCase Create(bool isFromPool = true) 
+		public static C2M_TestRobotCase Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_TestRobotCase() : ObjectPool.Instance.Fetch(typeof(C2M_TestRobotCase)) as C2M_TestRobotCase; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_TestRobotCase), isFromPool) as C2M_TestRobotCase; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -781,9 +781,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_TestRobotCase: MessageObject, ILocationResponse
 	{
-		public static M2C_TestRobotCase Create(bool isFromPool = true) 
+		public static M2C_TestRobotCase Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_TestRobotCase() : ObjectPool.Instance.Fetch(typeof(M2C_TestRobotCase)) as M2C_TestRobotCase; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_TestRobotCase), isFromPool) as M2C_TestRobotCase; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -815,9 +815,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_TestRobotCase2: MessageObject, ILocationMessage
 	{
-		public static C2M_TestRobotCase2 Create(bool isFromPool = true) 
+		public static C2M_TestRobotCase2 Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_TestRobotCase2() : ObjectPool.Instance.Fetch(typeof(C2M_TestRobotCase2)) as C2M_TestRobotCase2; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_TestRobotCase2), isFromPool) as C2M_TestRobotCase2; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -841,9 +841,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_TestRobotCase2: MessageObject, ILocationMessage
 	{
-		public static M2C_TestRobotCase2 Create(bool isFromPool = true) 
+		public static M2C_TestRobotCase2 Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_TestRobotCase2() : ObjectPool.Instance.Fetch(typeof(M2C_TestRobotCase2)) as M2C_TestRobotCase2; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_TestRobotCase2), isFromPool) as M2C_TestRobotCase2; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -868,9 +868,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2M_TransferMap: MessageObject, ILocationRequest
 	{
-		public static C2M_TransferMap Create(bool isFromPool = true) 
+		public static C2M_TransferMap Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2M_TransferMap() : ObjectPool.Instance.Fetch(typeof(C2M_TransferMap)) as C2M_TransferMap; 
+			return ObjectPool.Instance.Fetch(typeof(C2M_TransferMap), isFromPool) as C2M_TransferMap; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -890,9 +890,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class M2C_TransferMap: MessageObject, ILocationResponse
 	{
-		public static M2C_TransferMap Create(bool isFromPool = true) 
+		public static M2C_TransferMap Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new M2C_TransferMap() : ObjectPool.Instance.Fetch(typeof(M2C_TransferMap)) as M2C_TransferMap; 
+			return ObjectPool.Instance.Fetch(typeof(M2C_TransferMap), isFromPool) as M2C_TransferMap; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -921,9 +921,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class C2G_Benchmark: MessageObject, ISessionRequest
 	{
-		public static C2G_Benchmark Create(bool isFromPool = true) 
+		public static C2G_Benchmark Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new C2G_Benchmark() : ObjectPool.Instance.Fetch(typeof(C2G_Benchmark)) as C2G_Benchmark; 
+			return ObjectPool.Instance.Fetch(typeof(C2G_Benchmark), isFromPool) as C2G_Benchmark; 
 		}
 
 		[MemoryPackOrder(0)]
@@ -943,9 +943,9 @@ namespace ET
 	[MemoryPackable]
 	public partial class G2C_Benchmark: MessageObject, ISessionResponse
 	{
-		public static G2C_Benchmark Create(bool isFromPool = true) 
+		public static G2C_Benchmark Create(bool isFromPool = false) 
 		{ 
-			return !isFromPool? new G2C_Benchmark() : ObjectPool.Instance.Fetch(typeof(G2C_Benchmark)) as G2C_Benchmark; 
+			return ObjectPool.Instance.Fetch(typeof(G2C_Benchmark), isFromPool) as G2C_Benchmark; 
 		}
 
 		[MemoryPackOrder(0)]
