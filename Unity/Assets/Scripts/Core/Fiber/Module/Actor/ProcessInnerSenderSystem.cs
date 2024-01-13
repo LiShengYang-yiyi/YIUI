@@ -20,7 +20,6 @@ namespace ET
         {
             Fiber fiber = self.Fiber();
             MessageQueue.Instance.AddQueue(fiber.Id);
-            fiber.ProcessInnerSender = self;
         }
 
         [EntitySystem]
@@ -53,10 +52,9 @@ namespace ET
                 Log.Warning($"actor not found mailbox, from: {actorId} current: {fiber.Address} {message}");
                 if (message is IRequest request)
                 {
-                    IResponse resp = MessageHelper.CreateResponse(request, ErrorCore.ERR_NotFoundActor);
+                    IResponse resp = MessageHelper.CreateResponse(request.GetType(), request.RpcId, ErrorCore.ERR_NotFoundActor);
                     self.Reply(actorId.Address, resp);
                 }
-                message.Dispose();
                 return;
             }
             mailBoxComponent.Add(actorId.Address, message);
@@ -75,18 +73,17 @@ namespace ET
         {
             if (response.Error == ErrorCore.ERR_MessageTimeout)
             {
-                self.Tcs.SetException(new RpcException(response.Error, $"Rpc error: request, 注意Actor消息超时，请注意查看是否死锁或者没有reply: actorId: {self.ActorId} {self.Request}, response: {response}"));
+                self.SetException(new RpcException(response.Error, $"Rpc error: request, 注意Actor消息超时，请注意查看是否死锁或者没有reply: actorId: {self.ActorId} {self.RequestType.FullName}, response: {response}"));
                 return;
             }
 
             if (self.NeedException && ErrorCore.IsRpcNeedThrowException(response.Error))
             {
-                self.Tcs.SetException(new RpcException(response.Error, $"Rpc error: actorId: {self.ActorId} request: {self.Request}, response: {response}"));
+                self.SetException(new RpcException(response.Error, $"Rpc error: actorId: {self.ActorId} request: {self.RequestType.FullName}, response: {response}"));
                 return;
             }
 
-            self.Tcs.SetResult(response);
-            ((MessageObject)response).Dispose();
+            self.SetResult(response);
         }
         
         public static void Reply(this ProcessInnerSender self, Address fromAddress, IResponse message)
@@ -130,14 +127,15 @@ namespace ET
                 bool needException = true
         )
         {
-            request.RpcId = self.GetRpcId();
+            int rpcId = self.GetRpcId();
+            request.RpcId = rpcId;
             
             if (actorId == default)
             {
                 throw new Exception($"actor id is 0: {request}");
             }
 
-            return await self.Call(actorId, request.RpcId, request, needException);
+            return await self.Call(actorId, rpcId, request, needException);
         }
         
         public static async ETTask<IResponse> Call(
@@ -157,17 +155,17 @@ namespace ET
             {
                 throw new Exception($"actor inner process diff: {actorId.Process} {fiber.Process}");
             }
-            
-            var tcs = ETTask<IResponse>.Create(true);
 
-            self.requestCallback.Add(rpcId, new MessageSenderStruct(actorId, iRequest, tcs, needException));
+            Type requestType = iRequest.GetType();
+            MessageSenderStruct messageSenderStruct = new(actorId, requestType, needException);
+            self.requestCallback.Add(rpcId, messageSenderStruct);
             
             self.SendInner(actorId, (MessageObject)iRequest);
 
             
             async ETTask Timeout()
             {
-                await fiber.TimerComponent.WaitAsync(ProcessInnerSender.TIMEOUT_TIME);
+                await fiber.Root.GetComponent<TimerComponent>().WaitAsync(ProcessInnerSender.TIMEOUT_TIME);
 
                 if (!self.requestCallback.Remove(rpcId, out MessageSenderStruct action))
                 {
@@ -176,12 +174,12 @@ namespace ET
                 
                 if (needException)
                 {
-                    action.Tcs.SetException(new Exception($"actor sender timeout: {iRequest}"));
+                    action.SetException(new Exception($"actor sender timeout: {requestType.FullName}"));
                 }
                 else
                 {
-                    IResponse response = MessageHelper.CreateResponse(iRequest, ErrorCore.ERR_Timeout);
-                    action.Tcs.SetResult(response);
+                    IResponse response = MessageHelper.CreateResponse(requestType, rpcId, ErrorCore.ERR_Timeout);
+                    action.SetResult(response);
                 }
             }
             
@@ -189,14 +187,14 @@ namespace ET
             
             long beginTime = TimeInfo.Instance.ServerFrameTime();
 
-            IResponse response = await tcs;
+            IResponse response = await messageSenderStruct.Wait();
             
             long endTime = TimeInfo.Instance.ServerFrameTime();
 
             long costTime = endTime - beginTime;
             if (costTime > 200)
             {
-                Log.Warning($"actor rpc time > 200: {costTime} {iRequest}");
+                Log.Warning($"actor rpc time > 200: {costTime} {requestType.FullName}");
             }
             
             return response;
