@@ -11,7 +11,7 @@ namespace ET
         {
             while (true)
             {
-                await self.Fiber().TimerComponent.WaitFrameAsync();
+                await self.Root().GetComponent<TimerComponent>().WaitFrameAsync();
                 if (func == null || func.Invoke()) return;
             }
         }

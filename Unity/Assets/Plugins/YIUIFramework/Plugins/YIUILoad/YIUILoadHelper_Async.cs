@@ -28,7 +28,7 @@ namespace YIUIFramework
 
             if (load.WaitAsync)
             {
-                await YIUIMgrComponent.Inst.Fiber().TimerComponent.WaitUntil(() => !load.WaitAsync);
+                await YIUIMgrComponent.Inst.Root().GetComponent<TimerComponent>().WaitUntil(() => !load.WaitAsync);
 
                 loadObj = load.Object;
                 if (loadObj != null)

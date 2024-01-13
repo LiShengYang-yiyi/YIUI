@@ -41,7 +41,7 @@ namespace ET.Client
 
         private static async ETTask WaitRefresh(this GMCommandItemComponent self)
         {            
-            await self.Fiber().TimerComponent.WaitAsync(500);
+            await self.Root().GetComponent<TimerComponent>().WaitAsync(500);
             self.GMParamLoop.RefreshCells();
         }
         
