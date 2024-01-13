@@ -8,40 +8,37 @@ namespace ET.Client
     public static partial class LobbyPanelComponentSystem
     {
         [EntitySystem]
-        public class LobbyPanelComponentInitializeSystem: YIUIInitializeSystem<LobbyPanelComponent>
+        private static void YIUIInitialize(this LobbyPanelComponent self)
         {
-            protected override void YIUIInitialize(LobbyPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LobbyPanelComponentDestroySystem: DestroySystem<LobbyPanelComponent>
+        private static void Awake(this LobbyPanelComponent self)
         {
-            protected override void Destroy(LobbyPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LobbyPanelComponentOpenSystem: YIUIOpenSystem<LobbyPanelComponent>
+        private static void Destroy(this LobbyPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(LobbyPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
-        
+
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this LobbyPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
         #region YIUIEvent开始
         
-        private static async void OnEventEnterAction(this LobbyPanelComponent self)
+        private static async ETTask OnEventEnterAction(this LobbyPanelComponent self)
         {
             var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
             await EnterMapHelper.EnterMapAsync(self.Root());
             YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
             self.UIPanel.Close(false,true);
         }
+        
         #endregion YIUIEvent结束
     }
 }

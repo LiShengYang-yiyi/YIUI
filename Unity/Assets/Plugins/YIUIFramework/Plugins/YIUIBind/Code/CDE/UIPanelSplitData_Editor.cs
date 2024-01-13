@@ -155,13 +155,24 @@ namespace YIUIFramework
 
                 var viewName = current.name.Replace(UIStaticHelper.UIParentName, "");
                 var viewCde  = current.GetComponentInChildren<UIBindCDETable>();
+                
+                if (viewCde == null)
+                {
+                    //如果这个子物体被隐藏了
+                    if (current.transform.childCount >= 1)
+                    {
+                        var firstChild = current.transform.GetChild(0);
+                        viewCde = firstChild.GetComponent<UIBindCDETable>();
+                    }
+                }
+
                 if (viewCde == null)
                 {
                     Debug.LogError($" {current.name} 父物体下必须有View  但是未找到View 请使用 右键 YIUI/Create UIView 创建符合要求的结构");
                     list.RemoveAt(i);
                     continue;
                 }
-
+                
                 viewCde.gameObject.name = viewName;
             }
         }

@@ -19,9 +19,12 @@ namespace ET.Client
         public const string PkgName = "GM";
         public const string ResName = "GMPanel";
 
-        public YIUIComponent UIBase;
-        public YIUIWindowComponent UIWindow;
-        public YIUIPanelComponent UIPanel;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
+        public EntityRef<YIUIWindowComponent> u_UIWindow;
+        public YIUIWindowComponent UIWindow => u_UIWindow;
+        public EntityRef<YIUIPanelComponent> u_UIPanel;
+        public YIUIPanelComponent UIPanel => u_UIPanel;
         public UnityEngine.RectTransform u_ComGMButton;
         public UnityEngine.RectTransform u_ComLimitRange;
         public UIEventP0 u_EventOpenGMView;

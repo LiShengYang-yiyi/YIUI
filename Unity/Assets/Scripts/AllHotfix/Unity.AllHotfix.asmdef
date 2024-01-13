@@ -9,6 +9,7 @@
         "MemoryPack",
         "Unity.AllModel",
         "YooAsset",
+        "Unity.TextMeshPro",
         "YIUIFramework"
     ],
     "includePlatforms": [],

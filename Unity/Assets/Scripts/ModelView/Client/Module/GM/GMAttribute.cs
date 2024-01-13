@@ -1,4 +1,6 @@
-﻿namespace ET.Client
+﻿using System;
+
+namespace ET.Client
 {
     /// <summary>
     /// GM特性
@@ -16,6 +18,15 @@
             GMLevel    = gmLevel;
             GMName     = gmName;
             GMDesc     = gmDesc;
+        }
+    }
+    
+    public class GMGroupAttribute: Attribute
+    {
+        public string Name;
+        public GMGroupAttribute(string name)
+        {
+            Name = name;
         }
     }
 }

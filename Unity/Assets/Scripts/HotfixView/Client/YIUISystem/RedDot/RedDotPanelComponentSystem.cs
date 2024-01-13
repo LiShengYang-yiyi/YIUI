@@ -10,40 +10,58 @@ namespace ET.Client
     public static partial class RedDotPanelComponentSystem
     {
         [EntitySystem]
-        public class RedDotPanelComponentInitializeSystem: YIUIInitializeSystem<RedDotPanelComponent>
+        private static void YIUIInitialize(this RedDotPanelComponent self)
         {
-            protected override void YIUIInitialize(RedDotPanelComponent self)
-            {
-                self.InitInfo();
-                self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
-                self.InitDropdownSearchDic();
-            }
+            self.InitInfo();
+            self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
+            self.InitDropdownSearchDic();
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentDestroySystem: DestroySystem<RedDotPanelComponent>
+        private static void Awake(this RedDotPanelComponent self)
         {
-            protected override void Destroy(RedDotPanelComponent self)
-            {
-                self.RemoveInfoChanged();
-            }
+            self.RemoveInfoChanged();
         }
 
         [EntitySystem]
-        public class RedDotPanelComponentOpenSystem: YIUIOpenSystem<RedDotPanelComponent>
+        private static void Destroy(this RedDotPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(RedDotPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
+            self.RemoveInfoChanged();
+        }
+
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this RedDotPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
+        [EntitySystem]
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickParentListEvent message)
+        {
+            await ETTask.CompletedTask;
+            self.OnClickParentList(message.Data);
+        }
+
+        [EntitySystem]
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickChildListEvent message)
+        {
+            await ETTask.CompletedTask;
+            self.OnClickChildList(message.Data);
+        }
+
+        [EntitySystem]
+        private static async ETTask YIUIEvent(this RedDotPanelComponent self, OnClickItemEvent message)
+        {
+            await ETTask.CompletedTask;
+            self.OnClickItem(message.Data);
         }
 
         #region Search
 
         private static void SearchRenderer(this RedDotPanelComponent self, int index, RedDotData data, RedDotDataItemComponent item, bool select)
         {
-            item.RefreshData(self, data);
+            item.RefreshData(data);
         }
 
         private static void InitDropdownSearchDic(this RedDotPanelComponent self)
@@ -77,7 +95,7 @@ namespace ET.Client
             self.ResetStackInfo(data);
         }
 
-        public static void OnClickParentList(this RedDotPanelComponent self, RedDotData data)
+        private static void OnClickParentList(this RedDotPanelComponent self, RedDotData data)
         {
             if (data.ParentList.Count <= 0) return;
             self.m_CurrentDataList.Clear();
@@ -95,7 +113,7 @@ namespace ET.Client
             self.m_SearchScroll.SetDataRefresh(self.m_CurrentDataList);
         }
 
-        public static void OnClickChildList(this RedDotPanelComponent self, RedDotData data)
+        private static void OnClickChildList(this RedDotPanelComponent self, RedDotData data)
         {
             if (data.ChildList.Count <= 0) return;
             self.m_CurrentDataList.Clear();
@@ -108,7 +126,7 @@ namespace ET.Client
             self.RefreshSearchScroll();
         }
 
-        public static void OnClickItem(this RedDotPanelComponent self, RedDotData data)
+        private static void OnClickItem(this RedDotPanelComponent self, RedDotData data)
         {
             self.ResetStackInfo(data);
         }
@@ -135,12 +153,7 @@ namespace ET.Client
             item.u_DataOs.SetValue(data.GetOS(self.m_InfoData));
             item.u_DataSource.SetValue(data.GetSource());
             item.u_DataShowStack.SetValue(false);
-            item.ShowStackAction = () => { self.ShowStackInfo(data, item); };
-        }
-
-        private static void ShowStackInfo(this RedDotPanelComponent self, RedDotStack data, RedDotStackItemComponent item)
-        {
-            item.u_ComStackText.text = data.GetStackContent();
+            item.RedDotStackData = data;
         }
 
         private static void ResetStackInfo(this RedDotPanelComponent self, RedDotData data)

@@ -7,7 +7,6 @@
 using System;
 using Object = UnityEngine.Object;
 using ET;
-using ET;
 
 namespace YIUIFramework
 {

@@ -10,22 +10,20 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIViewComponent))]
+    [EntitySystemOf(typeof(GMViewComponent))]
     public static partial class GMViewComponentSystem
     {
         [EntitySystem]
-        public class GMViewComponentYIUIBindSystem: YIUIBindSystem<GMViewComponent>
+        private static void YIUIBind(this GMViewComponent self)
         {
-            protected override void YIUIBind(GMViewComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this GMViewComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIView = self.UIBase.GetComponent<YIUIViewComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIView = self.UIBase.GetComponent<YIUIViewComponent>();
             self.UIWindow.WindowOption = EWindowOption.BanTween|EWindowOption.BanAwaitOpenTween|EWindowOption.BanAwaitCloseTween|EWindowOption.SkipOtherOpenTween|EWindowOption.SkipOtherCloseTween;
             self.UIView.ViewWindowType = EViewWindowType.View;
             self.UIView.StackOption = EViewStackOption.None;

@@ -9,11 +9,9 @@ namespace ${Namespace}
     /// Desc    ${Desc}
     /// </summary>
     [FriendOf(typeof(${Name}Component))]
-    public static class ${Name}ComponentSystem
+    [EntitySystemOf(typeof(${Name}Component))]
+    public static partial class ${Name}ComponentSystem
     {
-        #region ObjectSystem
-${ObjectSystem} 
-        #endregion
 ${Life}
     }
 }

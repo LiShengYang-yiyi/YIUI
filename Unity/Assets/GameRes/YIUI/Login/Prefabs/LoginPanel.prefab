@@ -30,6 +30,7 @@ RectTransform:
   m_Children:
   - {fileID: 3820305433193295392}
   m_Father: {fileID: 5749727704565336077}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -67,6 +68,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4484582786190698628}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -146,6 +148,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4484543537503324056}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -207,7 +210,7 @@ GameObject:
   - component: {fileID: 4374343219239196396}
   - component: {fileID: 4374233948946752906}
   - component: {fileID: 3979436928107842851}
-  - component: {fileID: 1864475630825351486}
+  - component: {fileID: 480248421097909905}
   m_Layer: 5
   m_Name: LoginBtn
   m_TagString: Untagged
@@ -229,6 +232,7 @@ RectTransform:
   m_Children:
   - {fileID: 4774009703074879382}
   m_Father: {fileID: 3820305433193295392}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -334,7 +338,7 @@ MonoBehaviour:
   scaleTime: 0
   popTime: 0
   ease: 24
---- !u!114 &1864475630825351486
+--- !u!114 &480248421097909905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,7 +347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4406081164855719520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84c394472d09c84a9af3111a280f2eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 543b9965e22a4bb882ba1493143e19f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -351,7 +355,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 3825177922720946917}
-    - {fileID: 1864475630825351486}
+    - {fileID: 480248421097909905}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -365,7 +369,7 @@ MonoBehaviour:
       Data: u_EventLogin
     - Name: m_UIEvent
       Entry: 7
-      Data: 0|YIUIFramework.UIEventP0, YIUIFramework
+      Data: 0|YIUIFramework.UITaskEventP0, YIUIFramework
     - Name: m_EventName
       Entry: 1
       Data: u_EventLogin
@@ -454,6 +458,7 @@ MonoBehaviour:
       Data: 
   m_SkipWhenDrag: 0
   m_Selectable: {fileID: 4374233948946752906}
+  m_BanLayerOption: 1
 --- !u!1 &4406086520311545944
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +490,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4484543537503324056}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -568,6 +574,7 @@ RectTransform:
   - {fileID: 4485214596258016692}
   - {fileID: 4485383994717647120}
   m_Father: {fileID: 3820305433193295392}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -837,6 +844,7 @@ RectTransform:
   - {fileID: 7803727448580535639}
   - {fileID: 8661470720452475230}
   m_Father: {fileID: 3820305433193295392}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1102,6 +1110,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4485279627685796822}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1181,6 +1190,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5749727704565336077}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1245,6 +1255,7 @@ RectTransform:
   - {fileID: 4484582786190698628}
   - {fileID: 4485279627685796822}
   m_Father: {fileID: 12161208977290918}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1318,6 +1329,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5749727704565336077}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1355,6 +1367,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4484582786190698628}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1439,6 +1452,7 @@ RectTransform:
   - {fileID: 12161208977290918}
   - {fileID: 6634251536011837949}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1645,7 +1659,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 3825177922720946917}
-    - {fileID: 1864475630825351486}
+    - {fileID: 480248421097909905}
     - {fileID: 4091517273978743017}
     - {fileID: 8139696894903540282}
     SerializedBytesString: 
@@ -1675,7 +1689,7 @@ MonoBehaviour:
       Data: u_EventLogin
     - Name: $v
       Entry: 7
-      Data: 2|YIUIFramework.UIEventP0, YIUIFramework
+      Data: 2|YIUIFramework.UITaskEventP0, YIUIFramework
     - Name: m_EventName
       Entry: 1
       Data: u_EventLogin

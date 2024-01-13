@@ -10,22 +10,20 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIPanelComponent))]
+    [EntitySystemOf(typeof(TipsPanelComponent))]
     public static partial class TipsPanelComponentSystem
     {
         [EntitySystem]
-        public class TipsPanelComponentYIUIBindSystem: YIUIBindSystem<TipsPanelComponent>
+        private static void YIUIBind(this TipsPanelComponent self)
         {
-            protected override void YIUIBind(TipsPanelComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this TipsPanelComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.BanTween|EWindowOption.BanAwaitOpenTween|EWindowOption.BanAwaitCloseTween|EWindowOption.SkipOtherOpenTween|EWindowOption.SkipOtherCloseTween|EWindowOption.SkipHomeOpenTween|EWindowOption.AllowOptionByTween;
             self.UIPanel.Layer = EPanelLayer.Tips;
             self.UIPanel.PanelOption = EPanelOption.TimeCache;

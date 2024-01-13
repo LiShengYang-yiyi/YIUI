@@ -10,22 +10,20 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIViewComponent))]
+    [EntitySystemOf(typeof(TextTipsViewComponent))]
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
-        public class TextTipsViewComponentYIUIBindSystem: YIUIBindSystem<TextTipsViewComponent>
+        private static void YIUIBind(this TextTipsViewComponent self)
         {
-            protected override void YIUIBind(TextTipsViewComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this TextTipsViewComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIView = self.UIBase.GetComponent<YIUIViewComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIView = self.UIBase.GetComponent<YIUIViewComponent>();
             self.UIWindow.WindowOption = EWindowOption.BanTween|EWindowOption.BanAwaitOpenTween|EWindowOption.BanAwaitCloseTween|EWindowOption.SkipOtherOpenTween|EWindowOption.SkipOtherCloseTween;
             self.UIView.ViewWindowType = EViewWindowType.Popup;
             self.UIView.StackOption = EViewStackOption.VisibleTween;

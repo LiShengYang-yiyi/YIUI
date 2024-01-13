@@ -140,12 +140,12 @@ namespace YIUIFramework.Editor
             switch (self.UICodeType)
             {
                 case EUICodeType.Common:
-                    sb.AppendFormat("            self.UIBase = self.GetParent<YIUIComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIBase = self.GetParent<YIUIComponent>();\r\n");
                     return;
                 case EUICodeType.Panel:
-                    sb.AppendFormat("            self.UIBase = self.GetParent<YIUIComponent>();\r\n");
-                    sb.AppendFormat("            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();\r\n");
-                    sb.AppendFormat("            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIBase = self.GetParent<YIUIComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();\r\n");
                     sb.AppendFormat("            self.UIWindow.WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
                     sb.AppendFormat("            self.UIPanel.Layer = EPanelLayer.{0};\r\n",
@@ -160,9 +160,9 @@ namespace YIUIFramework.Editor
                             self.CachePanelTime);
                     break;
                 case EUICodeType.View:
-                    sb.AppendFormat("            self.UIBase = self.GetParent<YIUIComponent>();\r\n");
-                    sb.AppendFormat("            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();\r\n");
-                    sb.AppendFormat("            self.UIView = self.UIBase.GetComponent<YIUIViewComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIBase = self.GetParent<YIUIComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();\r\n");
+                    sb.AppendFormat("            self.u_UIView = self.UIBase.GetComponent<YIUIViewComponent>();\r\n");
                     sb.AppendFormat("            self.UIWindow.WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
                     sb.AppendFormat("            self.UIView.ViewWindowType = EViewWindowType.{0};\r\n",

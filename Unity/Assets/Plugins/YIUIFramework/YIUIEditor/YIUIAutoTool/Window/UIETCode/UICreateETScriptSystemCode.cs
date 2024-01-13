@@ -24,42 +24,37 @@ namespace YIUIFramework.Editor
             var template = $"{UIStaticHelper.UITemplatePath}/ETScript/UICreateETScriptSystemTemplate.txt";
             CreateVo = new CreateVo(template, path);
 
-            m_EventName              = $"{codeData.Name} ET-System 自动生成";
-            m_AutoRefresh            = codeData.AutoRefresh;
-            m_ShowTips               = codeData.ShowTips;
-            ValueDic["Namespace"]    = codeData.Namespace;
-            ValueDic["Name"]         = codeData.Name;
-            ValueDic["Desc"]         = codeData.Desc;
-            var (system, life)       = GetLife(codeData);
-            ValueDic["ObjectSystem"] = system;
-            ValueDic["Life"]         = life;
+            m_EventName           = $"{codeData.Name} ET-System 自动生成";
+            m_AutoRefresh         = codeData.AutoRefresh;
+            m_ShowTips            = codeData.ShowTips;
+            ValueDic["Namespace"] = codeData.Namespace;
+            ValueDic["Name"]      = codeData.Name;
+            ValueDic["Desc"]      = codeData.Desc;
+            ValueDic["Life"]      = GetLife(codeData);
 
             result = CreateNewFile();
         }
 
-        private (string system, string life) GetLife(UICreateETScriptData codeData)
+        private string GetLife(UICreateETScriptData codeData)
         {
-            var sbA = SbPool.Get();
-            var sbB = SbPool.Get();
+            var sb = SbPool.Get();
             foreach (EETLifeTpye lifeEnum in Enum.GetValues(typeof (EETLifeTpye)))
             {
                 if (codeData.LifeTpye.HasFlag(lifeEnum))
                 {
-                    var (contentSystem,contentLife) = SwitchLife(codeData, lifeEnum);
-                    if (!string.IsNullOrEmpty(contentSystem))
+                    var content = SwitchLife(codeData, lifeEnum);
+                    if (!string.IsNullOrEmpty(content))
                     {
-                        sbA.Append(contentSystem);
-                        sbA.AppendLine();
-                        sbB.Append(contentLife);
-                        sbB.AppendLine();
+                        sb.Append(content);
+                        sb.AppendLine();
                     }
                 }
             }
 
-            return (SbPool.PutAndToStr(sbA), SbPool.PutAndToStr(sbB));
+            return SbPool.PutAndToStr(sb);
         }
 
-        private (string system, string life) SwitchLife(UICreateETScriptData codeData, EETLifeTpye life)
+        private string SwitchLife(UICreateETScriptData codeData, EETLifeTpye life)
         {
             switch (life)
             {
@@ -70,37 +65,24 @@ namespace YIUIFramework.Editor
                 case EETLifeTpye.None:
                     break;
                 case EETLifeTpye.IAwake:
-                    return (string.Format(systemTemp, codeData.Name, "Awake"),
-                        string.Format(lifeTemp, codeData.Name, "Awake"));
+                    return string.Format(lifeTemp, codeData.Name, "Awake");
                 case EETLifeTpye.IUpdate:
-                    return (string.Format(systemTemp, codeData.Name, "Update"),
-                        string.Format(lifeTemp, codeData.Name, "Update"));
+                    return string.Format(lifeTemp, codeData.Name, "Update");
                 case EETLifeTpye.IDestroy:
-                    return (string.Format(systemTemp, codeData.Name, "Destroy"),
-                        string.Format(lifeTemp, codeData.Name, "Destroy"));
+                    return string.Format(lifeTemp, codeData.Name, "Destroy");
                 default:
                     Debug.LogError($"是否新增了类型 请检查 {life}");
                     break;
             }
 
-            return ("","");
+            return "";
         }
 
-        private const string systemTemp = @"
-        [ObjectSystem]
-        public class {0}Component{1}System: {1}System<{0}Component>
-        {{
-            protected override void {1}({0}Component self)
-            {{
-                self.{1}();
-            }}
-        }}";
-        
         private const string lifeTemp = @"
+        [EntitySystem]
         private static void {1}(this {0}Component self)
         {{
         }}";
-        
     }
 }
 #endif

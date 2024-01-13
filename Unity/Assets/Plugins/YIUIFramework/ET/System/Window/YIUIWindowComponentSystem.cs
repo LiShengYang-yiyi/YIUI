@@ -10,6 +10,7 @@ namespace ET.Client
     /// UI窗口组件
     /// </summary>
     [FriendOf(typeof (YIUIWindowComponent))]
+    [EntitySystemOf(typeof (YIUIWindowComponent))]
     public static partial class YIUIWindowComponentSystem
     {
     }

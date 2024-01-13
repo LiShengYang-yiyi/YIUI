@@ -8,24 +8,22 @@ namespace ET.Client
     public static partial class RedDotDataItemComponentSystem
     {
         [EntitySystem]
-        public class RedDotDataItemComponentInitializeSystem: YIUIInitializeSystem<RedDotDataItemComponent>
+        private static void YIUIInitialize(this RedDotDataItemComponent self)
         {
-            protected override void YIUIInitialize(RedDotDataItemComponent self)
-            {
-            }
         }
 
         [EntitySystem]
-        public class RedDotDataItemComponentDestroySystem: DestroySystem<RedDotDataItemComponent>
+        private static void Awake(this RedDotDataItemComponent self)
         {
-            protected override void Destroy(RedDotDataItemComponent self)
-            {
-            }
         }
 
-        public static void RefreshData(this RedDotDataItemComponent self, RedDotPanelComponent panel, RedDotData data)
+        [EntitySystem]
+        private static void Destroy(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel = panel;
+        }
+
+        public static void RefreshData(this RedDotDataItemComponent self, RedDotData data)
+        {
             self.m_Data        = data;
             self.u_DataCount.SetValue(data.Count);
             self.u_DataName.SetValue(RedDotMgr.Inst.GetKeyDes(data.Key));
@@ -45,19 +43,18 @@ namespace ET.Client
 
         private static void OnEventParentAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickParentList(self.m_Data);
+            self.Fiber().UIEvent(new OnClickParentListEvent() { Data = self.m_Data }).Coroutine();
         }
 
         private static void OnEventClickItemAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickItem(self.m_Data);
+            self.Fiber().UIEvent(new OnClickItemEvent { Data = self.m_Data }).Coroutine();
         }
 
         private static void OnEventChildAction(this RedDotDataItemComponent self)
         {
-            self.m_RedDotPanel.OnClickChildList(self.m_Data);
+            self.Fiber().UIEvent(new OnClickChildListEvent { Data = self.m_Data }).Coroutine();
         }
-
         #endregion YIUIEvent结束
     }
 }

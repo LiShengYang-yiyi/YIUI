@@ -10,22 +10,20 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIViewComponent))]
+    [EntitySystemOf(typeof(MessageTipsViewComponent))]
     public static partial class MessageTipsViewComponentSystem
     {
         [EntitySystem]
-        public class MessageTipsViewComponentYIUIBindSystem: YIUIBindSystem<MessageTipsViewComponent>
+        private static void YIUIBind(this MessageTipsViewComponent self)
         {
-            protected override void YIUIBind(MessageTipsViewComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this MessageTipsViewComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIView = self.UIBase.GetComponent<YIUIViewComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIView = self.UIBase.GetComponent<YIUIViewComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIView.ViewWindowType = EViewWindowType.View;
             self.UIView.StackOption = EViewStackOption.None;

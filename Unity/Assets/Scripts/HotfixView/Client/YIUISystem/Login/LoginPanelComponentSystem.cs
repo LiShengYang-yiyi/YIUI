@@ -13,31 +13,27 @@ namespace ET.Client
     public static partial class LoginPanelComponentSystem
     {
         [EntitySystem]
-        public class LoginPanelComponentInitializeSystem: YIUIInitializeSystem<LoginPanelComponent>
+        private static void YIUIInitialize(this LoginPanelComponent self)
         {
-            protected override void YIUIInitialize(LoginPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LoginPanelComponentDestroySystem: DestroySystem<LoginPanelComponent>
+        private static void Awake(this LoginPanelComponent self)
         {
-            protected override void Destroy(LoginPanelComponent self)
-            {
-            }
         }
-        
+
         [EntitySystem]
-        public class LoginPanelComponentOpenSystem: YIUIOpenSystem<LoginPanelComponent>
+        private static void Destroy(this LoginPanelComponent self)
         {
-            protected override async ETTask<bool> YIUIOpen(LoginPanelComponent self)
-            {
-                await ETTask.CompletedTask;
-                return true;
-            }
         }
-        
+
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
+        {
+            await ETTask.CompletedTask;
+            return true;
+        }
+
         #region YIUIEvent开始
         
         private static void OnEventPasswordAction(this LoginPanelComponent self, string p1)
@@ -52,7 +48,7 @@ namespace ET.Client
             self.Account = p1;
         }
         
-        private static async void OnEventLoginAction(this LoginPanelComponent self)
+        private static async ETTask OnEventLoginAction(this LoginPanelComponent self)
         {
             Log.Info($"登录");
             var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();

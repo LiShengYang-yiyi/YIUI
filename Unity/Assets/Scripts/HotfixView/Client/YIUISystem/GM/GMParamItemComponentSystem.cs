@@ -10,19 +10,18 @@ namespace ET.Client
     public static partial class GMParamItemComponentSystem
     {
         [EntitySystem]
-        public class GMParamItemComponentInitializeSystem: YIUIInitializeSystem<GMParamItemComponent>
+        private static void YIUIInitialize(this GMParamItemComponent self)
         {
-            protected override void YIUIInitialize(GMParamItemComponent self)
-            {
-            }
         }
         
         [EntitySystem]
-        public class GMParamItemComponentDestroySystem: DestroySystem<GMParamItemComponent>
+        private static void Awake(this GMParamItemComponent self)
         {
-            protected override void Destroy(GMParamItemComponent self)
-            {
-            }
+        }
+        
+        [EntitySystem]
+        private static void Destroy(this GMParamItemComponent self)
+        {
         }
         
         public static void ResetItem(this GMParamItemComponent self, GMParamInfo info)

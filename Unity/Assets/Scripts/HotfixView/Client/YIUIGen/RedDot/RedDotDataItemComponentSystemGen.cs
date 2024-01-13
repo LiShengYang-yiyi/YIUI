@@ -8,20 +8,18 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [FriendOf(typeof(YIUIComponent))]
+    [EntitySystemOf(typeof(RedDotDataItemComponent))]
     public static partial class RedDotDataItemComponentSystem
     {
         [EntitySystem]
-        public class RedDotDataItemComponentYIUIBindSystem: YIUIBindSystem<RedDotDataItemComponent>
+        private static void YIUIBind(this RedDotDataItemComponent self)
         {
-            protected override void YIUIBind(RedDotDataItemComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this RedDotDataItemComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
 
             self.u_DataKeyId = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueInt>("u_DataKeyId");
             self.u_DataCount = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueInt>("u_DataCount");

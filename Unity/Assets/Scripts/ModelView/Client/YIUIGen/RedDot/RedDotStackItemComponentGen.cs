@@ -12,7 +12,8 @@ namespace ET.Client
         public const string PkgName = "RedDot";
         public const string ResName = "RedDotStackItem";
 
-        public YIUIComponent UIBase;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
         public TMPro.TextMeshProUGUI u_ComStackText;
         public YIUIFramework.UIDataValueBool u_DataShowStack;
         public YIUIFramework.UIDataValueInt u_DataId;

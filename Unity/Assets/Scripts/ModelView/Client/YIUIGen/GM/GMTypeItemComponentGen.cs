@@ -12,7 +12,8 @@ namespace ET.Client
         public const string PkgName = "GM";
         public const string ResName = "GMTypeItem";
 
-        public YIUIComponent UIBase;
+        public EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase => u_UIBase;
         public YIUIFramework.UIDataValueString u_DataTypeName;
         public YIUIFramework.UIDataValueBool u_DataSelect;
         public UIEventP0 u_EventSelect;

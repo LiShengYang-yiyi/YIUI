@@ -39,11 +39,10 @@ namespace ET.Client
 
             foreach (FieldInfo field in fields)
             {
-                LabelTextAttribute attribute = (LabelTextAttribute)Attribute.GetCustomAttribute(field, typeof (LabelTextAttribute));
+                GMGroupAttribute attribute = (GMGroupAttribute)Attribute.GetCustomAttribute(field, typeof (GMGroupAttribute));
                 if (attribute != null)
                 {
-                    string labelText = attribute.Text;
-                    self.GMTypeName.Add(field.Name, labelText);
+                    self.GMTypeName.Add(field.Name, attribute.Name);
                 }
             }
         }
@@ -53,60 +52,23 @@ namespace ET.Client
             var types = CodeTypes.Instance.GetTypes(typeof (GMAttribute));
             foreach (var type in types)
             {
-                var interfaces = type.GetInterfaces();
-                if (interfaces.Length <= 0)
-                {
-                    Debug.LogError($"错误 没有继承接口 {type.Name}");
-                    continue;
-                }
-
-                var  haveGMInterfaces = false;
-                Type gmInterfaces     = null;
-                foreach (var interfacesType in interfaces)
-                {
-                    if (interfacesType.Name.Contains("IGMCommand"))
-                    {
-                        if (gmInterfaces != null)
-                        {
-                            Debug.LogError($"错误 继承多个IGMCommand接口 {type.Name}");
-                            haveGMInterfaces = false;
-                            break;
-                        }
-                        else
-                        {
-                            gmInterfaces     = interfacesType;
-                            haveGMInterfaces = true;
-                        }
-                    }
-                }
-
-                if (!haveGMInterfaces)
-                {
-                    Debug.LogError($"错误 没有继承IGMCommand接口 {type.Name}");
-                    continue;
-                }
-
-                var gmCommandInfo = new GMCommandInfo();
-
                 object[] attrs = type.GetCustomAttributes(typeof (GMAttribute), false);
                 if (attrs.Length >= 2)
                 {
-                    Debug.LogError($"有多个相同特性 只允许有一个 GMAttribute");
+                    Debug.LogError($"{type.Name} 有多个相同特性 只允许有一个 GMAttribute 默认取第一个");
                 }
 
-                foreach (object attr in attrs)
-                {
-                    var eventAttribut = (GMAttribute)attr;
-                    var obj           = (IGMCommand)Activator.CreateInstance(type);
-                    gmCommandInfo.GMType = eventAttribut.GMType;
-                    gmCommandInfo.GMTypeName = self.GMTypeName.TryGetValue(eventAttribut.GMType.ToString(), out var name)
-                            ? name : eventAttribut.GMType.ToString();
-                    gmCommandInfo.GMLevel       = eventAttribut.GMLevel;
-                    gmCommandInfo.GMName        = eventAttribut.GMName;
-                    gmCommandInfo.GMDesc        = eventAttribut.GMDesc;
-                    gmCommandInfo.Command       = obj;
-                    gmCommandInfo.ParamInfoList = obj.GetParams();
-                }
+                var gmCommandInfo = new GMCommandInfo();
+                var eventAttribut = (GMAttribute)attrs[0];
+                var obj           = (IGMCommand)Activator.CreateInstance(type);
+                gmCommandInfo.GMType = eventAttribut.GMType;
+                gmCommandInfo.GMTypeName = self.GMTypeName.TryGetValue(eventAttribut.GMType.ToString(), out var name)
+                        ? name : eventAttribut.GMType.ToString();
+                gmCommandInfo.GMLevel       = eventAttribut.GMLevel;
+                gmCommandInfo.GMName        = eventAttribut.GMName;
+                gmCommandInfo.GMDesc        = eventAttribut.GMDesc;
+                gmCommandInfo.Command       = obj;
+                gmCommandInfo.ParamInfoList = obj.GetParams();
 
                 self.AddInfo(gmCommandInfo);
             }

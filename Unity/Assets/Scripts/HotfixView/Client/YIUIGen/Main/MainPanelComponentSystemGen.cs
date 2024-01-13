@@ -10,22 +10,20 @@ namespace ET.Client
     [FriendOf(typeof(YIUIComponent))]
     [FriendOf(typeof(YIUIWindowComponent))]
     [FriendOf(typeof(YIUIPanelComponent))]
+    [EntitySystemOf(typeof(MainPanelComponent))]
     public static partial class MainPanelComponentSystem
     {
         [EntitySystem]
-        public class MainPanelComponentYIUIBindSystem: YIUIBindSystem<MainPanelComponent>
+        private static void YIUIBind(this MainPanelComponent self)
         {
-            protected override void YIUIBind(MainPanelComponent self)
-            {
-                self.UIBind();
-            }
+            self.UIBind();
         }
         
         private static void UIBind(this MainPanelComponent self)
         {
-            self.UIBase = self.GetParent<YIUIComponent>();
-            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
+            self.u_UIBase = self.GetParent<YIUIComponent>();
+            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIPanel.Layer = EPanelLayer.Panel;
             self.UIPanel.PanelOption = EPanelOption.ForeverCache|EPanelOption.DisClose;
