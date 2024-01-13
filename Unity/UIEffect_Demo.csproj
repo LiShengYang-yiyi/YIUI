@@ -309,85 +309,85 @@
      <HintPath>E:\Unity\Editor\2022.3.8f1\Editor\Data\PlaybackEngines\MetroSupport\UnityEditor.UWP.Extensions.dll</HintPath>
      </Reference>
      <Reference Include="DemiEditor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Reflection.Editor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
      </Reference>
      <Reference Include="NLog">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\NLog.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\NLog.dll</HintPath>
      </Reference>
      <Reference Include="SharpCompress">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\SharpCompress.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\SharpCompress.dll</HintPath>
      </Reference>
      <Reference Include="DemiLib">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization.Config">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
      </Reference>
      <Reference Include="DOTweenEditor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
      </Reference>
      <Reference Include="System.Text.Encoding.CodePages">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\System.Text.Encoding.CodePages.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\System.Text.Encoding.CodePages.dll</HintPath>
      </Reference>
      <Reference Include="DOTweenProEditor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
      </Reference>
      <Reference Include="MongoDB.Driver.Core">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Utilities">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
      </Reference>
      <Reference Include="DOTween">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
      </Reference>
      <Reference Include="MongoDB.Bson">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
      </Reference>
      <Reference Include="dnlib">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\dnlib.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\dnlib.dll</HintPath>
      </Reference>
      <Reference Include="CommandLine">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\CommandLine.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\CommandLine.dll</HintPath>
      </Reference>
      <Reference Include="DOTweenPro">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
      </Reference>
      <Reference Include="LZ4">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
      </Reference>
      <Reference Include="System.Runtime.CompilerServices.Unsafe">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.iOS_I2Loc.Xcode">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\YIUIFramework\Plugins\I2Localization\Editor\Unity XCode\UnityEditor.iOS_I2Loc.Xcode.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\YIUIFramework\Plugins\I2Localization\Editor\Unity XCode\UnityEditor.iOS_I2Loc.Xcode.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Utilities.Editor">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
      </Reference>
      <Reference Include="DnsClient">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
      </Reference>
      <Reference Include="MongoDB.Libmongocrypt">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\MongoDB.Libmongocrypt.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\MongoDB.Libmongocrypt.dll</HintPath>
      </Reference>
      <Reference Include="ICSharpCode.SharpZipLib">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
      </Reference>
      <Reference Include="MongoDB.Driver">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.iOS.Extensions.Xcode">
      <HintPath>E:\Unity\Editor\2022.3.8f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -780,10 +780,10 @@
      <HintPath>E:\Unity\Editor\2022.3.8f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>G:\Unity\Self Project\YIUI_ET7.2\YIUI\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+     <HintPath>G:\Unity\Self Project\Gitee_ET7.2\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
