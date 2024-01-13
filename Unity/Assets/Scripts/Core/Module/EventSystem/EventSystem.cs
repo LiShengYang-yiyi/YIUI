@@ -5,16 +5,16 @@ using System.Text;
 
 namespace ET
 {
-    public class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate
+    public partial class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate
     {
-        private class OneTypeSystems
+        public class OneTypeSystems
         {
             public readonly UnOrderMultiMap<Type, object> Map = new();
             // 这里不用hash，数量比较少，直接for循环速度更快
             public readonly bool[] QueueFlag = new bool[(int)InstanceQueueIndex.Max];
         }
         
-        private class TypeSystems
+        public class TypeSystems
         {
             private readonly Dictionary<Type, OneTypeSystems> typeSystemsMap = new();
 
@@ -77,9 +77,9 @@ namespace ET
         
         private Dictionary<Type, Dictionary<int, object>> allInvokes = new(); 
 
-        private TypeSystems typeSystems = new();
+        public TypeSystems typeSystems = new();
 
-        private readonly Queue<long>[] queues = new Queue<long>[(int)InstanceQueueIndex.Max];
+        public readonly Queue<long>[] queues = new Queue<long>[(int)InstanceQueueIndex.Max];
 
         public EventSystem()
         {

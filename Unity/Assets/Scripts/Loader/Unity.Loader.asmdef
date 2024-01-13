@@ -4,7 +4,10 @@
     "references": [
         "Unity.ThirdParty",
         "Unity.Core",
-        "HybridCLR.Runtime"
+        "HybridCLR.Runtime",
+        "BetterStreamingAssets",
+        "YooAsset",
+        "YIUIFramework"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

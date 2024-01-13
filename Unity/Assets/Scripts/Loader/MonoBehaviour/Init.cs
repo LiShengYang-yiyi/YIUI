@@ -7,7 +7,13 @@ namespace ET
 {
 	public class Init: MonoBehaviour
 	{
+		
 		private void Start()
+		{
+			this.StartAsync().Coroutine();
+		}
+		
+		private async ETTask StartAsync()
 		{
 			DontDestroyOnLoad(gameObject);
 			
@@ -32,6 +38,8 @@ namespace ET
 			Game.AddSingleton<TimerComponent>();
 			Game.AddSingleton<CoroutineLockComponent>();
 			
+			await Game.AddSingleton<ResourcesComponent>().CreatePackageAsync("DefaultPackage", true);
+
 			ETTask.ExceptionHandler += Log.Error;
 
 			Game.AddSingleton<CodeLoader>().Start();

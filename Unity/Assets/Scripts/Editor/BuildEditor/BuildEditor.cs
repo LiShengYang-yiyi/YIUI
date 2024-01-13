@@ -47,7 +47,7 @@ namespace ET
 
         private void OnEnable()
 		{
-			globalConfig = AssetDatabase.LoadAssetAtPath<GlobalConfig>("Assets/Resources/GlobalConfig.asset");
+			globalConfig = Resources.Load<GlobalConfig>("GlobalConfig");
 			
 #if UNITY_ANDROID
 			activePlatform = PlatformType.Android;
@@ -122,7 +122,6 @@ namespace ET
 				AssetDatabase.SaveAssetIfDirty(this.globalConfig);
 				AssetDatabase.Refresh();
 			}
-
 			if (GUILayout.Button("BuildModelAndHotfix"))
 			{
 				if (Define.EnableCodes)

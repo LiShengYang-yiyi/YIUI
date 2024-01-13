@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using ET.Client;
 using UnityEngine;
 
 namespace ET
@@ -87,7 +88,12 @@ namespace ET
 
 			Assembly hotfixAssembly = Assembly.Load(assBytes, pdbBytes);
 			
-			Dictionary<string, Type> types = AssemblyHelper.GetAssemblyTypes(typeof (Game).Assembly, typeof(Init).Assembly, this.model, hotfixAssembly);
+			Dictionary<string, Type> types = AssemblyHelper.GetAssemblyTypes(
+				typeof(YIUIComponent).Assembly,
+				typeof(Game).Assembly, 
+				typeof(Init).Assembly, 
+				this.model, 
+				hotfixAssembly);
 			
 			EventSystem.Instance.Add(types);
 		}

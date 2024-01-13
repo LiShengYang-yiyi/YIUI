@@ -5,7 +5,8 @@
     {
         protected override async ETTask Run(Scene scene, EventType.SceneChangeFinish args)
         {
-            await UIHelper.Create(scene, UIType.UIHelp, UILayer.Mid);
+            await YIUIMgrComponent.Inst.OpenPanelAsync<MainPanelComponent>();
+            //await UIHelper.Create(scene, UIType.UIHelp, UILayer.Mid);
         }
     }
 }

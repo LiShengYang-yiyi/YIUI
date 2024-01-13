@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using YooAsset;
 
 namespace ET
 {
@@ -12,6 +13,7 @@ namespace ET
     [CreateAssetMenu(menuName = "ET/CreateGlobalConfig", fileName = "GlobalConfig", order = 0)]
     public class GlobalConfig: ScriptableObject
     {
-        public CodeMode CodeMode;
+        public CodeMode  CodeMode;
+        public EPlayMode EPlayMode;
     }
 }
