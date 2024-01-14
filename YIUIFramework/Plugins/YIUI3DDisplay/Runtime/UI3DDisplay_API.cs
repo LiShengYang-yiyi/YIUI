@@ -1,12 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using System;
-using Sirenix.Serialization;
-using YIUIBind;
+﻿using System;
+using UnityEngine;
 
 namespace YIUIFramework
 {
@@ -36,7 +29,7 @@ namespace YIUIFramework
         /// </summary>
         /// <param name="showObject">需要被显示的对象</param>
         /// <param name="lookCamera">摄像机参数</param>
-        public void Show(GameObject showObject, Camera lookCamera)
+        internal void Show(GameObject showObject, Camera lookCamera)
         {
             if (showObject == null)
             {

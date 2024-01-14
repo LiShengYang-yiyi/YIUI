@@ -14,6 +14,11 @@ namespace UnityEngine.UI
         internal int u_MaxClickCount = 1;
 
         [SerializeField]
+        [LabelText("自动取消上一个选择")]
+        [MinValue(1)]
+        internal bool u_AutoCancelLast = true;
+        
+        [SerializeField]
         [LabelText("重复点击则取消")]
         internal bool u_RepetitionCancel;
 
@@ -23,5 +28,7 @@ namespace UnityEngine.UI
         internal int   u_EndLine                => Mathf.Min(u_StartLine + u_CurrentLines, u_TotalLines); //可见的最后一行
         internal int   u_ContentConstraintCount => contentConstraintCount;                                //限制 行/列 数
         internal float u_ContentSpacing         => contentSpacing;                                        //间隔
+        internal int   u_ItemStart              => itemTypeStart;                                         //当前显示的第一个的Index 
+        internal int   u_ItemEnd                => itemTypeEnd;                                           //当前显示的最后一个index 被+1了注意
     }
 }

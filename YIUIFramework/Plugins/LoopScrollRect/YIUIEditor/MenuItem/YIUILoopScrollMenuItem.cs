@@ -1,7 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework.Editor
 {
@@ -13,12 +12,24 @@ namespace YIUIFramework.Editor
             CreateLoopScroll("LoopScrollHorizontal");
         }
 
-        [MenuItem("GameObject/YIUI/LoopScroll/Vertical", false, 10002)]
+        [MenuItem("GameObject/YIUI/LoopScroll/Horizontal Group", false, 10002)]
+        private static void CreateLoopScrollHorizontalGroup()
+        {
+            CreateLoopScroll("LoopScrollHorizontalGroup");
+        }
+        
+        [MenuItem("GameObject/YIUI/LoopScroll/Vertical", false, 10003)]
         private static void CreateLoopScrollVertical()
         {
             CreateLoopScroll("LoopScrollVertical");
         }
 
+        [MenuItem("GameObject/YIUI/LoopScroll/VerticalGroup", false, 10004)]
+        private static void CreateLoopScrollVerticalGroup()
+        {
+            CreateLoopScroll("LoopScrollVerticalGroup");
+        }
+        
         private static void CreateLoopScroll(string name)
         {
             var activeObject = Selection.activeObject as GameObject;

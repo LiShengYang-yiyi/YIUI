@@ -94,7 +94,7 @@ Material:
     - _Parallax: 0.02
     - _ReceiveShadowMappingAmount: 0.65
     - _ReceiveShadowMappingPosOffset: 0
-    - _Size: 1
+    - _Size: 2.69
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

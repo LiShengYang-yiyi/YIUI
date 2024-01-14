@@ -151,6 +151,7 @@ namespace YIUIFramework
         private bool ShowCreateBtnByHierarchy()
         {
             if (string.IsNullOrEmpty(PkgName) || string.IsNullOrEmpty(ResName)) return false;
+            if (ResName.Contains("Source")) return false;
             if (!UIOperationHelper.CheckUIOperation(this, false)) return false;
             return !PrefabUtility.IsPartOfPrefabAsset(this);
         }
