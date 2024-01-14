@@ -16,7 +16,7 @@ namespace ET
                 throw new Exception($"entity already has component: {type.FullName}");
             }
 
-            Entity component = Create(type, isFromPool);
+            var component = Create(type, isFromPool);
             component.Id              = this.Id;
             component.ComponentParent = this;
             EventSystem.Instance.Awake(component);
@@ -75,7 +75,7 @@ namespace ET
 
             return (K)component;
         }
-        
+
         public K GetOrAddComponent<K>() where K : Entity, IAwake, new()
         {
             return this.GetComponent<K>() ?? this.AddComponent<K>();
