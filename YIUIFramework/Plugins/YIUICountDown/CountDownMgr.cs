@@ -228,7 +228,6 @@ namespace YIUIFramework
 
             var data = m_AllCountDown[guid];
             m_AllCountDown.Remove(guid);
-            RemoveByData(data);
             RefPool.Put(data);
             m_AtCount--;
             
@@ -274,6 +273,7 @@ namespace YIUIFramework
         {
             data.ElapseTime       = 0;
             data.LastCallBackTime = GetTime();
+            data.StartTime        = data.LastCallBackTime;
             data.EndTime          = data.LastCallBackTime + data.TotalTime;
             return true;
         }

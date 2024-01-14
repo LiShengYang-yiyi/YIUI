@@ -32,8 +32,7 @@ namespace YIUIFramework
             var removeResult = infoList.Remove(panelInfo);
             if (removeResult)
                 uiRect.SetParent(UILayerRoot);
-
-
+            
             /*
              * 使用Unity的层级作为前后显示
              * 大的在前 小的在后
@@ -46,16 +45,26 @@ namespace YIUIFramework
                 var info         = infoList[i];
                 var infoPriority = info.UIBasePanel?.Priority ?? 0;
 
-                //当前优先级比最大的都还大 那么直接放到最前面
-                if (priority >= infoPriority) break;
+                if (i == infoList.Count - 1 && priority >= infoPriority) break;
 
-                infoList.Insert(i, panelInfo);
-                uiRect.SetParent(layerRect);
-                uiRect.SetSiblingIndex(i);
-                addLast = false;
-                break;
+                if (priority >= infoPriority)
+                {
+                    infoList.Insert(i + 1, panelInfo);
+                    uiRect.SetParent(layerRect);
+                    uiRect.SetSiblingIndex(i + 1);
+                    addLast = false;
+                    break;
+                }
+
+                if (i <= 0)
+                {
+                    infoList.Insert(0, panelInfo);
+                    uiRect.SetParent(layerRect);
+                    uiRect.SetSiblingIndex(0);
+                    addLast = false;
+                    break;
+                }
             }
-
 
             if (addLast)
             {
@@ -66,11 +75,7 @@ namespace YIUIFramework
 
             uiRect.ResetToFullScreen();
             uiRect.ResetLocalPosAndRot();
-
-            if (uiBasePanel.PanelTimeCache)
-            {
-                uiBasePanel.StopCountDownDestroyPanel();
-            }
+            panelInfo.UIBasePanel.StopCountDownDestroyPanel();
         }
 
         /// <summary>

@@ -44,6 +44,9 @@ namespace YIUIFramework
         [LabelText("摄像机")]
         private Camera m_ShowCamera;
 
+        //摄像机的初始化位置
+        private Vector3 m_ShowCameraDefPos;
+        
         [Required]
         [OdinSerialize]
         [ShowInInspector]
@@ -347,6 +350,11 @@ namespace YIUIFramework
                 m_ShowLight.cullingMask = m_ShowCamera.cullingMask;
 
             var lookCameraTsf = lookCamera.transform;
+            if (lookCamera == m_ShowCamera)
+            {
+                //当使用默认相机作为显示相机时 需要处理每个显示物体的额外偏移
+                lookCamera.transform.localPosition = m_ShowCameraDefPos + m_ModelGlobalOffset; 
+            }
             m_ShowCamera.transform.SetPositionAndRotation(
                 lookCameraTsf.position,
                 lookCameraTsf.rotation);

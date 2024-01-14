@@ -15,6 +15,7 @@ namespace YIUIFramework
 
         internal void CacheTimeCountDownDestroyPanel()
         {
+            StopCountDownDestroyPanel();
             m_Cts = new CancellationTokenSource();
             DoCountDownDestroyPanel(m_Cts.Token).Forget();
         }

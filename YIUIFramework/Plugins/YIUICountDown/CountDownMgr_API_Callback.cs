@@ -10,11 +10,6 @@ namespace YIUIFramework
 {
     public partial class CountDownMgr
     {
-        private bool RemoveByData(CountDownData data)
-        {
-            return m_CallbackGuidDic.Remove(data.TimerCallback);
-        }
-
         private bool TryAddCallback(TimerCallback timerCallback)
         {
             if (m_CallbackGuidDic.ContainsKey(timerCallback))
@@ -25,7 +20,7 @@ namespace YIUIFramework
 
             return true;
         }
-        
+
         /// <summary>
         /// 移除一个回调
         /// </summary>
@@ -36,8 +31,9 @@ namespace YIUIFramework
                 return false;
             }
 
-            var callbackGuid = m_CallbackGuidDic[timerCallback];
-            return Remove(callbackGuid);
+            Remove(m_CallbackGuidDic[timerCallback]);
+            m_CallbackGuidDic.Remove(timerCallback);
+            return true;
         }
 
         /// <summary>
@@ -60,7 +56,7 @@ namespace YIUIFramework
             {
                 return false;
             }
-            
+
             var callbackGuid = 0;
             var result       = Add(ref callbackGuid, totalTime, interval, timerCallback, startCallback);
             if (result)
@@ -81,12 +77,12 @@ namespace YIUIFramework
                 Logger.LogError($"<color=red> 必须有callback </color>");
                 return false;
             }
-            
+
             if (!TryAddCallback(timerCallback))
             {
                 return false;
             }
-            
+
             var callbackGuid = 0;
             var result       = Add(ref callbackGuid, totalTime, timerCallback, startCallback);
             if (result)
@@ -104,7 +100,7 @@ namespace YIUIFramework
                         double        totalTime,
                         double        interval,
                         bool          forever,
-                        bool          startCallback = false)
+                        bool          startCallback)
         {
             if (timerCallback == null)
             {
@@ -116,7 +112,7 @@ namespace YIUIFramework
             {
                 return false;
             }
-            
+
             var callbackGuid = 0;
             var result       = Add(ref callbackGuid, totalTime, interval, timerCallback, forever, startCallback);
             if (result)
@@ -125,6 +121,25 @@ namespace YIUIFramework
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// 判断这个倒计时是否存在
+        /// </summary>
+        public bool ExistTimerCallback(TimerCallback timerCallback)
+        {
+            return m_CallbackGuidDic.ContainsKey(timerCallback);
+        }
+
+        /// <summary>
+        /// 获取一个倒计时的GUID 如果存在则有
+        /// </summary>
+        public int GetTimerCallbackGuid(TimerCallback timerCallback)
+        {
+            if (!m_CallbackGuidDic.TryGetValue(timerCallback, out int guid))
+                return 0;
+
+            return guid;
         }
 
         /// <summary>

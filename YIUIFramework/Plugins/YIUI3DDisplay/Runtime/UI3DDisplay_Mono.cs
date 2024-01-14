@@ -24,7 +24,12 @@ namespace YIUIFramework
             {
                 if (m_ShowObject == null)
                     m_ShowCamera.enabled = false;
-                m_ShowCameraCtrl = m_ShowCamera.GetOrAddComponent<UI3DDisplayCamera>();
+                m_ShowCameraCtrl   = m_ShowCamera.GetOrAddComponent<UI3DDisplayCamera>();
+                m_ShowCameraDefPos = m_ShowCamera.transform.localPosition;
+            }
+            else
+            {
+                Debug.LogError($"{this.gameObject.name} ShowCamera == null 这是不允许的 请检查 建议直接使用默认预制 不要自己修改");
             }
 
             g_DisPlayUIIndex += 1;

@@ -209,8 +209,30 @@ namespace YIUIFramework.Editor
         {
             cdeTable.AllChildCdeTable.Clear();
             AddCdeTable(ref cdeTable.AllChildCdeTable, cdeTable.transform);
+            CheckAddCdeTable(ref cdeTable.AllChildCdeTable,cdeTable);
         }
 
+        //如果自己是panel 则还需要额外检查 是不是把自己的view给收集进去了
+        private static void CheckAddCdeTable(ref List<UIBindCDETable> addCdeTable, UIBindCDETable cdeTable)
+        {
+            if (cdeTable.UICodeType != EUICodeType.Panel && !cdeTable.IsSplitData)
+                return;
+            
+            for (var i = addCdeTable.Count - 1; i >= 0; i--)
+            {
+                var targetTable =addCdeTable[i];
+                var parent      = (RectTransform)targetTable.gameObject.transform.parent;
+                var parentName  = parent.name;
+                //这里使用的是强判断 如果使用|| 可以弱判断根据需求  如果遵守View规则是没有问题的
+                if (parentName.Contains(UIStaticHelper.UIParentName) && parentName.Contains(targetTable.gameObject.name))
+                {
+                    //常驻View 不需要移除
+                    if (cdeTable.PanelSplitData.AllCommonView.Contains(parent)) break;
+                    addCdeTable.RemoveAt(i);
+                }
+            }
+        }
+        
         private static void AddCdeTable(ref List<UIBindCDETable> cdeTable, Transform transform)
         {
             var childCount = transform.childCount;

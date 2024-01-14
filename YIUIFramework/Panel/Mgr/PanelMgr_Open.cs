@@ -83,7 +83,9 @@ namespace YIUIFramework
             }
             else
             {
-                info.UIBasePanel.Close();
+                //如果打开失败直接屏蔽
+                info?.UIBasePanel?.SetActive(false);
+                info?.UIBasePanel?.Close();
             }
 
             return info.UIBasePanel;

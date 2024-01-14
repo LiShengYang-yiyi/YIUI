@@ -129,9 +129,9 @@ namespace YIUIFramework
 
             UICamera.clearFlags   = CameraClearFlags.Depth;
             UICamera.orthographic = true;
-            UICamera.farClipPlane =
-                ((len + 1) * LayerDistance) * UICanvasRoot.transform.localScale.x; //没必要设置的很大 不需要可以注释
-
+            
+            //根据需求可以修改摄像机的远剪裁平面大小 没必要设置的很大
+            //UICamera.farClipPlane = ((len + 1) * LayerDistance) * UICanvasRoot.transform.localScale.x; 
             return true;
         }
 
