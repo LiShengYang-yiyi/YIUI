@@ -14,6 +14,11 @@ namespace ET.Client
     public static partial class GMPanelComponentSystem
     {
         [EntitySystem]
+        private static void Awake(this GMPanelComponent self)
+        {
+        }
+
+        [EntitySystem]
         private static void YIUIBind(this GMPanelComponent self)
         {
             self.UIBind();

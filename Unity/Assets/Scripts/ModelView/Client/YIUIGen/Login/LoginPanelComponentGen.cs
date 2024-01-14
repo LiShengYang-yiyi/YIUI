@@ -7,7 +7,7 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [YIUI(EUICodeType.Panel, EPanelLayer.Popup)]
-    public partial class LoginPanelComponent : Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize, IYIUIOpen
+    public partial class LoginPanelComponent: Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize, IYIUIOpen
     {
         public const string PkgName = "Login";
         public const string ResName = "LoginPanel";

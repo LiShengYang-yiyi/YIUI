@@ -16,11 +16,6 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        private static void Awake(this TipsPanelComponent self)
-        {
-        }
-
-        [EntitySystem]
         private static void Destroy(this TipsPanelComponent self)
         {
         }

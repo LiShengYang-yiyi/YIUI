@@ -14,11 +14,6 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        private static void Awake(this MessageTipsViewComponent self)
-        {
-        }
-
-        [EntitySystem]
         private static void Destroy(this MessageTipsViewComponent self)
         {
         }

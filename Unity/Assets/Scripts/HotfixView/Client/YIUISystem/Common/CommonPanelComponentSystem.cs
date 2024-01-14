@@ -16,12 +16,7 @@ namespace ET.Client
         private static void YIUIInitialize(this CommonPanelComponent self)
         {
         }
-        
-        [EntitySystem]
-        private static void Awake(this CommonPanelComponent self)
-        {
-        }
-        
+
         [EntitySystem]
         private static void Destroy(this CommonPanelComponent self)
         {

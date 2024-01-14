@@ -12,15 +12,10 @@ namespace ET.Client
         [EntitySystem]
         private static void YIUIInitialize(this RedDotPanelComponent self)
         {
+            self.RemoveInfoChanged();
             self.InitInfo();
             self.m_SearchScroll = new YIUILoopScroll<RedDotData, RedDotDataItemComponent>(self, self.u_ComSearchScroll, self.SearchRenderer);
             self.InitDropdownSearchDic();
-        }
-
-        [EntitySystem]
-        private static void Awake(this RedDotPanelComponent self)
-        {
-            self.RemoveInfoChanged();
         }
 
         [EntitySystem]

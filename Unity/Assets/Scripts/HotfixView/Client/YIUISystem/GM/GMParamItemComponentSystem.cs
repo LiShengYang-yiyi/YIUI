@@ -13,12 +13,7 @@ namespace ET.Client
         private static void YIUIInitialize(this GMParamItemComponent self)
         {
         }
-        
-        [EntitySystem]
-        private static void Awake(this GMParamItemComponent self)
-        {
-        }
-        
+
         [EntitySystem]
         private static void Destroy(this GMParamItemComponent self)
         {

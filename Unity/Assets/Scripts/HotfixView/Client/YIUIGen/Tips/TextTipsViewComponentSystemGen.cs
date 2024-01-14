@@ -14,6 +14,11 @@ namespace ET.Client
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
+        private static void Awake(this TextTipsViewComponent self)
+        {
+        }
+
+        [EntitySystem]
         private static void YIUIBind(this TextTipsViewComponent self)
         {
             self.UIBind();
