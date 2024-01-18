@@ -66,5 +66,23 @@ namespace YIUIFramework
         {
             await WindowFadeAnim.Out(this);
         }
+
+        protected override void OnOpenTweenStart()
+        {
+            OwnerGameObject.SetActive(true);
+        }
+
+        protected override void OnOpenTweenEnd()
+        {
+        }
+
+        protected override void OnCloseTweenStart()
+        {
+        }
+
+        protected override void OnCloseTweenEnd()
+        {
+            OwnerGameObject.SetActive(false);
+        }
     }
 }

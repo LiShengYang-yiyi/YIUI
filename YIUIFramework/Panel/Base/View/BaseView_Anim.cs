@@ -61,5 +61,23 @@ namespace YIUIFramework
         {
             await UniTask.CompletedTask;
         }
+
+        protected override void OnOpenTweenStart()
+        {
+            OwnerGameObject.SetActive(true);
+        }
+
+        protected override void OnOpenTweenEnd()
+        {
+        }
+
+        protected override void OnCloseTweenStart()
+        {
+        }
+
+        protected override void OnCloseTweenEnd()
+        {
+            OwnerGameObject.SetActive(false);
+        }
     }
 }

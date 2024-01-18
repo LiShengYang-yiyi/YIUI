@@ -132,7 +132,7 @@ namespace YIUIFramework
         #endregion
 
         #region 生命周期
-        
+
         //UIBase 生命周期顺序 2
         protected virtual void UIBind()
         {
@@ -147,11 +147,15 @@ namespace YIUIFramework
         {
             CDETable.UIBaseStart     = UIBaseStart;
             CDETable.UIBaseOnDestroy = UIBaseOnDestroy;
-            SealedInitialize();
-            UIBind();
             try
             {
+                SealedInitialize();
+                UIBind();
                 Initialize();
+                if (ActiveSelf)
+                    UIBaseOnEnable();
+                else
+                    UIBaseOnDisable();
             }
             catch (Exception e)
             {

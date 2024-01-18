@@ -9,6 +9,8 @@ namespace YIUIFramework
 
         internal async UniTask InternalOnWindowOpenTween(bool tween = true)
         {
+            OnOpenTweenStart();
+
             if (tween && !WindowBanRepetitionOpenTween || !m_FirstOpenTween)
             {
                 m_FirstOpenTween = true;
@@ -32,6 +34,8 @@ namespace YIUIFramework
 
         internal async UniTask InternalOnWindowCloseTween(bool tween = true)
         {
+            OnCloseTweenStart();
+
             if (tween && !WindowBanRepetitionCloseTween || !m_FirstCloseTween)
             {
                 m_FirstCloseTween = true;
@@ -58,15 +62,13 @@ namespace YIUIFramework
         protected abstract UniTask OnOpenTween();
 
         //有可能没有动画 也有可能动画被跳过 反正无论如何都会有动画结束回调
-        protected virtual void OnOpenTweenEnd()
-        {
-        }
+        protected abstract void OnOpenTweenStart();
+        protected abstract void OnOpenTweenEnd();
 
         protected abstract UniTask SealedOnWindowCloseTween();
         protected abstract UniTask OnCloseTween();
 
-        protected virtual void OnCloseTweenEnd()
-        {
-        }
+        protected abstract void OnCloseTweenStart();
+        protected abstract void OnCloseTweenEnd();
     }
 }
