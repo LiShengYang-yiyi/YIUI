@@ -21,7 +21,6 @@ namespace ET.Client
 
             if (info?.UIBase == null) return true; //没有也算成功关闭
 
-
             EventSystem.Instance.Publish(self.Root(), new YIUIEventPanelCloseBefore
             {
                 UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name, PanelLayer = info.PanelLayer,
@@ -53,12 +52,20 @@ namespace ET.Client
                 return false;
             }
 
-            await info.UIWindow.InternalOnWindowCloseTween(tween);
-
-            self.RemoveUI(info);
+            if (!info.UIWindow.WindowLastClose)
+            {
+                await info.UIWindow.InternalOnWindowCloseTween(tween);
+                self.RemoveUI(info);
+            }
 
             if (!ignoreElse)
                 await self.RemoveUIAddElse(info);
+
+            if (info.UIWindow.WindowLastClose)
+            {
+                await info.UIWindow.InternalOnWindowCloseTween(tween);
+                self.RemoveUI(info);
+            }
 
             return true;
         }
