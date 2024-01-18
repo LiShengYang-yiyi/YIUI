@@ -53,19 +53,15 @@ namespace ET.Client
             }
 
             if (!info.UIWindow.WindowLastClose)
-            {
                 await info.UIWindow.InternalOnWindowCloseTween(tween);
-                self.RemoveUI(info);
-            }
 
             if (!ignoreElse)
                 await self.RemoveUIAddElse(info);
 
             if (info.UIWindow.WindowLastClose)
-            {
                 await info.UIWindow.InternalOnWindowCloseTween(tween);
-                self.RemoveUI(info);
-            }
+
+            self.RemoveUI(info);
 
             return true;
         }

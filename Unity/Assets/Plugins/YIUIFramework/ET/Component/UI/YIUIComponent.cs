@@ -204,6 +204,10 @@ namespace ET.Client
             {
                 YIUIEventSystem.Bind(this.OwnerUIEntity);
                 YIUIEventSystem.Initialize(this.OwnerUIEntity);
+                if (this.ActiveSelf)
+                    UIBaseOnEnable();
+                else
+                    UIBaseOnDisable();
             }
             catch (Exception e)
             {
