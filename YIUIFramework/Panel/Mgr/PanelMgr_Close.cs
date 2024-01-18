@@ -133,11 +133,11 @@ namespace YIUIFramework
 
             await info.UIBasePanel.InternalOnWindowCloseTween(tween);
             info.UIBasePanel.OnClose();
-
+            RemoveUI(info);
+            
             if (!ignoreElse)
                 await RemoveUIAddElse(info);
-
-            RemoveUI(info);
+            
         }
 
         public void ClosePanel(string panelName, bool tween = true, bool ignoreElse = false)
