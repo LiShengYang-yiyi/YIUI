@@ -131,13 +131,22 @@ namespace YIUIFramework
                 }
             }
 
-            await info.UIBasePanel.InternalOnWindowCloseTween(tween);
-            info.UIBasePanel.OnClose();
-            RemoveUI(info);
+            if (!info.UIBasePanel.WindowLastClose)
+            {
+                await info.UIBasePanel.InternalOnWindowCloseTween(tween);
+                info.UIBasePanel.OnClose();
+                RemoveUI(info);
+            }
             
             if (!ignoreElse)
                 await RemoveUIAddElse(info);
             
+            if (info.UIBasePanel.WindowLastClose)
+            {
+                await info.UIBasePanel.InternalOnWindowCloseTween(tween);
+                info.UIBasePanel.OnClose();
+                RemoveUI(info);
+            }
         }
 
         public void ClosePanel(string panelName, bool tween = true, bool ignoreElse = false)

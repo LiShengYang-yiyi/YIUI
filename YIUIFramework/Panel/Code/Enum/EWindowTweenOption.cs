@@ -26,7 +26,10 @@ namespace YIUIFramework
         HaveIOpenAllowOpen = 1 << 2, //默认情况下如果你有IOpen接口 就必须强制使用这个接口打开
 
         [LabelText("先开")]
-        FitstOpen = 1 << 3, // 当前UI先播放动画然后关闭其他UI  否则 其他UI先关闭 当前UI后打开
+        FirstOpen = 1 << 3, // 默认后开 (如果先开: 当前UI先播放动画然后关闭其他UI  否则 其他UI先关闭 当前UI后打开)
+
+        [LabelText("后关")]
+        LastClose = 1 << 4, // 默认先关 (自己再打开其他 如果后关: 先打开其他 再关闭自己 这个时候大概率是看不到自己的关闭动画的)
 
         [LabelText("禁止动画")]
         BanTween = 1 << 10, //所有开关动画都会被跳过
@@ -51,7 +54,7 @@ namespace YIUIFramework
 
         [LabelText("Home时 跳过我自己的打开动画")]
         SkipHomeOpenTween = 1 << 17, //被Home的界面直接打开 不播放动画
-        
+
         [LabelText("播放动画时 可以操作")]
         AllowOptionByTween = 1 << 18, //默认播放动画的时候是不能操作UI的 不然容易出问题
     }

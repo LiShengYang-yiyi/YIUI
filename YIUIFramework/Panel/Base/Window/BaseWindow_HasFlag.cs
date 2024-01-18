@@ -26,7 +26,10 @@
         public virtual bool WindowHaveIOpenAllowOpen => WindowOption.HasFlag(EWindowOption.HaveIOpenAllowOpen);
 
         //先开
-        public virtual bool WindowFitstOpen => WindowOption.HasFlag(EWindowOption.FitstOpen);
+        public virtual bool WindowFirstOpen => WindowOption.HasFlag(EWindowOption.FirstOpen);
+
+        //后关
+        public virtual bool WindowLastClose => WindowOption.HasFlag(EWindowOption.LastClose);
 
         //禁止动画
         public virtual bool WindowBanTween => WindowOption.HasFlag(EWindowOption.BanTween);
