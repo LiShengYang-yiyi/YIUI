@@ -54,10 +54,10 @@ namespace ET.Client
 
             await info.UIWindow.InternalOnWindowCloseTween(tween);
 
+            self.RemoveUI(info);
+
             if (!ignoreElse)
                 await self.RemoveUIAddElse(info);
-
-            self.RemoveUI(info);
 
             return true;
         }
