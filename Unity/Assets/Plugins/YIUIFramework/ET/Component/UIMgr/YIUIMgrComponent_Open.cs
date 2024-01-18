@@ -141,7 +141,7 @@ namespace ET.Client
         /// </summary>
         internal async ETTask OpenPanelBefore(PanelInfo info)
         {
-            if (!info.UIWindow.WindowFitstOpen)
+            if (!info.UIWindow.WindowFirstOpen)
             {
                 await AddUICloseElse(info);
             }
@@ -154,7 +154,7 @@ namespace ET.Client
         {
             if (success)
             {
-                if (info.UIWindow.WindowFitstOpen)
+                if (info.UIWindow.WindowFirstOpen)
                 {
                     await AddUICloseElse(info);
                 }
