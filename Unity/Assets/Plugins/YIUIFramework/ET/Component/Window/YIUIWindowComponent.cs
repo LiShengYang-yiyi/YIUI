@@ -49,6 +49,8 @@ namespace ET.Client
 
         internal async ETTask InternalOnWindowOpenTween(bool tween = true)
         {
+            this.UIBase.SetActive(true);
+
             if (tween && (!WindowBanRepetitionOpenTween || !m_FirstOpenTween))
             {
                 m_FirstOpenTween = true;
@@ -100,6 +102,7 @@ namespace ET.Client
         private void OnCloseTweenEnd()
         {
             YIUIEventSystem.CloseTweenEnd(this.UIBase.OwnerUIEntity);
+            this.UIBase.SetActive(false);
         }
 
         private async ETTask SealedOnWindowOpenTween()
