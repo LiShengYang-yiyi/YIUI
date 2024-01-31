@@ -29,8 +29,11 @@ namespace YIUIBind
         protected override void OnValueChanged()
         {
             if (m_Toggle == null) return;
-
-            m_Toggle.isOn = GetResult();
+            var result = GetResult();
+            if (m_Toggle.isOn != result)
+            {
+                m_Toggle.isOn = result;
+            }
         }
     }
 }
