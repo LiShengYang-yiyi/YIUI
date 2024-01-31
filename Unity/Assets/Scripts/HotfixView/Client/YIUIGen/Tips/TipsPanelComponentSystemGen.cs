@@ -14,6 +14,11 @@ namespace ET.Client
     public static partial class TipsPanelComponentSystem
     {
         [EntitySystem]
+        private static void Awake(this TipsPanelComponent self)
+        {
+        }
+
+        [EntitySystem]
         private static void YIUIBind(this TipsPanelComponent self)
         {
             self.UIBind();

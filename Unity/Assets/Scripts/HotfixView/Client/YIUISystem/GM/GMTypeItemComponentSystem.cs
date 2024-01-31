@@ -11,11 +11,6 @@ namespace ET.Client
         private static void YIUIInitialize(this GMTypeItemComponent self)
         {
         }
-        
-        [EntitySystem]
-        private static void Awake(this GMTypeItemComponent self)
-        {
-        }
 
         [EntitySystem]
         private static void Destroy(this GMTypeItemComponent self)

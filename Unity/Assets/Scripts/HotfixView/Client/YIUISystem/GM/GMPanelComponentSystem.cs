@@ -20,11 +20,6 @@ namespace ET.Client
         }
         
         [EntitySystem]
-        private static void Awake(this GMPanelComponent self)
-        {
-        }
-        
-        [EntitySystem]
         private static void Destroy(this GMPanelComponent self)
         {
         }

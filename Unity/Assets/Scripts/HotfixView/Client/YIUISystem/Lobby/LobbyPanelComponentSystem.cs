@@ -13,11 +13,6 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        private static void Awake(this LobbyPanelComponent self)
-        {
-        }
-
-        [EntitySystem]
         private static void Destroy(this LobbyPanelComponent self)
         {
         }

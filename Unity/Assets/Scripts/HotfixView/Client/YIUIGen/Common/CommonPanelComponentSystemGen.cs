@@ -14,6 +14,11 @@ namespace ET.Client
     public static partial class CommonPanelComponentSystem
     {
         [EntitySystem]
+        private static void Awake(this CommonPanelComponent self)
+        {
+        }
+
+        [EntitySystem]
         private static void YIUIBind(this CommonPanelComponent self)
         {
             self.UIBind();

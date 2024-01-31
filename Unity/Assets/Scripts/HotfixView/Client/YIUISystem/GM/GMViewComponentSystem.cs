@@ -23,11 +23,6 @@ namespace ET.Client
 
             self.GMCommandLoop = new YIUILoopScroll<GMCommandInfo, GMCommandItemComponent>(self, self.u_ComGMCommandLoop, self.GMCommandRenderer);
         }
-        
-        [EntitySystem]
-        private static void Awake(this GMViewComponent self)
-        {
-        }
 
         [EntitySystem]
         private static void Destroy(this GMViewComponent self)

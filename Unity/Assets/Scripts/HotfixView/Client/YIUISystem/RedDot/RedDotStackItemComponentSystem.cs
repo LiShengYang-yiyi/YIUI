@@ -13,11 +13,6 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        private static void Awake(this RedDotStackItemComponent self)
-        {
-        }
-
-        [EntitySystem]
         private static void Destroy(this RedDotStackItemComponent self)
         {
         }
