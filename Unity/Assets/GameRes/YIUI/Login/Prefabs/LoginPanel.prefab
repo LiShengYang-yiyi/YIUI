@@ -205,9 +205,8 @@ GameObject:
   - component: {fileID: 4485279627685796822}
   - component: {fileID: 4483312503364290428}
   - component: {fileID: 4374343219239196396}
-  - component: {fileID: 4374233948946752906}
   - component: {fileID: 3979436928107842851}
-  - component: {fileID: 1864475630825351486}
+  - component: {fileID: 1866959478469180138}
   m_Layer: 5
   m_Name: LoginBtn
   m_TagString: Untagged
@@ -273,50 +272,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4374233948946752906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4406081164855719520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Highlighted
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4374343219239196396}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3979436928107842851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +289,7 @@ MonoBehaviour:
   scaleTime: 0
   popTime: 0
   ease: 24
---- !u!114 &1864475630825351486
+--- !u!114 &1866959478469180138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,7 +298,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4406081164855719520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84c394472d09c84a9af3111a280f2eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 543b9965e22a4bb882ba1493143e19f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -351,7 +306,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 3825177922720946917}
-    - {fileID: 1864475630825351486}
+    - {fileID: 1866959478469180138}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -365,7 +320,7 @@ MonoBehaviour:
       Data: u_EventLogin
     - Name: m_UIEvent
       Entry: 7
-      Data: 0|YIUIFramework.UIEventP0, YIUIFramework
+      Data: 0|YIUIFramework.UITaskEventP0, YIUIFramework
     - Name: m_EventName
       Entry: 1
       Data: u_EventLogin
@@ -452,8 +407,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  m_SkipWhenDrag: 0
-  m_Selectable: {fileID: 4374233948946752906}
+  m_SkipWhenDrag: 1
+  m_Selectable: {fileID: 0}
+  m_BanLayerOption: 1
 --- !u!1 &4406086520311545944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1601,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 3825177922720946917}
-    - {fileID: 1864475630825351486}
+    - {fileID: 1866959478469180138}
     - {fileID: 4091517273978743017}
     - {fileID: 8139696894903540282}
     SerializedBytesString: 
@@ -1675,7 +1631,7 @@ MonoBehaviour:
       Data: u_EventLogin
     - Name: $v
       Entry: 7
-      Data: 2|YIUIFramework.UIEventP0, YIUIFramework
+      Data: 2|YIUIFramework.UITaskEventP0, YIUIFramework
     - Name: m_EventName
       Entry: 1
       Data: u_EventLogin

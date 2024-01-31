@@ -33,7 +33,7 @@ namespace ET.Client
             self.UIPanel.Priority = 0;
             self.UIPanel.CachePanelTime = 10;
 
-            self.u_EventEnter = self.UIBase.EventTable.FindEvent<UIEventP0>("u_EventEnter");
+            self.u_EventEnter = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventEnter");
             self.u_EventEnterHandle = self.u_EventEnter.Add(self.OnEventEnterAction);
 
         }

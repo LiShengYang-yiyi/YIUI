@@ -52,13 +52,12 @@ namespace ET.Client
             self.Account = p1;
         }
         
-        private static async void OnEventLoginAction(this LoginPanelComponent self)
+        private static async ETTask OnEventLoginAction(this LoginPanelComponent self)
         {
             Log.Info($"登录");
-            var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
             await LoginHelper.Login(self.DomainScene(), self.Account, self.Password);
-            YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
         }
+        
         #endregion YIUIEvent结束
     }
 }

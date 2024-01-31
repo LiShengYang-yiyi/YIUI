@@ -7,7 +7,7 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [YIUI(EUICodeType.Common)]
-    public partial class GMTypeItemComponent : Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize
+    public partial class GMTypeItemComponent: Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize
     {
         public const string PkgName = "GM";
         public const string ResName = "GMTypeItem";
