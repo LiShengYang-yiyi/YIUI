@@ -13,19 +13,19 @@ namespace YIUICodeGenerated
             var list          = new YIUIBindVo[15];
             list[0] = new YIUIBindVo
             {
-                PkgName       = ET.Client.CommonPanelComponent.PkgName,
-                ResName       = ET.Client.CommonPanelComponent.ResName,
+                PkgName       = ET.Client.MainPanelComponent.PkgName,
+                ResName       = ET.Client.MainPanelComponent.ResName,
                 CodeType      = EUICodeType.Panel,
                 PanelLayer    = EPanelLayer.Panel,
-                ComponentType = typeof(ET.Client.CommonPanelComponent),
+                ComponentType = typeof(ET.Client.MainPanelComponent),
             };
             list[1] = new YIUIBindVo
             {
-                PkgName       = ET.Client.GMCommandItemComponent.PkgName,
-                ResName       = ET.Client.GMCommandItemComponent.ResName,
+                PkgName       = ET.Client.RedDotStackItemComponent.PkgName,
+                ResName       = ET.Client.RedDotStackItemComponent.ResName,
                 CodeType      = EUICodeType.Common,
                 PanelLayer    = EPanelLayer.Any,
-                ComponentType = typeof(ET.Client.GMCommandItemComponent),
+                ComponentType = typeof(ET.Client.RedDotStackItemComponent),
             };
             list[2] = new YIUIBindVo
             {
@@ -37,11 +37,11 @@ namespace YIUICodeGenerated
             };
             list[3] = new YIUIBindVo
             {
-                PkgName       = ET.Client.GMParamItemComponent.PkgName,
-                ResName       = ET.Client.GMParamItemComponent.ResName,
-                CodeType      = EUICodeType.Common,
+                PkgName       = ET.Client.GMViewComponent.PkgName,
+                ResName       = ET.Client.GMViewComponent.ResName,
+                CodeType      = EUICodeType.View,
                 PanelLayer    = EPanelLayer.Any,
-                ComponentType = typeof(ET.Client.GMParamItemComponent),
+                ComponentType = typeof(ET.Client.GMViewComponent),
             };
             list[4] = new YIUIBindVo
             {
@@ -53,37 +53,21 @@ namespace YIUICodeGenerated
             };
             list[5] = new YIUIBindVo
             {
-                PkgName       = ET.Client.GMViewComponent.PkgName,
-                ResName       = ET.Client.GMViewComponent.ResName,
-                CodeType      = EUICodeType.View,
-                PanelLayer    = EPanelLayer.Any,
-                ComponentType = typeof(ET.Client.GMViewComponent),
+                PkgName       = ET.Client.RedDotPanelComponent.PkgName,
+                ResName       = ET.Client.RedDotPanelComponent.ResName,
+                CodeType      = EUICodeType.Panel,
+                PanelLayer    = EPanelLayer.Tips,
+                ComponentType = typeof(ET.Client.RedDotPanelComponent),
             };
             list[6] = new YIUIBindVo
             {
-                PkgName       = ET.Client.LobbyPanelComponent.PkgName,
-                ResName       = ET.Client.LobbyPanelComponent.ResName,
-                CodeType      = EUICodeType.Panel,
-                PanelLayer    = EPanelLayer.Panel,
-                ComponentType = typeof(ET.Client.LobbyPanelComponent),
+                PkgName       = ET.Client.GMParamItemComponent.PkgName,
+                ResName       = ET.Client.GMParamItemComponent.ResName,
+                CodeType      = EUICodeType.Common,
+                PanelLayer    = EPanelLayer.Any,
+                ComponentType = typeof(ET.Client.GMParamItemComponent),
             };
             list[7] = new YIUIBindVo
-            {
-                PkgName       = ET.Client.LoginPanelComponent.PkgName,
-                ResName       = ET.Client.LoginPanelComponent.ResName,
-                CodeType      = EUICodeType.Panel,
-                PanelLayer    = EPanelLayer.Popup,
-                ComponentType = typeof(ET.Client.LoginPanelComponent),
-            };
-            list[8] = new YIUIBindVo
-            {
-                PkgName       = ET.Client.MainPanelComponent.PkgName,
-                ResName       = ET.Client.MainPanelComponent.ResName,
-                CodeType      = EUICodeType.Panel,
-                PanelLayer    = EPanelLayer.Panel,
-                ComponentType = typeof(ET.Client.MainPanelComponent),
-            };
-            list[9] = new YIUIBindVo
             {
                 PkgName       = ET.Client.RedDotDataItemComponent.PkgName,
                 ResName       = ET.Client.RedDotDataItemComponent.ResName,
@@ -91,23 +75,31 @@ namespace YIUICodeGenerated
                 PanelLayer    = EPanelLayer.Any,
                 ComponentType = typeof(ET.Client.RedDotDataItemComponent),
             };
-            list[10] = new YIUIBindVo
+            list[8] = new YIUIBindVo
             {
-                PkgName       = ET.Client.RedDotPanelComponent.PkgName,
-                ResName       = ET.Client.RedDotPanelComponent.ResName,
+                PkgName       = ET.Client.LoginPanelComponent.PkgName,
+                ResName       = ET.Client.LoginPanelComponent.ResName,
+                CodeType      = EUICodeType.Panel,
+                PanelLayer    = EPanelLayer.Popup,
+                ComponentType = typeof(ET.Client.LoginPanelComponent),
+            };
+            list[9] = new YIUIBindVo
+            {
+                PkgName       = ET.Client.TipsPanelComponent.PkgName,
+                ResName       = ET.Client.TipsPanelComponent.ResName,
                 CodeType      = EUICodeType.Panel,
                 PanelLayer    = EPanelLayer.Tips,
-                ComponentType = typeof(ET.Client.RedDotPanelComponent),
+                ComponentType = typeof(ET.Client.TipsPanelComponent),
+            };
+            list[10] = new YIUIBindVo
+            {
+                PkgName       = ET.Client.CommonPanelComponent.PkgName,
+                ResName       = ET.Client.CommonPanelComponent.ResName,
+                CodeType      = EUICodeType.Panel,
+                PanelLayer    = EPanelLayer.Panel,
+                ComponentType = typeof(ET.Client.CommonPanelComponent),
             };
             list[11] = new YIUIBindVo
-            {
-                PkgName       = ET.Client.RedDotStackItemComponent.PkgName,
-                ResName       = ET.Client.RedDotStackItemComponent.ResName,
-                CodeType      = EUICodeType.Common,
-                PanelLayer    = EPanelLayer.Any,
-                ComponentType = typeof(ET.Client.RedDotStackItemComponent),
-            };
-            list[12] = new YIUIBindVo
             {
                 PkgName       = ET.Client.MessageTipsViewComponent.PkgName,
                 ResName       = ET.Client.MessageTipsViewComponent.ResName,
@@ -115,21 +107,29 @@ namespace YIUICodeGenerated
                 PanelLayer    = EPanelLayer.Any,
                 ComponentType = typeof(ET.Client.MessageTipsViewComponent),
             };
+            list[12] = new YIUIBindVo
+            {
+                PkgName       = ET.Client.GMCommandItemComponent.PkgName,
+                ResName       = ET.Client.GMCommandItemComponent.ResName,
+                CodeType      = EUICodeType.Common,
+                PanelLayer    = EPanelLayer.Any,
+                ComponentType = typeof(ET.Client.GMCommandItemComponent),
+            };
             list[13] = new YIUIBindVo
+            {
+                PkgName       = ET.Client.LobbyPanelComponent.PkgName,
+                ResName       = ET.Client.LobbyPanelComponent.ResName,
+                CodeType      = EUICodeType.Panel,
+                PanelLayer    = EPanelLayer.Panel,
+                ComponentType = typeof(ET.Client.LobbyPanelComponent),
+            };
+            list[14] = new YIUIBindVo
             {
                 PkgName       = ET.Client.TextTipsViewComponent.PkgName,
                 ResName       = ET.Client.TextTipsViewComponent.ResName,
                 CodeType      = EUICodeType.View,
                 PanelLayer    = EPanelLayer.Any,
                 ComponentType = typeof(ET.Client.TextTipsViewComponent),
-            };
-            list[14] = new YIUIBindVo
-            {
-                PkgName       = ET.Client.TipsPanelComponent.PkgName,
-                ResName       = ET.Client.TipsPanelComponent.ResName,
-                CodeType      = EUICodeType.Panel,
-                PanelLayer    = EPanelLayer.Tips,
-                ComponentType = typeof(ET.Client.TipsPanelComponent),
             };
 
             return list;
