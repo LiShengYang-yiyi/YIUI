@@ -14,6 +14,11 @@ namespace ET.Client
     public static partial class MainPanelComponentSystem
     {
         [EntitySystem]
+        private static void Awake(this MainPanelComponent self)
+        {
+        }
+
+        [EntitySystem]
         private static void YIUIBind(this MainPanelComponent self)
         {
             self.UIBind();
@@ -26,10 +31,9 @@ namespace ET.Client
             self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIPanel.Layer = EPanelLayer.Panel;
-            self.UIPanel.PanelOption = EPanelOption.TimeCache;
+            self.UIPanel.PanelOption = EPanelOption.ForeverCache|EPanelOption.DisClose;
             self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
             self.UIPanel.Priority = 0;
-            self.UIPanel.CachePanelTime = 10;
 
 
         }
