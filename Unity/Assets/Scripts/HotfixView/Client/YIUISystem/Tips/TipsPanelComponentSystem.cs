@@ -45,16 +45,16 @@ namespace ET.Client
         {
             if (!self._AllPool.ContainsKey(uiType))
             {
-                async ETTask<Entity> Create()
+                async ETTask<EntityRef<Entity>> Create()
                 {
                     return await self.OnCreateViewRenderer(uiType);
                 }
 
-                self._AllPool.Add(uiType, new ObjAsyncCache<Entity>(Create));
+                self._AllPool.Add(uiType, new ObjAsyncCache<EntityRef<Entity>>(Create));
             }
 
             var pool = self._AllPool[uiType];
-            var view = await pool.Get();
+            Entity view = await pool.Get();
             if (view == null)
             {
                 return self._RefCount > 0;
