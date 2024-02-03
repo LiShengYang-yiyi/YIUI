@@ -25,31 +25,31 @@ namespace YIUIFramework
         /// <param name="select">是否被选中</param>
         public delegate void ListItemRenderer(int index, TData data, TItemRenderer item, bool select);
 
-        private Entity                               m_OwnerEntity;
-        private ListItemRenderer                     m_ItemRenderer;
-        private YIUIBindVo                           m_BindVo;
-        private IList<TData>                         m_Data;
-        private LoopScrollRect                       m_Owner;
-        private ObjCache<TItemRenderer>              m_UIBasePool;
-        private Dictionary<Transform, TItemRenderer> m_ItemTransformDic      = new Dictionary<Transform, TItemRenderer>();
-        private Dictionary<Transform, int>           m_ItemTransformIndexDic = new Dictionary<Transform, int>();
+        private Entity m_OwnerEntity;
+        private ListItemRenderer m_ItemRenderer;
+        private YIUIBindVo m_BindVo;
+        private IList<TData> m_Data;
+        private LoopScrollRect m_Owner;
+        private ObjCache<EntityRef<TItemRenderer>> m_UIBasePool;
+        private Dictionary<Transform, EntityRef<TItemRenderer>> m_ItemTransformDic = new();
+        private Dictionary<Transform, int> m_ItemTransformIndexDic = new();
 
         public YIUILoopScroll(
-        Entity           ownerEneity,
-        LoopScrollRect   owner,
+        Entity ownerEneity,
+        LoopScrollRect owner,
         ListItemRenderer itemRenderer)
         {
             var data = YIUIBindHelper.GetBindVoByType<TItemRenderer>();
             if (data == null) return;
             m_ItemTransformDic.Clear();
             m_ItemTransformIndexDic.Clear();
-            m_BindVo             = data.Value;
-            m_ItemRenderer       = itemRenderer;
-            m_UIBasePool         = new ObjCache<TItemRenderer>(OnCreateItemRenderer);
-            m_OwnerEntity        = ownerEneity;
-            m_Owner              = owner;
+            m_BindVo = data.Value;
+            m_ItemRenderer = itemRenderer;
+            m_UIBasePool = new ObjCache<EntityRef<TItemRenderer>>(OnCreateItemRenderer);
+            m_OwnerEntity = ownerEneity;
+            m_Owner = owner;
             m_Owner.prefabSource = this;
-            m_Owner.dataSource   = this;
+            m_Owner.dataSource = this;
             InitCacheParent();
             InitClearContent();
         }
@@ -64,7 +64,7 @@ namespace YIUIFramework
             }
             else
             {
-                var cacheObj  = new GameObject("Cache");
+                var cacheObj = new GameObject("Cache");
                 var cacheRect = cacheObj.GetOrAddComponent<RectTransform>();
                 m_Owner.u_CacheRect = cacheRect;
                 cacheRect.SetParent(m_Owner.transform, false);
@@ -87,7 +87,13 @@ namespace YIUIFramework
         {
             if (m_ItemTransformDic.TryGetValue(tsf, out var value))
             {
-                return value;
+                TItemRenderer item = value;
+                if (item == null)
+                {
+                    Debug.LogError($"{tsf.name} 未知的错误 请检查是否拿到Entity对象进行了未知操作 Entity == null");
+                    return null;
+                }
+                return item;
             }
 
             Debug.LogError($"{tsf.name} 没找到这个关联对象 请检查错误");
@@ -128,7 +134,7 @@ namespace YIUIFramework
 
         #region LoopScrollRect Interface
 
-        private TItemRenderer OnCreateItemRenderer()
+        private EntityRef<TItemRenderer> OnCreateItemRenderer()
         {
             var uiBase = YIUIFactory.Instantiate<TItemRenderer>(m_BindVo, m_OwnerEntity);
             AddItemRendererByDic(uiBase.GetParent<YIUIComponent>().OwnerRectTransform, uiBase);
@@ -137,7 +143,12 @@ namespace YIUIFramework
 
         public GameObject GetObject(int index)
         {
-            var uiBase = m_UIBasePool.Get();
+            TItemRenderer uiBase = m_UIBasePool.Get();
+            if (uiBase == null)
+            {
+                Log.Error($"未知的错误 请检查是否拿到Entity对象进行了未知操作 Entity == null");
+                return null;
+            }
             return uiBase.GetParent<YIUIComponent>().OwnerGameObject;
         }
 
