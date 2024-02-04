@@ -27,7 +27,10 @@ namespace ET.Client
         public bool WindowHaveIOpenAllowOpen => WindowOption.HasFlag(EWindowOption.HaveIOpenAllowOpen);
 
         //先开
-        public bool WindowFitstOpen => WindowOption.HasFlag(EWindowOption.FitstOpen);
+        public bool WindowFirstOpen => WindowOption.HasFlag(EWindowOption.FirstOpen);
+
+        //后关
+        public bool WindowLastClose => WindowOption.HasFlag(EWindowOption.LastClose);
 
         //禁止动画
         public bool WindowBanTween => WindowOption.HasFlag(EWindowOption.BanTween);
