@@ -50,5 +50,15 @@ namespace YIUIFramework
 
             m_pool.Clear();
         }
+
+        public void Clear(Action<T> disposeAction)
+        {
+            while (m_pool.Count >= 1)
+            {
+                disposeAction?.Invoke(m_pool.Pop());
+            }
+
+            m_pool.Clear();
+        }
     }
 }
