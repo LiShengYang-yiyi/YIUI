@@ -7,6 +7,9 @@ ET7.2 [详细查看7.2分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI
 
 ET8.0 [详细查看8.0分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET8.0)
 
+ET8.1 [详细查看8.1分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET8.1)
+
+
 # [视频教程](https://www.bilibili.com/video/BV1cz4y1s7QS)  
 
 # 目录
