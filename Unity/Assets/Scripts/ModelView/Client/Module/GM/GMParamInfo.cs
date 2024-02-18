@@ -3,6 +3,7 @@
     /// <summary>
     /// GM命令参数信息
     /// </summary>
+    [EnableClass]
     public class GMParamInfo
     {
         public EGMParamType ParamType;   //类型

@@ -21,6 +21,7 @@ namespace ET.Client
         }
     }
     
+    [EnableClass]
     public class GMGroupAttribute: Attribute
     {
         public string Name;

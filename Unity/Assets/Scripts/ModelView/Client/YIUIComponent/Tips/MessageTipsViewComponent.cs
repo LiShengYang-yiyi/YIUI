@@ -9,6 +9,7 @@ namespace ET.Client
     }
 
     //额外参数
+    [EnableClass]
     public class MessageTipsExtraData
     {
         public string ConfirmName;     //确定按钮换名字

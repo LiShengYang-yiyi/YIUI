@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace ET.Client
 {
     //GM实例信息
+    [EnableClass]
     public class GMCommandInfo
     {
         public EGMType           GMType;        //命令类型
