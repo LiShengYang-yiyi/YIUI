@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity", "Unity", "{914C77C9-212A-4DD0-8D9A-074620E77FAA}"
-	ProjectSection(SolutionItems) = preProject
-		Unity\Library\ScriptAssemblies\Unity.TextMeshPro.dll = Unity\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNet", "DotNet", "{46008B91-6EC0-448B-8D1A-D8C6D2EEBEF4}"
 EndProject
@@ -55,10 +52,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Loader", "Unity\Unity.Loader.csproj", "{32B76B98-B8F4-F864-D1F9-50CF255042D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Loader", "DotNet\Loader\DotNet.Loader.csproj", "{1D5E890A-C9D5-45DF-B098-73DBE39EB311}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterStreamingAssets", "Unity\BetterStreamingAssets.csproj", "{48355F85-248E-7CA0-1859-0A28A551010E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YIUIFramework", "Unity\YIUIFramework.csproj", "{FAA1D9E1-87C2-4CA9-949F-A5AC6AF8F513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -322,20 +315,6 @@ Global
 		{1D5E890A-C9D5-45DF-B098-73DBE39EB311}.Release|x64.Build.0 = Release|Any CPU
 		{1D5E890A-C9D5-45DF-B098-73DBE39EB311}.Release|x86.ActiveCfg = Release|Any CPU
 		{1D5E890A-C9D5-45DF-B098-73DBE39EB311}.Release|x86.Build.0 = Release|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|x64.Build.0 = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Debug|x86.Build.0 = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|x64.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|x64.Build.0 = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|x86.ActiveCfg = Debug|Any CPU
-		{48355F85-248E-7CA0-1859-0A28A551010E}.Release|x86.Build.0 = Debug|Any CPU
-		{FAA1D9E1-87C2-4CA9-949F-A5AC6AF8F513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAA1D9E1-87C2-4CA9-949F-A5AC6AF8F513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -363,8 +342,6 @@ Global
 		{DE4513D3-889B-5C52-8E9C-744C99AE7509} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 		{9498BFB4-D9F5-C441-13E3-3F26F7700E29} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 		{C109842F-01DA-64D4-DBF2-00C6449E459E} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
-		{48355F85-248E-7CA0-1859-0A28A551010E} = {13A8B20D-7FCD-4FF2-BCFB-5D31B8B8CBD0}
-		{FAA1D9E1-87C2-4CA9-949F-A5AC6AF8F513} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EABC01E3-3EB5-47EF-B46E-AAD8BB3585F1}

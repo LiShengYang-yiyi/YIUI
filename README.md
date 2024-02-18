@@ -1,11 +1,11 @@
 # YIUI-ET7.2
-最新同步日期: 2024-01-13
+最新同步日期: 2024-02-18
+
+# [文档](https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh)
 
 [ET框架](https://github.com/egametang/ET)
 
-
 #[YIUI-ET7.2 视频介绍](https://www.bilibili.com/video/BV1KC4y1d7NZ)
-
 
 [YIUI视频教程](https://www.bilibili.com/video/BV1cz4y1s7QS)  
 
