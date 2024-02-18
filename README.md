@@ -1,5 +1,13 @@
 # YIUI
-基于Unity UGUI的框架
+
+一款名为 YIUI  的 Unity UI 框架 （基于 UGUI）
+支持分层设计和分块式加载，旨在提供更加灵活和高效的 UI 开发方式。
+分享该插件的设计思路和使用方法。
+从登录界面开始，到加载界面、主界面、商店界面等，都展示了灵活的跳转和回退功能。
+此外，该插件还提供了多语言的展示、无限循环列表、GM 界面等功能。
+有丰富的视频，文档教程。学习入门使用更轻松。
+
+# [文档](https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh)
 
 # 目前YIUI支持ET
 
