@@ -1,15 +1,15 @@
-# YIUI-ET8.1
-最新同步日期: 2024-02-17
+# YIUI-ET
 
-# [文档](https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh)
+ET7.2 [详细查看7.2分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET7.2)
 
-[ET框架](https://github.com/egametang/ET)
+ET8.0 [详细查看8.0分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET8.0)
 
-#[YIUI-ET7.2 视频介绍](https://www.bilibili.com/video/BV1KC4y1d7NZ)
+ET8.1 [详细查看8.1分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET8.1)
+
+# YIUI视频教程
 
 [YIUI视频教程](https://www.bilibili.com/video/BV1cz4y1s7QS)  
 
-# 目录
 
 0. 总览
 1. 安装
@@ -27,6 +27,7 @@
 13. 红点系统
 14. 多语言
 
+# ET接入YIUI视频教程
 
 [ET接入YIUI视频教程](https://www.bilibili.com/video/BV1s44y1F7aZ) 
 
@@ -44,7 +45,5 @@
 11. 打包设置
 
 
-# YIUI框架讨论群
-![二维码](https://github.com/LiShengYang-yiyi/YIUI/blob/main/Readme/YIUI框架讨论群二维码.png)
+#[YIUI-ET7.2 视频介绍](https://www.bilibili.com/video/BV1KC4y1d7NZ)
 
-# QQ群: 833479762

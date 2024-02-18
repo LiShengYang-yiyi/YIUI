@@ -468,4 +468,22 @@ namespace ET.Analyzer
                     true,
                     Description);
     }
+    
+    public static class EntityClassDeclarationAnalyzerrRule
+    {
+        private const string Title = "Model/ModelView程序集禁止声明非实体类";
+
+        private const string MessageFormat = "Model/ModelView程序集禁止声明非Object类:{0}, 除非加上[EnableClass]";
+
+        private const string Description = "Model/ModelView程序集禁止声明非实体类, 除非加上[EnableClass] Attribute.";
+
+        public static readonly DiagnosticDescriptor Rule =
+                new DiagnosticDescriptor(DiagnosticIds.DisableNormalClassDeclaratonInModelAssemblyAnalyzerRuleId,
+                    Title,
+                    MessageFormat,
+                    DiagnosticCategories.All,
+                    DiagnosticSeverity.Error,
+                    true,
+                    Description);
+    }
 }
