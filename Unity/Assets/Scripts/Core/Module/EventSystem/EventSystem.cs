@@ -205,9 +205,15 @@ namespace ET
             return allTypes;
         }
 
-        public Type GetType(string typeName)
+        public Type GetType(string typeName, bool error = false)
         {
-            return this.allTypes[typeName];
+            if (this.allTypes.TryGetValue(typeName, out var type))
+            {
+                return type;
+            }
+            if (error)
+                Log.Error($"没有找到这个类型: + {typeName}");
+            return null;
         }
 
         public void RegisterSystem(Entity component)
