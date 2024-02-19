@@ -234,7 +234,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBase\CreateUIBaseEditorData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UIETCodeModule.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\BuffMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\DictionaryPool.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBindProvider\CreateUIBindProviderCode.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Manager\LocalizationManager_Translation.cs" />
@@ -255,6 +254,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\Event\UIEventP3.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Others\UIDataBindScrollbar.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UICreate\Base\UICreateVariables.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\UIMgr\YIUIMgrComponentSystem_Get.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Extensions\QuaternionExtensions.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIMono\Effect\UIMaterialEffect.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Runtime\LoopHorizontalScrollRect.cs" />
@@ -394,7 +394,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUILoad\YIUILoadHelper_Other.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\UIEventBindClickPointerEventData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\SphereBounds.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\FormulaMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Google\TranslationJob_POST.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Code\DataValues\UIDataValueListInt.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Runtime\LoopScrollSizeHelper.cs" />
@@ -418,13 +417,13 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\UIEventDelegate.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData_Import_CSV.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Common\YIUICommonComponentSystem.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\CommonMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Event\YIUIEventInfo.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUISingleton\Manager\IManager.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Change\UIDataChangeRef.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\StrConv.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Active\UIDataBindActive.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Targets\LocalizeTarget_2DToolKit_Sprite.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Image\UIDataBindImageFill.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Google\GoogleTranslation.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Code\DataValues\UIDataValueColor.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Extensions\Vector4Extensions.cs" />
@@ -455,7 +454,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\Tween\YIUICloseTweenEndEventSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\Disable\YIUIDisableEventSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\TextureMaker.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\NPBehaveMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Change\UIDataBindChangeCondition.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\IUIEventInvoke.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\UIEventBindClick.cs" />
@@ -561,7 +559,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\EditorBase\BaseTreeMenuItem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCurrentData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Rect\UIDataBindRectRot1.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\SkillCommonMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_View.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_HasFlage.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Extensions\TypeExtensions.cs" />
@@ -569,7 +566,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\StrUtil_StrChunk.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\TaskEvent\Code\Genericity\Event\UITaskEventP3.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\EventHandle\UIEventHandleP2.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\SlateMacroData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\YIUIEditor\UIRedDot\Key\UICreateRedDotKeyData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Panel\Code\Enum\EViewStackOption.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Helper\UnityTipsHelper.cs" />

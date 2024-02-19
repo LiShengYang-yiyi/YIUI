@@ -15,8 +15,9 @@ namespace ET.Client
         {
             return new()
             {
-                //目前有5种参数类型可选 长度无限
+                //目前有6种参数类型可选 长度无限
                 //根据需求这里设定对应参数类型与描述 将在页面上显示
+                new GMParamInfo(EGMParamType.Enum, "参数0 枚举", "ET.Client.EGMParamType"), //枚举案例 一定要写枚举全名
                 new GMParamInfo(EGMParamType.String, "参数1 字符串"),
                 new GMParamInfo(EGMParamType.Bool, "参数2 布尔"),
                 new GMParamInfo(EGMParamType.Float, "参数3 小数"),
@@ -28,21 +29,22 @@ namespace ET.Client
         public async ETTask<bool> Run(Scene clientScene, ParamVo paramVo)
         {
             //通过paramvo 可以取出所有参数
-            var paramString = paramVo.Get<string>(0);
-            var paramBool   = paramVo.Get<bool>(1);
-            var paramFloat  = paramVo.Get<float>(2);
-            var paramInt    = paramVo.Get<int>(3);
-            var paramLong   = paramVo.Get<long>(4);
+            var paramEnum   = paramVo.Get<EGMParamType>(0);
+            var paramString = paramVo.Get<string>(1);
+            var paramBool   = paramVo.Get<bool>(2);
+            var paramFloat  = paramVo.Get<float>(3);
+            var paramInt    = paramVo.Get<int>(4);
+            var paramLong   = paramVo.Get<long>(5);
 
             //最后根据参数自行处理命令
-            Debug.LogError(paramString);
-            Debug.LogError(paramBool);
-            Debug.LogError(paramFloat);
-            Debug.LogError(paramInt);
-            Debug.LogError(paramLong);
+            Debug.LogError($"参数0: {paramEnum}");
+            Debug.LogError($"参数1: {paramString}");
+            Debug.LogError($"参数2: {paramBool}");
+            Debug.LogError($"参数3: {paramFloat}");
+            Debug.LogError($"参数4: {paramInt}");
+            Debug.LogError($"参数5: {paramLong}");
 
             await ETTask.CompletedTask;
-
             return true;
         }
     }

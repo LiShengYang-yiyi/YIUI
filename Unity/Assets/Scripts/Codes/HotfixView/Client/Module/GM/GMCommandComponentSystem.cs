@@ -98,7 +98,7 @@ namespace ET.Client
             for (int i = 0; i < paramList.Count; i++)
             {
                 var paramInfo = paramList[i];
-                var objValue  = paramInfo.ParamType.TryToValue(paramInfo.Value);
+                var objValue  = paramInfo.ParamType.TryToValue(paramInfo);
                 objData.Add(objValue);
             }
 
