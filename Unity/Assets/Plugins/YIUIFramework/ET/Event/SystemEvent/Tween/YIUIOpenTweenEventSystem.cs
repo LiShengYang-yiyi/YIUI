@@ -15,7 +15,7 @@ namespace ET.Client
                 return true;
             }
 
-            List<object> iYIUIOpenTweenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenTweenSystem));
+            var iYIUIOpenTweenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenTweenSystem));
             if (iYIUIOpenTweenSystems == null)
             {
                 return false; //没有则执行默认

@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIEnableSystem<T>: IYIUIEnableSystem where T : Entity, IYIUIEnable
+    public abstract class YIUIEnableSystem<T>: SystemObject, IYIUIEnableSystem where T : Entity, IYIUIEnable
     {
         Type ISystemType.Type()
         {

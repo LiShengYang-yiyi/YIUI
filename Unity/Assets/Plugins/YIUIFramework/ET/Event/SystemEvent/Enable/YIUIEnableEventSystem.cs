@@ -15,7 +15,7 @@ namespace ET.Client
                 return;
             }
 
-            List<object> iYIUIEnableSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIEnableSystem));
+            var iYIUIEnableSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIEnableSystem));
             if (iYIUIEnableSystems == null)
             {
                 return;

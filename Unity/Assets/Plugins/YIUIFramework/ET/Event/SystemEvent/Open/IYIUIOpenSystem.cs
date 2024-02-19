@@ -61,7 +61,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T>: IYIUIOpenSystem where T : Entity, IYIUIOpen
+    public abstract class YIUIOpenSystem<T>: SystemObject, IYIUIOpenSystem where T : Entity, IYIUIOpen
     {
         Type ISystemType.Type()
         {
@@ -87,7 +87,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T, A>: IYIUIOpenSystem<A> where T : Entity, IYIUIOpen<A>
+    public abstract class YIUIOpenSystem<T, A>: SystemObject, IYIUIOpenSystem<A> where T : Entity, IYIUIOpen<A>
     {
         Type ISystemType.Type()
         {
@@ -113,7 +113,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T, A, B>: IYIUIOpenSystem<A, B> where T : Entity, IYIUIOpen<A, B>
+    public abstract class YIUIOpenSystem<T, A, B>: SystemObject, IYIUIOpenSystem<A, B> where T : Entity, IYIUIOpen<A, B>
     {
         Type ISystemType.Type()
         {
@@ -139,7 +139,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T, A, B, C>: IYIUIOpenSystem<A, B, C> where T : Entity, IYIUIOpen<A, B, C>
+    public abstract class YIUIOpenSystem<T, A, B, C>: SystemObject, IYIUIOpenSystem<A, B, C> where T : Entity, IYIUIOpen<A, B, C>
     {
         Type ISystemType.Type()
         {
@@ -165,7 +165,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T, A, B, C, D>: IYIUIOpenSystem<A, B, C, D> where T : Entity, IYIUIOpen<A, B, C, D>
+    public abstract class YIUIOpenSystem<T, A, B, C, D>: SystemObject, IYIUIOpenSystem<A, B, C, D> where T : Entity, IYIUIOpen<A, B, C, D>
     {
         Type ISystemType.Type()
         {
@@ -191,7 +191,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIOpenSystem<T, A, B, C, D, E>: IYIUIOpenSystem<A, B, C, D, E> where T : Entity, IYIUIOpen<A, B, C, D, E>
+    public abstract class YIUIOpenSystem<T, A, B, C, D, E>: SystemObject, IYIUIOpenSystem<A, B, C, D, E> where T : Entity, IYIUIOpen<A, B, C, D, E>
     {
         Type ISystemType.Type()
         {

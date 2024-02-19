@@ -15,8 +15,7 @@ namespace ET.Client
                 return;
             }
 
-            List<object> iYIUIOpenTweenEndSystems =
-                    EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenTweenEndSystem));
+            var iYIUIOpenTweenEndSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenTweenEndSystem));
             if (iYIUIOpenTweenEndSystems == null)
             {
                 return;

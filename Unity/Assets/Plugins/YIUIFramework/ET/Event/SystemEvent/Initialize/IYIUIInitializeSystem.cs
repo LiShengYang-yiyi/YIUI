@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIInitializeSystem<T>: IYIUIInitializeSystem where T : Entity, IYIUIInitialize
+    public abstract class YIUIInitializeSystem<T>: SystemObject, IYIUIInitializeSystem where T : Entity, IYIUIInitialize
     {
         Type ISystemType.Type()
         {

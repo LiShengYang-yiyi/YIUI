@@ -12,7 +12,7 @@ namespace ET
     }
 
     [EntitySystem]
-    public abstract class DynamicEventSystem<T, A>: IDynamicEventSystem<A> where T : Entity, IDynamicEvent<A> where A : struct
+    public abstract class DynamicEventSystem<T, A>: SystemObject, IDynamicEventSystem<A> where T : Entity, IDynamicEvent<A> where A : struct
     {
         Type ISystemType.Type()
         {

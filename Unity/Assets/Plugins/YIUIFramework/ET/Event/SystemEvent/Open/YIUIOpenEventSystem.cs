@@ -16,7 +16,7 @@ namespace ET.Client
     {
         public static async ETTask<bool> Open(Entity component)
         {
-            List<object> iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem));
             if (iOpenSystems == null)
             {
                 return true;
@@ -44,7 +44,7 @@ namespace ET.Client
 
         public static async ETTask<bool> Open<P1>(Entity component, P1 p1)
         {
-            List<object> iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1>));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1>));
             if (iOpenSystems == null)
             {
                 return true;
@@ -72,7 +72,7 @@ namespace ET.Client
 
         public static async ETTask<bool> Open<P1, P2>(Entity component, P1 p1, P2 p2)
         {
-            List<object> iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2>));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2>));
             if (iOpenSystems == null)
             {
                 return true;
@@ -100,7 +100,7 @@ namespace ET.Client
 
         public static async ETTask<bool> Open<P1, P2, P3>(Entity component, P1 p1, P2 p2, P3 p3)
         {
-            List<object> iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3>));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3>));
             if (iOpenSystems == null)
             {
                 return true;
@@ -128,7 +128,7 @@ namespace ET.Client
 
         public static async ETTask<bool> Open<P1, P2, P3, P4>(Entity component, P1 p1, P2 p2, P3 p3, P4 p4)
         {
-            List<object> iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3, P4>));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3, P4>));
             if (iOpenSystems == null)
             {
                 return true;
@@ -156,8 +156,7 @@ namespace ET.Client
 
         public static async ETTask<bool> Open<P1, P2, P3, P4, P5>(Entity component, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
         {
-            List<object> iOpenSystems =
-                    EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3, P4, P5>));
+            var iOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUIOpenSystem<P1, P2, P3, P4, P5>));
             if (iOpenSystems == null)
             {
                 return true;

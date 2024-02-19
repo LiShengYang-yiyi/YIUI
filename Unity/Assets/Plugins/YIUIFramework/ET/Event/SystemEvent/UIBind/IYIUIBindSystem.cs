@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIBindSystem<T>: IYIUIBindSystem where T : Entity, IYIUIBind
+    public abstract class YIUIBindSystem<T>: SystemObject, IYIUIBindSystem where T : Entity, IYIUIBind
     {
         Type ISystemType.Type()
         {

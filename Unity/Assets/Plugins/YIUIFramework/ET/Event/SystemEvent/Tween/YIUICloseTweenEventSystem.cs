@@ -15,7 +15,7 @@ namespace ET.Client
                 return true;
             }
 
-            List<object> iYIUICloseTweenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUICloseTweenSystem));
+            var iYIUICloseTweenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUICloseTweenSystem));
             if (iYIUICloseTweenSystems == null)
             {
                 return false; //没有则执行默认

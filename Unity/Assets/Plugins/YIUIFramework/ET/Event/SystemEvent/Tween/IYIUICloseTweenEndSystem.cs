@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUICloseTweenEndSystem<T>: IYIUICloseTweenEndSystem where T : Entity, IYIUICloseTweenEnd
+    public abstract class YIUICloseTweenEndSystem<T>: SystemObject, IYIUICloseTweenEndSystem where T : Entity, IYIUICloseTweenEnd
     {
         Type ISystemType.Type()
         {

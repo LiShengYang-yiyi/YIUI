@@ -28,7 +28,7 @@ namespace ET.Client
                 return true;
             }
 
-            List<object> iYIUICloseSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUICloseSystem));
+            var iYIUICloseSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IYIUICloseSystem));
             if (iYIUICloseSystems == null)
             {
                 return true;

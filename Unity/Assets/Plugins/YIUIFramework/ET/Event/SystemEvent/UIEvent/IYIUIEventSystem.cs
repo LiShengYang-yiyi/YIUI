@@ -13,7 +13,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIEventSystem<T, A>: IYIUIEventSystem<A> where T : Entity, IYIUIEvent<A> where A : struct
+    public abstract class YIUIEventSystem<T, A>: SystemObject, IYIUIEventSystem<A> where T : Entity, IYIUIEvent<A> where A : struct
     {
         Type ISystemType.Type()
         {
