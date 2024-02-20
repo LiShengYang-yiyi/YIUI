@@ -10,7 +10,7 @@ namespace ET.Server
         {
             string[] localIP = NetworkHelper.GetAddressIPs();
             StartMachineConfig startMachineConfig = null;
-            foreach (StartMachineConfig config in StartMachineConfigCategory.Instance.GetAll().Values)
+            foreach (StartMachineConfig config in StartMachineConfigCategory.Instance.DataList)
             {
                 if (!WatcherHelper.IsThisMachine(config.InnerIP, localIP))
                 {
