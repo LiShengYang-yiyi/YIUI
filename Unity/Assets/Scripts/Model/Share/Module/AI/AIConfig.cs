@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
     public partial class AIConfigCategory
     {
-        [BsonIgnore]
         public Dictionary<int, SortedDictionary<int, AIConfig>> AIConfigs = new();
 
         public SortedDictionary<int, AIConfig> GetAI(int aiConfigId)
