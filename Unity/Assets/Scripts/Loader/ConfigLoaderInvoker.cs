@@ -43,7 +43,7 @@ namespace ET
                         configFilePath = $"../Config/Excel/{ct}/{configType.Name}.bytes";
                     }
 
-                    output[configType] = new ByteBuf(await File.ReadAllBytesAsync(configFilePath));
+                    output[configType] = new ByteBuf(File.ReadAllBytes(configFilePath));
                 }
             }
             else
@@ -92,7 +92,7 @@ namespace ET
                 configFilePath = $"../Config/Excel/{ct}/{configName}.bytes";
             }
 
-            return new ByteBuf(await File.ReadAllBytesAsync(configFilePath));
+            return new ByteBuf(File.ReadAllBytes(configFilePath));
         }
     }
 }

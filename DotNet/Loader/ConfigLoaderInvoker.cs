@@ -28,9 +28,10 @@ namespace ET
                     configFilePath = $"../Config/Excel/s/{configType.Name}.bytes";
                 }
 
-                output[configType] = new ByteBuf(await File.ReadAllBytesAsync(configFilePath));
+                output[configType] = new ByteBuf(File.ReadAllBytes(configFilePath));
             }
 
+            await ETTask.CompletedTask;
             return output;
         }
     }
@@ -41,15 +42,6 @@ namespace ET
         public override ByteBuf Handle(ConfigLoader.GetOneConfigBytes args)
         {
             return new ByteBuf(File.ReadAllBytes($"../Config/Excel/s/{args.ConfigName}.bytes"));
-        }
-    }
-    
-    [Invoke]
-    public class GetOneConfigBytesAsync : AInvokeHandler<ConfigLoader.GetOneConfigBytes, ETTask<ByteBuf>>
-    {
-        public override async ETTask<ByteBuf> Handle(ConfigLoader.GetOneConfigBytes args)
-        {
-            return new ByteBuf(await File.ReadAllBytesAsync($"../Config/Excel/s/{args.ConfigName}.bytes"));
         }
     }
 }
