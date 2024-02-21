@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace ET
 {
     [Config]
-    public partial class StartSceneConfigCategory : Singleton<StartSceneConfigCategory>
+    public partial class StartSceneConfigCategory : Singleton<StartSceneConfigCategory>, IConfig
     {
         private readonly Dictionary<int, StartSceneConfig> _dataMap;
         private readonly List<StartSceneConfig> _dataList;
@@ -40,6 +40,13 @@ namespace ET
         public StartSceneConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
         public StartSceneConfig Get(int key) => _dataMap[key];
         public StartSceneConfig this[int key] => _dataMap[key];
+        public void ResolveRef()
+        {
+            foreach(var _v in _dataList)
+            {
+                _v.ResolveRef();
+            }
+        }
 
         partial void PostInit();
     }

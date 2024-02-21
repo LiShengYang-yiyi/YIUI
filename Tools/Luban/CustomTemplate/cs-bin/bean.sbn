@@ -26,17 +26,17 @@
         if can_generate_ref field
             tableName = format_property_name __code_style refTable.name
             if field.is_nullable
-                ret (get_ref_name field) + ' = ' + fieldName + '!= null ? tables.' + tableName + '.GetOrDefault(' + (get_value_of_nullable_type field.ctype fieldName) + ') : null;'
+                ret (get_ref_name field) + ' = ' + fieldName + '!= null ? ' + tableName + '.Instance.GetOrDefault(' + (get_value_of_nullable_type field.ctype fieldName) + ') : null;'
             else
-                ret (get_ref_name field) + ' = tables.' + tableName + '.GetOrDefault(' + fieldName + ');'
+                ret (get_ref_name field) + ' = ' + tableName + '.Instance.GetOrDefault(' + fieldName + ');'
             end
         else
             if (is_field_bean_need_resolve_ref field)
-                ret fieldName + '?.ResolveRef(tables);'
+                ret fieldName + '?.ResolveRef();'
             else if (is_field_array_like_need_resolve_ref field)
-                ret 'foreach (var _e in ' + fieldName + ') { _e?.ResolveRef(tables); }'
+                ret 'foreach (var _e in ' + fieldName + ') { _e?.ResolveRef(); }'
             else if (is_field_map_need_resolve_ref field)
-                ret 'foreach (var _e in ' + fieldName + '.Values) { _e?.ResolveRef(tables); }'
+                ret 'foreach (var _e in ' + fieldName + '.Values) { _e?.ResolveRef(); }'
             else
                 ret ''
             end
@@ -94,7 +94,7 @@
         public readonly {{declaring_type_name field.ctype}} {{format_property_name __code_style field.name}};
 
         {{~if can_generate_ref field~}}
-        public {{declaring_type_name (get_ref_type field)}} {{get_ref_name field}};
+        public {{declaring_type_name (get_ref_type field)}} {{get_ref_name field}} { get; private set; }
 
         {{~end~}}
     {{~if has_index field
@@ -109,6 +109,16 @@
         public const int __ID__ = {{__bean.id}};
         public override int GetTypeId() => __ID__;
     {{~end~}}
+
+        public {{method_modifier __bean}} void ResolveRef()
+        {
+            {{~if parent_def_type~}}
+            base.ResolveRef(tables);
+            {{~end~}}
+            {{~for field in export_fields~}}
+            {{generate_resolve_field_ref field}}
+            {{~end~}}
+        }
 
         public override string ToString()
         {

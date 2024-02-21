@@ -20,7 +20,7 @@ namespace ET
             public string ConfigName;
         }
 
-        private readonly ConcurrentDictionary<Type, ASingleton> allConfig = new();
+        private readonly ConcurrentDictionary<Type, IConfig> allConfig = new();
 
         public void Awake()
         {
@@ -32,10 +32,9 @@ namespace ET
             ByteBuf oneConfigBytes = await EventSystem.Instance.Invoke<GetOneConfigBytes, ETTask<ByteBuf>>(singleConfig);
 
             object category = Activator.CreateInstance(configType, oneConfigBytes);
-            ASingleton singleton = category as ASingleton;
-            this.allConfig[configType] = singleton;
-
-            World.Instance.AddSingleton(singleton);
+            this.allConfig[configType] = category as IConfig;
+            this.allConfig[configType].ResolveRef();
+            World.Instance.AddSingleton(category as ASingleton);
         }
 
         public async ETTask LoadAsync()
@@ -53,6 +52,11 @@ namespace ET
             }
 
             await Task.WhenAll(listTasks.ToArray());
+
+            foreach (var targetConfig in this.allConfig.Values)
+            {
+                targetConfig.ResolveRef();
+            }
         }
 
         private void LoadOneInThread(Type configType, ByteBuf oneConfigBytes)
@@ -61,10 +65,8 @@ namespace ET
 
             lock (this)
             {
-                ASingleton singleton = category as ASingleton;
-                this.allConfig[configType] = singleton;
-
-                World.Instance.AddSingleton(singleton);
+                this.allConfig[configType] = category as IConfig;
+                World.Instance.AddSingleton(category as ASingleton);
             }
         }
     }

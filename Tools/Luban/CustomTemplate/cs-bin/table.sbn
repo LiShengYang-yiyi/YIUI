@@ -35,7 +35,7 @@ using System.Collections.Generic;
     /// </summary>
 {{~end~}}
     [Config]
-    public partial class {{__name}} : Singleton<{{__name}}>
+    public partial class {{__name}} : Singleton<{{__name}}>, IConfig
     {
         {{~if __table.is_map_table ~}}
         private readonly Dictionary<{{declaring_type_name key_type}}, {{declaring_type_name value_type}}> _dataMap;
@@ -67,6 +67,13 @@ using System.Collections.Generic;
         public {{declaring_type_name value_type}} GetOrDefault({{declaring_type_name key_type}} key) => _dataMap.TryGetValue(key, out var v) ? v : null;
         public {{declaring_type_name value_type}} Get({{declaring_type_name key_type}} key) => _dataMap[key];
         public {{declaring_type_name value_type}} this[{{declaring_type_name key_type}} key] => _dataMap[key];
+        public void ResolveRef()
+        {
+            foreach(var _v in _dataList)
+            {
+                _v.ResolveRef();
+            }
+        }
             {{~else if __table.is_list_table ~}}
         private readonly List<{{declaring_type_name value_type}}> _dataList;
 
@@ -117,11 +124,11 @@ using System.Collections.Generic;
             {{~end~}}
         {{~end~}}
 
-        public void ResolveRef({{__manager_name}} tables)
+        public void ResolveRef()
         {
             foreach(var _v in _dataList)
             {
-                _v.ResolveRef(tables);
+                _v.ResolveRef();
             }
         }
         {{~else~}}
@@ -145,9 +152,9 @@ using System.Collections.Generic;
         public {{declaring_type_name field.ctype}} {{format_property_name __code_style field.name}} => _data.{{format_property_name __code_style field.name}};
         {{~end~}}
         
-        public void ResolveRef({{__manager_name}} tables)
+        public void ResolveRef()
         {
-            _data.ResolveRef(tables);
+            _data.ResolveRef();
         }
         {{~end~}}
 

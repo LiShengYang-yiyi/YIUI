@@ -16,7 +16,7 @@ namespace ET
     /// 资源配置
     /// </summary>
     [Config]
-    public partial class ResourceConfigCategory : Singleton<ResourceConfigCategory>
+    public partial class ResourceConfigCategory : Singleton<ResourceConfigCategory>, IConfig
     {
         private readonly Dictionary<int, ResourceConfig> _dataMap;
         private readonly List<ResourceConfig> _dataList;
@@ -43,6 +43,13 @@ namespace ET
         public ResourceConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
         public ResourceConfig Get(int key) => _dataMap[key];
         public ResourceConfig this[int key] => _dataMap[key];
+        public void ResolveRef()
+        {
+            foreach(var _v in _dataList)
+            {
+                _v.ResolveRef();
+            }
+        }
 
         partial void PostInit();
     }

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace ET
 {
     [Config]
-    public partial class UnitConfigCategory : Singleton<UnitConfigCategory>
+    public partial class UnitConfigCategory : Singleton<UnitConfigCategory>, IConfig
     {
         private readonly Dictionary<int, UnitConfig> _dataMap;
         private readonly List<UnitConfig> _dataList;
@@ -40,6 +40,13 @@ namespace ET
         public UnitConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
         public UnitConfig Get(int key) => _dataMap[key];
         public UnitConfig this[int key] => _dataMap[key];
+        public void ResolveRef()
+        {
+            foreach(var _v in _dataList)
+            {
+                _v.ResolveRef();
+            }
+        }
 
         partial void PostInit();
     }

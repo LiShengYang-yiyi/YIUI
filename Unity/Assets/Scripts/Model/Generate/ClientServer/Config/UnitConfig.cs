@@ -22,6 +22,8 @@ namespace ET
             Position = _buf.ReadInt();
             Height = _buf.ReadInt();
             Weight = _buf.ReadInt();
+            AI = _buf.ReadInt();
+            AI_Ref = null;
 
             PostInit();
         }
@@ -61,9 +63,27 @@ namespace ET
         /// </summary>
         public readonly int Weight;
 
+        /// <summary>
+        /// 测试REF
+        /// </summary>
+        public readonly int AI;
+
+        public AIConfig AI_Ref { get; private set; }
+
 
         public const int __ID__ = -568528378;
         public override int GetTypeId() => __ID__;
+
+        public  void ResolveRef()
+        {
+            
+            
+            
+            
+            
+            
+            AI_Ref = AIConfigCategory.Instance.GetOrDefault(AI);
+        }
 
         public override string ToString()
         {
@@ -74,6 +94,7 @@ namespace ET
             + "Position:" + Position + ","
             + "Height:" + Height + ","
             + "Weight:" + Weight + ","
+            + "AI:" + AI + ","
             + "}";
         }
 

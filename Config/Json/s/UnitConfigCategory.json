@@ -5,7 +5,8 @@
     "Name": "米克尔",
     "Position": 1,
     "Height": 178,
-    "Weight": 68
+    "Weight": 68,
+    "AI": 101
   },
   {
     "Id": 1002,
@@ -13,7 +14,8 @@
     "Name": "米克尔2",
     "Position": 2,
     "Height": 278,
-    "Weight": 78
+    "Weight": 78,
+    "AI": 102
   },
   {
     "Id": 1003,
@@ -21,7 +23,8 @@
     "Name": "米克尔3",
     "Position": 1,
     "Height": 178,
-    "Weight": 68
+    "Weight": 68,
+    "AI": 101
   },
   {
     "Id": 1004,
@@ -29,6 +32,7 @@
     "Name": "米克尔4",
     "Position": 2,
     "Height": 278,
-    "Weight": 78
+    "Weight": 78,
+    "AI": 102
   }
 ]
