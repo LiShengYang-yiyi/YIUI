@@ -92,6 +92,7 @@ namespace ET
                 configFilePath = $"../Config/Excel/{ct}/{configName}.bytes";
             }
 
+            await ETTask.CompletedTask;
             return new ByteBuf(File.ReadAllBytes(configFilePath));
         }
     }
