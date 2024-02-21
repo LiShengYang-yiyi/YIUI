@@ -43,14 +43,14 @@ namespace ET
                         configFilePath = $"../Config/Excel/{ct}/{configType.Name}.bytes";
                     }
 
-                    output[configType] = new ByteBuf(File.ReadAllBytes(configFilePath));
+                    output[configType] = new ByteBuf(await File.ReadAllBytesAsync(configFilePath));
                 }
             }
             else
             {
                 foreach (Type type in configTypes)
                 {
-                    TextAsset v = await ResourcesComponent.Instance.LoadAssetAsync<TextAsset>($"Assets/Bundles/Config/{type.Name}.bytes");
+                    TextAsset v = await ResourcesComponent.Instance.LoadAssetAsync<TextAsset>(type.Name);
                     output[type] = new ByteBuf(v.bytes);
                 }
             }
@@ -92,8 +92,7 @@ namespace ET
                 configFilePath = $"../Config/Excel/{ct}/{configName}.bytes";
             }
 
-            await ETTask.CompletedTask;
-            return new ByteBuf(File.ReadAllBytes(configFilePath));
+            return new ByteBuf(await File.ReadAllBytesAsync(configFilePath));
         }
     }
 }
