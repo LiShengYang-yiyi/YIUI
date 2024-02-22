@@ -9,7 +9,7 @@ namespace ET
     /// <summary>
     /// ConfigLoader会扫描所有的有ConfigAttribute标签的配置,加载进来
     /// </summary>
-    public class ConfigLoader : Singleton<ConfigLoader>, ISingletonAwake
+    public class ConfigLoader: Singleton<ConfigLoader>, ISingletonAwake
     {
         public struct GetAllConfigBytes
         {
@@ -28,35 +28,28 @@ namespace ET
 
         public async ETTask Reload(Type configType)
         {
-            GetOneConfigBytes singleConfig = new() { ConfigName = configType.Name };
-            ByteBuf oneConfigBytes = await EventSystem.Instance.Invoke<GetOneConfigBytes, ETTask<ByteBuf>>(singleConfig);
-
+            var oneConfigBytes =
+                    await EventSystem.Instance.Invoke<GetOneConfigBytes, ETTask<ByteBuf>>(new GetOneConfigBytes { ConfigName = configType.Name });
             object category = Activator.CreateInstance(configType, oneConfigBytes);
             this.allConfig[configType] = category as IConfig;
-            this.allConfig[configType].ResolveRef();
             World.Instance.AddSingleton(category as ASingleton);
+            ResolveRef(); //热重载某一个配置的时候也要触发所有配置否则可能会引起各种引用丢失问题 不确定是否还有潜在问题 热重载配置还需观察
         }
 
         public async ETTask LoadAsync()
         {
             this.allConfig.Clear();
-            Dictionary<Type, ByteBuf> configBytes = await EventSystem.Instance.Invoke<GetAllConfigBytes, ETTask<Dictionary<Type, ByteBuf>>>(new GetAllConfigBytes());
-
+            var configBytes = await EventSystem.Instance.Invoke<GetAllConfigBytes, ETTask<Dictionary<Type, ByteBuf>>>(new GetAllConfigBytes());
             using ListComponent<Task> listTasks = ListComponent<Task>.Create();
-
             foreach (Type type in configBytes.Keys)
             {
                 ByteBuf oneConfigBytes = configBytes[type];
-                Task task = Task.Run(() => LoadOneInThread(type, oneConfigBytes));
+                Task    task           = Task.Run(() => LoadOneInThread(type, oneConfigBytes));
                 listTasks.Add(task);
             }
 
             await Task.WhenAll(listTasks.ToArray());
-
-            foreach (var targetConfig in this.allConfig.Values)
-            {
-                targetConfig.ResolveRef();
-            }
+            ResolveRef();
         }
 
         private void LoadOneInThread(Type configType, ByteBuf oneConfigBytes)
@@ -67,6 +60,45 @@ namespace ET
             {
                 this.allConfig[configType] = category as IConfig;
                 World.Instance.AddSingleton(category as ASingleton);
+            }
+        }
+
+        private void ResolveRef()
+        {
+            foreach (var targetConfig in this.allConfig.Values)
+            {
+                targetConfig.ResolveRef();
+            }
+
+            foreach (var targetConfig in this.allConfig.Values)
+            {
+                Initialized(targetConfig);
+            }
+        }
+
+        private void Initialized(IConfig configCategory)
+        {
+            var iConfigSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(configCategory.GetType(), typeof (IConfigSystem));
+            if (iConfigSystems == null)
+            {
+                return;
+            }
+
+            foreach (IConfigSystem aConfigSystem in iConfigSystems)
+            {
+                if (aConfigSystem == null)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    aConfigSystem.Initialized(configCategory);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
             }
         }
     }
