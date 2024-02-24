@@ -1,39 +1,43 @@
-﻿using Sirenix.OdinInspector;
+﻿using Coffee.UIEffects;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
 
 namespace YIUIFramework
 {
     [LabelText("置灰")]
-    [RequireComponent(typeof(UIGrayscale))]
+    [RequireComponent(typeof(UIEffect))]
     [AddComponentMenu("YIUIBind/Data/置灰 【Gray】 UIDataBindGray")]
     public sealed class UIDataBindGray : UIDataBindBool
     {
         [SerializeField]
-        [Range(0, 255)]
-        private int m_EnabledGray = 0;
+        [Range(0, 1)]
+        [LabelText("启用时灰度值")]
+        private float m_EnabledGray = 1;
 
         [SerializeField]
-        [Range(0, 255)]
-        private int m_DisabledGray = 255;
+        [Range(0, 1)]
+        [LabelText("禁用时灰度值")]
+        private float m_DisabledGray = 0;
 
         [SerializeField]
         [ReadOnly]
         [Required("必须有此组件")]
         [LabelText("UI灰度")]
-        private UIGrayscale m_Grayscale;
+        private UIEffect m_Grayscale;
 
         protected override void OnRefreshData()
         {
             base.OnRefreshData();
-            m_Grayscale ??= GetComponent<UIGrayscale>();
+            m_Grayscale ??= GetComponent<UIEffect>();
+            m_Grayscale.effectMode = EffectMode.Grayscale;
         }
 
         protected override void OnValueChanged()
         {
             if (m_Grayscale == null) return;
 
-            m_Grayscale.GrayScale = GetResult() ? m_EnabledGray : m_DisabledGray;
+            m_Grayscale.effectFactor = GetResult() ? m_EnabledGray : m_DisabledGray;
         }
     }
 }

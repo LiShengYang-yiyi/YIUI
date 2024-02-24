@@ -16,7 +16,7 @@ namespace YIUIFramework
         public const string NameRegex = "[^a-z0-9A-Z_]";
 
         //m_必须大写
-        public const bool Big = true;
+        public static bool Big = true;
 
         public static bool CheckFirstName(this string name, string otherName)
         {

@@ -16,7 +16,7 @@ namespace YIUIFramework
     /// </summary>
     public partial class RedDotMgr: MgrSingleton<RedDotMgr>, IManagerAsyncInit
     {
-        private const bool SyncSetCount = false; //实时修改红点还是异步脏标定时修改
+        private static bool SyncSetCount = false; //实时修改红点还是异步脏标定时修改
 
         private const string RedDotConfigAssetName = "RedDotConfigAsset";
 

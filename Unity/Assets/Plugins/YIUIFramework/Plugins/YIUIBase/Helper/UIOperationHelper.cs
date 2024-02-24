@@ -26,9 +26,9 @@ namespace YIUIFramework
             #if UNITY_EDITOR
             //编辑器时 点开始的一瞬间是不算正在运行的 在我这里算运行中
             return EditorApplication.isPlayingOrWillChangePlaymode; 
-            #endif
-            
+            #else
             return false;
+            #endif
         }
 
         public static bool RunTimeCheckIsPlaying(bool log = true)

@@ -15,7 +15,7 @@ namespace ET.Client
         public const bool OpenBlackBorder = false;
 
         //启用2倍安全 则左右2边都会裁剪
-        public const bool DoubleSafe = false;
+        public static bool DoubleSafe = false;
 
         //安全区
         public static Rect g_SafeArea;

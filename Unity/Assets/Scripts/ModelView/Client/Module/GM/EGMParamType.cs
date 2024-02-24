@@ -72,9 +72,9 @@ namespace ET.Client
                     {
                         return Enum.Parse(enumType, value);
                     }
-                    catch (Exception _)
+                    catch (Exception e)
                     {
-                        Debug.LogError($"参数转换失败 值:[{value}] 无法转换成 [{enumType}] 的值 ");
+                        Debug.LogError($"参数转换失败 值:[{value}] 无法转换成 [{enumType}] 的值  {e} ");
                         return null;
                     }
                 default:

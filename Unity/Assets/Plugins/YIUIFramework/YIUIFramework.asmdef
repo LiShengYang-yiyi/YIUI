@@ -6,7 +6,8 @@
         "Unity.TextMeshPro",
         "Unity.Core",
         "YooAsset",
-        "Unity.ThirdParty"
+        "Unity.ThirdParty",
+        "UIEffect"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
