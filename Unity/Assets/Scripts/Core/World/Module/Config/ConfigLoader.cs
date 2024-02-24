@@ -9,7 +9,7 @@ namespace ET
     /// <summary>
     /// ConfigLoader会扫描所有的有ConfigAttribute标签的配置,加载进来
     /// </summary>
-    public class ConfigLoader: Singleton<ConfigLoader>, ISingletonAwake
+    public class ConfigLoader : Singleton<ConfigLoader>, ISingletonAwake
     {
         public struct GetAllConfigBytes
         {
@@ -30,9 +30,7 @@ namespace ET
         {
             var oneConfigBytes =
                     await EventSystem.Instance.Invoke<GetOneConfigBytes, ETTask<ByteBuf>>(new GetOneConfigBytes { ConfigName = configType.Name });
-            object category = Activator.CreateInstance(configType, oneConfigBytes);
-            this.allConfig[configType] = category as IConfig;
-            World.Instance.AddSingleton(category as ASingleton);
+            LoadOneConfig(configType, oneConfigBytes);
             ResolveRef(); //热重载某一个配置的时候也要触发所有配置否则可能会引起各种引用丢失问题 不确定是否还有潜在问题 热重载配置还需观察
         }
 
@@ -40,16 +38,32 @@ namespace ET
         {
             this.allConfig.Clear();
             var configBytes = await EventSystem.Instance.Invoke<GetAllConfigBytes, ETTask<Dictionary<Type, ByteBuf>>>(new GetAllConfigBytes());
+
+#if DOTNET || UNITY_STANDALONE //因为低端机开多线程加载会卡死
             using ListComponent<Task> listTasks = ListComponent<Task>.Create();
             foreach (Type type in configBytes.Keys)
             {
                 ByteBuf oneConfigBytes = configBytes[type];
-                Task    task           = Task.Run(() => LoadOneInThread(type, oneConfigBytes));
+                Task task = Task.Run(() => LoadOneInThread(type, oneConfigBytes));
                 listTasks.Add(task);
             }
 
             await Task.WhenAll(listTasks.ToArray());
+#else
+            foreach (var (type,buf) in configBytes)
+            {
+                LoadOneConfig(type, buf);
+            }
+#endif
+
             ResolveRef();
+        }
+
+        private void LoadOneConfig(Type configType, ByteBuf oneConfigBytes)
+        {
+            object category = Activator.CreateInstance(configType, oneConfigBytes);
+            this.allConfig[configType] = category as IConfig;
+            World.Instance.AddSingleton(category as ASingleton);
         }
 
         private void LoadOneInThread(Type configType, ByteBuf oneConfigBytes)
@@ -78,7 +92,7 @@ namespace ET
 
         private void Initialized(IConfig configCategory)
         {
-            var iConfigSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(configCategory.GetType(), typeof (IConfigSystem));
+            var iConfigSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(configCategory.GetType(), typeof(IConfigSystem));
             if (iConfigSystems == null)
             {
                 return;
