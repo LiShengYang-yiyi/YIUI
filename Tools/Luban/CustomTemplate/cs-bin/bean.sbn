@@ -113,7 +113,7 @@
         public {{method_modifier __bean}} void ResolveRef()
         {
             {{~if parent_def_type~}}
-            base.ResolveRef(tables);
+            base.ResolveRef();
             {{~end~}}
             {{~for field in export_fields~}}
             {{generate_resolve_field_ref field}}
