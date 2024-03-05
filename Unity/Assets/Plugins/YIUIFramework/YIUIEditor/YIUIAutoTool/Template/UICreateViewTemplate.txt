@@ -1,6 +1,6 @@
 ﻿using System;
-using YIUIFramework;
 using UnityEngine;
+using YIUIFramework;
 using System.Collections.Generic;
 
 namespace ${Namespace}
