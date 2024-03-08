@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace YIUIFramework
 {
+    [AddComponentMenu("YIUIFramework/Widget/自适应大小To子物体 【ContentSizeFilterByChildren】")]
     public class ContentSizeFilterByChildren: UIBehaviour, ILayoutElement, ILayoutSelfController, ILayoutGroup
     {
         public enum FitMode

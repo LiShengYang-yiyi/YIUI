@@ -8,6 +8,7 @@ namespace YIUIFramework
     /// <summary>
     /// 点击按钮影响组件大小
     /// </summary>
+    [AddComponentMenu("YIUIFramework/Widget/点击动画 【YIUIClickEffect】")]
     public class YIUIClickEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [Tooltip("被影响的目标")]

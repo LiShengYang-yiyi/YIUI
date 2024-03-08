@@ -7,6 +7,7 @@ namespace YIUIFramework
     /// </summary>
     [ExecuteInEditMode]                // 编辑态可以查看脚本运行效果
     [RequireComponent(typeof(Camera))] // 需要相机组件
+    [AddComponentMenu("YIUIFramework/Widget/高斯模糊特效 【YIUICameraGaussianBlur】")]
     public class YIUICameraGaussianBlur : MonoBehaviour
     {
         [Range(0, 4)]

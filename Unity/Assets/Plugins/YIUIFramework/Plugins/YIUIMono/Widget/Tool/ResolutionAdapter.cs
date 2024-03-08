@@ -11,6 +11,7 @@ namespace YIUIFramework
     /// </summary>
     [RequireComponent(typeof(CanvasScaler))]
     [ExecuteInEditMode]
+    [AddComponentMenu("YIUIFramework/Widget/自适应不同分辨率 【ResolutionAdapter】")]
     public class ResolutionAdapter : MonoBehaviour
     {
         private Canvas       canvas;

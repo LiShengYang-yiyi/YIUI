@@ -6,6 +6,7 @@ namespace YIUIFramework
     /// 运动模糊特效
     /// </summary>
     [RequireComponent(typeof(Camera))] // 需要相机组件
+    [AddComponentMenu("YIUIFramework/Widget/运动模糊特效 【YIUICameraMotionBlur】")]
     public class YIUICameraMotionBlur : MonoBehaviour
     {
         [Range(0.0f, 0.9f)]

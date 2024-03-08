@@ -6,6 +6,7 @@ namespace YIUIFramework
     /// <summary>
     /// 图像与多边形块
     /// </summary>
+    [AddComponentMenu("YIUIFramework/Widget/阻挡UI多边形 【UIBlockPolygon】")]
     [RequireComponent(typeof(PolygonCollider2D))]
     public sealed class UIBlockPolygon : Graphic, ICanvasRaycastFilter
     {

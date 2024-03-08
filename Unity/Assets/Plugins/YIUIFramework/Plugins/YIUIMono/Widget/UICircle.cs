@@ -16,9 +16,6 @@ namespace YIUIFramework
             Vector2 size = rectTransform.rect.size;
             Vector2 pivot = rectTransform.pivot;
 
-            Debug.Log("XX" + pivot.x);
-            Debug.Log("YY" + pivot.y);
-
             UIVertex vertex = UIVertex.simpleVert;
             vertex.color = Color.clear;
 
