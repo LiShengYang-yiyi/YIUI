@@ -47,7 +47,7 @@ namespace YIUIFramework
         }
 
         [HideLabel]
-        private enum EUITaskEventType
+        public enum EUITaskEventType
         {
             [LabelText("同步事件")]
             Sync,
@@ -56,14 +56,34 @@ namespace YIUIFramework
             Async,
         }
 
+        [NonSerialized]
+        private bool m_FirstGetEventType;
+
+        [NonSerialized]
+        private EUITaskEventType m_UITaskEventTypeTemp;
+
         [ShowInInspector]
         [BoxGroup("添加新事件")]
         [EnumToggleButtons]
         [HideLabel]
-        [NonSerialized]
         [PropertyOrder(-100)]
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
-        private EUITaskEventType m_UITaskEventType;
+        private EUITaskEventType m_UITaskEventType
+        {
+            get
+            {
+                if (!m_FirstGetEventType)
+                {
+                    m_UITaskEventTypeTemp = new EnumPrefs<EUITaskEventType>("YIUIAutoTool_OtherModule_TaskEventType",null,EUITaskEventType.Async).Value;
+                    m_FirstGetEventType = true;
+                }
+                return  m_UITaskEventTypeTemp;
+            }
+            set
+            {
+                m_UITaskEventTypeTemp = value;
+            }
+        }
 
         [ShowInInspector]
         [BoxGroup("添加新事件")]

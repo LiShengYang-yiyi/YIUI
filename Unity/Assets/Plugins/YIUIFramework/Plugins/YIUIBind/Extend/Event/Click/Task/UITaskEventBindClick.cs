@@ -16,7 +16,7 @@ namespace YIUIFramework
     /// </summary>
     [LabelText("点击<null>")]
     [AddComponentMenu("YIUIBind/TaskEvent/点击 【Click】 UITaskEventBindClick")]
-    public class UITaskEventBindClick: UIEventBind, IPointerClickHandler
+    public class UITaskEventBindClick : UIEventBind, IPointerClickHandler
     {
         [SerializeField]
         [LabelText("拖拽时不响应点击")]
@@ -44,15 +44,7 @@ namespace YIUIFramework
 
             if (ClickTasking) return;
 
-            try
-            {
-                TaskEvent(eventData).Coroutine();
-            }
-            catch (Exception e)
-            {
-                Logger.LogError(e);
-                throw;
-            }
+            TaskEvent(eventData).Coroutine();
         }
 
         protected override bool IsTaskEvent => true;
@@ -74,7 +66,6 @@ namespace YIUIFramework
         protected async ETTask TaskEvent(PointerEventData eventData)
         {
             if (m_UIEvent == null) return;
-
             var banLayerCode = 0;
             if (m_BanLayerOption)
             {
@@ -82,18 +73,30 @@ namespace YIUIFramework
             }
 
             ClickTasking = true;
-            await OnUIEvent(eventData);
-            ClickTasking = false;
 
-            if (m_BanLayerOption)
+            try
             {
-                YIUIMgrComponent.Inst.RecoverLayerOptionForever(banLayerCode);
+                await OnUIEvent(eventData);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e);
+                throw;
+            }
+            finally
+            {
+                ClickTasking = false;
+
+                if (m_BanLayerOption)
+                {
+                    YIUIMgrComponent.Inst.RecoverLayerOptionForever(banLayerCode);
+                }
             }
         }
 
         protected virtual async ETTask OnUIEvent(PointerEventData eventData)
         {
-            await m_UIEvent.InvokeAsync();
+            await m_UIEvent?.InvokeAsync();
         }
     }
 }
