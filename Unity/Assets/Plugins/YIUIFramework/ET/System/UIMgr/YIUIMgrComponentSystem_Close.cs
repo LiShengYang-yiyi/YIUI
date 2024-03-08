@@ -31,9 +31,9 @@ namespace ET.Client
                 var allowClose = false; //是否允许关闭
 
                 //如果继承禁止关闭接口 可返回是否允许关闭自行处理
-                if (info.OwnerUIEntity is IYIUIBanClose disClose)
+                if (info.OwnerUIEntity is IYIUIDisClose)
                 {
-                    allowClose = disClose.DoBanClose();
+                    allowClose = await YIUIEventSystem.DisClose(info.OwnerUIEntity);
                 }
 
                 if (!allowClose)
