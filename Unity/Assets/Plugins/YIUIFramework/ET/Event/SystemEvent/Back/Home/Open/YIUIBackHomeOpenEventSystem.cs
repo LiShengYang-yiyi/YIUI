@@ -6,33 +6,32 @@ namespace ET.Client
     {
         /// <summary>
         /// 触发堆栈时
-        /// 被添加触发 (有其他界面关闭 当前界面被打开)
+        /// HomeOpen触发 (当前界面home打开 其他全部关闭)
         /// 自己被打开
-        /// panelInfo = 是哪个界面被关闭了 那个界面的一些信息
         /// </summary>
-        public static async ETTask BackAdd(Entity component, YIUIPanelInfo closePanelInfo)
+        public static async ETTask BackHomeOpen(Entity component)
         {
             if (component == null || component.IsDisposed)
             {
                 return;
             }
 
-            var iYIUIBackAddSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof(IYIUIBackAddSystem));
-            if (iYIUIBackAddSystems == null)
+            var iYIUIBackHomeOpenSystems = EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof(IYIUIBackHomeOpenSystem));
+            if (iYIUIBackHomeOpenSystems == null)
             {
                 return;
             }
 
-            foreach (IYIUIBackAddSystem aYIUIBackAddSystem in iYIUIBackAddSystems)
+            foreach (IYIUIBackHomeOpenSystem aYIUIBackHomeOpenSystem in iYIUIBackHomeOpenSystems)
             {
-                if (aYIUIBackAddSystem == null)
+                if (aYIUIBackHomeOpenSystem == null)
                 {
                     continue;
                 }
 
                 try
                 {
-                    await aYIUIBackAddSystem.Run(component, closePanelInfo);
+                    await aYIUIBackHomeOpenSystem.Run(component);
                 }
                 catch (Exception e)
                 {

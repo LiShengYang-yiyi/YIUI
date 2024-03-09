@@ -94,7 +94,8 @@ namespace ET.Client
         /// </summary>
         /// <param name="homeName">需要被打开的界面 且这个UI是存在的 否则无法打开</param>
         /// <param name="tween">动画</param>
-        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true)
+        /// <param name="forceHome">如果不存在则 强制打开 被强制打开的无法触发Back Home消息 只会触发常规的open close</param>
+        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true , bool forceHome = false)
         {
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> Home关闭其他所有Panel UI: {homeName} </color>");
@@ -105,13 +106,21 @@ namespace ET.Client
             {
                 return await self.RemoveUIToHome(homeInfo, tween);
             }
+            else
+            {
+                if (forceHome)
+                {
+                    await self.CloseAllPanelAsync(tween);
+                    return await self.OpenPanelAsync(homeName) != null;
+                }
+            }
 
             return false;
         }
 
-        public static async ETTask HomePanel<T>(this YIUIMgrComponent self, bool tween = true) where T : Entity
+        public static async ETTask HomePanel<T>(this YIUIMgrComponent self, bool tween = true, bool forceHome = false) where T : Entity
         {
-            await self.HomePanel(typeof (T).Name, tween);
+            await self.HomePanel(typeof (T).Name, tween, forceHome);
         }
     }
 }

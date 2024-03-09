@@ -59,7 +59,7 @@ namespace ET.Client
         //播放动画时 可以操作  默认播放动画的时候是不能操作UI的 不然容易出问题
         public bool WindowAllowOptionByTween => WindowOption.HasFlag(EWindowOption.AllowOptionByTween);
         
-        //Home时 被关闭不视作BackClose
-        public bool WindowSkipHomeBackClose => WindowOption.HasFlag(EWindowOption.SkipHomeBackClose);
+        //Home时 被关闭不视作Back
+        public bool WindowSkipHomeBack => WindowOption.HasFlag(EWindowOption.SkipHomeBack);
     }
 }

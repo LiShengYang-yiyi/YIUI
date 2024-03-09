@@ -58,8 +58,8 @@ namespace YIUIFramework
         [LabelText("播放动画时 可以操作")]
         AllowOptionByTween = 1 << 18, //默认播放动画的时候是不能操作UI的 不然容易出问题
         
-        [LabelText("Home时 被关闭不视作BackClose")]
-        SkipHomeBackClose = 1 << 19, //反之 默认情况下 Home时被关闭 会触发BackClose 方便统一处理 毕竟都是属于回退功能的关闭
+        [LabelText("Home时 操作不视作Back")]
+        SkipHomeBack = 1 << 19, //反之 默认情况下 Home时被关闭 打开时 会触发BackClose Open 方便统一处理 毕竟都是属于回退功能的关闭
 
     }
 
