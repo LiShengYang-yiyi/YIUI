@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIBackAddSystem<T> : SystemObject, IYIUIBackAddSystem where T : Entity, IYIUIBackAdd
+    public abstract class YIUIBackAddSystem<T,_> : SystemObject, IYIUIBackAddSystem where T : Entity, IYIUIBackAdd
     {
         Type ISystemType.Type()
         {

@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIBackHomeSystem<T> : SystemObject, IYIUIBackHomeSystem where T : Entity, IYIUIBackHome
+    public abstract class YIUIBackHomeSystem<T,_> : SystemObject, IYIUIBackHomeSystem where T : Entity, IYIUIBackHome
     {
         Type ISystemType.Type()
         {

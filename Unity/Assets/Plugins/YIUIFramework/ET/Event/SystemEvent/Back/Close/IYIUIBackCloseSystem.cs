@@ -12,7 +12,7 @@ namespace ET.Client
     }
 
     [EntitySystem]
-    public abstract class YIUIBackCloseSystem<T> : SystemObject, IYIUIBackCloseSystem where T : Entity, IYIUIBackClose
+    public abstract class YIUIBackCloseSystem<T,_> : SystemObject, IYIUIBackCloseSystem where T : Entity, IYIUIBackClose
     {
         Type ISystemType.Type()
         {
