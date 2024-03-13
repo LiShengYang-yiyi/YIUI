@@ -15,7 +15,7 @@ namespace YIUIFramework
         {
             m_Data             = data;
             m_Owner.totalCount = data.Count;
-            RefreshCells();
+            RefillCells();
         }
 
         //刷新时默认选中某个索引数据
