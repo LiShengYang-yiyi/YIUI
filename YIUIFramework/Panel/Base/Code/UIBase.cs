@@ -156,6 +156,8 @@ namespace YIUIFramework
                     UIBaseOnEnable();
                 else
                     UIBaseOnDisable();
+                CDETable.UIBaseOnEnable  = UIBaseOnEnable;
+                CDETable.UIBaseOnDisable = UIBaseOnDisable;
             }
             catch (Exception e)
             {
@@ -173,8 +175,6 @@ namespace YIUIFramework
         {
             SealedStart();
             Start();
-            CDETable.UIBaseOnEnable  = UIBaseOnEnable;
-            CDETable.UIBaseOnDisable = UIBaseOnDisable;
         }
 
         //UIBase 生命周期顺序 4
