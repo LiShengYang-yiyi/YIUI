@@ -110,7 +110,7 @@ namespace ET.Client
             {
                 if (forceHome)
                 {
-                    await self.CloseAllPanelAsync(tween);
+                    await self.CloseAll(EPanelLayer.Panel,EPanelOption.IgnoreClose,tween);
                     return await self.OpenPanelAsync(homeName) != null;
                 }
             }
