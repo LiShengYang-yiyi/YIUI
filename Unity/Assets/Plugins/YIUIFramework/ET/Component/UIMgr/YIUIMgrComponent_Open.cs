@@ -99,6 +99,8 @@ namespace ET.Client
                 return null;
             }
 
+            using var coroutineLock = await this.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, panelName.GetHashCode());
+
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");
             #endif
@@ -110,15 +112,7 @@ namespace ET.Client
 
             if (info.UIBase == null)
             {
-                if (PanelIsOpening(panelName))
-                {
-                    Debug.LogError($"请检查 {panelName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                    return null;
-                }
-
-                AddOpening(panelName);
                 var uiCom = await YIUIFactory.CreatePanelAsync(info, parentEntity);
-                RemovOpening(panelName);
                 if (uiCom == null)
                 {
                     Debug.LogError($"面板[{panelName}]没有创建成功，packName={info.PkgName}, resName={info.ResName}");
@@ -179,26 +173,5 @@ namespace ET.Client
                 PanelLayer      = info.PanelLayer,
             });
         }
-
-        #region opening
-
-        internal HashSet<string> m_PanelOpening = new HashSet<string>();
-
-        internal void AddOpening(string name)
-        {
-            m_PanelOpening.Add(name);
-        }
-
-        internal void RemovOpening(string name)
-        {
-            m_PanelOpening.Remove(name);
-        }
-
-        internal bool PanelIsOpening(string name)
-        {
-            return m_PanelOpening.Contains(name);
-        }
-
-        #endregion
     }
 }
