@@ -508,7 +508,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\Param\UIBindParamVo.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\UIMgr\YIUIMgrComponent.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUICountDown\CountDownMgr.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_ViewOpening.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UICreateETScriptData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\Runtime\Mgr\RedDotMgr_Dirty.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Rect\UIDataBindRectSize.cs" />

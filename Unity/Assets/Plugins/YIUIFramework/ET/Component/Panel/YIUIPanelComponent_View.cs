@@ -107,6 +107,8 @@ namespace ET.Client
                 return null;
             }
 
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, resName.GetHashCode());
+
             var data = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
@@ -128,15 +130,8 @@ namespace ET.Client
                 return baseView;
             }
 
-            if (ViewIsOpening(resName))
-            {
-                Debug.LogError($"请检查 {resName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                return null;
-            }
-
-            AddOpening(resName);
             var view = await YIUIFactory.InstantiateAsync(vo, this.UIBase.OwnerUIEntity, viewParent);
-            RemovOpening(resName);
+
             m_ExistView.Add(resName, view);
             return view;
         }
@@ -148,6 +143,8 @@ namespace ET.Client
                 Log.Error($"没有找到ET UI组件");
                 return null;
             }
+
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
 
             var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
@@ -171,15 +168,8 @@ namespace ET.Client
                 return baseView;
             }
 
-            if (ViewIsOpening(viewName))
-            {
-                Debug.LogError($"请检查 {viewName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                return null;
-            }
-
-            AddOpening(viewName);
             var view = await YIUIFactory.InstantiateAsync(vo, this.UIBase.OwnerUIEntity, viewParent);
-            RemovOpening(viewName);
+
             m_ExistView.Add(viewName, view);
             return view;
         }

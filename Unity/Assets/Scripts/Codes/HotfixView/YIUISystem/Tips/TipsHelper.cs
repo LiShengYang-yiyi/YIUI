@@ -28,6 +28,8 @@ namespace ET.Client
         //使用paramvo参数打开
         public static async ETTask Open<T>(ParamVo vo) where T : Entity
         {
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
+
             await YIUIMgrComponent.Inst.OpenPanelAsync<TipsPanelComponent, Type, ParamVo>(typeof (T), vo);
         }
 
@@ -40,6 +42,8 @@ namespace ET.Client
         //在外部vo会被回收 所以不能使用同对象 所以这里会创建一个新的防止空对象
         private static async ETTask Open2NewVo<T>(ParamVo vo) where T : Entity
         {
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
+
             var newVo = ParamVo.Get(vo.Data);
             await YIUIMgrComponent.Inst.OpenPanelAsync<TipsPanelComponent, Type, ParamVo>(typeof (T), newVo);
             ParamVo.Put(newVo);
