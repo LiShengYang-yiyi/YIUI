@@ -49,28 +49,28 @@ namespace ET.Client
         /// 获取PanelInfo
         /// 没有则创建  相当于一个打开过了 UI基础配置档
         /// 这个根据BindVo创建  为什么没有直接用VO  因为里面有Panel 实例对象
-        /// 这个k 根据resName
         /// </summary>
-        internal PanelInfo GetPanelInfo(string name)
+        internal PanelInfo GetPanelInfo(string componentName)
         {
-            if (this.m_PanelCfgMap.TryGetValue(name, out var info))
+            if (this.m_PanelCfgMap.TryGetValue(componentName, out var info))
             {
                 return info;
             }
 
-            var data = YIUIBindHelper.GetBindVoByResName(name);
+            var resName = componentName.Replace("Component", "");
+            var data = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
 
             if (vo.CodeType != EUICodeType.Panel)
             {
-                Log.Error($"这个对象不是 Panel 无法打开 {name}");
+                Log.Error($"这个对象不是 Panel 无法打开 {componentName}");
                 return null;
             }
 
-            m_PanelCfgMap.Add(name, new PanelInfo(vo));
+            m_PanelCfgMap.Add(componentName, new PanelInfo(vo));
 
-            return m_PanelCfgMap[name];
+            return m_PanelCfgMap[componentName];
         }
 
         /// <summary>
