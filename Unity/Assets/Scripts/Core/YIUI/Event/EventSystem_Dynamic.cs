@@ -5,7 +5,26 @@ namespace ET
 {
     public partial class EventSystem
     {
+        //向任意场景发送动态事件
         public async ETTask DynamicEvent<P1>(P1 message) where P1 : struct
+        {
+            await DynamicEvent(SceneType.None, message);
+        }
+        
+        //向与传入的实体相同的场景发送动态事件
+        public async ETTask DynamicEvent<P1>(Entity entity, P1 message) where P1 : struct
+        {
+            await DynamicEvent(entity.DomainScene().SceneType, message);
+        }
+        
+        //向目标场景发送动态事件
+        public async ETTask DynamicEvent<P1>(Scene scene, P1 message) where P1 : struct
+        {
+            await DynamicEvent(scene.SceneType, message);
+        }
+
+        //向指定场景发送动态事件
+        public async ETTask DynamicEvent<P1>(SceneType sceneTyps, P1 message) where P1 : struct
         {
             using ListComponent<ETTask> list = ListComponent<ETTask>.Create();
 
@@ -31,6 +50,11 @@ namespace ET
 
                 queue.Enqueue(instanceId);
 
+                if (sceneTyps != SceneType.None && sceneTyps != component.DomainScene().SceneType)
+                {
+                    continue;
+                }
+                
                 List<object> iEventSystems = this.typeSystems.GetSystems(component.GetType(), typeof (IDynamicEventSystem<P1>));
                 if (iEventSystems == null)
                 {
@@ -52,5 +76,6 @@ namespace ET
                 Log.Error(e);
             }
         }
+
     }
 }
