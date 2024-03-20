@@ -14,7 +14,7 @@ namespace ET
         //向任意场景发送动态事件
         public async ETTask DynamicEvent<P1>(P1 message) where P1 : struct
         {
-            await DynamicEvent(SceneType.None, message);
+            await DynamicEvent(SceneType.All, message);
         }
 
         //向与传入的实体相同的场景发送动态事件
