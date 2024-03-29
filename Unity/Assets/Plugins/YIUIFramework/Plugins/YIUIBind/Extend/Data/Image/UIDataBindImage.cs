@@ -7,10 +7,10 @@ using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
-    [RequireComponent(typeof(Image))]
+    [RequireComponent(typeof (Image))]
     [LabelText("Image 图片")]
     [AddComponentMenu("YIUIBind/Data/图片 【Image】 UIDataBindImage")]
-    public sealed class UIDataBindImage : UIDataBindSelectBase
+    public sealed class UIDataBindImage: UIDataBindSelectBase
     {
         [SerializeField]
         [ReadOnly]
@@ -59,7 +59,12 @@ namespace YIUIFramework
 
         protected override void OnValueChanged()
         {
-            if (m_Image == null) return;
+            if (!UIOperationHelper.IsPlaying())
+            {
+                return;
+            }
+
+            if (m_Image == null || gameObject == null) return;
 
             var dataValue = GetFirstValue<string>();
 
@@ -68,55 +73,62 @@ namespace YIUIFramework
                 SetEnabled(false);
                 return;
             }
-            
-            if (m_LastSpriteName == dataValue)
-            {
-                SetEnabled(true);
-                return;
-            }
-
-            m_LastSpriteName = dataValue;
-
-            if (!UIOperationHelper.IsPlaying())
-            {
-                return;
-            }
 
             ChangeSprite(dataValue).Coroutine();
         }
 
         private async ETTask ChangeSprite(string resName)
         {
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, gameObject.GetHashCode());
+
+            if (m_LastSpriteName == resName)
+            {
+                if (m_Image != null && m_Image.sprite != null)
+                {
+                    SetEnabled(true);
+                }
+                else
+                {
+                    SetEnabled(false);
+                }
+
+                return;
+            }
+
             ReleaseLastSprite();
-            
+
             #if UNITY_EDITOR
             if (!YIUILoadHelper.VerifyAssetValidity(resName))
             {
                 Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
-            }            
+            }
             #endif
-            
+
             var sprite = await YIUILoadHelper.LoadAssetAsync<Sprite>(resName);
-            
-            if (m_Image != null && sprite != null)
+
+            if (sprite == null)
             {
-                m_LastSprite   = sprite;
-                m_Image.sprite = sprite;
-                if (m_SetNativeSize)
-                    m_Image.SetNativeSize();
-                
-                SetEnabled(true);
-            }
-            else
-            {
-                if (m_Image == null)
-                    Logger.LogError($"{this.gameObject.name} m_Image == null");
-                if (sprite == null)
-                    Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
+                return;
             }
+
+            if (gameObject == null || m_Image == null)
+            {
+                YIUILoadHelper.Release(sprite);
+                Logger.LogError($"{resName} 加载过程中 对象被摧毁了 gameObject == null || m_Image == null");
+                return;
+            }
+
+            m_LastSprite   = sprite;
+            m_Image.sprite = sprite;
+            if (m_SetNativeSize)
+                m_Image.SetNativeSize();
+
+            SetEnabled(true);
+            m_LastSpriteName = resName;
         }
 
         protected override void UnBindData()
@@ -126,6 +138,7 @@ namespace YIUIFramework
             {
                 return;
             }
+
             ReleaseLastSprite();
         }
 
