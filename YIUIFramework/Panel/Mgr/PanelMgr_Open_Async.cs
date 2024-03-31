@@ -11,16 +11,18 @@ namespace YIUIFramework
     {
         private async UniTask<PanelInfo> OpenPanelStartAsync(string panelName)
         {
-            #if YIUIMACRO_PANEL_OPENCLOSE
-            Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");
-            #endif
-
             if (string.IsNullOrEmpty(panelName))
             {
                 Debug.LogError($"<color=red> 无法打开 这是一个空名称 </color>");
                 return null;
             }
 
+            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(panelName.GetHashCode());
+
+            #if YIUIMACRO_PANEL_OPENCLOSE
+            Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");
+            #endif
+            
             if (!m_PanelCfgMap.TryGetValue(panelName, out var info))
             {
                 Debug.LogError($"请检查 {panelName} 没有获取到PanelInfo  1. 必须继承IPanel 的才可行  2. 检查是否没有注册上");
@@ -29,21 +31,12 @@ namespace YIUIFramework
 
             if (info.UIBasePanel == null)
             {
-                if (PanelIsOpening(panelName))
-                {
-                    Debug.LogError($"请检查 {panelName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                    return null;
-                }
-
-                AddOpening(panelName);
                 var uiBase = await YIUIFactory.CreatePanelAsync(info);
-                RemovOpening(panelName);
                 if (uiBase == null)
                 {
                     Debug.LogError($"面板[{panelName}]没有创建成功，packName={info.PkgName}, resName={info.ResName}");
                     return null;
                 }
-
                 uiBase.SetActive(false);
                 info.Reset(uiBase);
             }

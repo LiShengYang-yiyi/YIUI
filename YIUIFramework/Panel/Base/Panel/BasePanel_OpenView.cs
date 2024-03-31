@@ -85,20 +85,14 @@ namespace YIUIFramework
                 return null;
             }
 
+            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(viewName.GetHashCode());
+
             if (m_ExistView.ContainsKey(viewName))
             {
                 return (T)m_ExistView[viewName];
             }
 
-            if (ViewIsOpening(viewName))
-            {
-                Debug.LogError($"请检查 {viewName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                return null;
-            }
-
-            AddOpening(viewName);
             var view = await YIUIFactory.InstantiateAsync<T>(parent);
-            RemovOpening(viewName);
 
             m_ExistView.Add(viewName, view);
 

@@ -18,6 +18,8 @@ namespace YIUIFramework
                 return null;
             }
 
+            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(viewName.GetHashCode());
+
             if (m_ExistView.ContainsKey(viewName))
             {
                 return m_ExistView[viewName];
@@ -26,17 +28,7 @@ namespace YIUIFramework
             var value = UIBindHelper.GetBindVoByPath(UIPkgName, viewName);
             if (value == null) return null;
             var bindVo = value.Value;
-
-            if (ViewIsOpening(viewName))
-            {
-                Debug.LogError($"请检查 {viewName} 正在异步打开中 请勿重复调用 请检查代码是否一瞬间频繁调用");
-                return null;
-            }
-
-            AddOpening(viewName);
             var view = (BaseView)await YIUIFactory.InstantiateAsync(bindVo, parent);
-            RemovOpening(viewName);
-
             m_ExistView.Add(viewName, view);
 
             return view;
