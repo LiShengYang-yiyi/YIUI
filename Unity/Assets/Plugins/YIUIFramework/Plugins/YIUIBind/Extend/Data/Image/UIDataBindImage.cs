@@ -78,23 +78,10 @@ namespace YIUIFramework
             ChangeSprite(dataValue).Coroutine();
         }
 
-        private readonly SemaphoreSlim m_Semaphore = new(1, 1);
-
         private async ETTask ChangeSprite(string resName)
         {
-            await m_Semaphore.WaitAsync();
-            try
-            {
-                await AsyncOperation(resName);
-            }
-            finally
-            {
-                m_Semaphore.Release();
-            }
-        }
+            using var asyncLock = await SemaphoreSlimSingleton.Instance.Wait(this.GetHashCode());
 
-        private async ETTask AsyncOperation(string resName)
-        {
             if (m_LastSpriteName == resName)
             {
                 if (m_Image != null && m_Image.sprite != null)
