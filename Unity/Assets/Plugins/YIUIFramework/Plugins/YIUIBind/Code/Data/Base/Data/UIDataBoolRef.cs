@@ -153,6 +153,32 @@ namespace YIUIFramework
                     }
 
                     break;
+                case EUIBindDataType.Long:
+                    var valueLong     = m_Data.GetValue<long>();
+                    var referenceLong = m_ReferenceData.GetValue<long>();
+                    switch (m_CompareMode)
+                    {
+                        case UICompareModeEnum.Less:
+                            result = valueLong < referenceLong;
+                            break;
+                        case UICompareModeEnum.LessEqual:
+                            result = valueLong <= referenceLong;
+                            break;
+                        case UICompareModeEnum.Equal:
+                            result = valueLong == referenceLong;
+                            break;
+                        case UICompareModeEnum.Great:
+                            result = valueLong > referenceLong;
+                            break;
+                        case UICompareModeEnum.GreatEqual:
+                            result = valueLong >= referenceLong;
+                            break;
+                        default:
+                            Logger.LogError($"不可能有其他类型 不允许扩展 {m_CompareMode}");
+                            break;
+                    }
+
+                    break;
                 case EUIBindDataType.Float:
                     var valueFloat     = m_Data.GetValue<float>();
                     var referenceFloat = m_ReferenceData.GetValue<float>();

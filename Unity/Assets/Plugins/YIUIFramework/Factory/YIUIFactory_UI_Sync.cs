@@ -13,7 +13,7 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        public static T Instantiate<T>(Entity parentEntity, RectTransform parent = null) where T : Entity
+        public static T Instantiate<T>(Entity parentEntity, Transform parent = null) where T : Entity
         {
             var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
@@ -22,7 +22,7 @@ namespace YIUIFramework
             return Instantiate<T>(vo, parentEntity, parent);
         }
 
-        public static T Instantiate<T>(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null) where T : Entity
+        public static T Instantiate<T>(YIUIBindVo vo, Entity parentEntity, Transform parent = null) where T : Entity
         {
             var instance = (T)Create(vo, parentEntity);
             if (instance == null) return null;
@@ -32,7 +32,7 @@ namespace YIUIFramework
             return instance;
         }
 
-        public static Entity Instantiate(Type uiType, Entity parentEntity, RectTransform parent = null)
+        public static Entity Instantiate(Type uiType, Entity parentEntity, Transform parent = null)
         {
             var data = YIUIBindHelper.GetBindVoByType(uiType);
             if (data == null) return null;
@@ -41,7 +41,7 @@ namespace YIUIFramework
             return Instantiate(vo, parentEntity, parent);
         }
 
-        public static Entity Instantiate(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null)
+        public static Entity Instantiate(YIUIBindVo vo, Entity parentEntity, Transform parent = null)
         {
             var instance = Create(vo, parentEntity);
             if (instance == null) return null;
@@ -51,9 +51,18 @@ namespace YIUIFramework
             return instance;
         }
 
-        public static Entity Instantiate(string pkgName, string resName, Entity parentEntity, RectTransform parent = null)
+        public static Entity Instantiate(string pkgName, string resName, Entity parentEntity, Transform parent = null)
         {
             var data = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
+            if (data == null) return null;
+            var vo = data.Value;
+
+            return Instantiate(vo, parentEntity, parent);
+        }
+
+        public static Entity Instantiate(string resName, Entity parentEntity, Transform parent = null)
+        {
+            var data = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
 

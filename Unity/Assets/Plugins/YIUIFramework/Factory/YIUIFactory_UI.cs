@@ -12,7 +12,7 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        private static void SetParent(RectTransform self, RectTransform parent)
+        private static void SetParent(RectTransform self, Transform parent)
         {
             self.SetParent(parent, false);
             self.AutoReset();

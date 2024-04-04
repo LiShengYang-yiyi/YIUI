@@ -13,7 +13,7 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        public static async ETTask<T> InstantiateAsync<T>(Entity parentEntity, RectTransform parent = null) where T : Entity
+        public static async ETTask<T> InstantiateAsync<T>(Entity parentEntity, Transform parent = null) where T : Entity
         {
             var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
@@ -22,21 +22,21 @@ namespace YIUIFramework
             return await InstantiateAsync<T>(vo, parentEntity, parent);
         }
 
-        public static async ETTask<T> InstantiateAsync<T>(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null) where T : Entity
+        public static async ETTask<T> InstantiateAsync<T>(YIUIBindVo vo, Entity parentEntity, Transform parent = null) where T : Entity
         {
             var uiCom = await CreateAsync(vo, parentEntity);
             SetParent(uiCom.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
             return (T)uiCom;
         }
 
-        public static async ETTask<Entity> InstantiateAsync(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null)
+        public static async ETTask<Entity> InstantiateAsync(YIUIBindVo vo, Entity parentEntity, Transform parent = null)
         {
             var uiCom = await CreateAsync(vo, parentEntity);
             SetParent(uiCom.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
             return uiCom;
         }
 
-        public static async ETTask<Entity> InstantiateAsync(Type uiType, Entity parentEntity, RectTransform parent = null)
+        public static async ETTask<Entity> InstantiateAsync(Type uiType, Entity parentEntity, Transform parent = null)
         {
             var data = YIUIBindHelper.GetBindVoByType(uiType);
             if (data == null) return null;
@@ -46,9 +46,19 @@ namespace YIUIFramework
         }
 
         public static async ETTask<Entity> InstantiateAsync(string        pkgName, string resName, Entity parentEntity,
-                                                             RectTransform parent = null)
+                                                             Transform parent = null)
         {
             var data = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
+            if (data == null) return null;
+            var vo = data.Value;
+
+            return await InstantiateAsync(vo, parentEntity, parent);
+        }
+
+        public static async ETTask<Entity> InstantiateAsync(string        resName, Entity parentEntity,
+                                                            Transform parent = null)
+        {
+            var data = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
 

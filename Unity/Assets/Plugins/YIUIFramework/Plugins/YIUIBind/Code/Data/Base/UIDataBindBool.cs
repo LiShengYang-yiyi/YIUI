@@ -36,6 +36,7 @@ namespace YIUIFramework
         {
             return 1 << (int)EUIBindDataType.Bool |
                 1 << (int)EUIBindDataType.Int |
+                1 << (int)EUIBindDataType.Long |
                 1 << (int)EUIBindDataType.Float |
                 1 << (int)EUIBindDataType.String;
         }
