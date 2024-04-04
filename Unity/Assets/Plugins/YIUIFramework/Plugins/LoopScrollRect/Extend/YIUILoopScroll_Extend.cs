@@ -20,9 +20,9 @@ namespace YIUIFramework
         public int           ItemEnd                => m_Owner.u_ItemEnd;                               //当前显示的最后一个index 被+1了注意                      
 
         //在开始时用startItem填充单元格，同时清除现有的单元格
-        public void RefillCells(int startItem = 0, bool fillViewRect = false, float contentOffset = 0)
+        public void RefillCells(int startItem = 0, float contentOffset = 0)
         {
-            m_Owner.RefillCells(startItem, fillViewRect, contentOffset);
+            m_Owner.RefillCells(startItem, contentOffset);
         }
 
         //在结束时重新填充endItem中的单元格，同时清除现有的单元格

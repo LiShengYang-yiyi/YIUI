@@ -7,6 +7,6 @@ namespace UnityEngine.UI
     {
         GameObject GetObject(int index);
 
-        void ReturnObject(Transform transform);
+        void ReturnObject(Transform trans);
     }
 }

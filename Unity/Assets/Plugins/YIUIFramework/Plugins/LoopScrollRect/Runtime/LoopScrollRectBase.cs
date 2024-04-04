@@ -675,12 +675,12 @@ namespace UnityEngine.UI
                 float value = (reverseDirection ^ (direction == LoopScrollRectDirection.Horizontal)) ? 0 : 1;
                 if (m_Content != null)
                 {
-                    Debug.Assert(GetAbsDimension(m_Content.pivot) == value, this);
-                    Debug.Assert(GetAbsDimension(m_Content.anchorMin) == value, this);
-                    Debug.Assert(GetAbsDimension(m_Content.anchorMax) == value, this);
+                    Debug.Assert(GetAbsDimension(m_Content.pivot) == value,$"{this.gameObject.name} pivot 设置错误 不符合要求 LoopScroll",this);
+                    Debug.Assert(GetAbsDimension(m_Content.anchorMin) == value,$"{this.gameObject.name} anchorMin 设置错误 不符合要求 LoopScroll",this);
+                    Debug.Assert(GetAbsDimension(m_Content.anchorMax) == value,$"{this.gameObject.name} anchorMax 设置错误 不符合要求 LoopScroll",this);
                 }
-                /*不需要这个断言
-                if (direction == LoopScrollRectDirection.Vertical)
+                //不需要这个断言
+                /*if (direction == LoopScrollRectDirection.Vertical)
                     Debug.Assert(m_Vertical && !m_Horizontal, this);
                 else
                     Debug.Assert(!m_Vertical && m_Horizontal, this);*/
@@ -924,8 +924,19 @@ namespace UnityEngine.UI
             ReturnToTempPool(!reverseDirection, m_Content.childCount);
 
             float sizeToFill = GetAbsDimension(viewRect.rect.size), sizeFilled = 0;
-
             bool first = true;
+            // issue 169: fill last line
+            if (itemTypeStart < itemTypeEnd)
+            {
+                itemTypeEnd = itemTypeStart;
+                float size = reverseDirection ? NewItemAtStart(!first) : NewItemAtEnd(!first);
+                if (size >= 0)
+                {
+                    first = false;
+                    sizeFilled += size;
+                }
+            }
+
             while (sizeToFill > sizeFilled)
             {
                 float size = reverseDirection ? NewItemAtEnd(!first) : NewItemAtStart(!first);
@@ -970,9 +981,8 @@ namespace UnityEngine.UI
         /// Refill cells with startItem at the beginning while clear existing ones
         /// </summary>
         /// <param name="startItem">The first item to fill</param>
-        /// <param name="fillViewRect">When [startItem, totalCount] is not enough for the whole viewBound, should we fill backwords with [0, startItem)? </param>
         /// <param name="contentOffset">The first item's offset compared to viewBound</param>
-        public void RefillCells(int startItem = 0, bool fillViewRect = false, float contentOffset = 0)
+        public void RefillCells(int startItem = 0, float contentOffset = 0)
         {
             if (!Application.isPlaying)
                 return;
@@ -1012,19 +1022,6 @@ namespace UnityEngine.UI
                     break;
                 first = false;
                 sizeFilled += size;
-            }
-
-            if (fillViewRect && itemSize > 0 && sizeFilled < sizeToFill)
-            {
-                //calculate how many items can be added above the offset, so it still is visible in the view
-                int itemsToAddCount = (int)((sizeToFill - sizeFilled) / itemSize);
-                int newOffset = startItem - itemsToAddCount;
-                if (newOffset < 0) newOffset = 0;
-                if (newOffset != startItem)
-                {
-                    //refill again, with the new offset value, and now with fillViewRect disabled.
-                    RefillCells(newOffset);
-                }
             }
 
             Vector2 pos = m_Content.anchoredPosition;

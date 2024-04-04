@@ -12,24 +12,36 @@ namespace YIUIFramework.Editor
             CreateLoopScroll("LoopScrollHorizontal");
         }
 
-        [MenuItem("GameObject/YIUI/LoopScroll/Horizontal Group", false, 10002)]
+        [MenuItem("GameObject/YIUI/LoopScroll/Horizontal Reverse", false, 10002)]
+        private static void CreateLoopScrollHorizontalReverse()
+        {
+            CreateLoopScroll("LoopScrollHorizontalReverse");
+        }
+
+        [MenuItem("GameObject/YIUI/LoopScroll/Horizontal Group", false, 10003)]
         private static void CreateLoopScrollHorizontalGroup()
         {
             CreateLoopScroll("LoopScrollHorizontalGroup");
         }
-        
-        [MenuItem("GameObject/YIUI/LoopScroll/Vertical", false, 10003)]
+
+        [MenuItem("GameObject/YIUI/LoopScroll/Vertical", false, 10011)]
         private static void CreateLoopScrollVertical()
         {
             CreateLoopScroll("LoopScrollVertical");
         }
 
-        [MenuItem("GameObject/YIUI/LoopScroll/VerticalGroup", false, 10004)]
+        [MenuItem("GameObject/YIUI/LoopScroll/Vertical Reverse", false, 10012)]
+        private static void CreateLoopScrollVerticalReverse()
+        {
+            CreateLoopScroll("LoopScrollVerticalReverse");
+        }
+
+        [MenuItem("GameObject/YIUI/LoopScroll/Vertical Group", false, 10013)]
         private static void CreateLoopScrollVerticalGroup()
         {
             CreateLoopScroll("LoopScrollVerticalGroup");
         }
-        
+
         private static void CreateLoopScroll(string name)
         {
             var activeObject = Selection.activeObject as GameObject;

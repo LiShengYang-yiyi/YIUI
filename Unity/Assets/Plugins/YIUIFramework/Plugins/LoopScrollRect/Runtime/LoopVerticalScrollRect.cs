@@ -8,6 +8,11 @@ namespace UnityEngine.UI
     [DisallowMultipleComponent]
     public class LoopVerticalScrollRect : LoopScrollRect
     {
+        LoopVerticalScrollRect()
+        {
+            direction = LoopScrollRectDirection.Vertical;
+        }
+
         protected override float GetSize(RectTransform item, bool includeSpacing)
         {
             float size = includeSpacing ? contentSpacing : 0;
@@ -40,14 +45,13 @@ namespace UnityEngine.UI
 
         protected override void Awake()
         {
-            direction = LoopScrollRectDirection.Vertical;
             base.Awake();
             if (m_Content)
             {
                 GridLayoutGroup layout = m_Content.GetComponent<GridLayoutGroup>();
                 if (layout != null && layout.constraint != GridLayoutGroup.Constraint.FixedColumnCount)
                 {
-                    Debug.LogError("[LoopScrollRect] unsupported GridLayoutGroup constraint");
+                    Debug.LogError($"[LoopScrollRect] {this.gameObject.name} 不支持的GridLayoutGroup约束 必须使用 FixedColumnCount",this);
                 }
             }
         }
