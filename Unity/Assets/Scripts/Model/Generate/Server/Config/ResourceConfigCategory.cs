@@ -40,9 +40,17 @@ namespace ET
         public Dictionary<int, ResourceConfig> DataMap => _dataMap;
         public List<ResourceConfig> DataList => _dataList;
 
-        public ResourceConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-        public ResourceConfig Get(int key) => _dataMap[key];
-        public ResourceConfig this[int key] => _dataMap[key];
+        public ResourceConfig GetOrDefault(int key) => _dataMap.GetValueOrDefault(key);
+        public ResourceConfig Get(int key)
+        {
+            if (_dataMap.TryGetValue(key,out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this,key);
+            return null;
+        }
+
         public void ResolveRef()
         {
             foreach(var _v in _dataList)

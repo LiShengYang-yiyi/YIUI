@@ -37,9 +37,17 @@ namespace ET
         public Dictionary<int, StartMachineConfig> DataMap => _dataMap;
         public List<StartMachineConfig> DataList => _dataList;
 
-        public StartMachineConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-        public StartMachineConfig Get(int key) => _dataMap[key];
-        public StartMachineConfig this[int key] => _dataMap[key];
+        public StartMachineConfig GetOrDefault(int key) => _dataMap.GetValueOrDefault(key);
+        public StartMachineConfig Get(int key)
+        {
+            if (_dataMap.TryGetValue(key,out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this,key);
+            return null;
+        }
+
         public void ResolveRef()
         {
             foreach(var _v in _dataList)

@@ -37,9 +37,17 @@ namespace ET
         public Dictionary<int, StartProcessConfig> DataMap => _dataMap;
         public List<StartProcessConfig> DataList => _dataList;
 
-        public StartProcessConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-        public StartProcessConfig Get(int key) => _dataMap[key];
-        public StartProcessConfig this[int key] => _dataMap[key];
+        public StartProcessConfig GetOrDefault(int key) => _dataMap.GetValueOrDefault(key);
+        public StartProcessConfig Get(int key)
+        {
+            if (_dataMap.TryGetValue(key,out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this,key);
+            return null;
+        }
+
         public void ResolveRef()
         {
             foreach(var _v in _dataList)

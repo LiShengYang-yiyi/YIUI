@@ -134,6 +134,7 @@ public {{class_modifier __bean}} partial class {{__name}} : {{if parent_def_type
         {{~for field in export_fields~}}
         {{generate_resolve_field_ref field}}
         {{~end~}}
+        PostInit();
     }
 
     public override string ToString()
@@ -144,6 +145,8 @@ public {{class_modifier __bean}} partial class {{__name}} : {{if parent_def_type
     {{~end~}}
         + "}";
     }
+
+    partial void PostInit();
 }
 
 {{namespace_with_grace_end __namespace_with_top_module}}

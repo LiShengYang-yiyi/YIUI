@@ -23,6 +23,7 @@
           "Luban.L10N": "1.0.0",
           "Luban.Lua": "1.0.0",
           "Luban.MsgPack": "1.0.0",
+          "Luban.PHP": "1.0.0",
           "Luban.Protobuf": "1.0.0",
           "Luban.Python": "1.0.0",
           "Luban.Schema.Builtin": "1.0.0",
@@ -498,6 +499,15 @@
           "Luban.MsgPack.dll": {}
         }
       },
+      "Luban.PHP/1.0.0": {
+        "dependencies": {
+          "Luban.Core": "1.0.0",
+          "Luban.DataTarget.Builtin": "1.0.0"
+        },
+        "runtime": {
+          "Luban.PHP.dll": {}
+        }
+      },
       "Luban.Protobuf/1.0.0": {
         "dependencies": {
           "Google.Protobuf": "3.24.0",
@@ -904,6 +914,11 @@
       "sha512": ""
     },
     "Luban.MsgPack/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Luban.PHP/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

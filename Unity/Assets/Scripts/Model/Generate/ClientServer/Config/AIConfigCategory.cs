@@ -37,9 +37,17 @@ namespace ET
         public Dictionary<int, AIConfig> DataMap => _dataMap;
         public List<AIConfig> DataList => _dataList;
 
-        public AIConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-        public AIConfig Get(int key) => _dataMap[key];
-        public AIConfig this[int key] => _dataMap[key];
+        public AIConfig GetOrDefault(int key) => _dataMap.GetValueOrDefault(key);
+        public AIConfig Get(int key)
+        {
+            if (_dataMap.TryGetValue(key,out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this,key);
+            return null;
+        }
+
         public void ResolveRef()
         {
             foreach(var _v in _dataList)

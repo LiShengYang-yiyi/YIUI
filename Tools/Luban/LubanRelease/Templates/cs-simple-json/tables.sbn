@@ -2,7 +2,7 @@ using Luban;
 using SimpleJSON;
 
 {{namespace_with_grace_begin __namespace}}
-public partial class {{__name}}
+public sealed partial class {{__name}}
 {
     {{~for table in __tables ~}}
 {{~if table.comment != '' ~}}
@@ -10,21 +10,29 @@ public partial class {{__name}}
     /// {{escape_comment table.comment}}
     /// </summary>
 {{~end~}}
-    public {{table.full_name}} {{format_property_name __code_style table.name}} {get; }
+    public {{table.full_name}} {{format_property_name __code_style table.name}} {get; private set;}
     {{~end~}}
 
-    public {{__name}}(System.Func<string, JSONNode> loader)
+    private async ETTask ResetAllConfig(System.Func<string, ETTask<JSONNode>> loader)
     {
         {{~for table in __tables ~}}
-        {{format_property_name __code_style table.name}} = new {{table.full_name}}(loader("{{table.output_data_file}}"));
+        {{format_property_name __code_style table.name}} = new {{table.full_name}}(await loader("{{table.output_data_file}}"));
         {{~end~}}
         ResolveRef();
+        Initializeed();
     }
     
     private void ResolveRef()
     {
         {{~for table in __tables ~}}
         {{format_property_name __code_style table.name}}.ResolveRef(this);
+        {{~end~}}
+    }
+        
+    private void Initializeed()
+    {
+        {{~for table in __tables ~}}
+        Initializeed({{format_property_name __code_style table.name}}.DataList);
         {{~end~}}
     }
 }

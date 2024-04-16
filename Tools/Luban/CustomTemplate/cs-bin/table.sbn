@@ -64,9 +64,17 @@ using System.Collections.Generic;
         public T GetOrDefaultAs<T>({{declaring_type_name key_type}} key) where T : {{declaring_type_name value_type}} => _dataMap.TryGetValue(key, out var v) ? (T)v : null;
         public T GetAs<T>({{declaring_type_name key_type}} key) where T : {{declaring_type_name value_type}} => (T)_dataMap[key];
     {{~end~}}
-        public {{declaring_type_name value_type}} GetOrDefault({{declaring_type_name key_type}} key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-        public {{declaring_type_name value_type}} Get({{declaring_type_name key_type}} key) => _dataMap[key];
-        public {{declaring_type_name value_type}} this[{{declaring_type_name key_type}} key] => _dataMap[key];
+        public {{declaring_type_name __value_type}} GetOrDefault({{declaring_type_name __key_type}} key) => _dataMap.GetValueOrDefault(key);
+        public {{declaring_type_name __value_type}} Get({{declaring_type_name __key_type}} key)
+        {
+            if (_dataMap.TryGetValue(key,out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this,key);
+            return null;
+        }
+
         public void ResolveRef()
         {
             foreach(var _v in _dataList)
@@ -74,7 +82,7 @@ using System.Collections.Generic;
                 _v.ResolveRef();
             }
         }
-            {{~else if __table.is_list_table ~}}
+        {{~else if __table.is_list_table ~}}
         private readonly List<{{declaring_type_name value_type}}> _dataList;
 
         {{~if __table.is_union_index~}}
@@ -105,22 +113,49 @@ using System.Collections.Generic;
         {{~for idx in __table.index_list~}}
             _dataMap_{{idx.index_field.name}} = new Dictionary<{{declaring_type_name idx.type}}, {{declaring_type_name value_type}}>();
         {{~end~}}
-        foreach(var _v in _dataList)
-        {
-        {{~for idx in __table.index_list~}}
-            _dataMap_{{idx.index_field.name}}.Add(_v.{{format_property_name __code_style idx.index_field.name}}, _v);
-        {{~end~}}
-        }
+            foreach(var _v in _dataList)
+            {
+            {{~for idx in __table.index_list~}}
+                _dataMap_{{idx.index_field.name}}.Add(_v.{{format_property_name __code_style idx.index_field.name}}, _v);
+            {{~end~}}
+            }
         {{~end~}}
         }
 
         public List<{{declaring_type_name value_type}}> DataList => _dataList;
 
         {{~if __table.is_union_index~}}
-        public {{declaring_type_name value_type}} Get({{table_param_def_list}}) => _dataMapUnion.TryGetValue(({{table_param_name_list}}), out {{declaring_type_name value_type}} __v) ? __v : null;
+        public {{declaring_type_name __value_type}} GetOrDefault({{table_param_def_list}})
+        {
+            return _dataMapUnion.GetValueOrDefault(({{table_param_name_list}}));
+        }
+    
+        public {{declaring_type_name __value_type}} Get({{table_param_def_list}})
+        {
+            if (_dataMapUnion.TryGetValue(({{table_param_name_list}}), out var v))
+            {
+                return v;
+            }
+            ConfigLog.Error(this, ({{table_param_name_list}}));
+            return null;
+        }
         {{~else if !__table.index_list.empty? ~}}
             {{~for idx in __table.index_list~}}
-        public {{declaring_type_name value_type}} GetBy{{format_property_name __code_style idx.index_field.name}}({{declaring_type_name idx.type}} key) => _dataMap_{{idx.index_field.name}}.TryGetValue(key, out {{declaring_type_name value_type}} __v) ? __v : null;
+
+            public {{declaring_type_name __value_type}} GetOrDefaultBy{{format_property_name __code_style idx.index_field.name}}({{declaring_type_name idx.type}} key) 
+            {
+                return _dataMap_{{idx.index_field.name}}.GetValueOrDefault(key);
+            }
+        
+            public {{declaring_type_name __value_type}} GetBy{{format_property_name __code_style idx.index_field.name}}({{declaring_type_name idx.type}} key) 
+            {
+                if (_dataMap_{{idx.index_field.name}}.TryGetValue(key, out var v))
+                {
+                    return v;
+                }
+                ConfigLog.Error(this,key);
+                return null;
+            }
             {{~end~}}
         {{~end~}}
 

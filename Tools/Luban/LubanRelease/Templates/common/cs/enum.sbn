@@ -2,7 +2,7 @@
     comment = __enum.comment
     items = __enum.items
 ~}}
-
+using Sirenix.OdinInspector;
 
 {{namespace_with_grace_begin __namespace_with_top_module}} 
 {{~if comment != '' ~}}
@@ -20,6 +20,7 @@
         /// <summary>
         /// {{escape_comment item.comment_or_alias}}
         /// </summary>
+        [LabelText("{{escape_comment item.alias}}")]
 {{~end~}}
         {{format_enum_item_name __code_style item.name}} = {{item.value}},
         {{~end~}}
