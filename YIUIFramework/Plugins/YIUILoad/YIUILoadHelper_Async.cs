@@ -16,11 +16,11 @@ namespace YIUIFramework
         /// </summary>
         internal static async UniTask<T> LoadAssetAsync<T>(string pkgName, string resName) where T : Object
         {
-            var load    = LoadHelper.GetLoad(pkgName, resName);
+            var load = LoadHelper.GetLoad(pkgName, resName);
+            load.AddRefCount();
             var loadObj = load.Object;
             if (loadObj != null)
             {
-                load.AddRefCount();
                 return (T)loadObj;
             }
 
@@ -29,14 +29,14 @@ namespace YIUIFramework
                 await UniTask.WaitUntil(() => !load.WaitAsync);
 
                 loadObj = load.Object;
+
                 if (loadObj != null)
                 {
-                    load.AddRefCount();
                     return (T)loadObj;
                 }
                 else
                 {
-                    Debug.LogError($"错误这个时候不应该是null");
+                    load.RemoveRefCount();
                     return null;
                 }
             }
@@ -47,17 +47,19 @@ namespace YIUIFramework
 
             if (obj == null)
             {
+                load.SetWaitAsync(false);
                 load.RemoveRefCount();
                 return null;
             }
 
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
+                load.SetWaitAsync(false);
+                load.RemoveRefCount();
                 return null;
             }
 
             load.ResetHandle(obj, hashCode);
-            load.AddRefCount();
             load.SetWaitAsync(false);
             return (T)obj;
         }
