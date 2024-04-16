@@ -8,10 +8,10 @@ using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
-    [RequireComponent(typeof(Image))]
+    [RequireComponent(typeof (Image))]
     [LabelText("Image 图片")]
     [AddComponentMenu("YIUIBind/Data/图片 【Image】 UIDataBindImage")]
-    public sealed class UIDataBindImage : UIDataBindSelectBase
+    public sealed class UIDataBindImage: UIDataBindSelectBase
     {
         [SerializeField]
         [ReadOnly]
@@ -101,7 +101,8 @@ namespace YIUIFramework
             #if UNITY_EDITOR
             if (!YIUILoadHelper.VerifyAssetValidity(resName))
             {
-                Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                var objName = gameObject != null? gameObject.name : "无对象";
+                Logger.LogError($"{objName} 没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
             }
@@ -111,7 +112,8 @@ namespace YIUIFramework
 
             if (sprite == null)
             {
-                Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                var objName = gameObject != null? gameObject.name : "无对象";
+                Logger.LogError($"{objName} 加载失败 没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
             }

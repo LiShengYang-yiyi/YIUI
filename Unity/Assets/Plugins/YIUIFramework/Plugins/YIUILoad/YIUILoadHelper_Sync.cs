@@ -16,11 +16,11 @@ namespace YIUIFramework
 
         internal static T LoadAsset<T>(string pkgName, string resName) where T : Object
         {
-            var load    = LoadHelper.GetLoad(pkgName, resName);
+            var load = LoadHelper.GetLoad(pkgName, resName);
+            load.AddRefCount();
             var loadObj = load.Object;
             if (loadObj != null)
             {
-                load.AddRefCount();
                 return (T)loadObj;
             }
 
@@ -33,11 +33,11 @@ namespace YIUIFramework
 
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
+                load.RemoveRefCount();
                 return null;
             }
             
             load.ResetHandle(obj, hashCode);
-            load.AddRefCount();
             return (T)obj;
         }
     }
