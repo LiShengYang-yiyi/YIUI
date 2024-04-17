@@ -101,7 +101,7 @@ namespace YIUIFramework.Editor
         }
 
         private const string GlobalSaveSpriteAtlasSettingsPath =
-            UIStaticHelper.UIProjectResPath + "/GlobalSpriteAtlasSettings.text";
+                UIStaticHelper.UIProjectEditorPath + "/GlobalSpriteAtlasSettings.txt";
 
         private class GlobalSpriteAtlasSettings
         {
