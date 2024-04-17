@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Sirenix.OdinInspector;
-
 namespace ET
 {
     public enum EQuality
@@ -16,32 +14,32 @@ namespace ET
         /// <summary>
         /// 最差品质
         /// </summary>
-        [LabelText("白")]
         WHITE = 1,
+
         /// <summary>
         /// 绿色
         /// </summary>
-        [LabelText("绿")]
         GREEN = 2,
+
         /// <summary>
         /// 蓝色的
         /// </summary>
-        [LabelText("蓝")]
         BLUE = 3,
+
         /// <summary>
         /// 紫色的
         /// </summary>
-        [LabelText("紫")]
         PURPLE = 4,
+
         /// <summary>
         /// 橙色
         /// </summary>
-        [LabelText("橙")]
         ORANGE = 5,
+
         /// <summary>
         /// 最高品质
         /// </summary>
-        [LabelText("红")]
         RED = 6,
+
     }
 }
