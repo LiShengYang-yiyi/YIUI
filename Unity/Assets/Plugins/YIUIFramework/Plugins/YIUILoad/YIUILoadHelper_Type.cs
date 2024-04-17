@@ -13,10 +13,10 @@ namespace YIUIFramework
         internal static Object LoadAsset(string pkgName, string resName, Type assetType)
         {
             var load    = LoadHelper.GetLoad(pkgName, resName);
+            load.AddRefCount();
             var loadObj = load.Object;
             if (loadObj != null)
             {
-                load.AddRefCount();
                 return loadObj;
             }
 
@@ -29,21 +29,21 @@ namespace YIUIFramework
 
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
+                load.RemoveRefCount();
                 return null;
             }
 
             load.ResetHandle(obj, hashCode);
-            load.AddRefCount();
             return obj;
         }
 
         internal static async ETTask<Object> LoadAssetAsync(string pkgName, string resName, Type assetType)
         {
             var load    = LoadHelper.GetLoad(pkgName, resName);
+            load.AddRefCount();
             var loadObj = load.Object;
             if (loadObj != null)
             {
-                load.AddRefCount();
                 return loadObj;
             }
 
@@ -54,31 +54,34 @@ namespace YIUIFramework
                 loadObj = load.Object;
                 if (loadObj != null)
                 {
-                    load.AddRefCount();
                     return loadObj;
                 }
                 else
                 {
-                    Debug.LogError($"错误这个时候不应该是null");
+                    load.RemoveRefCount();
+                    return null;
                 }
             }
 
             load.SetWaitAsync(true);
 
             var (obj, hashCode) = await YIUILoadDI.LoadAssetAsyncFunc(pkgName, resName, assetType);
+            
             if (obj == null)
             {
+                load.SetWaitAsync(false);
                 load.RemoveRefCount();
                 return null;
             }
 
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
+                load.SetWaitAsync(false);
+                load.RemoveRefCount();
                 return null;
             }
 
             load.ResetHandle(obj, hashCode);
-            load.AddRefCount();
             load.SetWaitAsync(false);
             return obj;
         }
