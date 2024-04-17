@@ -24,12 +24,6 @@ namespace YooAsset.Editor
                 return false;
             }
 
-            // 忽略掉全局图集设置
-            if (Path.GetFileNameWithoutExtension(data.AssetPath) == "GlobalSpriteAtlasSettings")
-            {
-                return false;
-            }
-
             return true;
         }
     }
