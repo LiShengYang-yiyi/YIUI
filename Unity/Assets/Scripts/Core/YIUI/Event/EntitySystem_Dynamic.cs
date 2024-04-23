@@ -30,7 +30,7 @@ namespace ET
         }
 
         //向指定场景发送动态事件
-        public async ETTask DynamicEvent<P1>(SceneType sceneTyps, P1 message) where P1 : struct
+        public async ETTask DynamicEvent<P1>(SceneType sceneType, P1 message) where P1 : struct
         {
             var queue = queues[InstanceQueueIndex.Dynamic];
             int count = queue.Count;
@@ -52,7 +52,7 @@ namespace ET
 
                 queue.Enqueue(component);
 
-                if (!sceneTyps.HasSameFlag(component.IScene.SceneType))
+                if (!sceneType.HasSameFlag(component.IScene.SceneType))
                 {
                     continue;
                 }
@@ -103,9 +103,9 @@ namespace ET
         }
 
         //向指定场景发送动态事件
-        public static async ETTask DynamicEvent<P1>(this Entity self, SceneType sceneTyps, P1 message) where P1 : struct
+        public static async ETTask DynamicEvent<P1>(this Entity self, SceneType sceneType, P1 message) where P1 : struct
         {
-            await self.Fiber().EntitySystem.DynamicEvent(sceneTyps, message);
+            await self.Fiber().EntitySystem.DynamicEvent(sceneType, message);
         }
     }
 }
