@@ -25,27 +25,43 @@ namespace ET.Client
             Open<T>(paramMore).Coroutine();
         }
 
-        //使用paramvo参数打开
-        public static async ETTask Open<T>(ParamVo vo) where T : Entity
+        //在Tips界面打开任意一个View窗口
+        public static async ETTask Open<T>(Entity parent, params object[] paramMore) where T : Entity
         {
-            using var coroutineLock = await YIUIMgrComponent.Inst.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
+            var vo = ParamVo.Get(paramMore);
+            await Open<T>(vo, parent);
+            ParamVo.Put(vo);
+        }
 
-            await YIUIMgrComponent.Inst.OpenPanelAsync<TipsPanelComponent, Type, ParamVo>(typeof (T), vo);
+        //扩展同步方法
+        public static void OpenSync<T>(Entity parent, params object[] paramMore) where T : Entity
+        {
+            Open<T>(parent, paramMore).Coroutine();
+        }
+
+        //使用paramvo参数打开
+        public static async ETTask Open<T>(ParamVo vo, Entity parent = null) where T : Entity
+        {
+            using var coroutineLock = await YIUIMgrComponent.Inst.Root().GetComponent<CoroutineLockComponent>()
+                                                            .Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
+
+            await YIUIMgrComponent.Inst.Root.OpenPanelAsync<TipsPanelComponent, Type, Entity, ParamVo>(typeof(T), parent, vo);
         }
 
         //使用paramvo参数 同步打开 内部还是异步 为了解决vo被回收问题
-        public static void OpenSync<T>(ParamVo vo) where T : Entity
+        public static void OpenSync<T>(ParamVo vo, Entity parent = null) where T : Entity
         {
-            Open2NewVo<T>(vo).Coroutine();
+            Open2NewVo<T>(vo, parent).Coroutine();
         }
 
         //在外部vo会被回收 所以不能使用同对象 所以这里会创建一个新的防止空对象
-        private static async ETTask Open2NewVo<T>(ParamVo vo) where T : Entity
+        private static async ETTask Open2NewVo<T>(ParamVo vo, Entity parent = null) where T : Entity
         {
-            using var coroutineLock = await YIUIMgrComponent.Inst.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
+            using var coroutineLock = await YIUIMgrComponent.Inst.Root().GetComponent<CoroutineLockComponent>()
+                                                            .Wait(CoroutineLockType.YIUILoader, typeof(T).GetHashCode());
 
             var newVo = ParamVo.Get(vo.Data);
-            await YIUIMgrComponent.Inst.OpenPanelAsync<TipsPanelComponent, Type, ParamVo>(typeof (T), newVo);
+            await YIUIMgrComponent.Inst.Root.OpenPanelAsync<TipsPanelComponent, Type, Entity, ParamVo>(typeof(T), parent, newVo);
             ParamVo.Put(newVo);
         }
 

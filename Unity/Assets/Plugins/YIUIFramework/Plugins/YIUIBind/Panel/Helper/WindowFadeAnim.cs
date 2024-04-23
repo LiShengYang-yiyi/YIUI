@@ -15,17 +15,18 @@ namespace YIUIFramework
     public static class WindowFadeAnim
     {
         private static Vector3 m_AnimScale = new Vector3(0.8f, 0.8f, 0.8f);
-        
+
         //对dotween的异步扩展
-        //这里没有判断 假设同时开2个动画异步 其中一个先吧对象摧毁了
-        //另外一个异步就会中断
-        public static async ETTask GetAwaiter(this Tweener tweener)
+        //临时方案 还不够完善
+        //目前这个只是在UI动画上使用 其他地方请自行实现
+        private static async ETTask GetAwaiter(this Tweener tweener)
         {
             var task = ETTask.Create();
-            tweener.onComplete += () => { task.SetResult();};
+            tweener.onKill     += () => { task.SetResult(); };
+            tweener.onComplete += () => { task.SetResult(); };
             await task;
         }
-        
+
         //淡入
         public static async ETTask In(YIUIComponent uiBase, float time = 0.25f)
         {
@@ -33,9 +34,9 @@ namespace YIUIFramework
             if (obj == null) return;
 
             uiBase.SetActive(true);
-            
+
             obj.transform.localScale = m_AnimScale;
-            
+
             await obj.transform.DOScale(Vector3.one, time);
         }
 
@@ -48,9 +49,9 @@ namespace YIUIFramework
             obj.transform.localScale = Vector3.one;
 
             await obj.transform.DOScale(m_AnimScale, time);
-            
+
             uiBase.SetActive(false);
-            
+
             obj.transform.localScale = Vector3.one;
         }
     }

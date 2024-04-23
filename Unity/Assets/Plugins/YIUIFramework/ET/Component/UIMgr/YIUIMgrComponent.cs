@@ -12,6 +12,9 @@ namespace ET.Client
     [ComponentOf(typeof (Scene))]
     public partial class YIUIMgrComponent: Entity, IAwake, IDestroy
     {
-        public static YIUIMgrComponent Inst;
+        internal static EntityRef<YIUIMgrComponent>  m_InstRef;
+        public static   YIUIMgrComponent             Inst => m_InstRef;
+        internal        EntityRef<YIUIRootComponent> m_RootRef;
+        public          YIUIRootComponent            Root => m_RootRef;
     }
 }

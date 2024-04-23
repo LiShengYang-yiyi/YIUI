@@ -124,6 +124,10 @@ namespace ET.Client
                 info.ResetUI(uiBase);
                 info.ResetEntity(uiCom);
             }
+            else
+            {
+                info.UIBase.SetParent(parentEntity);
+            }
 
             AddUI(info);
 

@@ -20,7 +20,7 @@ namespace ET.Client
                 self.AllCommandInfo = new Dictionary<EGMType, List<GMCommandInfo>>();
                 self.InitGMType();
                 self.Init();
-                YIUIMgrComponent.Inst.OpenPanelAsync<GMPanelComponent>().Coroutine();
+                YIUIMgrComponent.Inst.Root.OpenPanelAsync<GMPanelComponent>().Coroutine();
             }
         }
 

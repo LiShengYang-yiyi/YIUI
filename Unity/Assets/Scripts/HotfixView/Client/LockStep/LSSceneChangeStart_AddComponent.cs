@@ -10,7 +10,8 @@ namespace ET.Client
             Room room = clientScene.GetComponent<Room>();
             ResourcesLoaderComponent resourcesLoaderComponent = room.AddComponent<ResourcesLoaderComponent>();
             room.AddComponent<UIComponent>();
-            
+            room.AddComponent<YIUIRootComponent>();
+
             // 创建loading界面
             
             
