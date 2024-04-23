@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\IYIUIDisCloseSystem.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\YIUIDisCloseEventSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\SerializableDictionary.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Image\UIDataBindGray.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\Runtime\Data\RedDotData.cs" />
@@ -652,7 +654,6 @@
      <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateViewSystemTemplate.txt" />
      <None Include="Assets\Plugins\YIUIFramework\Plugins\UIEffect\Resources\UITtransition.shader" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Extend" />
-     <Folder Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent" />
      <Folder Include="Assets\Plugins\YIUIFramework\YIUIEditor\UIRootPrefab" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase" />
      <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateComponentTemplate.txt" />
@@ -1524,6 +1525,10 @@
       <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
       <Name>Unity.ThirdParty</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\IYIUIDisCloseSystem.cs.meta" />
+    <Content Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\YIUIDisCloseEventSystem.cs.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
