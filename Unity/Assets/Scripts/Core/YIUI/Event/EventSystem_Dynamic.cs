@@ -24,7 +24,7 @@ namespace ET
         }
 
         //向指定场景发送动态事件
-        public async ETTask DynamicEvent<P1>(SceneType sceneTyps, P1 message) where P1 : struct
+        public async ETTask DynamicEvent<P1>(SceneType sceneType, P1 message) where P1 : struct
         {
             using ListComponent<ETTask> list = ListComponent<ETTask>.Create();
 
@@ -50,7 +50,7 @@ namespace ET
 
                 queue.Enqueue(instanceId);
 
-                if (sceneTyps != SceneType.None && sceneTyps != component.DomainScene().SceneType)
+                if (sceneType != SceneType.None && sceneType != component.DomainScene().SceneType)
                 {
                     continue;
                 }

@@ -4,7 +4,7 @@ using YIUIFramework;
 
 namespace ET.Client
 {
-    public partial class TipsPanelComponent: Entity, IYIUIOpen<Type, ParamVo>, IYIUIEvent<EventPutTipsView>
+    public partial class TipsPanelComponent: Entity, IYIUIOpen<Type, Entity, ParamVo>, IYIUIEvent<EventPutTipsView>
     {
         public Dictionary<Type, ObjAsyncCache<Entity>> _AllPool  = new();
         public int                                     _RefCount = 0;

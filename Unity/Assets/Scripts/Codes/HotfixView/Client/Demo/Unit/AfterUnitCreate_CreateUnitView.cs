@@ -17,6 +17,7 @@ namespace ET.Client
             go.transform.position = unit.Position;
             unit.AddComponent<GameObjectComponent>().GameObject = go;
             unit.AddComponent<AnimatorComponent>();
+            scene.AddComponent<YIUIRootComponent>();
             await ETTask.CompletedTask;
         }
     }

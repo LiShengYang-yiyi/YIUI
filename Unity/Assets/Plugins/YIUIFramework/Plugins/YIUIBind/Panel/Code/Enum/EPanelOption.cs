@@ -19,13 +19,17 @@ namespace YIUIFramework
         ForeverCache = 1 << 1, //永远不会被摧毁 与禁止关闭不同这个可以关闭 只是不销毁 也可相当于无限长的倒计时
 
         [LabelText("倒计时缓存界面")]
-        TimeCache = 1 << 2, //被关闭后X秒之后在摧毁 否则理解摧毁
+        TimeCache = 1 << 2, //被关闭后X秒之后在摧毁 否则 立即摧毁
 
         [LabelText("禁止关闭的界面")]
-        DisClose = 1 << 3, //是需要一直存在的你可以隐藏 但是你不能摧毁
+        DisClose = 1 << 3, //是需要一直存在的界面 你可以隐藏 但是你不能摧毁
 
         [LabelText("忽略返回 返回操作会跳过这个界面")]
         IgnoreBack = 1 << 4, //他的打开与关闭不会触发返回功能 堆栈功能
+        
+        [LabelText("可忽略非指向性的关闭")]
+        IgnoreClose = 1 << 5, //可忽略非指向性的关闭 比如 GM面板 比如加载UI
+        //(比如你 明确调用关闭GM面板 那是可以关闭的  但是你调用关闭Top层 正好GM也在Top层 那么这个时候GM是不能被关闭的)
     }
 
     public static class PanelOptionExt

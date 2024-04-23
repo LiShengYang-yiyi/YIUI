@@ -36,7 +36,7 @@ namespace ET.Client
 
             if (vo.CodeType != EUICodeType.Panel)
             {
-                Log.Error($"这个对象不是 Panel 无法打开 {typeof (T)}");
+                Log.Error($"这个对象不是 Panel {typeof (T)}");
                 return null;
             }
 
@@ -49,6 +49,7 @@ namespace ET.Client
         /// 获取PanelInfo
         /// 没有则创建  相当于一个打开过了 UI基础配置档
         /// 这个根据BindVo创建  为什么没有直接用VO  因为里面有Panel 实例对象
+        /// 这个k 根据resName
         /// </summary>
         internal PanelInfo GetPanelInfo(string componentName)
         {
@@ -58,13 +59,13 @@ namespace ET.Client
             }
 
             var resName = componentName.Replace("Component", "");
-            var data = YIUIBindHelper.GetBindVoByResName(resName);
+            var data    = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
 
             if (vo.CodeType != EUICodeType.Panel)
             {
-                Log.Error($"这个对象不是 Panel 无法打开 {componentName}");
+                Log.Error($"这个对象不是 Panel {componentName}");
                 return null;
             }
 
@@ -113,15 +114,21 @@ namespace ET.Client
             if (info.UIBase == null)
             {
                 var uiCom = await YIUIFactory.CreatePanelAsync(info, parentEntity);
+
                 if (uiCom == null)
                 {
                     Debug.LogError($"面板[{panelName}]没有创建成功，packName={info.PkgName}, resName={info.ResName}");
                     return null;
                 }
+
                 var uiBase = uiCom.GetParent<YIUIComponent>();
                 uiBase.SetActive(false);
                 info.ResetUI(uiBase);
                 info.ResetEntity(uiCom);
+            }
+            else
+            {
+                info.UIBase.SetParent(parentEntity);
             }
 
             AddUI(info);
@@ -172,6 +179,5 @@ namespace ET.Client
                 PanelLayer      = info.PanelLayer,
             });
         }
-
     }
 }

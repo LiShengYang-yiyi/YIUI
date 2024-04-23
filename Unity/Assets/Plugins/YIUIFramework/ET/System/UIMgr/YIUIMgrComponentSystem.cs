@@ -4,6 +4,8 @@
 // Data: 2023年2月12日
 //------------------------------------------------------------
 
+using YIUIFramework;
+
 namespace ET.Client
 {
     [FriendOf(typeof (YIUIMgrComponent))]
@@ -14,10 +16,11 @@ namespace ET.Client
         {
             protected override void Awake(YIUIMgrComponent self)
             {
-                YIUIMgrComponent.Inst = self;
+                YIUIMgrComponent.m_InstRef = self;
                 self.InitAllBind();
                 self.AddComponent<YIUIEventComponent>();
                 self.AddComponent<YIUILoadComponent>();
+                self.m_RootRef = self.DomainScene().AddComponent<YIUIRootComponent>();
             }
         }
 
@@ -27,6 +30,8 @@ namespace ET.Client
             protected override void Destroy(YIUIMgrComponent self)
             {
                 self.OnBlockDispose();
+                self.DomainScene().RemoveComponent<YIUIRootComponent>();
+                self.Destroy();
             }
         }
     }

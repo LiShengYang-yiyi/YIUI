@@ -6,12 +6,12 @@ namespace ET.Client
 {
     public static partial class YIUIMgrComponentSystem
     {
-        public static async ETTask<Entity> OpenPanelAsync(this YIUIMgrComponent self, string componentName)
+        internal static async ETTask<Entity> OpenPanelAsync(this YIUIMgrComponent self, string componentName, Entity scene)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -32,12 +32,12 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelParamAsync(this YIUIMgrComponent self, string componentName, params object[] paramMore)
+        internal static async ETTask<Entity> OpenPanelParamAsync(this YIUIMgrComponent self, string componentName, Entity scene, params object[] paramMore)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -60,13 +60,13 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelAsync<P1>(
-        this YIUIMgrComponent self, string componentName, P1 p1)
+        internal static async ETTask<Entity> OpenPanelAsync<P1>(
+        this YIUIMgrComponent self, string componentName, Entity scene, P1 p1)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -87,13 +87,13 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelAsync<P1, P2>(
-        this YIUIMgrComponent self, string componentName, P1 p1, P2 p2)
+        internal static async ETTask<Entity> OpenPanelAsync<P1, P2>(
+        this YIUIMgrComponent self, string componentName, Entity scene, P1 p1, P2 p2)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -114,13 +114,13 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelAsync<P1, P2, P3>(
-        this YIUIMgrComponent self, string componentName, P1 p1, P2 p2, P3 p3)
+        internal static async ETTask<Entity> OpenPanelAsync<P1, P2, P3>(
+        this YIUIMgrComponent self, string componentName, Entity scene, P1 p1, P2 p2, P3 p3)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -141,13 +141,13 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelAsync<P1, P2, P3, P4>(
-        this YIUIMgrComponent self, string componentName, P1 p1, P2 p2, P3 p3, P4 p4)
+        internal static async ETTask<Entity> OpenPanelAsync<P1, P2, P3, P4>(
+        this YIUIMgrComponent self, string componentName, Entity scene, P1 p1, P2 p2, P3 p3, P4 p4)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;
@@ -168,13 +168,13 @@ namespace ET.Client
             return success? component : null;
         }
 
-        public static async ETTask<Entity> OpenPanelAsync<P1, P2, P3, P4, P5>(
-        this YIUIMgrComponent self, string componentName, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
+        internal static async ETTask<Entity> OpenPanelAsync<P1, P2, P3, P4, P5>(
+        this YIUIMgrComponent self, string componentName, Entity scene, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
         {
             var info = self.GetPanelInfo(componentName);
             if (info == null) return default;
 
-            var panel = await self.OpenPanelStartAsync(componentName, self);
+            var panel = await self.OpenPanelStartAsync(componentName, scene ?? self);
             if (panel == null) return default;
 
             var success   = false;

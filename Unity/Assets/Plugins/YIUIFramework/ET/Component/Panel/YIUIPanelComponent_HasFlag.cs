@@ -18,5 +18,8 @@ namespace ET.Client
 
         //忽略返回 返回操作会跳过这个界面 //他的打开与关闭不会触发返回功能 堆栈功能
         public bool PanelIgnoreBack => PanelOption.HasFlag(EPanelOption.IgnoreBack);
+        
+        //可忽略非指向性的关闭
+        public bool PanelIgnoreClose => PanelOption.HasFlag(EPanelOption.IgnoreClose);
     }
 }

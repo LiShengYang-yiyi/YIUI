@@ -89,6 +89,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\TypeExt.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\MenuItem\UIPanelSourceSplit.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Utils\RegisterGlobalParameters.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_HasFlag.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBindProvider\UIBindProviderData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Event\IYIUIEvent.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\TaskEvent\Code\Genericity\EventHandle\UITaskEventHandleP5.cs" />
@@ -166,6 +167,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIPublish\UICreateResModule.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData_Import_Google.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Configurables\SpecializationManager.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem_Open_String.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUISingleton\Singleton\Mono\MonoSceneSingleton.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Runtime\LoopScrollPrefabSource.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\EventHandle\UIEventHandleP5.cs" />
@@ -232,6 +234,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\I2LocalizeMgr.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UICreateETScriptComponentCode.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBase\CreateUIBaseEditorData.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UIETCodeModule.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\DictionaryPool.cs" />
@@ -383,6 +386,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Factory\YIUIFactory_Destroy.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Base\UIEventBind.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\UIEventBindClickDown.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem_Open.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Base\Data\UIDataBoolRef.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Rect\UIDataBindRectScale3.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\YIUIAutoTool.cs" />
@@ -521,6 +525,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\Runtime\Data\RedDotData_SetDirty.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUI3DDisplay\Runtime\UI3DDisplayCamera.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UICreate\UICreateModule.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Root\YIUIRootComponent.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Others\UIEventBindToggle.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_TimeDestroy.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Code\DataValues\UIDataValueFloat.cs" />
@@ -559,7 +564,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCurrentData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Rect\UIDataBindRectRot1.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_View.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_HasFlage.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Extensions\TypeExtensions.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Targets\ILocalizeTarget.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\StrUtil_StrChunk.cs" />
@@ -575,6 +579,7 @@
      <Folder Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UII2Localization" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIMono\Widget\Tool" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\Runtime\Config" />
+     <Folder Include="Assets\Plugins\YIUIFramework\ET\Component\Root" />
      <Folder Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template" />
      <Folder Include="Assets\Plugins\YIUIFramework\ET\System\Panel" />
      <Folder Include="Assets\Plugins\YIUIFramework\ET\System\View" />
@@ -640,6 +645,7 @@
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\TaskEvent\Code\Genericity\Event" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Active" />
      <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateViewTemplate.txt" />
+     <Folder Include="Assets\Plugins\YIUIFramework\ET\System\Root" />
      <Folder Include="Assets\Plugins\YIUIFramework\ET\System\Load" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource" />
