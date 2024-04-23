@@ -1,5 +1,5 @@
 # YIUI-ET8.1
-最新同步日期: 2024-02-17
+最新同步日期: 2024-04-23
 
 # [文档](https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh)
 
