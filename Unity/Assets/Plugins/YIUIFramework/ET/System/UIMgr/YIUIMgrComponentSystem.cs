@@ -17,9 +17,9 @@ namespace ET.Client
             protected override void Awake(YIUIMgrComponent self)
             {
                 YIUIMgrComponent.m_InstRef = self;
-                self.InitAllBind();
                 self.AddComponent<YIUIEventComponent>();
                 self.AddComponent<YIUILoadComponent>();
+                self.BindInit  = YIUIBindHelper.InitAllBind();
                 self.m_RootRef = self.DomainScene().AddComponent<YIUIRootComponent>();
             }
         }
@@ -29,9 +29,12 @@ namespace ET.Client
         {
             protected override void Destroy(YIUIMgrComponent self)
             {
-                self.OnBlockDispose();
                 self.DomainScene().RemoveComponent<YIUIRootComponent>();
-                self.Destroy();
+                YIUIBindHelper.Reset();
+                SingletonMgr.Dispose();
+                SingletonMgr.Reset();
+                self.ResetRoot();
+                YIUIMgrComponent.m_InstRef = null;
             }
         }
     }

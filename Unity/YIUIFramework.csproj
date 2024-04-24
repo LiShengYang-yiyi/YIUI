@@ -46,8 +46,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\IYIUIDisCloseSystem.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\YIUIDisCloseEventSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\SerializableDictionary.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Image\UIDataBindGray.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\Runtime\Data\RedDotData.cs" />
@@ -147,7 +145,6 @@
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Window\YIUIWindowComponent_HashFlage.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Base\Data\UIDataSelect.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\AutoListPool.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\UIMgr\YIUIMgrComponentSystem_Awake.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\YIUIEditor\UIRedDot\Key\RedDotKeyAsset_Extend.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Utils\SetLanguageDropdown.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\EventHandle\UIEventHandleP0.cs" />
@@ -235,8 +232,8 @@
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBase\CreateUIBaseModule.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\I2LocalizeMgr.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UICreateETScriptComponentCode.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBase\CreateUIBaseEditorData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBase\CreateUIBaseEditorData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UIETCodeModule.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\DictionaryPool.cs" />
@@ -384,11 +381,11 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Component\UIBindComponentTable_Editor.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\EditorBase\BaseYIUIToolModule.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUISingleton\Code\ISingleton.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem_Open.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\Tween\IYIUIOpenTweenEndSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Factory\YIUIFactory_Destroy.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Base\UIEventBind.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\UIEventBindClickDown.cs" />
-     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Root\YIUIRootComponentSystem_Open.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Base\Data\UIDataBoolRef.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Data\Rect\UIDataBindRectScale3.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\YIUIAutoTool.cs" />
@@ -440,6 +437,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Panel\Code\Enum\EPanelOption.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Runtime\LoopVerticalScrollRect.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Utils\ParamVo.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\UIMgr\YIUIMgrComponentSystem_Initialize.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Targets\LocalizeTarget_UnityStandard_MeshRenderer.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Code\DataValues\UIDataValueBool.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\System\UI\YIUIComponentSystem.cs" />
@@ -464,6 +462,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\IUIEventInvoke.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\UIEventBindClick.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\UIBindEventTable.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\YIUIDisCloseEventSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData_Assets.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\HashSetPool.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\YIUIEditor\UIRedDot\Config\UIRedDotConfigEditorData.cs" />
@@ -546,6 +545,7 @@
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Utils\AutoChangeCultureInfo.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\Enable\IYIUIEnableSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Active\UIEventBindActive.cs" />
+     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\IYIUIDisCloseSystem.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Data\Base\UIDataBindBool.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\TaskEvent\Code\Genericity\EventHandle\UITaskEventHandleP0.cs" />
      <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\AutoBaseTool\Odin\OdinMenuTreeExtensions.cs" />
@@ -654,6 +654,7 @@
      <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateViewSystemTemplate.txt" />
      <None Include="Assets\Plugins\YIUIFramework\Plugins\UIEffect\Resources\UITtransition.shader" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Extend" />
+     <Folder Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent" />
      <Folder Include="Assets\Plugins\YIUIFramework\YIUIEditor\UIRootPrefab" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase" />
      <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateComponentTemplate.txt" />
@@ -773,6 +774,7 @@
      <None Include="Assets\Plugins\YIUIFramework\Plugins\UIEffect\Resources\UIHsvModifier.shader" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Configurables" />
      <Folder Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Panel\Code" />
+     <Folder Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose" />
      <Folder Include="Assets\Plugins\YIUIFramework\YIUIEditor\TemplatePrefabs\YIUI" />
      <Reference Include="UnityEngine">
      <HintPath>E:\Unity\Editor\2022.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -1525,10 +1527,6 @@
       <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
       <Name>Unity.ThirdParty</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\IYIUIDisCloseSystem.cs.meta" />
-    <Content Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\DisClose\YIUIDisCloseEventSystem.cs.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

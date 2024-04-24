@@ -10,24 +10,13 @@ namespace ET.Client
         public static async ETTask Initialize(this YIUIMgrComponent self)
         {
             //初始化其他UI框架中的管理器
-            Game.AddSingleton<CountDownMgr>();
+            await MgrCenter.Inst.Register(CountDownMgr.Inst);
             await MgrCenter.Inst.Register(I2LocalizeMgr.Inst);
             await MgrCenter.Inst.Register(RedDotMgr.Inst);
 
             //初始化UIRoot
             await self.InitRoot();
             self.InitSafeArea();
-        }
-
-        private static void InitAllBind(this YIUIMgrComponent self)
-        {
-            self.BindInit = YIUIBindHelper.InitAllBind();
-        }
-
-        private static void Destroy(this YIUIMgrComponent self)
-        {
-            YIUIBindHelper.Reset();
-            MgrCenter.Inst.Dispose();
         }
     }
 }

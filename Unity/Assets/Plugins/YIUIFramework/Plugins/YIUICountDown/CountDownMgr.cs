@@ -5,7 +5,6 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using ET;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -25,7 +24,7 @@ namespace YIUIFramework
     /// 匿名函数                      否                          是                          (匿名函数也可以被暂停 移除等操作)
     /// ......
     /// </summary>
-    public partial class CountDownMgr: ET.Singleton<CountDownMgr>, ISingletonLateUpdate
+    public partial class CountDownMgr: MgrSingleton<CountDownMgr>, IManagerFixedUpdate
     {
         /// <summary>
         /// 回调方法
@@ -76,7 +75,7 @@ namespace YIUIFramework
             return Time.realtimeSinceStartup;
         }
 
-        public void LateUpdate()
+        public void ManagerFixedUpdate()
         {
             ManagerUpdate();
         }
