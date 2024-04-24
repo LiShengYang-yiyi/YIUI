@@ -66,6 +66,30 @@ namespace ET.Client
             return true;
         }
 
+        /// <summary>
+        /// 关闭一个窗口 (被直接摧毁的)
+        /// 注意被直接摧毁的Panel 无法触发动画 回退等异步操作
+        /// </summary>
+        internal static bool DestroyPanel(this YIUIMgrComponent self, string panelName)
+        {
+            if (!self.m_PanelCfgMap.TryGetValue(panelName, out var info)) return false;
+
+            if (!self.ContainsLayerPanelInfo(info.PanelLayer, info)) return false;
+
+            #if YIUIMACRO_PANEL_OPENCLOSE
+            Debug.Log($"<color=yellow> 关闭一个窗口(被直接摧毁的): {panelName} </color>");
+            #endif
+
+            EventSystem.Instance.Publish(self.DomainScene(), new YIUIEventPanelCloseBefore
+            {
+                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name, PanelLayer = info.PanelLayer,
+            });
+
+            self.DestroylRemoveUI(info);
+
+            return true;
+        }
+
         public static void ClosePanel(this YIUIMgrComponent self, string panelName, bool tween = true, bool ignoreElse = false)
         {
             self.ClosePanelAsync(panelName, tween, ignoreElse).Coroutine();
@@ -95,7 +119,7 @@ namespace ET.Client
         /// <param name="homeName">需要被打开的界面 且这个UI是存在的 否则无法打开</param>
         /// <param name="tween">动画</param>
         /// <param name="forceHome">如果不存在则 强制打开 被强制打开的无法触发Back Home消息 只会触发常规的open close</param>
-        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true , YIUIRootComponent forceHome = null)
+        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true, YIUIRootComponent forceHome = null)
         {
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> Home关闭其他所有Panel UI: {homeName} </color>");
@@ -110,7 +134,7 @@ namespace ET.Client
             {
                 if (forceHome != null)
                 {
-                    await self.CloseAll(EPanelLayer.Panel,EPanelOption.IgnoreClose,tween);
+                    await self.CloseAll(EPanelLayer.Panel, EPanelOption.IgnoreClose, tween);
                     return await forceHome.OpenPanelAsync(homeName) != null;
                 }
             }

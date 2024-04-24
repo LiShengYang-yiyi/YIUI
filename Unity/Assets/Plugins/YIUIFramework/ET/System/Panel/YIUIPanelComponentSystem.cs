@@ -20,5 +20,14 @@ namespace ET.Client
                 self.InitPanelViewData();
             }
         }
+
+        [ObjectSystem]
+        public class YIUIPanelComponentDestroySystem: DestroySystem<YIUIPanelComponent>
+        {
+            protected override void Destroy(YIUIPanelComponent self)
+            {
+                YIUIMgrComponent.Inst.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
+            }
+        }
     }
 }

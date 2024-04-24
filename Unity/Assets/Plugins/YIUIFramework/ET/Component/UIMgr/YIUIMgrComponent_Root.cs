@@ -32,8 +32,7 @@ namespace ET.Client
 
         //K1 = 层级枚举 V1 = 层级对应的rect
         //List = 当前层级中的当前所有UI 前面的代表这个UI在前面以此类推
-        public Dictionary<EPanelLayer, Dictionary<RectTransform, List<PanelInfo>>> m_AllPanelLayer =
-                new Dictionary<EPanelLayer, Dictionary<RectTransform, List<PanelInfo>>>();
+        public Dictionary<EPanelLayer, Dictionary<RectTransform, List<PanelInfo>>> m_AllPanelLayer = new();
 
         #region 快捷获取层级
 
@@ -175,6 +174,12 @@ namespace ET.Client
             {
                 UnityEngine.Object.Destroy(UILayerRoot.transform.GetChild(i).gameObject);
             }
+        }
+
+        internal bool ContainsLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)
+        {
+            var list = this.GetLayerPanelInfoList(panelLayer);
+            return list.Contains(panelInfo);
         }
 
         internal bool RemoveLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)
