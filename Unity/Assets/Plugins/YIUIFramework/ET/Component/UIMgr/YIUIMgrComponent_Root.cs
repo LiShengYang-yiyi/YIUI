@@ -7,13 +7,13 @@ namespace ET.Client
 {
     public partial class YIUIMgrComponent
     {
-        public static bool          IsLowQuality = false;           //低品质 将会影响动画等逻辑 也可以根据这个参数自定义一些区别
-        public        bool          BindInit { get; internal set; } //绑定初始化情况
-        public        GameObject    UIRoot;
-        public        GameObject    UICanvasRoot;
-        public        RectTransform UILayerRoot;
-        public        Camera        UICamera;
-        public        Canvas        UICanvas;
+        public static bool          IsLowQuality = false;               //低品质 将会影响动画等逻辑 也可以根据这个参数自定义一些区别
+        public        bool          BindInit     { get; internal set; } //绑定初始化情况
+        public        GameObject    UIRoot       { get; internal set; }
+        public        GameObject    UICanvasRoot { get; internal set; }
+        public        RectTransform UILayerRoot  { get; internal set; }
+        public        Camera        UICamera     { get; internal set; }
+        public        Canvas        UICanvas     { get; internal set; }
         public const  int           DesignScreenWidth    = 1920;
         public const  int           DesignScreenHeight   = 1080;
         public const  float         DesignScreenWidth_F  = 1920f;
@@ -162,10 +162,19 @@ namespace ET.Client
 
             UICamera.clearFlags   = CameraClearFlags.Depth;
             UICamera.orthographic = true;
+
             //根据需求可以修改摄像机的远裁剪平面大小 没必要设置的很大
             //UICamera.farClipPlane = ((len + 1) * YIUIMgrComponent.LayerDistance) * UICanvasRoot.transform.localScale.x;
-            
+
             return true;
+        }
+
+        internal void ResetRoot()
+        {
+            for (int i = UILayerRoot.transform.childCount - 1; i >= 0; i--)
+            {
+                UnityEngine.Object.Destroy(UILayerRoot.transform.GetChild(i).gameObject);
+            }
         }
 
         internal bool RemoveLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)

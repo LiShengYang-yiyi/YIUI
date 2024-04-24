@@ -16,19 +16,21 @@ namespace ET.Client
         private static void Awake(this YIUIMgrComponent self)
         {
             YIUIMgrComponent.m_InstRef = self;
-            self.InitAllBind();
             self.AddComponent<YIUIEventComponent>();
             self.AddComponent<YIUILoadComponent>();
+            self.BindInit  = YIUIBindHelper.InitAllBind();
             self.m_RootRef = self.Root().AddComponent<YIUIRootComponent>();
         }
 
         [EntitySystem]
         private static void Destroy(this YIUIMgrComponent self)
         {
-            self.OnBlockDispose();
             self.Root().RemoveComponent<YIUIRootComponent>();
             YIUIBindHelper.Reset();
-            MgrCenter.Inst.Dispose();
+            SingletonMgr.Dispose();
+            SingletonMgr.Reset();
+            self.ResetRoot();
+            YIUIMgrComponent.m_InstRef = null;
         }
     }
 }

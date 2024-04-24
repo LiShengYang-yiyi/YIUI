@@ -18,10 +18,5 @@ namespace ET.Client
             await self.InitRoot();
             self.InitSafeArea();
         }
-
-        private static void InitAllBind(this YIUIMgrComponent self)
-        {
-            self.BindInit = YIUIBindHelper.InitAllBind();
-        }
     }
 }

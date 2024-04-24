@@ -33,6 +33,7 @@ namespace YIUIFramework
                 m_InitedSucceed = true;
             }
 
+            m_Enabled = true;
             return result;
         }
 

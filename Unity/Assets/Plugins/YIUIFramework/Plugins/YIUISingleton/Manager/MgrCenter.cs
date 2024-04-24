@@ -71,7 +71,7 @@ namespace YIUIFramework
         {
             g_MgrCore?.FixedUpdate();
         }
-
+        
         protected override void OnDispose()
         {
             g_MgrCore?.Dispose();

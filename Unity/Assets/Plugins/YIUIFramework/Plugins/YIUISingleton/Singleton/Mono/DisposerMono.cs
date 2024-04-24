@@ -21,6 +21,7 @@ namespace YIUIFramework
             }
 
             m_Disposed = true;
+            OnDispose();
             gameObject.SafeDestroySelf();
             return true;
         }

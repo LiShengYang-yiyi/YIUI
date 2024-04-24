@@ -10,20 +10,28 @@ using UnityEngine;
 
 namespace YIUIFramework
 {
-    
     public static class CountDownMgrSystem
     {
         [EntitySystem]
-        public class CountDownMgr_AwakeSystem: AwakeSystem<CountDownMgr>
+        public class CountDownMgr_AwakeSystem : AwakeSystem<CountDownMgr>
         {
             protected override void Awake(CountDownMgr self)
             {
                 CountDownMgr.Inst = self;
             }
         }
-        
+
         [EntitySystem]
-        public class CountDownMgr_LateUpdateSystem: LateUpdateSystem<CountDownMgr>
+        public class CountDownMgr_DestroySystem : DestroySystem<CountDownMgr>
+        {
+            protected override void Destroy(CountDownMgr self)
+            {
+                CountDownMgr.Inst = null;
+            }
+        }
+
+        [EntitySystem]
+        public class CountDownMgr_LateUpdateSystem : LateUpdateSystem<CountDownMgr>
         {
             protected override void LateUpdate(CountDownMgr self)
             {
@@ -31,7 +39,7 @@ namespace YIUIFramework
             }
         }
     }
-    
+
     /// <summary>
     /// 倒计时管理器
     /// 区别于Times 个人认为更适合UI上的时间倒计时
@@ -47,10 +55,10 @@ namespace YIUIFramework
     /// 匿名函数                      否                          是                          (匿名函数也可以被暂停 移除等操作)
     /// ......
     /// </summary>
-    public partial class CountDownMgr: Entity, IAwake, ILateUpdate
+    public partial class CountDownMgr : Entity, IAwake, ILateUpdate, IDestroy
     {
         public static CountDownMgr Inst;
-        
+
         /// <summary>
         /// 回调方法
         /// </summary>
@@ -92,19 +100,19 @@ namespace YIUIFramework
         /// 当然已经存在的倒计时数量
         /// </summary>
         private int m_AtCount = 0;
-        
+
         //统一所有取时间都用这个 且方便修改
         private static float GetTime()
         {
             //这是一个倒计时时间不受暂停影响的
             return Time.realtimeSinceStartup;
         }
-        
+
         public void LateUpdate()
         {
             ManagerUpdate();
         }
-        
+
         //为了不受mono暂停影响 所以使用异步调用
         public void ManagerUpdate()
         {
@@ -288,6 +296,5 @@ namespace YIUIFramework
         }
 
         #endregion
-        
     }
 }

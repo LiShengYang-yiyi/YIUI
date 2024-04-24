@@ -69,7 +69,6 @@ namespace YIUIFramework
             }
 
             //Debug.Log($"SingletonMgr.重置");
-            g_Singles.Clear();
             Disposing = false;
         }
 

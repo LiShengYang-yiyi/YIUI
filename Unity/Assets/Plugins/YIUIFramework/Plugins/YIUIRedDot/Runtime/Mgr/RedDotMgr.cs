@@ -14,7 +14,7 @@ namespace YIUIFramework
     /// <summary>
     /// 红点 管理器
     /// </summary>
-    public partial class RedDotMgr: MgrSingleton<RedDotMgr>, IManagerAsyncInit
+    public partial class RedDotMgr: MgrSingleton<RedDotMgr>
     {
         private static bool SyncSetCount = false; //实时修改红点还是异步脏标定时修改
 
