@@ -18,5 +18,11 @@ namespace ET.Client
         {
             self.InitPanelViewData();
         }
+
+        [EntitySystem]
+        private static void Destroy(this YIUIPanelComponent self)
+        {
+            YIUIMgrComponent.Inst.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
+        }
     }
 }

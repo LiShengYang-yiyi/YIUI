@@ -153,5 +153,34 @@ namespace ET.Client
             panelInfo.ResetUI(null);
             panelInfo.ResetEntity(null);
         }
+
+        /// <summary>
+        /// 移除一个UI (被直接摧毁的)
+        /// </summary>
+        internal void DestroylRemoveUI(PanelInfo panelInfo)
+        {
+            EventSystem.Instance.Publish(this.Root(),
+                new YIUIEventPanelCloseAfter()
+                {
+                    UIPkgName       = panelInfo.PkgName,
+                    UIResName       = panelInfo.ResName,
+                    UIComponentName = panelInfo.Name,
+                    PanelLayer      = panelInfo.PanelLayer
+                });
+
+            this.RemoveLayerPanelInfo(panelInfo.PanelLayer, panelInfo);
+
+            EventSystem.Instance.Publish(this.Root(),
+                new YIUIEventPanelDestroy()
+                {
+                    UIPkgName       = panelInfo.PkgName,
+                    UIResName       = panelInfo.ResName,
+                    UIComponentName = panelInfo.Name,
+                    PanelLayer      = panelInfo.PanelLayer
+                });
+
+            panelInfo.ResetUI(null);
+            panelInfo.ResetEntity(null);
+        }
     }
 }

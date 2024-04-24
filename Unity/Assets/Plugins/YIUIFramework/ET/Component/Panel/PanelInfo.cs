@@ -9,21 +9,25 @@ namespace YIUIFramework
     public class PanelInfo
     {
         //当前UI的 ui信息
-        public YIUIComponent UIBase { get; private set; }
+        private EntityRef<YIUIComponent> m_UIBase;
+
+        public YIUIComponent UIBase => m_UIBase;
 
         public YIUIWindowComponent UIWindow => this.UIBase?.GetComponent<YIUIWindowComponent>();
 
         public YIUIPanelComponent UIPanel => this.UIBase?.GetComponent<YIUIPanelComponent>();
-        
+
         //当前UI的 ET组件
-        public Entity OwnerUIEntity { get; private set; }
+        private EntityRef<Entity> m_OwnerUIEntity;
+
+        public Entity OwnerUIEntity => m_OwnerUIEntity;
 
         public bool ActiveSelf => UIBase?.ActiveSelf ?? false;
 
         /// <summary>
         /// UI资源绑定信息
         /// </summary>
-        public YIUIBindVo BindVo { get;}
+        public YIUIBindVo BindVo { get; }
 
         /// <summary>
         /// 包名
@@ -39,7 +43,7 @@ namespace YIUIFramework
         /// C#文件名 因为有可能存在Res名称与文件名不一致的问题
         /// </summary>
         public string Name => this.BindVo.ComponentType.Name;
-        
+
         /// <summary>
         /// 所在层级 如果不是panel则无效
         /// </summary>
@@ -49,15 +53,15 @@ namespace YIUIFramework
         {
             BindVo = vo;
         }
-        
+
         internal void ResetUI(YIUIComponent uiBase)
         {
-            this.UIBase = uiBase;
+            m_UIBase = uiBase;
         }
-        
+
         internal void ResetEntity(Entity entity)
         {
-            this.OwnerUIEntity = entity;
+            m_OwnerUIEntity = entity;
         }
     }
 }

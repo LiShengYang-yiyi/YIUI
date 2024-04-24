@@ -177,6 +177,12 @@ namespace ET.Client
             }
         }
 
+        internal bool ContainsLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)
+        {
+            var list = this.GetLayerPanelInfoList(panelLayer);
+            return list.Contains(panelInfo);
+        }
+
         internal bool RemoveLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)
         {
             var list = this.GetLayerPanelInfoList(panelLayer);

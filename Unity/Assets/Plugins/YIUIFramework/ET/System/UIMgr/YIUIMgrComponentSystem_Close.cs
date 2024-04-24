@@ -66,6 +66,30 @@ namespace ET.Client
             return true;
         }
 
+        /// <summary>
+        /// 关闭一个窗口 (被直接摧毁的)
+        /// 注意被直接摧毁的Panel 无法触发动画 回退等异步操作
+        /// </summary>
+        internal static bool DestroyPanel(this YIUIMgrComponent self, string panelName)
+        {
+            if (!self.m_PanelCfgMap.TryGetValue(panelName, out var info)) return false;
+
+            if (!self.ContainsLayerPanelInfo(info.PanelLayer, info)) return false;
+
+            #if YIUIMACRO_PANEL_OPENCLOSE
+            Debug.Log($"<color=yellow> 关闭一个窗口(被直接摧毁的): {panelName} </color>");
+            #endif
+
+            EventSystem.Instance.Publish(self.Root(), new YIUIEventPanelCloseBefore
+            {
+                UIPkgName = info.PkgName, UIResName = info.ResName, UIComponentName = info.Name, PanelLayer = info.PanelLayer,
+            });
+
+            self.DestroylRemoveUI(info);
+
+            return true;
+        }
+
         public static void ClosePanel(this YIUIMgrComponent self, string panelName, bool tween = true, bool ignoreElse = false)
         {
             self.ClosePanelAsync(panelName, tween, ignoreElse).Coroutine();
