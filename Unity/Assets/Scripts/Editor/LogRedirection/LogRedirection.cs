@@ -26,6 +26,15 @@ namespace ET
             string codePath = AssetDatabase.GetAssetPath(instanceID);
             if (logFileRegex.IsMatch(codePath))
             {
+                var content = GetStackTrace();
+                // 如果有手动输入的地址，就跳过
+                var hrefMath = Regex.Match(content, @"<a href=""(.*?)"" line=""(\w+)\"">.*?</a>");
+                if (hrefMath.Success)
+                {
+                    OpenIDE(hrefMath.Groups[1].Value, int.Parse(hrefMath.Groups[2].Value));
+                    return true;
+                }
+                
                 Match stackLineMatch = Regex.Match(GetStackTrace(), @"\(at (.+):([0-9]+)\)");
                 while (stackLineMatch.Success)
                 {
