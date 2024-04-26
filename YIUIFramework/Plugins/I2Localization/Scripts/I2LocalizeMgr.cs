@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 namespace I2.Loc
 {
     [RequireComponent(typeof(LanguageSource))]
-    public class I2LocalizeMgr : MonoSceneSingleton<I2LocalizeMgr>, IResourceManager_Bundles
+    public class I2LocalizeMgr : MonoSingleton<I2LocalizeMgr>, IResourceManager_Bundles
     {
         [SerializeField]
         [ReadOnly]
@@ -91,16 +91,16 @@ namespace I2.Loc
 
             return allLanguage;
         }
-
-        private void OnValidate()
-        {
-            m_LanguageSource ??= GetComponent<LanguageSource>();
-        }
-
+        
         #endif
 
         #endregion
 
+        protected override bool GetHideAndDontSave()
+        {
+            return false;
+        }
+        
         protected override async UniTask<bool> MgrAsyncInit()
         {
             if (string.IsNullOrEmpty(m_DefaultLanguage))
@@ -112,6 +112,8 @@ namespace I2.Loc
                 return false;
             }
 
+            m_LanguageSource = this.GetComponent<LanguageSource>();
+            
             #if UNITY_EDITOR
             if (!m_UseRuntimeModule)
             {

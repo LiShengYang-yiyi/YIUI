@@ -12,7 +12,7 @@ namespace YIUIFramework
     {
         private static List<ISingleton> g_Singles = new List<ISingleton>();
 
-        public static bool Disposing { get; private set; }
+        public static bool Disposing { get; private set; } = true;
 
         public static int  Count      => g_Singles.Count;
         
