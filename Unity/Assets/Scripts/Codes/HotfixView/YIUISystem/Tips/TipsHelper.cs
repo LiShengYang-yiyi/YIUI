@@ -12,10 +12,11 @@ namespace ET.Client
     public static class TipsHelper
     {
         //在Tips界面打开任意一个View窗口
+        //默认打开在根节点下 否则请使用 OpenToParent 方法 指定父级节点
         public static async ETTask Open<T>(params object[] paramMore) where T : Entity
         {
             var vo = ParamVo.Get(paramMore);
-            await Open<T>(vo);
+            await OpenToParent<T>(vo);
             ParamVo.Put(vo);
         }
 
@@ -26,21 +27,21 @@ namespace ET.Client
         }
 
         //在Tips界面打开任意一个View窗口
-        public static async ETTask Open<T>(Entity parent, params object[] paramMore) where T : Entity
+        public static async ETTask OpenToParent<T>(Entity parent, params object[] paramMore) where T : Entity
         {
             var vo = ParamVo.Get(paramMore);
-            await Open<T>(vo, parent);
+            await OpenToParent<T>(vo, parent);
             ParamVo.Put(vo);
         }
 
         //扩展同步方法
-        public static void OpenSync<T>(Entity parent, params object[] paramMore) where T : Entity
+        public static void OpenToParentSync<T>(Entity parent, params object[] paramMore) where T : Entity
         {
-            Open<T>(parent, paramMore).Coroutine();
+            OpenToParent<T>(parent, paramMore).Coroutine();
         }
 
         //使用paramvo参数打开
-        public static async ETTask Open<T>(ParamVo vo, Entity parent = null) where T : Entity
+        public static async ETTask OpenToParent<T>(ParamVo vo, Entity parent = null) where T : Entity
         {
             using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, typeof (T).GetHashCode());
 
@@ -48,13 +49,13 @@ namespace ET.Client
         }
 
         //使用paramvo参数 同步打开 内部还是异步 为了解决vo被回收问题
-        public static void OpenSync<T>(ParamVo vo, Entity parent = null) where T : Entity
+        public static void OpenToParentSync<T>(ParamVo vo, Entity parent = null) where T : Entity
         {
-            Open2NewVo<T>(vo, parent).Coroutine();
+            OpenToParent2NewVo<T>(vo, parent).Coroutine();
         }
 
         //在外部vo会被回收 所以不能使用同对象 所以这里会创建一个新的防止空对象
-        private static async ETTask Open2NewVo<T>(ParamVo vo, Entity parent = null) where T : Entity
+        private static async ETTask OpenToParent2NewVo<T>(ParamVo vo, Entity parent = null) where T : Entity
         {
             using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, typeof (T).GetHashCode());
 
