@@ -53,6 +53,7 @@ namespace ET.Client
                 self._AllPool.Add(uiType, new ObjAsyncCache<EntityRef<Entity>>(Create));
             }
 
+            self.CheckAllPoolTips();
             var pool = self._AllPool[uiType];
             self._RefCount += 1; //加载前引用计数+1 防止加载过程中有人关闭 出现问题
             Entity view = await pool.Get();
@@ -128,6 +129,8 @@ namespace ET.Client
 
             await viewComponent.CloseAsync(tween);
 
+            self._AllPoolLastTime[uiType] = UnityEngine.Time.time;
+
             var pool = self._AllPool[uiType];
             pool.Put(view);
             self._RefCount -= 1;
@@ -140,6 +143,32 @@ namespace ET.Client
 
             self._RefCount = 0;
             self.UIPanel.Close();
+        }
+
+        //有可能存在永远有tips被打开的情况
+        //举个例子 在整个游戏过程中 可能会打开各种 A B C 这种大型的tips 使用频率很低
+        //但是飘字 一些提示的频率很高  假设这个频率正好全覆盖 让TIPS永远没有真的被摧毁
+        //那么就会造成那些大型Tips 一直没有被关闭又没人使用的情况 而没有被回收
+        //所以这里需要做一些优化 让TIPS在一定时间内自动关闭 或者 让TIPS的打开频率降低
+        //优化方式 将会给每个类型增加一个倒计时 如果超过一定时间没有打开 那么就回收相关的所有
+        private static void CheckAllPoolTips(this TipsPanelComponent self)
+        {
+            var time = UnityEngine.Time.time;
+            foreach (var uiType in self._AllPoolLastTime.Keys)
+            {
+                if (time - self._AllPoolLastTime[uiType] > self._AutoDestroyTime)
+                {
+                    if (self._AllPool.TryGetValue(uiType, out var objCache))
+                    {
+                        objCache.Clear((obj) => { ((Entity)obj)?.Parent?.Dispose(); });
+                    }
+
+                    //不需要很频繁的清理 一次只清理一个就行
+                    //如果想高频率的自己用update 或者 倒计时回调之类的处理 自己实现吧
+                    self._AllPoolLastTime.Remove(uiType);
+                    break;
+                }
+            }
         }
 
         #region YIUIEvent开始
