@@ -32,7 +32,6 @@ namespace ET.Client
                 self.DomainScene().RemoveComponent<YIUIRootComponent>();
                 YIUIBindHelper.Reset();
                 SingletonMgr.Dispose();
-                SingletonMgr.Reset();
                 self.ResetRoot();
                 YIUIMgrComponent.m_InstRef = null;
             }

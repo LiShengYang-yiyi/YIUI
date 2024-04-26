@@ -9,6 +9,7 @@ namespace ET.Client
         //因为UI初始化需要动态加载UI根节点
         public static async ETTask Initialize(this YIUIMgrComponent self)
         {
+            SingletonMgr.Initialize();
             //初始化其他UI框架中的管理器
             await MgrCenter.Inst.Register(CountDownMgr.Inst);
             await MgrCenter.Inst.Register(I2LocalizeMgr.Inst);
