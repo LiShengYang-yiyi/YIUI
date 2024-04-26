@@ -22,7 +22,7 @@ namespace ET.Client
         [EntitySystem]
         private static void Destroy(this YIUIPanelComponent self)
         {
-            YIUIMgrComponent.Inst.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
+            YIUIMgrComponent.Inst?.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
         }
     }
 }
