@@ -18,7 +18,7 @@ namespace YIUIFramework
                 return null;
             }
 
-            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(viewName.GetHashCode());
+            using var asyncLock = await AsyncLockMgr.Inst.Wait(viewName.GetHashCode());
 
             if (m_ExistView.ContainsKey(viewName))
             {

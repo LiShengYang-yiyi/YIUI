@@ -4,13 +4,13 @@ using Cysharp.Threading.Tasks;
 
 namespace YIUIFramework
 {
-    public class SemaphoreSlimComponent : IDisposable, IRefPool
+    public class AsyncLockComponent : IDisposable, IRefPool
     {
         private readonly SemaphoreSlim m_Semaphore = new SemaphoreSlim(1, 1);
         private long m_Key;
         private int m_MillisecondsTimeout;
 
-        public SemaphoreSlimComponent()
+        public AsyncLockComponent()
         {
         }
 
@@ -20,7 +20,7 @@ namespace YIUIFramework
             m_MillisecondsTimeout = millisecondsTimeout;
         }
 
-        public async UniTask<SemaphoreSlimComponent> WaitAsync()
+        public async UniTask<AsyncLockComponent> WaitAsync()
         {
             await m_Semaphore.WaitAsync(m_MillisecondsTimeout);
             return this;
@@ -29,7 +29,7 @@ namespace YIUIFramework
         public void Dispose()
         {
             m_Semaphore.Release();
-            if (SemaphoreSlimSingleton.Inst.Release(m_Key))
+            if (AsyncLockMgr.Inst.Release(m_Key))
             {
                 RefPool.Put(this);
             }

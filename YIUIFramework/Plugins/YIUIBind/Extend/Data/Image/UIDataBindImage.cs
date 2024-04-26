@@ -74,7 +74,7 @@ namespace YIUIBind
 
         private async UniTaskVoid ChangeSprite(string resName)
         {
-            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(GetHashCode());
+            using var asyncLock = await AsyncLockMgr.Inst.Wait(GetHashCode());
 
             if (m_LastSpriteName == resName)
             {

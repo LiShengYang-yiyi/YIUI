@@ -15,7 +15,7 @@ namespace YIUIFramework
         //绑定初始化情况
         public static bool BindInit { private set; get; }
         
-        protected async override UniTask<bool> MgrAsyncInit()
+        protected override async UniTask<bool> MgrAsyncInit()
         {
             BindInit = UIBindHelper.InitAllBind();
 
@@ -27,6 +27,7 @@ namespace YIUIFramework
 
         protected override void OnDispose()
         {
+            ResetRoot();
             OnBlockDispose();
         }
     }

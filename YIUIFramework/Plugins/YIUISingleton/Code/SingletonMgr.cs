@@ -59,17 +59,16 @@ namespace YIUIFramework
             g_Singles.Clear();
         }
 
-        //重置 只能清除后调用 如APP本地重启功能 等需求
-        public static void Reset()
+        //初始化
+        public static void Initialize()
         {
-            if (!Disposing)
+            if (IsQuitting)
             {
-                Debug.LogError($"只能清除后调用");
+                Debug.Log("正在退出游戏 禁止初始化");
                 return;
             }
 
-            //Debug.Log($"SingletonMgr.重置");
-            g_Singles.Clear();
+            //Debug.Log($"SingletonMgr.初始化");
             Disposing = false;
         }
 

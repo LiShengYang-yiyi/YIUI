@@ -190,7 +190,7 @@ namespace YIUIFramework
         /// <summary>
         /// 重置 慎用
         /// </summary>
-        internal static void Reset()
+        public static void Reset()
         {
             if (g_UITypeToPkgInfo != null)
             {

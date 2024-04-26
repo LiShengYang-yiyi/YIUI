@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using YIUIBind;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+
 using YIUIFramework.Editor;
 
 namespace YIUIFramework
@@ -163,7 +163,7 @@ namespace YIUIFramework
         {
             if (!ShowCreateBtnByHierarchy()) return;
 
-            var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+            var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
             if (prefabStage == null)
             {
                 Debug.LogError($"当前不在预制体编辑器模式下");

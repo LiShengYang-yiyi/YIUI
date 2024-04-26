@@ -31,7 +31,7 @@ namespace YIUIFramework
             DisposeDirty();
         }
 
-        protected async override UniTask<bool> MgrAsyncInit()
+        protected override async UniTask<bool> MgrAsyncInit()
         {
             var resultConfig = await LoadConfigAsset();
             if (!resultConfig) return false;

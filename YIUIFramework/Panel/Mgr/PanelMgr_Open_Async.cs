@@ -17,7 +17,7 @@ namespace YIUIFramework
                 return null;
             }
 
-            using var asyncLock = await SemaphoreSlimSingleton.Inst.Wait(panelName.GetHashCode());
+            using var asyncLock = await AsyncLockMgr.Inst.Wait(panelName.GetHashCode());
 
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");
