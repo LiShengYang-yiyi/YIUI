@@ -72,3 +72,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 YIUIFramework/Plugins/CoEvent/
 YIUIFramework/Plugins/CoEvent.meta
+/LICENSE.meta
+/Readme.meta
+/README.md.meta
+/YIUIFramework.meta
+/Readme/YIUI框架讨论群二维码.png.meta

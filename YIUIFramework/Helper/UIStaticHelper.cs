@@ -24,7 +24,7 @@ namespace YIUIFramework
         public const string UIProjectEditorPath = "Assets/Editor/" + UIProjectName; //编辑器才会用到的资源
 
         [LabelText("YIUI项目资源路径")]
-        public const string UIProjectResPath = "Assets/GameRes/" + UIProjectName; //玩家的预设/图片等资源存放的地方
+        public const string UIProjectResPath = "Assets/Res/" + UIProjectName; //玩家的预设/图片等资源存放的地方
 
         [LabelText("YIUI项目脚本路径")]
         public const string UIGenerationPath = "Assets/Scripts/YIUIGeneration"; //自动生成的代码
@@ -33,7 +33,7 @@ namespace YIUIFramework
         public const string UICodeScriptsPath = "Assets/Scripts/" + UIProjectName; //玩家可编写的核心代码部分
 
         [LabelText("YIUI框架所处位置路径")]
-        public const string UIFrameworkPath = "Assets/Plugins/YIUIFramework";
+        public const string UIFrameworkPath = "Assets/Plugins/YIUI/YIUIFramework";
 
         [LabelText("YIUI项目代码模板路径")]
         public const string UITemplatePath = UIFrameworkPath + "/YIUIEditor/YIUIAutoTool/Template";
