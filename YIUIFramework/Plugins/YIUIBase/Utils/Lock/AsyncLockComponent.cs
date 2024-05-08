@@ -14,7 +14,7 @@ namespace YIUIFramework
         {
         }
 
-        public void Reset(long key, int millisecondsTimeout = -1)
+        public void Reset(long key, int millisecondsTimeout = Timeout.Infinite)
         {
             m_Key = key;
             m_MillisecondsTimeout = millisecondsTimeout;

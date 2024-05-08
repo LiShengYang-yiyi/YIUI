@@ -13,36 +13,36 @@ using UnityEngine;
 
 namespace YIUIFramework
 {
-    //[DetailedInfoBox("UI CDE总表 点击展开详细介绍", @"李胜扬")]
+    // [DetailedInfoBox("UI CDE总表 点击展开详细介绍", @"李胜扬")]
     [Serializable]
     [LabelText("UI CDE总表")]
     [AddComponentMenu("YIUIBind/★★★★★UI CDE Table 总表★★★★★")]
     public sealed partial class UIBindCDETable : SerializedMonoBehaviour
-    {
-        #if UNITY_EDITOR
-        [InlineButton("AddComponentTable", "Add")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
+    {    
+#if UNITY_EDITOR
+        private bool Enable => UIOperationHelper.CommonShowIf();
+        
+        [InlineButton(nameof(AddComponentTable), "Add")]
+        [EnableIf(nameof(Enable))]
+#endif // UNITY_EDITOR
         public UIBindComponentTable ComponentTable;
 
-        #if UNITY_EDITOR
-        [InlineButton("AddDataTable", "Add")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
+#if UNITY_EDITOR
+        [InlineButton(nameof(AddDataTable), "Add")]
+        [EnableIf(nameof(Enable))]
+#endif // UNITY_EDITOR
         public UIBindDataTable DataTable;
 
-        #if UNITY_EDITOR
-        [InlineButton("AddEventTable", "Add")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
+#if UNITY_EDITOR
+        [InlineButton(nameof(AddEventTable), "Add")]
+        [EnableIf(nameof(Enable))]
+#endif // UNITY_EDITOR
         public UIBindEventTable EventTable;
 
-        [LabelText("UI包名")]
-        [ReadOnly]
+        [LabelText("UI包名"), ReadOnly]
         public string PkgName;
 
-        [LabelText("UI资源名")]
-        [ReadOnly]
+        [LabelText("UI资源名"), ReadOnly]
         public string ResName;
 
         #region 关联
@@ -50,13 +50,11 @@ namespace YIUIFramework
         //关联的UI
         private UIBase m_UIBase;
 
-        [OdinSerialize]
-        [LabelText("编辑时所有公共组件")]
-        [ReadOnly]
+        [OdinSerialize, LabelText("编辑时所有公共组件"), ReadOnly]
         [PropertyOrder(1000)] //生成UI类时使用
-        #if UNITY_EDITOR
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
+#if UNITY_EDITOR
+        [ShowIf(nameof(Enable))]
+#endif // UNITY_EDITOR
         internal List<UIBindCDETable> AllChildCdeTable = new List<UIBindCDETable>();
 
         [OdinSerialize]
@@ -65,9 +63,9 @@ namespace YIUIFramework
         [ReadOnly]
         [PropertyOrder(1000)]
         [LabelText("运行时所有公共组件")] //动态生成后的子类(公共组件) 运行时使用
-        #if UNITY_EDITOR
-        [HideIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
+#if UNITY_EDITOR
+        [HideIf(nameof(Enable))]
+#endif // UNITY_EDITOR
         private Dictionary<string, UIBase> m_AllChildUIBase = new Dictionary<string, UIBase>();
 
         internal void AddUIBase(string uiName, UIBase uiBase)
@@ -96,7 +94,7 @@ namespace YIUIFramework
         {
             return (T)FindUIBase(uiName);
         }
-
+        
         #endregion
     }
 }

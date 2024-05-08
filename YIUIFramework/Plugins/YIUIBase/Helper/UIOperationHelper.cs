@@ -47,6 +47,7 @@ namespace YIUIFramework
 
         //UI通用判断 运行时是否可显示
         //通过切换宏可以在运行时提供可修改
+        /// <summary> 当前UI运行时是否可显示 </summary>
         public static bool CommonShowIf()
         {
             #if YIUIMACRO_BIND_RUNTIME_EDITOR
