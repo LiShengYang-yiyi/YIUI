@@ -331,8 +331,8 @@ namespace YIUIFramework
             m_ShowCamera.orthographic     = lookCamera.orthographic;
             m_ShowCamera.orthographicSize = lookCamera.orthographicSize;
             m_ShowCamera.fieldOfView      = lookCamera.fieldOfView;
-            m_ShowCamera.nearClipPlane    = Mathf.Max(lookCamera.nearClipPlane, 1);
-            m_ShowCamera.farClipPlane     = Mathf.Min(lookCamera.farClipPlane, 100);
+            m_ShowCamera.nearClipPlane    = lookCamera.nearClipPlane;
+            m_ShowCamera.farClipPlane     = lookCamera.farClipPlane;
             m_ShowCamera.orthographic     = lookCamera.orthographic;
             m_ShowCamera.orthographicSize = lookCamera.orthographicSize;
             m_ShowCamera.clearFlags       = CameraClearFlags.SolidColor;

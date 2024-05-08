@@ -11,6 +11,8 @@ namespace YIUIFramework
     {
         private UI3DDisplay m_UI3DDisplay;
 
+        public UI3DDisplay UI3DDisplay => m_UI3DDisplay;
+
         private Dictionary<string, GameObject> m_ObjPool = new Dictionary<string, GameObject>();
 
         private Dictionary<GameObject, Dictionary<string, Camera>> m_CameraPool =
