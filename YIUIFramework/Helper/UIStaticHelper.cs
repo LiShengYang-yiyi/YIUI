@@ -15,10 +15,10 @@ namespace YIUIFramework
     public static class UIStaticHelper
     {
         [LabelText("YIUI根目录名称")]
-        public const string UIProjectName = "YIUI";
+        public const string UIProjectName = "MizuYIUI";
 
         [LabelText("YIUI项目命名空间")]
-        public const string UINamespace = "YIUI"; //所有生成文件的命名空间
+        public const string UINamespace = "MizuYIUI"; //所有生成文件的命名空间
 
         [LabelText("YIUI项目编辑器资源路径")]
         public const string UIProjectEditorPath = "Assets/Editor/" + UIProjectName; //编辑器才会用到的资源
