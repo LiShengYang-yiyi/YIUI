@@ -7,11 +7,11 @@
 #if UNITY_EDITOR
 
 using System.Collections.Generic;
+using MonKey;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
-using UnityEngine;
 
 namespace YIUIFramework.Editor
 {
@@ -20,8 +20,9 @@ namespace YIUIFramework.Editor
     /// </summary>
     public class YIUIAutoTool : OdinMenuEditorWindow
     {
-        [MenuItem("Tools/YIUI 自动化工具")]
-        private static void OpenWindow()
+        // [MenuItem("Tools/YIUI 自动化工具")]
+        [Command("YIUI: Open Auto Tools","打开YIUI自动化工具窗口", Category = "YIUI")]
+        public static void OpenWindow()
         {
             var window = GetWindow<YIUIAutoTool>();
             window.Show();
