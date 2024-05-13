@@ -17,6 +17,35 @@ using Cysharp.Threading.Tasks;
 
 namespace YIUIFramework
 {
+  /*
+      // 关联YIUI工具中自动生成绑定代码
+      UIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.UIBindProvider.Get;
+      // 绑定YIUI所需方法
+      YIUILoadDI.LoadAssetFunc           = LoadAsset;
+      YIUILoadDI.LoadAssetAsyncFunc      = LoadAssetAsync;
+      YIUILoadDI.VerifyAssetValidityFunc = VerifyAssetValidityFunc;
+      YIUILoadDI.ReleaseAction           = ReleaseAction;
+      YIUILoadDI.ReleaseAllAction        = ReleaseAllAction;
+      
+      private (Object, int) LoadAsset(string pkgName, string resName, Type resType) { throw new NotImplementedException(); }
+      private async UniTask<(Object, int)> LoadAssetAsync(string pkgName, string resName, Type resType) { throw new NotImplementedException(); }
+      private bool VerifyAssetValidityFunc(string pkgName, string resName) { throw new NotImplementedException(); }
+      private void ReleaseAction(int hashCode) { }
+      private void ReleaseAllAction() { }
+      
+      ------------------------------------------------------------------------------------------------------------------
+      
+      // 关联YIUI工具中自动生成绑定代码
+      UIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.UIBindProvider.Get;
+      // 绑定YIUI所需方法
+      YIUILoadDI.LoadAssetFunc           = YooAssetMgr.LoadAsset;
+      YIUILoadDI.LoadAssetAsyncFunc      = YooAssetMgr.LoadAssetAsync;
+      YIUILoadDI.VerifyAssetValidityFunc = YooAssetMgr.VerifyAssetValidityFunc;
+      YIUILoadDI.ReleaseAction           = YooAssetMgr.ReleaseAction;
+      YIUILoadDI.ReleaseAllAction        = YooAssetMgr.ReleaseAllAction;
+   */
+  
+  
     /// <summary> 注入加载方法 </summary>
     public static partial class YIUILoadDI
     {
