@@ -41,6 +41,15 @@ namespace YIUIFramework
                 return;
             }
 
+            /*
+            var cancelled = await UniTask.Delay(TimeSpan.FromSeconds(CachePanelTime), cancellationToken: token)
+                .SuppressCancellationThrow();
+            if (cancelled)
+            {
+                return;
+            }
+            */
+
             UnityEngine.Object.Destroy(OwnerGameObject);
             PanelMgr.Inst.RemoveUIReset(UIResName);
         }
