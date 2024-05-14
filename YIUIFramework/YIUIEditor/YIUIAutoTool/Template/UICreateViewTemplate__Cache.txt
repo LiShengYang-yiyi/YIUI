@@ -16,6 +16,31 @@ namespace ${Namespace}.${PkgName}
 
         #region 生命周期
         
+        protected override void Initialize()
+        {
+            Debug.Log($"${ResName} Initialize");
+        }
+
+        protected override void Start()
+        {
+            Debug.Log($"${ResName} Start");
+        }
+
+        protected override void OnEnable()
+        {
+            Debug.Log($"${ResName} OnEnable");
+        }
+
+        protected override void OnDisable()
+        {
+            Debug.Log($"${ResName} OnDisable");
+        }
+
+        protected override void OnDestroy()
+        {
+            Debug.Log($"${ResName} OnDestroy");
+        }
+
         protected override async UniTask<bool> OnOpen()
         {
             await UniTask.CompletedTask;
