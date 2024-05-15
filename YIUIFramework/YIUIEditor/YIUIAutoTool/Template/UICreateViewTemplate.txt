@@ -11,7 +11,7 @@ namespace ${Namespace}.${PkgName}
     /// Author  ${Author}
     /// Date    ${CreateDate}
     /// </summary>
-    public sealed partial class ${ResName}:${ResName}Base
+    public sealed partial class ${ResName} : ${ResName}Base
     {
 
         #region 生命周期
@@ -19,15 +19,9 @@ namespace ${Namespace}.${PkgName}
         protected override async UniTask<bool> OnOpen()
         {
             await UniTask.CompletedTask;
-            Debug.Log($"${ResName} OnOpen");
             return true;
         }
 
-        protected override async UniTask<bool> OnOpen(ParamVo param)
-        {
-            return await base.OnOpen(param);
-        }
-        
         #endregion
 
         #region Event开始

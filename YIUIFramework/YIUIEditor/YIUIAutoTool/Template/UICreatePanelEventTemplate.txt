@@ -11,7 +11,7 @@ namespace ${Namespace}.${PkgName}
     /// Author  ${Author}
     /// Date    ${CreateDate}
     /// </summary>
-    public sealed partial class ${ResName}:${ResName}Base
+    public sealed partial class ${ResName} : ${ResName}Base
     {
 
         #region Event开始

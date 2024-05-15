@@ -14,7 +14,7 @@ ${PanelViewEnum}
     /// <summary>
     /// 由YIUI工具自动创建 请勿手动修改
     /// </summary>
-    public abstract class ${ResName}Base:${BaseClass}
+    public abstract class ${ResName}Base : ${BaseClass}
     {
         public const string PkgName = "${PkgName}";
         public const string ResName = "${ResName}";

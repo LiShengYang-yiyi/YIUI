@@ -83,7 +83,6 @@ namespace YIUIFramework
 
         /// <summary>
         /// 初始化UIBase 由PanelMgr创建对象后调用
-        /// 外部禁止
         /// </summary>
         internal bool InitUIBase(UIBindVo uiBindVo, GameObject ownerGameObject)
         {

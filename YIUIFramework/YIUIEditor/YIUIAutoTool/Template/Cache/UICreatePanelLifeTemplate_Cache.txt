@@ -11,9 +11,9 @@ namespace ${Namespace}.${PkgName}
     /// Author  ${Author}
     /// Date    ${CreateDate}
     /// </summary>
-    public sealed partial class ${ResName}:${ResName}Base
+    public sealed partial class ${ResName} : ${ResName}Base
     {
-
+    
         #region 生命周期
         
         protected override void Initialize()
@@ -54,11 +54,6 @@ namespace ${Namespace}.${PkgName}
         }
         
         #endregion
-
-        #region Event开始
-
-
-        #endregion Event结束
 
     }
 }

@@ -11,36 +11,13 @@ namespace ${Namespace}.${PkgName}
     /// Author  ${Author}
     /// Date    ${CreateDate}
     /// </summary>
-    public sealed partial class ${ResName}:${ResName}Base
+    public sealed partial class ${ResName} : ${ResName}Base
     {
     
         #region 生命周期
         
-        protected override void Initialize()
-        {
-            Debug.Log($"${ResName} Initialize");
-        }
-
-        protected override void Start()
-        {
-            Debug.Log($"${ResName} Start");
-        }
-
-        protected override void OnEnable()
-        {
-            Debug.Log($"${ResName} OnEnable");
-        }
-
-        protected override void OnDisable()
-        {
-            Debug.Log($"${ResName} OnDisable");
-        }
-
-        protected override void OnDestroy()
-        {
-            Debug.Log($"${ResName} OnDestroy");
-        }
-
+        
+        
         #endregion
 
         #region Event开始
