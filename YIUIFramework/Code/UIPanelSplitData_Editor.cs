@@ -11,7 +11,7 @@ namespace YIUIFramework
     {
         [OdinSerialize]
         [LabelText("生成通用界面枚举")]
-        [ShowIf("ShowCreatePanelViewEnum")]
+        [ShowIf(nameof(ShowCreatePanelViewEnum))]
         internal bool CreatePanelViewEnum = true;
 
         internal bool ShowCreatePanelViewEnum()

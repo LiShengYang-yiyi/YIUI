@@ -88,7 +88,7 @@ namespace YIUIFramework
                 info?.UIBasePanel?.Close();
             }
 
-            return info.UIBasePanel;
+            return info?.UIBasePanel;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using YIUIBind;
 using UnityEngine;
@@ -12,6 +13,14 @@ namespace YIUIFramework
     /// </summary>
     public partial class PanelMgr
     {
+        /// <summary> Panel Group </summary>
+        private struct PanelGroup
+        {
+            /// <summary> 当前Layer下所有Panel面板Root </summary>
+            public RectTransform PanelRoot;
+            public List<PanelInfo> AllPanel;
+        }
+        
         public       GameObject    UIRoot;
         public       GameObject    UICanvasRoot;
         public       RectTransform UILayerRoot;
@@ -33,11 +42,11 @@ namespace YIUIFramework
 
         #endregion
 
-        //K1 = 层级枚举 V1 = 层级对应的rect
+        //K1 = 层级枚举 V1 = 层级对应的rectRoot And PanelList
         //List = 当前层级中的当前所有UI 前面的代表这个UI在前面以此类推
-        private Dictionary<EPanelLayer, Dictionary<RectTransform, List<PanelInfo>>> m_AllPanelLayer =
-            new Dictionary<EPanelLayer, Dictionary<RectTransform, List<PanelInfo>>>();
-
+        private readonly Dictionary<EPanelLayer, PanelGroup>
+            m_AllPanelLayer = new Dictionary<EPanelLayer, PanelGroup>();
+        
         private async UniTask<bool> InitRoot()
         {
             #region UICanvasRoot 查找各种组件
@@ -118,8 +127,8 @@ namespace YIUIFramework
                 rect.sizeDelta     = Vector2.zero;
                 rect.localRotation = Quaternion.identity;
                 rect.localPosition = new Vector3(0, 0, i * LayerDistance); //这个是为了3D模型时穿插的问题
-                var rectDic = new Dictionary<RectTransform, List<PanelInfo>> { { rect, new List<PanelInfo>() } };
-                m_AllPanelLayer.Add((EPanelLayer)i, rectDic);
+                var panelG = new PanelGroup() { PanelRoot = rect, AllPanel = new List<PanelInfo>() };
+                m_AllPanelLayer.Add((EPanelLayer)i, panelG);
             }
 
             InitAddUIBlock(); //所有层级初始化后添加一个终极屏蔽层 可根据API 定时屏蔽UI操作
@@ -179,37 +188,23 @@ namespace YIUIFramework
 
         public RectTransform GetLayerRect(EPanelLayer panelLayer)
         {
-            m_AllPanelLayer.TryGetValue(panelLayer, out var rectDic);
-            if (rectDic == null)
+            if (m_AllPanelLayer.TryGetValue(panelLayer, out var panelGroup))
             {
-                Debug.LogError($"没有这个层级 请检查 {panelLayer}");
-                return null;
+                return panelGroup.PanelRoot;    
             }
 
-            //只能有一个所以返回第一个
-            foreach (var rect in rectDic.Keys)
-            {
-                return rect;
-            }
-
+            Debug.LogError($"没有这个层级 请检查 {panelLayer}");
             return null;
         }
 
         private List<PanelInfo> GetLayerPanelInfoList(EPanelLayer panelLayer)
         {
-            m_AllPanelLayer.TryGetValue(panelLayer, out var rectDic);
-            if (rectDic == null)
+            if (m_AllPanelLayer.TryGetValue(panelLayer, out var panelGroup))
             {
-                Debug.LogError($"没有这个层级 请检查 {panelLayer}");
-                return null;
+                return panelGroup.AllPanel;    
             }
-
-            //只能有一个所以返回第一个
-            foreach (var infoList in rectDic.Values)
-            {
-                return infoList;
-            }
-
+            
+            Debug.LogError($"没有这个层级 请检查 {panelLayer}");
             return null;
         }
 

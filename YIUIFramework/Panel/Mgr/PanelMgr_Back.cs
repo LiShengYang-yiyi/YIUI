@@ -126,6 +126,7 @@ namespace YIUIFramework
 
         private async UniTask RemoveUIToHome(PanelInfo home, bool tween = true)
         {
+            // 如果home的层级不在Panel层
             if (!(home.UIBasePanel is { Layer: EPanelLayer.Panel }))
             {
                 return;

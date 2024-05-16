@@ -30,6 +30,7 @@ namespace YIUIFramework
 
             var infoList     = GetLayerPanelInfoList(panelLayer);
             var removeResult = infoList.Remove(panelInfo);
+            // 如果本来就存在与其对应层级下，则先移出到根层级，然后再作排序
             if (removeResult)
                 uiRect.SetParent(UILayerRoot);
             
@@ -39,7 +40,6 @@ namespace YIUIFramework
              * 所以根据优先级 从小到大排序
              * 当前优先级 >= 目标优先级时 插入
              */
-
             for (var i = infoList.Count - 1; i >= 0; i--)
             {
                 var info         = infoList[i];
@@ -97,7 +97,7 @@ namespace YIUIFramework
 
             if (foreverCache || timeCache)
             {
-                //缓存界面只是单纯的吧界面隐藏
+                //缓存界面只是单纯的把界面隐藏
                 //再次被打开 如何重构界面需要自行设置
                 var layerRect = GetLayerRect(EPanelLayer.Cache);
                 var uiRect    = uiBasePanel.OwnerRectTransform;

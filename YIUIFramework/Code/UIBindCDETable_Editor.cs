@@ -12,64 +12,63 @@ namespace YIUIFramework
     public sealed partial class UIBindCDETable
     {
         #region 界面参数
-
         [LabelText("组件类型")]
-        [OnValueChanged("OnValueChangedEUICodeType")]
+        [OnValueChanged(nameof(OnValueChangedEUICodeType))]
         [ReadOnly]
         public EUICodeType UICodeType = EUICodeType.Component;
 
         [BoxGroup("配置", true, true)]
-        [HideIf("UICodeType", EUICodeType.Component)]
+        [HideIf(nameof(UICodeType), EUICodeType.Component)]
         [LabelText("窗口选项")]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EWindowOption WindowOption = EWindowOption.None;
 
-        [ShowIf("UICodeType", EUICodeType.Panel)]
+        [ShowIf(nameof(UICodeType), EUICodeType.Panel)]
         [BoxGroup("配置", true, true)]
-        [OnValueChanged("OnValueChangedEPanelLayer")]
+        [OnValueChanged(nameof(OnValueChangedEPanelLayer))]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EPanelLayer PanelLayer = EPanelLayer.Panel;
 
-        [ShowIf("UICodeType", EUICodeType.Panel)]
+        [ShowIf(nameof(UICodeType), EUICodeType.Panel)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EPanelOption PanelOption = EPanelOption.None;
 
-        [ShowIf("UICodeType", EUICodeType.Panel)]
+        [ShowIf(nameof(UICodeType), EUICodeType.Panel)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EPanelStackOption PanelStackOption = EPanelStackOption.VisibleTween;
 
-        [ShowIf("UICodeType", EUICodeType.View)]
+        [ShowIf(nameof(UICodeType), EUICodeType.View)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EViewWindowType ViewWindowType = EViewWindowType.View;
 
-        [ShowIf("UICodeType", EUICodeType.View)]
+        [ShowIf(nameof(UICodeType), EUICodeType.View)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public EViewStackOption ViewStackOption = EViewStackOption.VisibleTween;
 
-        [ShowIf("ShowCachePanelTime", EUICodeType.Panel)]
+        [ShowIf(nameof(ShowCachePanelTime), EUICodeType.Panel)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
         [LabelText("缓存时间")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public float CachePanelTime = 10;
 
         private bool ShowCachePanelTime => PanelOption.HasFlag(EPanelOption.TimeCache);
 
         [LabelText("同层级时 优先级高的在前面")] //相同时后开的在前
-        [ShowIf("UICodeType", EUICodeType.Panel)]
+        [ShowIf(nameof(UICodeType), EUICodeType.Panel)]
         [BoxGroup("配置", true, true)]
         [GUIColor(0, 1, 1)]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [EnableIf(nameof(Enable))]
         public int Priority = 0;
 
         private void OnValueChangedEUICodeType()
@@ -123,7 +122,7 @@ namespace YIUIFramework
         [GUIColor(1, 1, 0)]
         [Button("自动检查所有", 30)]
         [PropertyOrder(-100)]
-        [ShowIf("ShowAutoCheckBtn")]
+        [ShowIf(nameof(ShowAutoCheckBtn))]
         private void AutoCheckBtn()
         {
             AutoCheck();
@@ -158,7 +157,7 @@ namespace YIUIFramework
 
         [GUIColor(0f, 0.5f, 1f)]
         [Button("生成", 50)]
-        [ShowIf("ShowCreateBtnByHierarchy")]
+        [ShowIf(nameof(ShowCreateBtnByHierarchy))]
         internal void CreateUICodeByHierarchy()
         {
             if (!ShowCreateBtnByHierarchy()) return;
@@ -197,7 +196,7 @@ namespace YIUIFramework
 
         [GUIColor(0.7f, 0.4f, 0.8f)]
         [Button("生成", 50)]
-        [ShowIf("ShowCreateBtn")]
+        [ShowIf(nameof(ShowCreateBtn))]
         internal void CreateUICode()
         {
             if (!UIOperationHelper.CheckUIOperation(this)) return;
@@ -213,7 +212,7 @@ namespace YIUIFramework
 
         [GUIColor(0f, 0.4f, 0.8f)]
         [Button("源数据拆分", 50)]
-        [ShowIf("ShowPanelSourceSplit")]
+        [ShowIf(nameof(ShowPanelSourceSplit))]
         internal void PanelSourceSplit()
         {
             if (!UIOperationHelper.CheckUIOperation(this)) return;

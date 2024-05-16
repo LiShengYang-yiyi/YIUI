@@ -22,20 +22,17 @@ namespace YIUIFramework
 #if UNITY_EDITOR
         private bool Enable => UIOperationHelper.CommonShowIf();
         
-        [InlineButton(nameof(AddComponentTable), "Add")]
-        [EnableIf(nameof(Enable))]
+        [InlineButton(nameof(AddComponentTable), "Add"), EnableIf(nameof(Enable))]
 #endif // UNITY_EDITOR
         public UIBindComponentTable ComponentTable;
 
 #if UNITY_EDITOR
-        [InlineButton(nameof(AddDataTable), "Add")]
-        [EnableIf(nameof(Enable))]
+        [InlineButton(nameof(AddDataTable), "Add"), EnableIf(nameof(Enable))]
 #endif // UNITY_EDITOR
         public UIBindDataTable DataTable;
 
 #if UNITY_EDITOR
-        [InlineButton(nameof(AddEventTable), "Add")]
-        [EnableIf(nameof(Enable))]
+        [InlineButton(nameof(AddEventTable), "Add"), EnableIf(nameof(Enable))]
 #endif // UNITY_EDITOR
         public UIBindEventTable EventTable;
 
@@ -50,19 +47,14 @@ namespace YIUIFramework
         //关联的UI
         private UIBase m_UIBase;
 
-        [OdinSerialize, LabelText("编辑时所有公共组件"), ReadOnly]
-        [PropertyOrder(1000)] //生成UI类时使用
+        [OdinSerialize, LabelText("编辑时所有公共组件"), ReadOnly, PropertyOrder(1000)] //生成UI类时使用
 #if UNITY_EDITOR
         [ShowIf(nameof(Enable))]
 #endif // UNITY_EDITOR
         internal List<UIBindCDETable> AllChildCdeTable = new List<UIBindCDETable>();
 
-        [OdinSerialize]
-        [NonSerialized]
-        [ShowInInspector]
-        [ReadOnly]
-        [PropertyOrder(1000)]
         [LabelText("运行时所有公共组件")] //动态生成后的子类(公共组件) 运行时使用
+        [OdinSerialize, NonSerialized, ShowInInspector, ReadOnly, PropertyOrder(1000)]
 #if UNITY_EDITOR
         [HideIf(nameof(Enable))]
 #endif // UNITY_EDITOR

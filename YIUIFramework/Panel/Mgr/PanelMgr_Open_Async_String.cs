@@ -38,7 +38,7 @@ namespace YIUIFramework
 
         /// <summary>
         /// 用字符串开启 必须保证类名与资源名一致否则无法找到
-        /// 首选使用<T>泛型方法打开UI 字符串只适合于特定场合使用
+        /// 首选使用&lt;T&gt;泛型方法打开UI 字符串只适合于特定场合使用
         /// </summary>
         public async UniTask<BasePanel> OpenPanelAsync(string panelName, object param = null)
         {
