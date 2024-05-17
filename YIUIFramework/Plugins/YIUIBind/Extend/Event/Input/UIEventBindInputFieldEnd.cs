@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -52,7 +52,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Logger.LogError(e);
+                Log.Error(e);
                 throw;
             }
         }

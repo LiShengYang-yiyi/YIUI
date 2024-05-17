@@ -4,33 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
+
 
 namespace YIUIBind
 {
     public abstract partial class UIDataBindSelectBase
     {
-        [ValueDropdown("GetBindKeys")]
-        [OnValueChanged("OnBindKeySelected")]
-        [ShowInInspector]
-        [PropertyOrder(-10)]
-        [LabelText("选择绑定数据")]
-        [NonSerialized]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
+        private bool Enable => UIOperationHelper.CommonShowIf();
+        
+        [ValueDropdown(nameof(GetBindKeys))]
+        [OnValueChanged(nameof(OnBindKeySelected)), ShowIf(nameof(Enable))]
+        [LabelText("选择绑定数据"), ShowInInspector, PropertyOrder(-10), NonSerialized]
         private string m_SelectBindKey;
-
-        [GUIColor(0, 1, 0)]
-        [ButtonGroup("Select")]
-        [Button("添加")]
-        [PropertyOrder(-9)]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
+        
+        [ButtonGroup("Select"), PropertyOrder(-9), GUIColor(0, 1, 0)]
+        [Button("添加"), ShowIf(nameof(Enable))]
         private void AddSelect()
         {
             if (string.IsNullOrEmpty(m_SelectBindKey))
             {
-                var tips = $"请选择";
-                UnityTipsHelper.Show(tips);
-                Logger.LogError(tips);
+                Log.Error($"请选择");
                 return;
             }
 
@@ -65,18 +58,13 @@ namespace YIUIBind
             base.OnValidate();
         }
 
-        [GUIColor(1, 1, 0)]
-        [ButtonGroup("Select")]
-        [Button("移除")]
-        [PropertyOrder(-8)]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
+        [ButtonGroup("Select"), PropertyOrder(-8), GUIColor(1, 1, 0)]
+        [Button("移除"), ShowIf(nameof(Enable))]
         private void RemoveSelect()
         {
             if (string.IsNullOrEmpty(m_SelectBindKey))
             {
-                var tips1 = $"请选择";
-                UnityTipsHelper.Show(tips1);
-                Logger.LogError(tips1);
+                Log.Error($"请选择");
                 return;
             }
 
@@ -111,7 +99,7 @@ namespace YIUIBind
 
             if (DataTable == null)
             {
-                Logger.LogError($"请检查未设置 数据表");
+                Log.Error($"请检查未设置 数据表");
                 return allKey;
             }
 
@@ -131,7 +119,7 @@ namespace YIUIBind
                 {
                     if (string.IsNullOrEmpty(data.Name))
                     {
-                        Logger.LogErrorContext(this, $"{name} 这个表中有null名称 请检查");
+                        Log.ErrorContext(this, $"{name} 这个表中有null名称 请检查");
                         continue;
                     }
 

@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -114,7 +113,7 @@ Event 那边已经做好一个自动关联 可以直接关联到事件回调
             }
             catch (Exception e)
             {
-                Logger.LogError(e);
+                Log.Error(e);
                 throw;
             }
         }

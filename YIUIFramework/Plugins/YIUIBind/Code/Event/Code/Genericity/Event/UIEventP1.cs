@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -22,7 +21,7 @@ namespace YIUIBind
         {
             if (m_UIEventDelegates == null)
             {
-                Logger.LogWarning($"{EventName} 未绑定任何事件");
+                Log.DebugYellow((object)$"{EventName} 未绑定任何事件");
                 return;
             }
 
@@ -37,7 +36,7 @@ namespace YIUIBind
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError(e);
+                    Log.Error(e);
                 }
 
                 itr = next;
@@ -66,7 +65,7 @@ namespace YIUIBind
 
             if (callback == null)
             {
-                Logger.LogError($"{EventName} 添加了一个空回调");
+                Log.Error($"{EventName} 添加了一个空回调");
             }
 
             var handler = PublicUIEventP1<P1>.HandlerPool.Get();
@@ -80,7 +79,7 @@ namespace YIUIBind
 
             if (handle == null)
             {
-                Logger.LogError($"{EventName} UIEventParamHandle == null");
+                Log.Error($"{EventName} UIEventParamHandle == null");
                 return false;
             }
 

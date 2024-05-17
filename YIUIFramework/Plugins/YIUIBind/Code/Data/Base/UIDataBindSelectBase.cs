@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -94,7 +94,7 @@ namespace YIUIBind
             var data = value?.Data;
             if (data == null)
             {
-                Logger.LogErrorContext(this, $"{name}空数据 请检查为什么 当前是否不在预制件编辑器中使用了");
+                Log.ErrorContext(this, $"{name}空数据 请检查为什么 当前是否不在预制件编辑器中使用了");
                 return;
             }
 

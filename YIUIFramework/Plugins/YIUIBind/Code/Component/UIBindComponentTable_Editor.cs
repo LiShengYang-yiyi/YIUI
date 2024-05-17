@@ -6,7 +6,6 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -68,7 +67,7 @@ namespace YIUIBind
                 var component = bindPair.Component;
                 if (component == null)
                 {
-                    Logger.LogErrorContext(this, $"{name} 空对象  所以 {oldName} 已忽略");
+                    Log.ErrorContext(this, $"{name} 空对象  所以 {oldName} 已忽略");
                     continue;
                 }
 
@@ -115,25 +114,25 @@ namespace YIUIBind
 
                 if (string.IsNullOrEmpty(bindPair.Name))
                 {
-                    Logger.LogErrorContext(this, $"{name} 存在空名称 {bindPair.Component?.name} 已忽略");
+                    Log.ErrorContext(this, $"{name} 存在空名称 {bindPair.Component?.name} 已忽略");
                     continue;
                 }
 
                 if (bindPair.Component == null)
                 {
-                    Logger.LogErrorContext(this, $"{name} 空对象  所以 {bindPair.Name} 已忽略");
+                    Log.ErrorContext(this, $"{name} 空对象  所以 {bindPair.Name} 已忽略");
                     continue;
                 }
 
                 if (m_AllBindDic.ContainsValue(bindPair.Component))
                 {
-                    Logger.LogErrorContext(bindPair.Component, $"{name} 这个组件已经存在了 重复对象 {bindPair.Component.name} 已忽略");
+                    Log.ErrorContext(bindPair.Component, $"{name} 这个组件已经存在了 重复对象 {bindPair.Component.name} 已忽略");
                     continue;
                 }
 
                 if (m_AllBindDic.ContainsKey(bindPair.Name))
                 {
-                    Logger.LogErrorContext(bindPair.Component, $"{name} 这个命名已经存在了 重复添加 {bindPair.Name} 已忽略");
+                    Log.ErrorContext(bindPair.Component, $"{name} 这个命名已经存在了 重复添加 {bindPair.Name} 已忽略");
                     continue;
                 }
 

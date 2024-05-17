@@ -1,6 +1,6 @@
 using System;
 using Sirenix.OdinInspector;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -95,25 +95,25 @@ namespace YIUIBind
 
         public static bool operator >(UIDataValueBool lhs, UIDataValueBool rhs)
         {
-            Logger.LogError($"注意你正在对比2个bool的 大小 >");
+            Log.Error($"注意你正在对比2个bool的 大小 >");
             return false;
         }
 
         public static bool operator <(UIDataValueBool lhs, UIDataValueBool rhs)
         {
-            Logger.LogError($"注意你正在对比2个bool的 大小 <");
+            Log.Error($"注意你正在对比2个bool的 大小 <");
             return false;
         }
 
         public static bool operator >=(UIDataValueBool lhs, UIDataValueBool rhs)
         {
-            Logger.LogError($"注意你正在对比2个bool的 大小 >=");
+            Log.Error($"注意你正在对比2个bool的 大小 >=");
             return false;
         }
 
         public static bool operator <=(UIDataValueBool lhs, UIDataValueBool rhs)
         {
-            Logger.LogError($"注意你正在对比2个bool的 大小 <=");
+            Log.Error($"注意你正在对比2个bool的 大小 <=");
             return false;
         }
 

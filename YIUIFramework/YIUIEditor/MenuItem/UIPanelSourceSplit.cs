@@ -59,8 +59,8 @@ namespace YIUIFramework.Editor
             //老的重新关联 覆盖老数据
             PrefabUtility.SaveAsPrefabAsset(oldSource, path);
             Object.DestroyImmediate(oldSource);
-
-            UnityTipsHelper.Show($"源数据拆分完毕");
+            
+            Log.DebugBlue($"源数据拆分完毕");
             AssetDatabase.Refresh();
         }
 

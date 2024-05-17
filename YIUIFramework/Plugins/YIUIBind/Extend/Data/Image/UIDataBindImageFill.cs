@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {

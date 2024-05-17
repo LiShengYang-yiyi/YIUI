@@ -17,22 +17,13 @@ namespace YIUIFramework.Editor
 
     public enum EPlatformType
     {
-        [LabelText("默认")]
-        Default,
-
-        [LabelText("电脑")]
-        PC,
-
-        [LabelText("安卓")]
-        Android,
-
-        [LabelText("苹果")]
-        iPhone,
+        [LabelText("默认")] Default,
+        [LabelText("电脑")] PC,
+        [LabelText("安卓")] Android,
+        [LabelText("苹果")] IPhone,
     }
 
-    /// <summary>
-    /// 全局设置
-    /// </summary>
+    /// <summary> 全局设置 </summary>
     [HideReferenceObjectPicker]
     [HideLabel]
     public class UIAtlasModule : BaseCreateModule
@@ -40,16 +31,14 @@ namespace YIUIFramework.Editor
         [HideLabel]
         public UISpriteAtlasSettings SpriteAtlasSettings = new UISpriteAtlasSettings();
 
-        [EnumToggleButtons]
-        [HideLabel]
-        [BoxGroup("平台设置", centerLabel: true)]
+        [EnumToggleButtons, HideLabel, BoxGroup("平台设置", centerLabel: true)]
         public EPlatformType m_UIPublishPackageData = EPlatformType.Default;
 
         [HideInInspector]
         public Dictionary<string, UIPlatformSettings> AllUIPlatformSettings =
             new Dictionary<string, UIPlatformSettings>();
 
-        [ShowIf("m_UIPublishPackageData", EPlatformType.Default)]
+        [ShowIf(nameof(m_UIPublishPackageData), EPlatformType.Default)]
         [BoxGroup("平台设置", centerLabel: true)]
         public UIPlatformSettings Default = new UIPlatformSettings
         {
@@ -58,7 +47,7 @@ namespace YIUIFramework.Editor
             Format          = TextureImporterFormat.Automatic,
         };
 
-        [ShowIf("m_UIPublishPackageData", EPlatformType.PC)]
+        [ShowIf(nameof(m_UIPublishPackageData), EPlatformType.PC)]
         [BoxGroup("平台设置", centerLabel: true)]
         public UIPlatformSettings PC = new UIPlatformSettings
         {
@@ -67,7 +56,7 @@ namespace YIUIFramework.Editor
             Format          = TextureImporterFormat.DXT5Crunched,
         };
 
-        [ShowIf("m_UIPublishPackageData", EPlatformType.Android)]
+        [ShowIf(nameof(m_UIPublishPackageData), EPlatformType.Android)]
         [BoxGroup("平台设置", centerLabel: true)]
         public UIPlatformSettings Android = new UIPlatformSettings
         {
@@ -76,11 +65,11 @@ namespace YIUIFramework.Editor
             Format          = TextureImporterFormat.ASTC_6x6,
         };
 
-        [ShowIf("m_UIPublishPackageData", EPlatformType.iPhone)]
+        [ShowIf(nameof(m_UIPublishPackageData), EPlatformType.IPhone)]
         [BoxGroup("平台设置", centerLabel: true)]
         public UIPlatformSettings iPhone = new UIPlatformSettings
         {
-            PlatformType    = EPlatformType.iPhone,
+            PlatformType    = EPlatformType.IPhone,
             BuildTargetName = "iPhone",
             Format          = TextureImporterFormat.ASTC_4x4,
         };
@@ -165,8 +154,7 @@ namespace YIUIFramework.Editor
         }
     }
 
-    [HideReferenceObjectPicker]
-    [HideLabel]
+    [HideReferenceObjectPicker, HideLabel]
     public class UISpriteAtlasSettings
     {
         [ReadOnly]
@@ -178,7 +166,7 @@ namespace YIUIFramework.Editor
         public bool EnableRotation     = false;
         public bool EnableTightPacking = false;
 
-        [ValueDropdown("PaddingListKey")]
+        [ValueDropdown(nameof(PaddingListKey))]
         public int Padding = 4;
 
         public bool                   GenerateMipMaps = false;
@@ -189,8 +177,7 @@ namespace YIUIFramework.Editor
         private static List<int> PaddingListKey = new List<int> { 2, 4, 8 };
     }
 
-    [HideReferenceObjectPicker]
-    [HideLabel]
+    [HideReferenceObjectPicker, HideLabel]
     public class UIPlatformSettings
     {
         [HideInInspector]
@@ -199,10 +186,10 @@ namespace YIUIFramework.Editor
         [HideInInspector]
         public string BuildTargetName;
 
-        [HideIf("PlatformType", EPlatformType.Default)]
+        [HideIf(nameof(PlatformType), EPlatformType.Default)]
         public bool Overridden = true;
 
-        [ValueDropdown("MaxTextureSizeListKey")]
+        [ValueDropdown(nameof(MaxTextureSizeListKey))]
         public int MaxTextureSize = 2048;
 
         private static List<int> MaxTextureSizeListKey = new List<int>
@@ -210,7 +197,7 @@ namespace YIUIFramework.Editor
             32, 64, 128, 256, 512, 1024, 2048, 4096, 8192
         };
 
-        [ShowIf("PlatformType", EPlatformType.Default)]
+        [ShowIf(nameof(PlatformType), EPlatformType.Default)]
         public bool CrunchedCompression = true;
 
         [Range(0, 100)]

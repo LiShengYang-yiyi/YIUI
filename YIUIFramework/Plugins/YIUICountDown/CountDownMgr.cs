@@ -195,7 +195,7 @@ namespace YIUIFramework
         {
             if (m_AllCountDown.ContainsKey(countDownData.Guid))
             {
-                Logger.LogError($"<color=red> 添加的这个已经存在 :{countDownData.Guid}</color>");
+                Log.Error($"<color=red> 添加的这个已经存在 :{countDownData.Guid}</color>");
                 return;
             }
 

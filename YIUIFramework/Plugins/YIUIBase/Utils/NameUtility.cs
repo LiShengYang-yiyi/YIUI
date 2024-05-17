@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
@@ -58,13 +57,13 @@ namespace YIUIFramework
 
             if (string.IsNullOrEmpty(name))
             {
-                Logger.LogError($"名字是空的 无法判断 请检查");
+                Log.Error($"名字是空的 无法判断 请检查");
                 return name;
             }
 
             if (!CheckFirstName(name, otherName))
             {
-                Logger.LogError($"当前命名 不符合 {FirstName}{otherName} 规范 无法检查是否大写");
+                Log.Error($"当前命名 不符合 {FirstName}{otherName} 规范 无法检查是否大写");
                 return name;
             }
 
@@ -94,7 +93,7 @@ namespace YIUIFramework
         {
             if (string.IsNullOrEmpty(name))
             {
-                Logger.LogError($"名字是空的 无法判断 请检查");
+                Log.Error($"名字是空的 无法判断 请检查");
                 return name;
             }
 
@@ -103,7 +102,7 @@ namespace YIUIFramework
             var arrayName = name.ToCharArray();
             if (arrayName.Length <= index)
             {
-                Logger.LogError($"替换后名称长度不符 {name} 长度:{arrayName.Length} < {index}");
+                Log.Error($"替换后名称长度不符 {name} 长度:{arrayName.Length} < {index}");
                 return name;
             }
 

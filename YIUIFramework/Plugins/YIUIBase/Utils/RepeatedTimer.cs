@@ -102,7 +102,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError(e);
+                    Log.Error(e);
                 }
                 finally
                 {

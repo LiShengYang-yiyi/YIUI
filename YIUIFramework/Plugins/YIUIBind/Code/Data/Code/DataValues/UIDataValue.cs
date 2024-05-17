@@ -1,6 +1,6 @@
 using System;
 using Sirenix.OdinInspector;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -41,7 +41,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Logger.LogError(e);
+                Log.Error(e);
                 throw;
             }
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -45,7 +45,7 @@ namespace YIUIBind
                 case EUIBindDataType.List_String:
                 case EUIBindDataType.Ulong:
                 default:
-                    Logger.LogError($"没有实现这个类型 {dataType}");
+                    Log.Error($"没有实现这个类型 {dataType}");
                     return new UIDataValueInt();
             }
         }
@@ -62,7 +62,7 @@ namespace YIUIBind
         private static UIDataValueBase<T> GetDataValueBase<T>(this UIDataValue self)
         {
             if (self is UIDataValueBase<T> finalResult) return finalResult;
-            Logger.LogError($"获取值转型失败，当前类型是: {self.UIDataValueType} 不是：{typeof(T)}");
+            Log.Error($"获取值转型失败，当前类型是: {self.UIDataValueType} 不是：{typeof(T)}");
             return null;
         }
 
@@ -176,7 +176,7 @@ namespace YIUIBind
                 case EUIBindDataType.Color:
                     return self.GetValue<Color>();
                 default:
-                    Logger.LogError($"此类型未实现 {self.UIBindDataType}");
+                    Log.Error($"此类型未实现 {self.UIBindDataType}");
                     return "null";
             }
         }
@@ -222,7 +222,7 @@ namespace YIUIBind
         {
             if (self.DataValue == null)
             {
-                Logger.LogError($"{self.Name} 这个数据没有值");
+                Log.Error($"{self.Name} 这个数据没有值");
                 return;
             }
 
@@ -233,7 +233,7 @@ namespace YIUIBind
         {
             if (self.DataValue == null)
             {
-                Logger.LogError($"{self.Name} 这个数据没有值");
+                Log.Error($"{self.Name} 这个数据没有值");
                 return;
             }
 
@@ -244,7 +244,7 @@ namespace YIUIBind
         {
             if (self.DataValue == null)
             {
-                Logger.LogError($"{self.Name} 这个数据没有值");
+                Log.Error($"{self.Name} 这个数据没有值");
                 return;
             }
 
@@ -254,7 +254,7 @@ namespace YIUIBind
             }
             else
             {
-                Logger.LogError($"{self.Name} 这个数据值类型不是 {typeof(T).Name}");
+                Log.Error($"{self.Name} 这个数据值类型不是 {typeof(T).Name}");
             }
         }
 
@@ -262,7 +262,7 @@ namespace YIUIBind
         {
             if (self.DataValue == null)
             {
-                Logger.LogError($"{self.Name} 这个数据没有值");
+                Log.Error($"{self.Name} 这个数据没有值");
                 return;
             }
 
@@ -272,7 +272,7 @@ namespace YIUIBind
             }
             else
             {
-                Logger.LogError($"{self.Name} 这个数据值类型不是 {typeof(T).Name}");
+                Log.Error($"{self.Name} 这个数据值类型不是 {typeof(T).Name}");
             }
         }
 

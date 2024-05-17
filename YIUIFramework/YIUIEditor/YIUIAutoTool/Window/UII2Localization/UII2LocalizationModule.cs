@@ -113,7 +113,7 @@ namespace YIUIFramework.Editor
                 Debug.Log($"多语言 指定数据 {languages.Name} 导出CSV成功 {targetPath}");
             }
 
-            UnityTipsHelper.Show($"导出全数据完成 {path}");
+            Log.DebugGreen($"导出全数据完成 {path}");
             YIUIAutoTool.CloseWindowRefresh();
         }
 
@@ -271,8 +271,8 @@ namespace YIUIFramework.Editor
                 Debug.LogError(e);
                 return;
             }
-
-            UnityTipsHelper.Show($"导入全数据完成 {path}");
+            
+            Log.DebugGreen($"导出全数据完成 {path}");
             YIUIAutoTool.CloseWindowRefresh();
         }
 

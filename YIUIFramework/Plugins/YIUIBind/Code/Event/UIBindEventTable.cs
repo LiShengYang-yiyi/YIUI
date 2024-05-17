@@ -9,7 +9,6 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -33,7 +32,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(eventName))
             {
-                Logger.LogError($"空的事件名称  请检查");
+                Log.Error($"空的事件名称  请检查");
                 return null;
             }
 
@@ -52,7 +51,7 @@ namespace YIUIBind
         {
             if (!m_EventDic.TryGetValue(eventName, out var uiEvent))
             {
-                Logger.LogError($"没有这个事件定义{eventName}");
+                Log.Error($"没有这个事件定义{eventName}");
                 return false;
             }
 

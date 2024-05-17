@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -16,7 +16,7 @@ namespace YIUIBind
         {
             if (m_UIEvent == null)
             {
-                Logger.LogError($"未选择事件");
+                Log.Error($"未选择事件");
             }
 
             try
@@ -25,7 +25,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Logger.LogError(e);
+                Log.Error(e);
                 throw;
             }
         }
@@ -36,7 +36,7 @@ namespace YIUIBind
         {
             if (m_EventTable == null)
             {
-                Logger.LogErrorContext(this, $"{name}  请检查未设置 事件表");
+                Log.ErrorContext(this, $"{name}  请检查未设置 事件表");
                 return null;
             }
 
@@ -68,7 +68,7 @@ namespace YIUIBind
             if (m_EventName == c_ErrorTips)
             {
                 m_EventName = "";
-                Logger.LogError($"{c_ErrorTips} 请创建 提示: {GetFilterParamType().GetAllParamTypeTips()}");
+                Log.Error($"{c_ErrorTips} 请创建 提示: {GetFilterParamType().GetAllParamTypeTips()}");
             }
 
             UnbindEvent();
@@ -103,7 +103,7 @@ namespace YIUIBind
             }
             else
             {
-                Logger.LogError($"移除与当前不一致 请检查 当前{m_UIEvent.EventName} 移除{uiEvent.EventName}");
+                Log.Error($"移除与当前不一致 请检查 当前{m_UIEvent.EventName} 移除{uiEvent.EventName}");
             }
         }
 

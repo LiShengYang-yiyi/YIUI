@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
@@ -52,7 +51,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError(e);
+                    Log.Error(e);
                 }
                 finally
                 {

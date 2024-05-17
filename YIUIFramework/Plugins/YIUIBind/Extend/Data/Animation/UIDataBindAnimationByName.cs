@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Logger = YIUIFramework.Logger;
+using YIUIFramework;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -76,7 +76,7 @@ namespace YIUIBind
 
             if (!m_AllClipName.Contains(dataValue))
             {
-                Logger.LogErrorContext(this, $"{name} 播放失败 请检查动画名称是否存在 {dataValue}");
+                Log.ErrorContext(this, $"{name} 播放失败 请检查动画名称是否存在 {dataValue}");
                 return;
             }
 
