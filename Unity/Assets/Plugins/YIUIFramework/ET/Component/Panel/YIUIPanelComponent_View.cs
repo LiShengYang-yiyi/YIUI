@@ -174,7 +174,7 @@ namespace ET.Client
             return view;
         }
 
-        internal (bool, Entity) ExistView<T>() where T : Entity
+        public (bool, Entity) ExistView<T>() where T : Entity
         {
             if (this.UIBase.OwnerUIEntity == null)
             {
@@ -207,7 +207,7 @@ namespace ET.Client
             return (false, null);
         }
 
-        internal (bool, Entity) ExistView(string resName)
+        public (bool, Entity) ExistView(string resName)
         {
             if (this.UIBase.OwnerUIEntity == null)
             {
