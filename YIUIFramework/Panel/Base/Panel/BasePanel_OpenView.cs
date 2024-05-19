@@ -75,7 +75,7 @@ namespace YIUIFramework
             return value;
         }
 
-        private async UniTask<T> GetView<T>() where T : BaseView, new()
+        private async UniTask<T> GetView<T>() where T : BaseView
         {
             var viewName = typeof(T).Name;
             var parent   = GetViewParent(viewName);
@@ -97,6 +97,45 @@ namespace YIUIFramework
             m_ExistView.Add(viewName, view);
 
             return view;
+        }
+
+        public (bool, BaseView) ExistView<T>() where T : BaseView
+        {
+            var data = UIBindHelper.GetBindVoByType<T>();
+            if (data == null) return (false, null);
+            var vo = data.Value;
+
+            var viewName = vo.ResName;
+            var viewParent = GetViewParent(viewName);
+            if (viewParent == null)
+            {
+                Debug.LogError($"不存在这个View  请检查 {viewName}");
+                return (false, null);
+            }
+
+            if (m_ExistView.TryGetValue(viewName, out var baseView))
+            {
+                return (true, baseView);
+            }
+
+            return (false, null);
+        }
+
+        public (bool, BaseView) ExistView(string viewName)
+        {
+            var viewParent = GetViewParent(viewName);
+            if (viewParent == null)
+            {
+                Debug.LogError($"不存在这个View  请检查 {viewName}");
+                return (false, null);
+            }
+
+            if (m_ExistView.TryGetValue(viewName, out var baseView))
+            {
+                return (true, baseView);
+            }
+
+            return (false, null);
         }
 
         /// <summary>
