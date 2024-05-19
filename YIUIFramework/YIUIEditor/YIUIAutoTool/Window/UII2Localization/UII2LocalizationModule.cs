@@ -113,7 +113,7 @@ namespace YIUIFramework.Editor
                 Debug.Log($"多语言 指定数据 {languages.Name} 导出CSV成功 {targetPath}");
             }
 
-            Log.DebugGreen($"导出全数据完成 {path}");
+            Logger.DebugGreen($"导出全数据完成 {path}");
             YIUIAutoTool.CloseWindowRefresh();
         }
 
@@ -272,7 +272,7 @@ namespace YIUIFramework.Editor
                 return;
             }
             
-            Log.DebugGreen($"导出全数据完成 {path}");
+            Logger.DebugGreen($"导出全数据完成 {path}");
             YIUIAutoTool.CloseWindowRefresh();
         }
 

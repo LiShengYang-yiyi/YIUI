@@ -41,7 +41,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Logger.Error(e);
                 throw;
             }
         }

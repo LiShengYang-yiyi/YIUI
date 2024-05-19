@@ -7,6 +7,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -34,7 +35,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(dataName))
             {
-                Log.DebugYellow((object)$"{name} 不能找一个空变量 请检查配置");
+                Logger.DebugYellow((object)$"{name} 不能找一个空变量 请检查配置");
                 return null;
             }
 
@@ -43,11 +44,11 @@ namespace YIUIBind
             {
                 if (m_DataTable == null)
                 {
-                    Log.ErrorContext(this, $"{name} 未设置变量表 所以无法找到变量 {dataName} 请检查配置");
+                    Logger.ErrorContext(this, $"{name} 未设置变量表 所以无法找到变量 {dataName} 请检查配置");
                     return null;
                 }
 
-                Log.ErrorContext(this, $"{name} 没有找到这个变量 {dataName} 请检查配置");
+                Logger.ErrorContext(this, $"{name} 没有找到这个变量 {dataName} 请检查配置");
                 return null;
             }
 

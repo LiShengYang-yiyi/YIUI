@@ -94,7 +94,7 @@ namespace YIUIBind
             var data = value?.Data;
             if (data == null)
             {
-                Log.ErrorContext(this, $"{name}空数据 请检查为什么 当前是否不在预制件编辑器中使用了");
+                Logger.ErrorContext(this, $"{name}空数据 请检查为什么 当前是否不在预制件编辑器中使用了");
                 return;
             }
 

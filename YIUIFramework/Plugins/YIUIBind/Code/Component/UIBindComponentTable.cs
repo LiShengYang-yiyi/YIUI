@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -29,7 +30,7 @@ namespace YIUIBind
             m_AllBindDic.TryGetValue(comName, out var value);
             if (value == null)
             {
-                Log.ErrorContext(this,$" {name} 组件表中没有这个组件 {comName}");
+                Logger.ErrorContext(this,$" {name} 组件表中没有这个组件 {comName}");
             }
             return value;
         }

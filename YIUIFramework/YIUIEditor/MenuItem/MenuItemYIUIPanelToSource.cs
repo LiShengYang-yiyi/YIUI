@@ -93,7 +93,7 @@ namespace YIUIFramework.Editor
             PrefabUtility.SaveAsPrefabAsset(newSource, savePath);
             Object.DestroyImmediate(newSource);
 
-            Log.DebugBlue($"Panel 逆向 源数据 完毕");
+            Logger.DebugBlue($"Panel 逆向 源数据 完毕");
             AssetDatabase.Refresh();
         }
 

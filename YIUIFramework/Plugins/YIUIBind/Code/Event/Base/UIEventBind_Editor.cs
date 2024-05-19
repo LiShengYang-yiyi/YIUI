@@ -16,7 +16,7 @@ namespace YIUIBind
         {
             if (m_UIEvent == null)
             {
-                Log.Error($"未选择事件");
+                Logger.Error($"未选择事件");
             }
 
             try
@@ -25,7 +25,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Logger.Error(e);
                 throw;
             }
         }
@@ -36,7 +36,7 @@ namespace YIUIBind
         {
             if (m_EventTable == null)
             {
-                Log.ErrorContext(this, $"{name}  请检查未设置 事件表");
+                Logger.ErrorContext(this, $"{name}  请检查未设置 事件表");
                 return null;
             }
 
@@ -68,7 +68,7 @@ namespace YIUIBind
             if (m_EventName == c_ErrorTips)
             {
                 m_EventName = "";
-                Log.Error($"{c_ErrorTips} 请创建 提示: {GetFilterParamType().GetAllParamTypeTips()}");
+                Logger.Error($"{c_ErrorTips} 请创建 提示: {GetFilterParamType().GetAllParamTypeTips()}");
             }
 
             UnbindEvent();
@@ -103,7 +103,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error($"移除与当前不一致 请检查 当前{m_UIEvent.EventName} 移除{uiEvent.EventName}");
+                Logger.Error($"移除与当前不一致 请检查 当前{m_UIEvent.EventName} 移除{uiEvent.EventName}");
             }
         }
 

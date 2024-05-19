@@ -21,7 +21,7 @@ using UnityEditor;
 namespace YIUIFramework
 {
   /// <summary> 日志封装 </summary>
-  public static class Log
+  public static class Logger
   {
     private const string ENABLE_DEBUG_LOG = "ENABLE_DEBUG_LOG";
     

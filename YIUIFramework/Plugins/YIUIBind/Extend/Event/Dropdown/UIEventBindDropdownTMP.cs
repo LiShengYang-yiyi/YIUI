@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using TMPro;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -52,7 +53,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Logger.Error(e);
                 throw;
             }
         }

@@ -48,7 +48,7 @@ namespace YIUIFramework
         {
             if (timerCallback == null)
             {
-                Log.Error($"<color=red> 必须有callback </color>");
+                Logger.Error($"<color=red> 必须有callback </color>");
                 return false;
             }
 
@@ -74,7 +74,7 @@ namespace YIUIFramework
         {
             if (timerCallback == null)
             {
-                Log.Error($"<color=red> 必须有callback </color>");
+                Logger.Error($"<color=red> 必须有callback </color>");
                 return false;
             }
 
@@ -104,7 +104,7 @@ namespace YIUIFramework
         {
             if (timerCallback == null)
             {
-                Log.Error($"<color=red> 必须有callback </color>");
+                Logger.Error($"<color=red> 必须有callback </color>");
                 return false;
             }
 

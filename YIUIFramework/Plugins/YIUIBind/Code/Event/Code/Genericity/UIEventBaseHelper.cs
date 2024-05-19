@@ -32,13 +32,13 @@ namespace YIUIBind
                     uiEventBase = CreatorUIEventP5(paramList);
                     break;
                 default:
-                    Log.Error($"最高支持5个参数 如果还想支持就自己扩展 {paramList.Count}");
+                    Logger.Error($"最高支持5个参数 如果还想支持就自己扩展 {paramList.Count}");
                     break;
             }
 
             if (uiEventBase == null)
             {
-                Log.Error($"{name} 动态创建泛型事件 失败 请检查原因");
+                Logger.Error($"{name} 动态创建泛型事件 失败 请检查原因");
                 return null;
             }
 
@@ -114,7 +114,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error($"调用 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
+                Logger.Error($"调用 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
 
@@ -126,7 +126,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"调用 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
@@ -139,7 +139,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"调用 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
@@ -152,7 +152,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"调用 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
@@ -165,7 +165,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"调用 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
@@ -178,7 +178,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"调用 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} {typeof(P5).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
         }
@@ -195,7 +195,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error($"添加 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
+                Logger.Error($"添加 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
             return null;
@@ -209,7 +209,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"添加 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -224,7 +224,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"添加 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -240,7 +240,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"添加 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -256,7 +256,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"添加 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -272,7 +272,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"添加 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} {typeof(P5).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -291,7 +291,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error($"移除 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
+                Logger.Error($"移除 当前事件 {self.EventName} 参数不一致 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
             return false;
@@ -305,7 +305,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"移除 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -320,7 +320,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"移除 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -335,7 +335,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"移除 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -350,7 +350,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"移除 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 
@@ -366,7 +366,7 @@ namespace YIUIBind
             }
             else
             {
-                Log.Error(
+                Logger.Error(
                     $"移除 当前事件 {self.EventName} 参数不一致 -- 当前使用参数: {typeof(P1).Name} {typeof(P2).Name} {typeof(P3).Name} {typeof(P4).Name} {typeof(P5).Name} 请使用: {self.AllEventParamType.GetAllParamTypeTips()}");
             }
 

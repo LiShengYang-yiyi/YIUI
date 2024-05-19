@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -147,7 +148,7 @@ namespace YIUIBind
                             result = valueInteger >= referenceInteger;
                             break;
                         default:
-                            Log.Error($"不可能有其他类型 不允许扩展 {m_CompareMode}");
+                            Logger.Error($"不可能有其他类型 不允许扩展 {m_CompareMode}");
                             break;
                     }
 
@@ -174,7 +175,7 @@ namespace YIUIBind
                             result = valueFloat >= referenceFloat;
                             break;
                         default:
-                            Log.Error($"不可能有其他类型 不允许扩展 {m_CompareMode}");
+                            Logger.Error($"不可能有其他类型 不允许扩展 {m_CompareMode}");
                             break;
                     }
 
@@ -192,7 +193,7 @@ namespace YIUIBind
                         case UICompareModeEnum.Great:
                         case UICompareModeEnum.GreatEqual:
                         default:
-                            Log.Error($"String 的 bool 比较只支持 == 取反就是 != 不支持其他");
+                            Logger.Error($"String 的 bool 比较只支持 == 取反就是 != 不支持其他");
                             break;
                     }
 
@@ -201,7 +202,7 @@ namespace YIUIBind
                 //case UIDataType.Asset:
                 //case UIDataType.Color:
                 default:
-                    Log.Error($"类型比较 不支持这个类型 {m_Data.DataValue.UIBindDataType}");
+                    Logger.Error($"类型比较 不支持这个类型 {m_Data.DataValue.UIBindDataType}");
                     return false;
             }
 

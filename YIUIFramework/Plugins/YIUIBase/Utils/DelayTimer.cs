@@ -51,7 +51,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                 }
                 finally
                 {

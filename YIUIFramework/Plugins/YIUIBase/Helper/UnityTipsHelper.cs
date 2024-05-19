@@ -23,7 +23,7 @@ namespace YIUIFramework
         public static void ShowError(string message)
         {
             Show(message);
-            Log.Error(message);
+            Logger.Error(message);
         }
 
         /// <summary> 提示 同时error 报错 </summary>
@@ -31,7 +31,7 @@ namespace YIUIFramework
         public static void ShowErrorContext(Object context, string message)
         {
             Show(message);
-            Log.ErrorContext(context, message);
+            Logger.ErrorContext(context, message);
         }
 
         /// <summary> 确定 取消 回调的提示框 </summary>
@@ -47,7 +47,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                     throw;
                 }
             }
@@ -59,7 +59,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                     throw;
                 }
             }
@@ -78,7 +78,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                     throw;
                 }
             }
@@ -90,7 +90,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                     throw;
                 }
             }

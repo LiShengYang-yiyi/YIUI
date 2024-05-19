@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -46,14 +47,14 @@ namespace YIUIBind
 
             if (m_EventTable == null)
             {
-                Log.ErrorContext(this, $"{name} 事件表==ull 请检查");
+                Logger.ErrorContext(this, $"{name} 事件表==ull 请检查");
                 return null;
             }
 
             var uiEvent = m_EventTable.FindEvent(eventName);
             if (uiEvent == null)
             {
-                Log.ErrorContext(this, $"{name}没找到这个事件 {eventName} 请检查配置");
+                Logger.ErrorContext(this, $"{name}没找到这个事件 {eventName} 请检查配置");
             }
 
             return uiEvent;

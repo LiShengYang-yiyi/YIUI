@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -21,13 +22,13 @@ namespace YIUIBind
             m_Text ??= GetComponent<TextMeshProUGUI>();
             if (m_Text == null)
             {
-                Log.Error($"{name} 错误没有 Text 组件");
+                Logger.Error($"{name} 错误没有 Text 组件");
                 return;
             }
 
             if (!m_ChangeEnabled && !m_Text.enabled)
             {
-                Log.Error($"{name} 当前文本禁止修改Enabled 且当前处于隐藏状态 可能会出现问题 请检查");
+                Logger.Error($"{name} 当前文本禁止修改Enabled 且当前处于隐藏状态 可能会出现问题 请检查");
             }
         }
 

@@ -23,7 +23,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(m_SelectBindKey))
             {
-                Log.Error($"请选择");
+                Logger.Error($"请选择");
                 return;
             }
 
@@ -64,7 +64,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(m_SelectBindKey))
             {
-                Log.Error($"请选择");
+                Logger.Error($"请选择");
                 return;
             }
 
@@ -99,7 +99,7 @@ namespace YIUIBind
 
             if (DataTable == null)
             {
-                Log.Error($"请检查未设置 数据表");
+                Logger.Error($"请检查未设置 数据表");
                 return allKey;
             }
 
@@ -119,7 +119,7 @@ namespace YIUIBind
                 {
                     if (string.IsNullOrEmpty(data.Name))
                     {
-                        Log.ErrorContext(this, $"{name} 这个表中有null名称 请检查");
+                        Logger.ErrorContext(this, $"{name} 这个表中有null名称 请检查");
                         continue;
                     }
 

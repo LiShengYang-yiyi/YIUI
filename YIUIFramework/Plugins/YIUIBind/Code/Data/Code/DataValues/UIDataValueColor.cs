@@ -2,6 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -98,25 +99,25 @@ namespace YIUIBind
 
         public static bool operator >(UIDataValueColor lhs, UIDataValueColor rhs)
         {
-            Log.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
+            Logger.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
             return false;
         }
 
         public static bool operator <(UIDataValueColor lhs, UIDataValueColor rhs)
         {
-            Log.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
+            Logger.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
             return false;
         }
 
         public static bool operator >=(UIDataValueColor lhs, UIDataValueColor rhs)
         {
-            Log.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
+            Logger.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
             return false;
         }
 
         public static bool operator <=(UIDataValueColor lhs, UIDataValueColor rhs)
         {
-            Log.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
+            Logger.Error($"请不要比较这个类型 {EUIBindDataType.Color}");
             return false;
         }
 

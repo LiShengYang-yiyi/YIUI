@@ -3,6 +3,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -93,8 +94,8 @@ namespace YIUIBind
                 }
                 catch (FormatException exp)
                 {
-                    Log.Error($"{name} 字符串拼接Format 出错请检查是否有拼写错误  {m_Format}");
-                    Log.Error($"{exp.Message} {this}");
+                    Logger.Error($"{name} 字符串拼接Format 出错请检查是否有拼写错误  {m_Format}");
+                    Logger.Error($"{exp.Message} {this}");
                 }
             }
         }

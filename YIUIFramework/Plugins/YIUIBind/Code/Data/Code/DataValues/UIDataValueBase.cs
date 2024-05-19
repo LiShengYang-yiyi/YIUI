@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -53,7 +54,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Logger.Error(e);
                 throw;
             }
         }
@@ -72,13 +73,13 @@ namespace YIUIBind
         {
             if (dataValue == null)
             {
-                Log.Error($"{typeof(T)} 失败，Value为空");
+                Logger.Error($"{typeof(T)} 失败，Value为空");
                 return false;
             }
 
             if (!(dataValue is UIDataValueBase<T>))
             {
-                Log.Error($"失败，类型不一致 当前类型 {typeof(T)} 传入类型 {dataValue.UIDataValueType}");
+                Logger.Error($"失败，类型不一致 当前类型 {typeof(T)} 传入类型 {dataValue.UIDataValueType}");
                 return false;
             }
 

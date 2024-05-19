@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -43,7 +44,7 @@ namespace YIUIBind
             }
             catch (Exception e)
             {
-                Log.Error(e);
+                Logger.Error(e);
                 throw;
             }
         }

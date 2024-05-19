@@ -98,7 +98,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e.ToString());
+                    Logger.Error(e.ToString());
                     frameTasks.Remove(itr);
                 }
 
@@ -205,7 +205,7 @@ namespace YIUIFramework
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e.ToString());
+                    Logger.Error(e.ToString());
                 }
             }
 

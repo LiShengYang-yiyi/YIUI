@@ -4,6 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -110,7 +111,7 @@ namespace YIUIBind
                 if (cData.Value.DataGuid == uiData.DataGuid)
                 {
                     m_DataDic.Remove(cData.Key);
-                    Log.Error($"移除了一个不符合规范的数据 {cData.Key}");
+                    Logger.Error($"移除了一个不符合规范的数据 {cData.Key}");
                     return true;
                 }
             }

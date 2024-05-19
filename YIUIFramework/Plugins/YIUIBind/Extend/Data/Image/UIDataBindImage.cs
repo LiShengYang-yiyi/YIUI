@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -38,7 +39,7 @@ namespace YIUIBind
             m_Image ??= GetComponent<Image>();
             if (!m_ChangeEnabled && !m_Image.enabled)
             {
-                Log.Error($"{name} 当前禁止修改Enabled 且当前处于隐藏状态 可能会出现问题 请检查");
+                Logger.Error($"{name} 当前禁止修改Enabled 且当前处于隐藏状态 可能会出现问题 请检查");
             }
         }
 
@@ -94,7 +95,7 @@ namespace YIUIBind
 #if UNITY_EDITOR
             if (!YIUILoadHelper.VerifyAssetValidity(resName))
             {
-                Log.Error($"没有这个资源 图片无法加载 请检查 {resName}");
+                Logger.Error($"没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
             }
@@ -104,7 +105,7 @@ namespace YIUIBind
 
             if (sprite == null)
             {
-                Log.Error($"没有这个资源 图片无法加载 请检查 {resName}");
+                Logger.Error($"没有这个资源 图片无法加载 请检查 {resName}");
                 SetEnabled(false);
                 return;
             }
@@ -112,7 +113,7 @@ namespace YIUIBind
             if (gameObject == null || m_Image == null)
             {
                 YIUILoadHelper.Release(sprite);
-                Log.Error($"{resName} 加载过程中 对象被摧毁了 gameObject == null || m_Image == null");
+                Logger.Error($"{resName} 加载过程中 对象被摧毁了 gameObject == null || m_Image == null");
                 return;
             }
 

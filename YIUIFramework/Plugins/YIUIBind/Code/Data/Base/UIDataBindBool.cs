@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -75,7 +76,7 @@ namespace YIUIBind
 
                     return resultOr;
                 default:
-                    Log.Error($"没有其他逻辑 也不允许有其他逻辑 {m_BooleanLogic}");
+                    Logger.Error($"没有其他逻辑 也不允许有其他逻辑 {m_BooleanLogic}");
                     return false;
             }
         }

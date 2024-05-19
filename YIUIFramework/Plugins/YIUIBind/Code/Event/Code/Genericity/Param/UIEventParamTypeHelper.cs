@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -44,7 +45,7 @@ namespace YIUIBind
                 case EUIEventParamType.UnityGameObject:
                     return typeof(GameObject);
                 default:
-                    Log.Error($"没有实现这个新类型 {paramType}");
+                    Logger.Error($"没有实现这个新类型 {paramType}");
                     return typeof(int);
             }
         }
@@ -86,7 +87,7 @@ namespace YIUIBind
                 case EUIEventParamType.UnityGameObject:
                     return "GameObject";
                 default:
-                    Log.Error($"没有实现这个新类型 {paramType}");
+                    Logger.Error($"没有实现这个新类型 {paramType}");
                     return "";
             }
         }
@@ -128,7 +129,7 @@ namespace YIUIBind
                 case EUIEventParamType.UnityGameObject:
                     return "UnityEngine.GameObject";
                 default:
-                    Log.Error($"没有实现这个新类型 {paramType}");
+                    Logger.Error($"没有实现这个新类型 {paramType}");
                     return "";
             }
         }

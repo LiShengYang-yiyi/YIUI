@@ -143,7 +143,7 @@ namespace YIUIFramework.Editor
                     var atlasName = GetSpritesAtlasName(path);
                     if (string.IsNullOrEmpty(atlasName))
                     {
-                        Log.Error(texture,
+                        Logger.Error(texture,
                             $"此文件位置错误 {path}  必须在 {UIStaticHelper.UISprites}/XX 图集文件下 不可以直接在根目录");
                         continue;
                     }

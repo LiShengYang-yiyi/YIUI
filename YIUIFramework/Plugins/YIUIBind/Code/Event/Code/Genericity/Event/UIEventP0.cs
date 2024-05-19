@@ -21,7 +21,7 @@ namespace YIUIBind
         {
             if (m_UIEventDelegates == null)
             {
-                Log.DebugYellow((object)$"{EventName} 未绑定任何事件");
+                Logger.DebugYellow((object)$"{EventName} 未绑定任何事件");
                 return;
             }
 
@@ -36,7 +36,7 @@ namespace YIUIBind
                 }
                 catch (Exception e)
                 {
-                    Log.Error(e);
+                    Logger.Error(e);
                 }
 
                 itr = next;
@@ -65,7 +65,7 @@ namespace YIUIBind
 
             if (callback == null)
             {
-                Log.Error($"{EventName} 添加了一个空回调");
+                Logger.Error($"{EventName} 添加了一个空回调");
             }
 
             var handler = PublicUIEventP0.HandlerPool.Get();
@@ -79,7 +79,7 @@ namespace YIUIBind
 
             if (handle == null)
             {
-                Log.Error($"{EventName} UIEventParamHandle == null");
+                Logger.Error($"{EventName} UIEventParamHandle == null");
                 return false;
             }
 

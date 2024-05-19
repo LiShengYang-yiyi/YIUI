@@ -105,7 +105,8 @@ namespace YIUIFramework.Editor
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                // EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                Logger.DebugGreen($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)
@@ -145,7 +146,8 @@ namespace YIUIFramework.Editor
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                // EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                Logger.DebugGreen($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)
@@ -195,7 +197,8 @@ namespace YIUIFramework.Editor
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                // EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                Logger.DebugGreen($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)

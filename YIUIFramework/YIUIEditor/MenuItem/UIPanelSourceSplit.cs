@@ -60,7 +60,7 @@ namespace YIUIFramework.Editor
             PrefabUtility.SaveAsPrefabAsset(oldSource, path);
             Object.DestroyImmediate(oldSource);
             
-            Log.DebugBlue($"源数据拆分完毕");
+            Logger.DebugBlue($"源数据拆分完毕");
             AssetDatabase.Refresh();
         }
 

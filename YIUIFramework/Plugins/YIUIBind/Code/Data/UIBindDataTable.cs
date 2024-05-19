@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
+using Logger = YIUIFramework.Logger;
 
 namespace YIUIBind
 {
@@ -46,13 +47,13 @@ namespace YIUIBind
             var uiData = FindData(dataName);
             if (uiData == null)
             {
-                Log.ErrorContext(this, $"{name} 未找到这个数据请检查 {dataName}");
+                Logger.ErrorContext(this, $"{name} 未找到这个数据请检查 {dataName}");
                 return default;
             }
 
             if (uiData.DataValue == null)
             {
-                Log.ErrorContext(this, $"{name} 数据没有初始化没有值 {dataName}");
+                Logger.ErrorContext(this, $"{name} 数据没有初始化没有值 {dataName}");
                 return default;
             }
 
