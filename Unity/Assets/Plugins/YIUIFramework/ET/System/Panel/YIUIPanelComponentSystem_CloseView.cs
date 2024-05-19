@@ -6,8 +6,7 @@ namespace ET.Client
 {
     public static partial class YIUIPanelComponentSystem
     {
-        public static void CloseView<T>(this YIUIPanelComponent self, bool tween = true)
-                where T : Entity
+        public static void CloseView<T>(this YIUIPanelComponent self, bool tween = true) where T : Entity
         {
             self.CloseViewAsync<T>(tween).Coroutine();
         }
@@ -17,20 +16,17 @@ namespace ET.Client
             self.CloseViewAsync(resName, tween).Coroutine();
         }
 
-        public static async ETTask<bool> CloseViewAsync<T>(this YIUIPanelComponent self, bool tween = true)
-                where T : Entity
+        public static async ETTask<bool> CloseViewAsync<T>(this YIUIPanelComponent self, bool tween = true) where T : Entity
         {
             var (exist, entity) = self.ExistView<T>();
-            if (!exist) return true;
-
+            if (!exist) return false;
             return await CloseViewAsync(entity, tween);
         }
 
         public static async ETTask<bool> CloseViewAsync(this YIUIPanelComponent self, string resName, bool tween = true)
         {
             var (exist, entity) = self.ExistView(resName);
-            if (!exist) return true;
-
+            if (!exist) return false;
             return await CloseViewAsync(entity, tween);
         }
 
@@ -41,9 +37,7 @@ namespace ET.Client
 
             var viewComponent = uibase.GetComponent<YIUIViewComponent>(true);
             if (viewComponent == null) return false;
-
             await viewComponent.CloseAsync(tween);
-
             return true;
         }
     }
