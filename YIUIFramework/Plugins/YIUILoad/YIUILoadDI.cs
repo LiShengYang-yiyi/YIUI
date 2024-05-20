@@ -35,7 +35,7 @@ namespace YIUIFramework
       
       ------------------------------------------------------------------------------------------------------------------
       
-      // 关联YIUI工具中自动生成绑定代码
+      // 关联YIUI工具中自动生成绑定代码 YooAssetMgr版本
       UIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.UIBindProvider.Get;
       // 绑定YIUI所需方法
       YIUILoadDI.LoadAssetFunc           = YooAssetMgr.LoadAsset;
