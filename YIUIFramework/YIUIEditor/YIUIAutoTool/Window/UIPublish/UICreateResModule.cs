@@ -2,6 +2,7 @@
 
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEngine;
 using YIUIBind;
 
 namespace YIUIFramework.Editor
@@ -26,7 +27,7 @@ namespace YIUIFramework.Editor
         {
             if (string.IsNullOrEmpty(createName))
             {
-                UnityTipsHelper.ShowError("请设定 名称");
+                Debug.LogError($"请设定名称");
                 return;
             }
 
