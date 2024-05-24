@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2595369304746376112}
   - component: {fileID: 2305587912261935690}
   m_Layer: 5
-  m_Name: LoopScrollVertical
+  m_Name: LoopScrollVerticalReverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCount: 0
-  reverseDirection: 0
+  reverseDirection: 1
   m_Content: {fileID: 3069861309194926433}
   m_Horizontal: 0
   m_Vertical: 1
@@ -163,11 +163,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3069861309087383398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &3069861309194926458
 CanvasRenderer:
   m_ObjectHideFlags: 0
