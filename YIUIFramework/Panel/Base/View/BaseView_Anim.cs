@@ -10,6 +10,7 @@ namespace YIUIFramework
         {
             if (PanelMgr.IsLowQuality || WindowBanTween)
             {
+                OnOpenTweenEnd();
                 return;
             }
 
@@ -33,6 +34,7 @@ namespace YIUIFramework
         {
             if (!ActiveSelf || PanelMgr.IsLowQuality || WindowBanTween)
             {
+                OnCloseTweenEnd();
                 return;
             }
 
