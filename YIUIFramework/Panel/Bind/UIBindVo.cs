@@ -4,6 +4,7 @@ namespace YIUIFramework
 {
     /// <summary>
     /// UI资源绑定信息
+    /// 全称：UI Bind View obj
     /// </summary>
     public struct UIBindVo
     {

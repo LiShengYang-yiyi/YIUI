@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 
 namespace YIUIFramework
 {
@@ -11,43 +11,57 @@ namespace YIUIFramework
         [LabelText("无")]
         None = 0,
 
-        [LabelText("主界面统筹")]
+        [LabelText("主界面")]
         Key1 = 1,
 
-        [LabelText("主界面背包")]
+        [LabelText("变强")]
         Key2 = 2,
 
-        [LabelText("主界面装备")]
+        [LabelText("商店")]
         Key3 = 3,
 
-        [LabelText("主界面商店")]
+        [LabelText("英雄")]
         Key4 = 4,
 
-        [LabelText("背包材料")]
-        Key2001 = 2001,
+        [LabelText("背包")]
+        Key5 = 5,
 
-        [LabelText("背包装备")]
-        Key2002 = 2002,
+        [LabelText("公会")]
+        Key6 = 6,
 
-        [LabelText("背包任务")]
-        Key2003 = 2003,
+        [LabelText("提升")]
+        Key7 = 7,
 
-        [LabelText("装备强化")]
-        Key3001 = 3001,
+        [LabelText("宝石")]
+        Key8 = 8,
 
-        [LabelText("装备锻造")]
-        Key3002 = 3002,
+        [LabelText("升级")]
+        Key9 = 9,
 
-        [LabelText("装备重铸")]
-        Key3003 = 3003,
+        [LabelText("强化")]
+        Key10 = 10,
 
-        [LabelText("商店钻石")]
-        Key4001 = 4001,
+        [LabelText("宝箱")]
+        Key11 = 11,
 
-        [LabelText("商店金币")]
-        Key4002 = 4002,
+        [LabelText("金币")]
+        Key12 = 12,
 
-        [LabelText("商店宝箱")]
-        Key4003 = 4003,
+        [LabelText("天赋")]
+        Key13 = 13,
+
+        [LabelText("进阶")]
+        Key14 = 14,
+
+        [LabelText("新增")]
+        Key15 = 15,
+
+        [LabelText("合成")]
+        Key16 = 16,
+
+        [LabelText("淬炼")]
+        Key17 = 17,
+
+
     }
 }

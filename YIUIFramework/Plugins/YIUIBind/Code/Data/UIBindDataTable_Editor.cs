@@ -72,7 +72,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(m_AddUINewData.Name))
             {
-                UnityTipsHelper.ShowError($"必须填写名称才可以添加");
+                Debug.LogError($"必须填写名称才可以添加");
                 return;
             }
 

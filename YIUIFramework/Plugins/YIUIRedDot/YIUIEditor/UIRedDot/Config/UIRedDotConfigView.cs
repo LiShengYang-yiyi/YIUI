@@ -115,7 +115,7 @@ namespace YIUIFramework.Editor
             NewAddConfigEditorData();
 
             m_EditorDataSyncDirty = true;
-            UnityTipsHelper.Show($"成功添加 {keyType}");
+            Logger.DebugGreen($"成功添加 {keyType}");
         }
 
         private void NewAddConfigEditorData()
@@ -307,7 +307,14 @@ namespace YIUIFramework.Editor
             }
 
             var result = redDotConfigDAG.Check();
-            UnityTipsHelper.Show(result ? "安全 无循环嵌套" : "有循环嵌套 请详细检查");
+            if (result)
+            {
+                Logger.DebugGreen("安全 无循环嵌套");
+            }
+            else
+            {
+                UnityTipsHelper.Show("有循环嵌套 请详细检查");
+            }
         }
 
         #endregion

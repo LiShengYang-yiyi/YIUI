@@ -192,7 +192,7 @@ namespace YIUIFramework.Editor
                 }
                 else
                 {
-                    UnityTipsHelper.Show(tips);
+                    Logger.DebugGreen($"{tips}");
                 }
             }
 
@@ -272,7 +272,7 @@ namespace YIUIFramework.Editor
         {
             var (result, tips) = m_RedDotKeyAsset.RemoveKey(m_DeleteId);
             if (showTips)
-                UnityTipsHelper.Show(tips);
+                Logger.DebugRed(tips);
             m_DeleteId = 0;
             resultAction?.Invoke(result);
         }
@@ -421,7 +421,7 @@ namespace YIUIFramework.Editor
         {
             var (data, tips) = m_RedDotKeyAsset.GetKey(m_GetId);
             m_GetKeyData     = data;
-            UnityTipsHelper.Show(tips);
+            Logger.Debug(tips);
             UpdateChangeData(data);
         }
 
