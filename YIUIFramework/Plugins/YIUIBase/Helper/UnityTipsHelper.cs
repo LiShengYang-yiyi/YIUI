@@ -1,10 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿#if UNITY_EDITOR
+using System;
 using Object = UnityEngine.Object;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+
 
 namespace YIUIFramework
 {
@@ -12,14 +10,12 @@ namespace YIUIFramework
     public static class UnityTipsHelper
     {
         /// <summary>展示提示 </summary>
-        [Conditional("UNITY_EDITOR")]
         public static void Show(string content)
         {
             EditorUtility.DisplayDialog("提示", content, "确认");
         }
 
         /// <summary> 提示同时error 报错 </summary>
-        [Conditional("UNITY_EDITOR")]
         public static void ShowError(string message)
         {
             Show(message);
@@ -27,7 +23,6 @@ namespace YIUIFramework
         }
 
         /// <summary> 提示 同时error 报错 </summary>
-        [Conditional("UNITY_EDITOR")]
         public static void ShowErrorContext(Object context, string message)
         {
             Show(message);
@@ -35,7 +30,6 @@ namespace YIUIFramework
         }
 
         /// <summary> 确定 取消 回调的提示框 </summary>
-        [Conditional("UNITY_EDITOR")]
         public static void CallBack(string content, Action okCallBack, Action cancelCallBack = null)
         {
             var selectIndex = EditorUtility.DisplayDialogComplex("提示", content, "确认", "取消", null);
@@ -66,7 +60,6 @@ namespace YIUIFramework
         }
 
         /// <summary> 只有确定的提示框 </summary>
-        [Conditional("UNITY_EDITOR")]
         public static void CallBackOk(string content, Action okCallBack, Action cancelCallBack = null)
         {
             var result = EditorUtility.DisplayDialog("提示", content, "确认");
@@ -97,3 +90,4 @@ namespace YIUIFramework
         }
     }
 }
+#endif // UNITY_EDITOR

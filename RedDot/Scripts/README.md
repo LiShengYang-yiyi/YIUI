@@ -32,4 +32,31 @@
 > m_PanelMgr.OpenPanel<RedDotPanel>();
 > ```
 
+>  `UIBindProvider` 绑定信息提供器所需红点信息(运行时使用)
+> ```csharp
+> list[1] = new UIBindVo
+> {
+>   PkgName     = MizuYIUI.RedDot.RedDotPanelBase.PkgName,
+>   ResName     = MizuYIUI.RedDot.RedDotPanelBase.ResName,
+>   CodeType    = BasePanel,
+>   BaseType    = typeof(MizuYIUI.RedDot.RedDotPanelBase),
+>   CreatorType = typeof(MizuYIUI.RedDot.RedDotPanel),
+> };
+> list[13] = new UIBindVo
+> {
+>   PkgName     = MizuYIUI.RedDot.RedDotDataItemBase.PkgName,
+>   ResName     = MizuYIUI.RedDot.RedDotDataItemBase.ResName,
+>   CodeType    = BaseComponent,
+>   BaseType    = typeof(MizuYIUI.RedDot.RedDotDataItemBase),
+>   CreatorType = typeof(MizuYIUI.RedDot.RedDotDataItem),
+> };
+> list[14] = new UIBindVo
+> {
+>   PkgName     = MizuYIUI.RedDot.RedDotStackItemBase.PkgName,
+>   ResName     = MizuYIUI.RedDot.RedDotStackItemBase.ResName,
+>   CodeType    = BaseComponent,
+>   BaseType    = typeof(MizuYIUI.RedDot.RedDotStackItemBase),
+>   CreatorType = typeof(MizuYIUI.RedDot.RedDotStackItem),
+> };
+> ```
  

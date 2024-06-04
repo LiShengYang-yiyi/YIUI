@@ -56,8 +56,10 @@ namespace YIUIFramework
                 Debug.LogError($"使用非反射注册绑定 但是方法未实现 请检查");
                 return false;
             }
+            // 运行时使用外部提供的绑定提供器
             var binds = InternalGameGetUIBindVoFunc?.Invoke();
             #else
+            // 使用框架自带绑定提供器，由反射获取
             var binds = new UIBindProvider().Get();
             #endif
 

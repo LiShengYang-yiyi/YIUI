@@ -46,7 +46,9 @@ namespace YIUIFramework
     [Conditional("UNITY_EDITOR")]
     public static void SelectObj(Object obj)
     {
+#if UNITY_EDITOR
       Selection.activeObject = obj;
+#endif // UNITY_EDITOR
     }
 
     [Conditional(ENABLE_DEBUG_LOG)]

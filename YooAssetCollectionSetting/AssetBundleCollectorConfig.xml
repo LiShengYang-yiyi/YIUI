@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root Version="v2.0.0">
+  <Common ShowPackageView="False" ShowEditorAlias="True" UniqueBundleName="True" />
+  <Package PackageName="DefaultPackage" PackageDesc="默认包" AutoAddressable="True" LocationToLower="False" IncludeAssetGUID="False" IgnoreDefaultType="True">
+    <Group GroupActiveRule="EnableGroup" GroupName="YIUI" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/Res/MizuYIUI" CollectGUID="8a0d06b6406b9314483980af185d73fb" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackTopDirectory" FilterRule="CollectPrefab" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/Res/MizuYIUI" CollectGUID="8a0d06b6406b9314483980af185d73fb" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackTopDirectory" FilterRule="CollectSprite" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/Plugins/YIUI/RedDot/RedDot" CollectGUID="cfaf504f4506b414eb88955799e7d215" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackTopDirectory" FilterRule="CollectPrefab" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/Plugins/YIUI/RedDot/RedDot" CollectGUID="cfaf504f4506b414eb88955799e7d215" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackTopDirectory" FilterRule="CollectSprite" UserData="" AssetTags="" />
+    </Group>
+    <Group GroupActiveRule="EnableGroup" GroupName="ResourcesData" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/GameRes/ResourcesData" CollectGUID="716c8e00a16284ff0af1d638f537f529" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectSprite" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/ResourcesData" CollectGUID="716c8e00a16284ff0af1d638f537f529" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectShaderVariants" UserData="" AssetTags="" />
+      <Collector CollectPath="Assets/GameRes/ResourcesData" CollectGUID="716c8e00a16284ff0af1d638f537f529" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectPrefab" UserData="" AssetTags="" />
+    </Group>
+    <Group GroupActiveRule="EnableGroup" GroupName="Slimes" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/GameRes/Kawaii Slimes/Prefabs" CollectGUID="5cd1099306649244aa937b3aed157f25" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectPrefab" UserData="" AssetTags="" />
+    </Group>
+    <Group GroupActiveRule="EnableGroup" GroupName="I2Localization" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/GameRes/I2Localization" CollectGUID="e9292333419cc4e4d8740ac57b17dcf7" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+    </Group>
+    <Group GroupActiveRule="EnableGroup" GroupName="RedDot" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/GameRes/RedDot" CollectGUID="97d07c77cb31e164297f9439625ae6fe" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+    </Group>
+  </Package>
+</root>
