@@ -52,13 +52,13 @@ namespace ET.Client
                 return false;
             }
 
-            if (!info.UIWindow.WindowLastClose)
+            if (info.UIWindow is { WindowLastClose: false })
                 await info.UIWindow.InternalOnWindowCloseTween(tween);
 
             if (!ignoreElse)
                 await self.RemoveUIAddElse(info);
 
-            if (info.UIWindow.WindowLastClose)
+            if (info.UIWindow is { WindowLastClose: true })
                 await info.UIWindow.InternalOnWindowCloseTween(tween);
 
             self.RemoveUI(info);
@@ -119,7 +119,7 @@ namespace ET.Client
         /// <param name="homeName">需要被打开的界面 且这个UI是存在的 否则无法打开</param>
         /// <param name="tween">动画</param>
         /// <param name="forceHome">如果不存在则 强制打开 被强制打开的无法触发Back Home消息 只会触发常规的open close</param>
-        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true , YIUIRootComponent forceHome = null)
+        public static async ETTask<bool> HomePanel(this YIUIMgrComponent self, string homeName, bool tween = true, YIUIRootComponent forceHome = null)
         {
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> Home关闭其他所有Panel UI: {homeName} </color>");
@@ -134,7 +134,7 @@ namespace ET.Client
             {
                 if (forceHome != null)
                 {
-                    await self.CloseAll(EPanelLayer.Panel,EPanelOption.IgnoreClose,tween);
+                    await self.CloseAll(EPanelLayer.Panel, EPanelOption.IgnoreClose, tween);
                     return await forceHome.OpenPanelAsync(homeName) != null;
                 }
             }
@@ -144,7 +144,7 @@ namespace ET.Client
 
         public static async ETTask HomePanel<T>(this YIUIMgrComponent self, bool tween = true, YIUIRootComponent forceHome = null) where T : Entity
         {
-            await self.HomePanel(typeof (T).Name, tween, forceHome);
+            await self.HomePanel(typeof(T).Name, tween, forceHome);
         }
     }
 }
