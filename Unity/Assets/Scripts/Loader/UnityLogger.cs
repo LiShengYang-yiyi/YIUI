@@ -27,12 +27,12 @@ namespace ET
 
         public void Error(string msg)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             msg = Msg2LinkStackMsg(msg);
-            #endif
+#endif
             UnityEngine.Debug.LogError(msg);
         }
-
+        
         private static string Msg2LinkStackMsg(string msg)
         {
             msg = Regex.Replace(msg,@"at (.*?) in (.*?\.cs):(\w+)", match =>

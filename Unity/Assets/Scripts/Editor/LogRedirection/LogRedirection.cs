@@ -35,7 +35,7 @@ namespace ET
                     return true;
                 }
                 
-                Match stackLineMatch = Regex.Match(GetStackTrace(), @"\(at (.+):([0-9]+)\)");
+                Match stackLineMatch = Regex.Match(content, @"\(at (.+):([0-9]+)\)");
                 while (stackLineMatch.Success)
                 {
                     codePath = stackLineMatch.Groups[1].Value;
