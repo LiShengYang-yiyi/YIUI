@@ -66,7 +66,7 @@ namespace YIUIBind
 
         public override int GetHashCode()
         {
-            return GetValue().GetHashCode();
+            return GetValue()?.GetHashCode() ?? 0;
         }
 
         public static bool operator ==(UIDataValueString lhs, UIDataValueString rhs)
