@@ -80,14 +80,12 @@ namespace ET.Client
                     return;
                 }
 
-                //查看本地是否已经创建
-                var view = this.UIBase.CDETable.FindUIOwner<Entity>(viewName);
-
-                //如果没有则通用重新创建
-                view ??= YIUIFactory.CreateByObjVo(vo, viewTsf.gameObject, this.UIBase.OwnerUIEntity);
+                //通用创建 这个时候通用UI一定是没有创建的 否则就有问题
+                var view = YIUIFactory.CreateByObjVo(vo, viewTsf.gameObject, this.UIBase.OwnerUIEntity);
 
                 if (view != null)
                 {
+                    viewTsf.gameObject.SetActive(false);
                     m_ExistView.Add(viewName, view);
                 }
             }

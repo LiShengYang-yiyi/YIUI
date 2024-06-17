@@ -99,7 +99,7 @@ namespace YIUIFramework
 
         public override int GetHashCode()
         {
-            return GetValue().GetHashCode();
+            return GetValue()?.GetHashCode() ?? 0;
         }
 
         public static bool operator ==(UIDataValueListInt lhs, UIDataValueListInt rhs)
