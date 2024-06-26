@@ -50,15 +50,14 @@ namespace YIUIFramework
                     continue;
                 }
 
-                //查看本地是否已经创建
-                var viewBase = CDETable.FindUIBase<UIBase>(viewName);
+                //通用创建 这个时候通用UI一定是没有创建的 否则就有问题
+                var viewBase = YIUIFactory.CreateCommon(UIPkgName, viewName, viewTsf.gameObject);
+                if (viewBase == null)continue;
 
-                //如果没有则通用重新创建
-                viewBase ??= YIUIFactory.CreateCommon(UIPkgName, viewName, viewTsf.gameObject);
+                viewTsf.gameObject.SetActive(false);
+
                 switch (viewBase)
                 {
-                    case null:
-                        continue;
                     case BaseView baseView:
                         m_ExistView.Add(viewName, baseView);
                         break;

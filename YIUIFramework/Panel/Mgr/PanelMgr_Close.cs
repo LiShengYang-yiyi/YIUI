@@ -131,21 +131,21 @@ namespace YIUIFramework
                 }
             }
 
-            if (!info.UIBasePanel.WindowLastClose)
+            if (info.UIBasePanel is { WindowLastClose: false })
             {
                 await info.UIBasePanel.InternalOnWindowCloseTween(tween);
-                info.UIBasePanel.OnClose();
+                info.UIBasePanel?.OnClose();
             }
-            
+
             if (!ignoreElse)
                 await RemoveUIAddElse(info);
-            
-            if (info.UIBasePanel.WindowLastClose)
+
+            if (info.UIBasePanel is { WindowLastClose: true })
             {
                 await info.UIBasePanel.InternalOnWindowCloseTween(tween);
-                info.UIBasePanel.OnClose();
+                info.UIBasePanel?.OnClose();
             }
-            
+
             RemoveUI(info);
         }
 
