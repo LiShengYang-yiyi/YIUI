@@ -200,8 +200,6 @@ namespace YIUIFramework.Editor
                 //这里使用的是强判断 如果使用|| 可以弱判断根据需求  如果遵守View规则是没有问题的
                 if (parentName.Contains(UIStaticHelper.UIParentName) && parentName.Contains(targetTable.gameObject.name))
                 {
-                    //常驻View 不需要移除
-                    if (cdeTable.PanelSplitData.AllCommonView.Contains(parent)) break;
                     addCdeTable.RemoveAt(i);
                 }
             }
