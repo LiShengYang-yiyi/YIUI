@@ -67,10 +67,25 @@ namespace YIUIFramework
                 return null;
             }
 
+            var lastActive = obj.activeSelf;
+            if (!lastActive)
+            {
+                //加载时必须保证处于激活状态 否则一些Mono相关未初始化导致不可预知的错误
+                obj.SetActive(true);
+            }
+
             var uiBase    = parentEntity.AddChild<YIUIComponent, YIUIBindVo, GameObject>(vo, obj);
-            var component = uiBase.AddYIUIChild(vo.ComponentType);
+            var component = uiBase.AddComponent(vo.ComponentType);
             cdeTable.CreateComponent(component);
             uiBase.InitOwnerUIEntity(component); //这里就是要晚于其他内部组件这样才能访问时别人已经初始化好了
+
+            if (!lastActive)
+            {
+                //如果之前是隐藏的状态 则还原
+                //此时已经初始化完毕 所以可能会收到被隐藏的消息 请自行酌情处理
+                obj.SetActive(false);
+            }
+
             return component;
         }
 
@@ -84,15 +99,30 @@ namespace YIUIFramework
                     continue;
                 }
 
+                var childGameObject = childCde.gameObject;
+                var lastActive      = childGameObject.activeSelf;
+                if (!lastActive)
+                {
+                    //加载时必须保证处于激活状态 否则一些Mono相关未初始化导致不可预知的错误
+                    childCde.gameObject.SetActive(true);
+                }
+
                 var data = YIUIBindHelper.GetBindVoByPath(childCde.PkgName, childCde.ResName);
                 if (data == null) continue;
                 var vo = data.Value;
 
-                var uiBase    = parentEntity.AddChild<YIUIComponent, YIUIBindVo, GameObject>(vo, childCde.gameObject);
-                var component = uiBase.AddYIUIChild(vo.ComponentType);
+                var uiBase    = parentEntity.AddChild<YIUIComponent, YIUIBindVo, GameObject>(vo, childGameObject);
+                var component = uiBase.AddComponent(vo.ComponentType);
                 cdeTable.AddUIOwner(childCde.gameObject.name, component);
                 childCde.CreateComponent(component);
                 uiBase.InitOwnerUIEntity(component); //这里就是要晚于其他内部组件这样才能访问时别人已经初始化好了
+
+                if (!lastActive)
+                {
+                    //如果之前是隐藏的状态 则还原
+                    //此时已经初始化完毕 所以可能会收到被隐藏的消息 请自行酌情处理
+                    childGameObject.SetActive(false);
+                }
             }
         }
     }

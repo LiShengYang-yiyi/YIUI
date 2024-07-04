@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ET
 {
@@ -8,36 +9,6 @@ namespace ET
     /// </summary>
     public partial class Entity
     {
-        public Entity AddComponentByType(Type type, bool isFromPool = false)
-        {
-            if (this.components != null && this.components.ContainsKey(type))
-            {
-                throw new Exception($"entity already has component: {type.FullName}");
-            }
-
-            Entity component = Create(type, isFromPool);
-            component.Id              = this.Id;
-            component.ComponentParent = this;
-            EventSystem.Instance.Awake(component);
-
-            if (this is IAddComponent)
-            {
-                EventSystem.Instance.AddComponent(this, component);
-            }
-
-            return component;
-        }
-
-        public Entity AddChildByType(Type type, long id, bool isFromPool = false)
-        {
-            Entity child = Create(type, isFromPool);
-            child.Id     = id;
-            child.Parent = this;
-
-            EventSystem.Instance.Awake(child);
-            return child;
-        }
-
         //虽然使用 AddChild也可以实现 但是为了保持一致性 还是写一个方法
         //另外就是跳过分析器检查 这是YIUI使用的 确定不会有问题
         public void SetParent(Entity target)
@@ -45,26 +16,6 @@ namespace ET
             if (target == null) return;
             if (this.Parent == target) return;
             this.Parent = target;
-        }
-
-        public Entity AddYIUIChild(Type childType, bool isFromPool = false)
-        {
-            var component = Create(childType, isFromPool);
-            component.Id     = IdGenerater.Instance.GenerateId();
-            component.Parent = this;
-
-            EventSystem.Instance.Awake(component);
-            return component;
-        }
-
-        public Entity AddYIUIChild<A>(Type childType, A a, bool isFromPool = false)
-        {
-            var component = Create(childType, isFromPool);
-            component.Id     = IdGenerater.Instance.GenerateId();
-            component.Parent = this;
-
-            EventSystem.Instance.Awake(component, a);
-            return component;
         }
 
         //自定义扩展 获取不到就报错 不管你log是true 还是false
@@ -107,10 +58,20 @@ namespace ET
         // 清理Children
         public void DisposeChildren()
         {
+            // 清理Children
             if (this.children != null)
             {
-                var tempChildren = this.children;
+                var tempChildren = ObjectPool.Instance.Fetch<Dictionary<long, Entity>>();
+
+                foreach (var child in this.children.Values)
+                {
+                    tempChildren.Add(child.Id, child);
+                }
+
                 this.children.Clear();
+                ObjectPool.Instance.Recycle(this.children);
+                this.children = null;
+
                 foreach (Entity child in tempChildren.Values)
                 {
                     child.Dispose();
@@ -119,7 +80,15 @@ namespace ET
                 if (this.childrenDB != null)
                 {
                     this.childrenDB.Clear();
+                    if (this.IsNew)
+                    {
+                        ObjectPool.Instance.Recycle(this.childrenDB);
+                        this.childrenDB = null;
+                    }
                 }
+
+                tempChildren.Clear();
+                ObjectPool.Instance.Recycle(tempChildren);
             }
         }
     }
