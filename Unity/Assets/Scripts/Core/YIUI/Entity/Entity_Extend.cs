@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ET
 {
@@ -8,24 +9,6 @@ namespace ET
     /// </summary>
     public partial class Entity
     {
-        public Entity AddYIUIChild(Type childType, bool isFromPool = false)
-        {
-            var component = Create(childType, isFromPool);
-            component.Id     = IdGenerater.Instance.GenerateId();
-            component.Parent = this;
-            EntitySystemSingleton.Instance.Awake(component);
-            return component;
-        }
-
-        public Entity AddYIUIChild<A>(Type childType, A a, bool isFromPool = false)
-        {
-            var component = Create(childType, isFromPool);
-            component.Id     = IdGenerater.Instance.GenerateId();
-            component.Parent = this;
-            EntitySystemSingleton.Instance.Awake(component, a);
-            return component;
-        }
-
         //虽然使用 AddChild也可以实现 但是为了保持一致性 还是写一个方法
         //另外就是跳过分析器检查 这是YIUI使用的 确定不会有问题
         public void SetParent(Entity target)
@@ -74,10 +57,20 @@ namespace ET
         // 清理Children
         public void DisposeChildren()
         {
+            // 清理Children
             if (this.children != null)
             {
-                var tempChildren = this.children;
+                var tempChildren = ObjectPool.Instance.Fetch<SortedDictionary<long, Entity>>();
+
+                foreach (var child in this.children.Values)
+                {
+                    tempChildren.Add(child.Id, child);
+                }
+
                 this.children.Clear();
+                ObjectPool.Instance.Recycle(this.children);
+                this.children = null;
+
                 foreach (Entity child in tempChildren.Values)
                 {
                     child.Dispose();
@@ -86,7 +79,15 @@ namespace ET
                 if (this.childrenDB != null)
                 {
                     this.childrenDB.Clear();
+                    if (this.IsNew)
+                    {
+                        ObjectPool.Instance.Recycle(this.childrenDB);
+                        this.childrenDB = null;
+                    }
                 }
+
+                tempChildren.Clear();
+                ObjectPool.Instance.Recycle(tempChildren);
             }
         }
     }
