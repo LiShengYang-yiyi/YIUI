@@ -67,9 +67,24 @@ namespace YIUIFramework
                 return null;
             }
 
+            var lastActive = cdeTable.gameObject.activeSelf;
+            if (!lastActive)
+            {
+                //加载时必须保证处于激活状态 否则一些Mono相关未初始化导致不可预知的错误
+                cdeTable.gameObject.SetActive(true);
+            }
+
             cdeTable.CreateComponent();
             var uiBase = (UIBase)Activator.CreateInstance(vo.CreatorType);
             uiBase.InitUIBase(vo, obj);
+
+            if (!lastActive)
+            {
+                //如果之前是隐藏的状态 则还原
+                //此时已经初始化完毕 所以可能会收到被隐藏的消息 请自行酌情处理
+                cdeTable.gameObject.SetActive(false);
+            }
+
             return uiBase;
         }
 
@@ -83,6 +98,13 @@ namespace YIUIFramework
                     continue;
                 }
 
+                var lastActive = childCde.gameObject.activeSelf;
+                if (!lastActive)
+                {
+                    //加载时必须保证处于激活状态 否则一些Mono相关未初始化导致不可预知的错误
+                    childCde.gameObject.SetActive(true);
+                }
+
                 var bingVo = UIBindHelper.GetBindVoByPath(childCde.PkgName, childCde.ResName);
                 if (bingVo == null) continue;
 
@@ -90,6 +112,13 @@ namespace YIUIFramework
                 childCde.CreateComponent();
                 childBase.InitUIBase(bingVo.Value, childCde.gameObject);
                 cdeTable.AddUIBase(childCde.gameObject.name, childBase);
+
+                if (!lastActive)
+                {
+                    //如果之前是隐藏的状态 则还原
+                    //此时已经初始化完毕 所以可能会收到被隐藏的消息 请自行酌情处理
+                    childCde.gameObject.SetActive(false);
+                }
             }
         }
     }
