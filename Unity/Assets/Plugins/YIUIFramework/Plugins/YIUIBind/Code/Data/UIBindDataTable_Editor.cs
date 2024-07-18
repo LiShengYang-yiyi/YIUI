@@ -27,6 +27,14 @@ namespace YIUIFramework
                     continue;
                 }
 
+                var uiData = m_DataDic[oldName];
+                if (uiData?.DataValue == null)
+                {
+                    Debug.LogError($"数据 {oldName} 为空 已移除请重新添加");
+                    m_DataDic.Remove(oldName);
+                    continue;
+                }
+
                 var newName = oldName;
 
                 if (!oldName.CheckFirstName(NameUtility.DataName))
@@ -38,7 +46,6 @@ namespace YIUIFramework
 
                 if (oldName != newName)
                 {
-                    var uiData = m_DataDic[oldName];
                     m_DataDic.Remove(oldName);
                     m_DataDic.Add(newName, uiData);
                 }
@@ -79,6 +86,12 @@ namespace YIUIFramework
             if (m_DataDic.ContainsKey(m_AddUINewData.Name))
             {
                 UnityTipsHelper.ShowError($"已存在同名数据  请修改 {m_AddUINewData.Name}");
+                return;
+            }
+
+            if (m_AddUINewData.Data == null)
+            {
+                UnityTipsHelper.ShowError($"必须选择数据类型才可以添加  请修改 {m_AddUINewData.Name}");
                 return;
             }
 
