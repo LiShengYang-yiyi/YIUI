@@ -10,5 +10,11 @@ namespace YIUIFramework
 
         [LabelText("淡入淡出")]
         Fade,
+
+        [LabelText("淡入")]
+        FadeIn,
+
+        [LabelText("淡出")]
+        FadeOut,
     }
 }
