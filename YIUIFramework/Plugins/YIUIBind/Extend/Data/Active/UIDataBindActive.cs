@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using YIUIFramework;
 
 namespace YIUIBind
 {
