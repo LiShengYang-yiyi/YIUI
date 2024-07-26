@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using YIUIFramework;
 
 namespace YIUIBind
 {
@@ -14,8 +15,8 @@ namespace YIUIBind
 
         [SerializeField]
         [LabelText("过度时间")]
-        [ShowIf("m_TransitionMode", UITransitionModeEnum.Fade)]
-        private float m_TransitionTime = 0.1f;
+        [HideIf("m_TransitionMode", UITransitionModeEnum.Instant)]
+        private float m_TransitionTime = 0.5f;
 
         private CanvasGroup m_CanvasGroup;
 
@@ -34,30 +35,58 @@ namespace YIUIBind
             {
                 if (m_CanvasGroup == null)
                 {
-                    m_CanvasGroup =
-                        gameObject.GetComponent<CanvasGroup>();
+                    m_CanvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
                 }
 
                 if (m_CanvasGroup != null)
                 {
-                    gameObject.SetActive(true);
-                    if (gameObject.activeInHierarchy)
+                    StopAllCoroutines();
+
+                    switch (m_TransitionMode)
                     {
-                        StopAllCoroutines();
-                        if (result)
-                        {
-                            StartCoroutine(TransitionFade(
-                                m_CanvasGroup, 1.0f, true));
-                        }
-                        else
-                        {
-                            StartCoroutine(TransitionFade(
-                                m_CanvasGroup, 0.0f, false));
-                        }
-                    }
-                    else
-                    {
-                        gameObject.SetActive(result);
+                        case UITransitionModeEnum.Fade:
+                            if (result)
+                            {
+                                gameObject.SetActive(true);
+                                StartCoroutine(TransitionFade(m_CanvasGroup, 1.0f, true));
+                            }
+                            else
+                            {
+                                StartCoroutine(TransitionFade(m_CanvasGroup, 0.0f, false));
+                            }
+
+                            break;
+                        case UITransitionModeEnum.FadeIn:
+                            if (result)
+                            {
+                                gameObject.SetActive(true);
+                                m_CanvasGroup.alpha = 0;
+                                StartCoroutine(TransitionFade(m_CanvasGroup, 1.0f, true));
+                            }
+                            else
+                            {
+                                gameObject.SetActive(false);
+                            }
+
+                            break;
+                        case UITransitionModeEnum.FadeOut:
+                            if (result)
+                            {
+                                m_CanvasGroup.alpha = 1f;
+                                gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                m_CanvasGroup.alpha = 1f;
+                                StartCoroutine(TransitionFade(m_CanvasGroup, 0.0f, false));
+                            }
+
+                            break;
+                        case UITransitionModeEnum.Instant:
+                        default:
+                            gameObject.SetActive(result);
+                            Debug.LogError($"不支持的功能 {m_TransitionMode}");
+                            break;
                     }
                 }
                 else
@@ -67,8 +96,7 @@ namespace YIUIBind
             }
         }
 
-        private IEnumerator TransitionFade(
-            CanvasGroup group, float alphaTarget, bool activeTarget)
+        private IEnumerator TransitionFade(CanvasGroup group, float alphaTarget, bool activeTarget)
         {
             var leftTime   = m_TransitionTime;
             var alphaStart = group.alpha;
@@ -76,10 +104,9 @@ namespace YIUIBind
             {
                 yield return null;
                 leftTime -= Time.deltaTime;
-                var alpha = Mathf.Lerp(
-                    alphaStart,
-                    alphaTarget,
-                    1.0f - (leftTime / m_TransitionTime));
+                var alpha = Mathf.Lerp(alphaStart,
+                                       alphaTarget,
+                                       1.0f - (leftTime / m_TransitionTime));
                 group.alpha = alpha;
             }
 
