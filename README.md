@@ -48,4 +48,4 @@ ET9.0 [YIUI包目录](https://lib9kmxvq7k.feishu.cn/wiki/XJxLwzTlViqD5TkSAw1c32R
 # QQ群: 833479762
 
 # 支持
-[如果觉得YIUI对您有帮助!](Readme.支持.md)
+[如果觉得YIUI对您有帮助!](https://github.com/LiShengYang-yiyi/YIUI/blob/main/Readme/支持.md)
