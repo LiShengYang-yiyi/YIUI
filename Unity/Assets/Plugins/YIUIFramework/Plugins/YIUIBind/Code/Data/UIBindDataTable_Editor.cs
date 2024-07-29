@@ -72,7 +72,7 @@ namespace YIUIFramework
 
         [GUIColor(0, 1, 0)]
         [BoxGroup("添加新数据")]
-        [Button("添加")]
+        [Button("添加",40)]
         [PropertyOrder(-98)]
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
         private void AddNewData()
@@ -102,6 +102,22 @@ namespace YIUIFramework
             m_AddUINewData = new UINewData();
 
             AutoCheck();
+        }
+
+        [BoxGroup("添加新数据")]
+        [Button("重置",20)]
+        [PropertyOrder(-97)]
+        [ShowIf("ShowIfResetNewData")]
+        private void ResetNewData()
+        {
+            var lastName = m_AddUINewData.Name;
+            m_AddUINewData = new UINewData();
+            m_AddUINewData.Name = lastName;
+        }
+
+        private bool ShowIfResetNewData()
+        {
+            return UIOperationHelper.CommonShowIf() && m_AddUINewData?.Data != null;
         }
 
         private void RemoveCallBack(UIData data)
