@@ -15,6 +15,7 @@ ET7.2 [详细查看7.2分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI
 
 ET8.1 [详细查看8.1分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET8.1)
 
+ET9.0 [YIUI包目录](https://lib9kmxvq7k.feishu.cn/wiki/XJxLwzTlViqD5TkSAw1c32Rqnd1)
 
 # [视频教程](https://www.bilibili.com/video/BV1cz4y1s7QS)  
 
@@ -45,3 +46,6 @@ ET8.1 [详细查看8.1分支](https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI
 ![二维码](https://github.com/LiShengYang-yiyi/YIUI/blob/main/Readme/YIUI框架讨论群二维码.png)
 
 # QQ群: 833479762
+
+# 支持
+[如果觉得YIUI对您有帮助!](https://github.com/LiShengYang-yiyi/YIUI/blob/main/Readme/支持.md)
