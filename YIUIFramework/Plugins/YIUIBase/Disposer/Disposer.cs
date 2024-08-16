@@ -7,19 +7,21 @@
     /// </summary>
     public abstract class Disposer : IDisposer
     {
+        private bool m_Disposed;
+        
         public bool Disposed
         {
-            get { return m_disposed; }
+            get { return m_Disposed; }
         }
 
         public bool Dispose()
         {
-            if (m_disposed)
+            if (m_Disposed)
             {
                 return false;
             }
 
-            m_disposed = true;
+            m_Disposed = true;
             OnDispose();
             return true;
         }
@@ -28,7 +30,5 @@
         /// 处理释放相关事情
         /// </summary>
         protected abstract void OnDispose();
-
-        private bool m_disposed;
     }
 }
