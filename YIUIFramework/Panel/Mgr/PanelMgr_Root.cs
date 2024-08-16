@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using YIUIBind;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
+
 
 namespace YIUIFramework
 {
@@ -17,8 +16,14 @@ namespace YIUIFramework
         private struct PanelGroup
         {
             /// <summary> 当前Layer下所有Panel面板Root </summary>
-            public RectTransform PanelRoot;
-            public List<PanelInfo> AllPanel;
+            public readonly RectTransform PanelRoot;
+            public readonly List<PanelInfo> AllPanel;
+
+            public PanelGroup(RectTransform panelRoot)
+            {
+                PanelRoot = panelRoot;
+                AllPanel = new List<PanelInfo>();
+            }
         }
         
         public       GameObject    UIRoot;
@@ -31,8 +36,8 @@ namespace YIUIFramework
         public const float         DesignScreenWidth_F  = 1920f;
         public const float         DesignScreenHeight_F = 1080f;
 
-        private const int RootPosOffset = 1000;
-        private const int LayerDistance = 1000;
+        private const int RootPosOffset = 1000; // 修改可设置UI根位置
+        private const int LayerDistance = 1000; // UI每个层级之间z轴的间距
 
         #region 以下名称 禁止修改
 
@@ -127,8 +132,7 @@ namespace YIUIFramework
                 rect.sizeDelta     = Vector2.zero;
                 rect.localRotation = Quaternion.identity;
                 rect.localPosition = new Vector3(0, 0, i * LayerDistance); //这个是为了3D模型时穿插的问题
-                var panelG = new PanelGroup() { PanelRoot = rect, AllPanel = new List<PanelInfo>() };
-                m_AllPanelLayer.Add((EPanelLayer)i, panelG);
+                m_AllPanelLayer.Add((EPanelLayer)i, new PanelGroup(rect));
             }
 
             InitAddUIBlock(); //所有层级初始化后添加一个终极屏蔽层 可根据API 定时屏蔽UI操作
@@ -140,10 +144,11 @@ namespace YIUIFramework
             UICamera.orthographic = true;
             
             //根据需求可以修改摄像机的远剪裁平面大小 没必要设置的很大
-            //UICamera.farClipPlane = ((len + 1) * LayerDistance) * UICanvasRoot.transform.localScale.x; 
+            // UICamera.farClipPlane = ((len + 1) * LayerDistance) * UICanvasRoot.transform.localScale.x; 
             return true;
         }
 
+        /// <summary> 移除所有面板对象 </summary>
         private void ResetRoot()
         {
             for (int i = UILayerRoot.transform.childCount - 1; i >= 0; i--)
@@ -186,6 +191,7 @@ namespace YIUIFramework
 
         #endregion
 
+        /// <summary> 获取层级的根对象 Root </summary>
         public RectTransform GetLayerRect(EPanelLayer panelLayer)
         {
             if (m_AllPanelLayer.TryGetValue(panelLayer, out var panelGroup))
@@ -197,6 +203,7 @@ namespace YIUIFramework
             return null;
         }
 
+        /// <summary> 获取指定层下所有面板信息 </summary>
         private List<PanelInfo> GetLayerPanelInfoList(EPanelLayer panelLayer)
         {
             if (m_AllPanelLayer.TryGetValue(panelLayer, out var panelGroup))
@@ -208,6 +215,7 @@ namespace YIUIFramework
             return null;
         }
 
+        /// <summary> 移除面板信息 </summary>
         private bool RemoveLayerPanelInfo(EPanelLayer panelLayer, PanelInfo panelInfo)
         {
             var list = GetLayerPanelInfoList(panelLayer);

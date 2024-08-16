@@ -63,7 +63,7 @@ namespace YIUIFramework
         /// 参数3: Type 需要加载的资源类型 <br/>
         /// 返回值: obj对象与对象资源句柄ID
         /// </summary>
-        public static Func<string, string, Type, UniTask<(Object, int)>> LoadAssetAsyncFunc { internal get; set; }
+		public static Func<string, string, Type, UniTask<(Object, int)>> LoadAssetAsyncFunc { internal get; set; }
         
         /// <summary> 验证指定包里资源是否有效 <br/>
         /// 参数1: pkgName 包名 <br/>

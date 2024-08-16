@@ -10,7 +10,8 @@ namespace YIUIFramework
     {
         //业务代码相关程序集的名字
         //默认有Unity默认程序集 可以根据需求修改
-        internal static string[] LogicAssemblyNames = { "Assembly-CSharp", "Assembly-CSharp-firstpass" };
+        internal static string[] LogicAssemblyNames 
+            = { "Assembly-CSharp", "Assembly-CSharp-firstpass" };
 
         private static Type[] GetLogicTypes()
         {

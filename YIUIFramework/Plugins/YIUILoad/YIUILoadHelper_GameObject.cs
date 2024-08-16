@@ -12,7 +12,7 @@ namespace YIUIFramework
     /// </summary>
     internal static partial class YIUILoadHelper
     {
-        private static Dictionary<Object, Object> g_ObjectMap = new Dictionary<Object, Object>();
+        private static readonly Dictionary<Object, Object> s_ObjectMap = new Dictionary<Object, Object>();
 
         /// <summary>
         /// 同步加载 并实例化
@@ -22,7 +22,7 @@ namespace YIUIFramework
             var asset = LoadAsset<GameObject>(pkgName, resName);
             if (asset == null) return null;
             var obj = Object.Instantiate(asset);
-            g_ObjectMap.Add(obj, asset);
+            s_ObjectMap.Add(obj, asset);
             return obj;
         }
 
@@ -34,13 +34,13 @@ namespace YIUIFramework
             var asset = await LoadAssetAsync<GameObject>(pkgName, resName);
             if (asset == null) return null;
             var obj = Object.Instantiate(asset);
-            g_ObjectMap.Add(obj, asset);
+            s_ObjectMap.Add(obj, asset);
             return obj;
         }
 
         /// <summary>
         /// 异步加载资源对象
-        /// 回调类型
+        /// 回调类型，回调参数为加载成功的资源实例对象
         /// </summary>
         internal static async UniTask LoadAssetAsyncInstantiate(string pkgName, string resName, Action<Object> action)
         {
@@ -54,13 +54,14 @@ namespace YIUIFramework
             action?.Invoke(obj);
         }
 
-        /// <summary>
-        /// 释放由 实例化出来的GameObject
-        /// </summary>
+        /// <summary> 释放由资源对象实例化出来的实例GameObject </summary>
         internal static void ReleaseInstantiate(Object gameObject)
         {
-            if (!g_ObjectMap.TryGetValue(gameObject, out var asset)) return;
-            g_ObjectMap.Remove(gameObject);
+            if (!s_ObjectMap.Remove(gameObject, out var asset))
+            {
+                return;
+            }
+            
             Release(asset);
         }
     }

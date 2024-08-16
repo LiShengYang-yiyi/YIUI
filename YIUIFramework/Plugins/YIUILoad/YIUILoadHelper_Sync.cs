@@ -14,23 +14,29 @@ namespace YIUIFramework
          * 比如你想自己new一个obj 既然不是用UI框架内部提供的方法 那就应该你自行实现不要调用这个类
          */
 
+        /// <summary> 同步加载资源对象 </summary>
         internal static T LoadAsset<T>(string pkgName, string resName) where T : Object
         {
+            // 如果有缓存则取缓存里的
             var load = LoadHelper.GetLoad(pkgName, resName);
             load.AddRefCount();
-            var loadObj = load.Object;
+            var loadObj = load.AssetObject;
             if (loadObj != null)
             {
                 return (T)loadObj;
             }
 
+            // 开始加载
             var (obj, hashCode) = YIUILoadDI.LoadAssetFunc(pkgName, resName, typeof(T));
+            
+            // 加载失败
             if (obj == null)
             {
                 load.RemoveRefCount();
                 return null;
             }
 
+            // 添加加载句柄失败，重复创建资产
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
                 load.RemoveRefCount();

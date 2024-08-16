@@ -40,7 +40,7 @@ namespace YIUIFramework
 
         /// <summary>
         /// 场景层
-        /// 比如 血条飘字不是做在3D时 用2D实现时的层
+        /// 比如 血条飘字不是做在3D而是用2D实现时，所用到的层
         /// 比如 头像 ...
         /// </summary>
         [LabelText("场景层")]

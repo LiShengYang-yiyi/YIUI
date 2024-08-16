@@ -16,35 +16,36 @@ namespace YIUIFramework
         /// </summary>
         internal static async UniTask<T> LoadAssetAsync<T>(string pkgName, string resName) where T : Object
         {
+            // 如果有缓存则取缓存里的
             var load = LoadHelper.GetLoad(pkgName, resName);
             load.AddRefCount();
-            var loadObj = load.Object;
+            var loadObj = load.AssetObject;
             if (loadObj != null)
             {
                 return (T)loadObj;
             }
 
+            // 否则等待其他对象的异步加载，触发此处的原因在下面
             if (load.WaitAsync)
             {
                 await UniTask.WaitUntil(() => !load.WaitAsync);
 
-                loadObj = load.Object;
+                loadObj = load.AssetObject;
 
                 if (loadObj != null)
                 {
                     return (T)loadObj;
                 }
-                else
-                {
-                    load.RemoveRefCount();
-                    return null;
-                }
+
+                load.RemoveRefCount();
+                return null;
             }
 
+            // 打开开始异步加载
             load.SetWaitAsync(true);
-
             var (obj, hashCode) = await YIUILoadDI.LoadAssetAsyncFunc(pkgName, resName, typeof(T));
 
+            // 加载失败
             if (obj == null)
             {
                 load.SetWaitAsync(false);
@@ -52,6 +53,7 @@ namespace YIUIFramework
                 return null;
             }
 
+            // 添加加载句柄失败，重复创建资产
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
                 load.SetWaitAsync(false);
@@ -66,7 +68,7 @@ namespace YIUIFramework
 
         /// <summary>
         /// 异步加载资源对象
-        /// 回调类型
+        /// 回调类型，回调参数为加载成功的资源对象
         /// </summary>
         internal static void LoadAssetAsync<T>(string pkgName, string resName, Action<T> action) where T : Object
         {

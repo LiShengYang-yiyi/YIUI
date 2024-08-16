@@ -12,21 +12,26 @@ namespace YIUIFramework
     {
         internal static Object LoadAsset(string pkgName, string resName, Type assetType)
         {
+            // 如果有缓存则取缓存里的
             var load = LoadHelper.GetLoad(pkgName, resName);
             load.AddRefCount();
-            var loadObj = load.Object;
+            var loadObj = load.AssetObject;
             if (loadObj != null)
             {
                 return loadObj;
             }
 
+            // 开始加载
             var (obj, hashCode) = YIUILoadDI.LoadAssetFunc(pkgName, resName, assetType);
+            
+            // 加载失败
             if (obj == null)
             {
                 load.RemoveRefCount();
                 return null;
             }
 
+            // 添加加载句柄失败，重复创建资产
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
                 load.RemoveRefCount();
@@ -39,34 +44,35 @@ namespace YIUIFramework
 
         internal static async UniTask<Object> LoadAssetAsync(string pkgName, string resName, Type assetType)
         {
+            // 如果有缓存则取缓存里的
             var load = LoadHelper.GetLoad(pkgName, resName);
             load.AddRefCount();
-            var loadObj = load.Object;
+            var loadObj = load.AssetObject;
             if (loadObj != null)
             {
                 return loadObj;
             }
 
+            // 否则等待其他对象的异步加载，触发此处的原因在下面
             if (load.WaitAsync)
             {
                 await UniTask.WaitUntil(() => !load.WaitAsync);
 
-                loadObj = load.Object;
+                loadObj = load.AssetObject;
                 if (loadObj != null)
                 {
                     return loadObj;
                 }
-                else
-                {
-                    load.RemoveRefCount();
-                    return null;
-                }
+
+                load.RemoveRefCount();
+                return null;
             }
 
+            // 打开开始异步加载
             load.SetWaitAsync(true);
-
             var (obj, hashCode) = await YIUILoadDI.LoadAssetAsyncFunc(pkgName, resName, assetType);
 
+            // 加载失败
             if (obj == null)
             {
                 load.SetWaitAsync(false);
@@ -74,6 +80,7 @@ namespace YIUIFramework
                 return null;
             }
 
+            // 添加加载句柄失败，重复创建资产
             if (!LoadHelper.AddLoadHandle(obj, load))
             {
                 load.SetWaitAsync(false);
@@ -86,6 +93,10 @@ namespace YIUIFramework
             return obj;
         }
 
+        /// <summary>
+        /// 异步加载资产对象
+        /// 回调参数为加载成功的资产对象
+        /// </summary>
         internal static void LoadAssetAsync(string pkgName, string resName, Type assetType, Action<Object> action)
         {
             LoadAssetAsyncAction(pkgName, resName, assetType, action).Forget();

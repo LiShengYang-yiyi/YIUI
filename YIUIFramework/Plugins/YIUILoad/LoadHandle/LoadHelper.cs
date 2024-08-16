@@ -4,24 +4,28 @@ namespace YIUIFramework
 {
     internal static partial class LoadHelper
     {
-        private static string s_NullPkgName = "Default";
+        /// <summary> 默认包名 </summary>
+        private const string NullPkgName = "Default";
 
-        private static Dictionary<string, Dictionary<string, LoadHandle>> m_AllLoadDic =
+        // <包名，<资源名，加载资源对象句柄>>
+        private static readonly Dictionary<string, Dictionary<string, LoadHandle>> s_AllLoadDic =
             new Dictionary<string, Dictionary<string, LoadHandle>>();
 
+
+        /// <summary> 通过包名与资源名获取加载资源对象句柄 </summary>
         internal static LoadHandle GetLoad(string pkgName, string resName)
         {
             if (string.IsNullOrEmpty(pkgName))
             {
-                pkgName = s_NullPkgName;
+                pkgName = NullPkgName;
             }
 
-            if (!m_AllLoadDic.ContainsKey(pkgName))
+            if (!s_AllLoadDic.ContainsKey(pkgName))
             {
-                m_AllLoadDic.Add(pkgName, new Dictionary<string, LoadHandle>());
+                s_AllLoadDic.Add(pkgName, new Dictionary<string, LoadHandle>());
             }
 
-            var pkgDic = m_AllLoadDic[pkgName];
+            var pkgDic = s_AllLoadDic[pkgName];
 
             if (!pkgDic.ContainsKey(resName))
             {
@@ -33,19 +37,20 @@ namespace YIUIFramework
             return pkgDic[resName];
         }
 
+        /// <summary> 通过包名与资源名移除加载资源对象句柄 </summary>
         internal static bool PutLoad(string pkgName, string resName)
         {
             if (string.IsNullOrEmpty(pkgName))
             {
-                pkgName = s_NullPkgName;
+                pkgName = NullPkgName;
             }
 
-            if (!m_AllLoadDic.ContainsKey(pkgName))
+            if (!s_AllLoadDic.ContainsKey(pkgName))
             {
                 return false;
             }
 
-            var pkgDic = m_AllLoadDic[pkgName];
+            var pkgDic = s_AllLoadDic[pkgName];
 
             if (!pkgDic.ContainsKey(resName))
             {
@@ -59,18 +64,20 @@ namespace YIUIFramework
             return true;
         }
 
+        /// <summary> 移除所有资源加载对象 </summary>
         internal static void PutAll()
         {
-            foreach (var pkgDic in m_AllLoadDic.Values)
+            foreach (var pkgDic in s_AllLoadDic.Values)
             {
                 foreach (var load in pkgDic.Values)
                 {
                     RefPool.Put(load);
                 }
+                pkgDic.Clear();
             }
 
-            m_AllLoadDic.Clear();
-            m_ObjLoadHandle.Clear();
+            s_AllLoadDic.Clear();
+            s_ObjLoadHandle.Clear();
         }
     }
 }
