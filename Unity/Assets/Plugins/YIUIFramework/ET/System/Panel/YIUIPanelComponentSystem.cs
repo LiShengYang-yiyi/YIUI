@@ -26,6 +26,7 @@ namespace ET.Client
         {
             protected override void Destroy(YIUIPanelComponent self)
             {
+                self.StopCountDownDestroyPanel();
                 YIUIMgrComponent.Inst?.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
             }
         }
