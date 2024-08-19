@@ -22,6 +22,7 @@ namespace ET.Client
         [EntitySystem]
         private static void Destroy(this YIUIPanelComponent self)
         {
+            self.StopCountDownDestroyPanel();
             YIUIMgrComponent.Inst?.DestroyPanel(self.UIBase.UIBindVo.ComponentType.Name);
         }
     }

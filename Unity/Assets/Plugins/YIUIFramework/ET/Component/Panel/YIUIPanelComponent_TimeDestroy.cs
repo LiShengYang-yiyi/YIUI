@@ -43,6 +43,7 @@ namespace ET.Client
                 return;
             }
 
+            m_Token = null;
             YIUIMgrComponent.Inst.RemoveUIReset(this.UIBase.UIName);
         }
     }
