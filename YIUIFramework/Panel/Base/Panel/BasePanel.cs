@@ -40,6 +40,7 @@
 
         protected sealed override void SealedOnDestroy()
         {
+            StopCountDownDestroyPanel();
         }
 
         #endregion
