@@ -21,7 +21,6 @@ namespace YIUIFramework.Editor
         private static bool AddYIUIComponentTableValidate(MenuCommand command)
         {
             if (Selection.activeGameObject == null) return false;
-            if (!UIOperationHelper.CheckUIOperation()) return false;
             var cdeTable = Selection.activeGameObject.GetComponentInParent<UIBindCDETable>();
             if (cdeTable == null) return false;
             return true;
