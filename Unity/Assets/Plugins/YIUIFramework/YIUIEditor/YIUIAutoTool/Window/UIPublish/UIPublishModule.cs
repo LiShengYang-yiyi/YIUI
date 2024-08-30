@@ -81,14 +81,6 @@ namespace YIUIFramework.Editor
             }
         }
 
-        [GUIColor(0f, 1f, 1f)]
-        [Button("UI自动生成绑定替代反射代码", 50)]
-        [PropertyOrder(-9999)]
-        public static void CreateUIBindProvider()
-        {
-            new CreateUIBindProviderModule().Create();
-        }
-
         [GUIColor(0.4f, 0.8f, 1)]
         [Button("全部发布", 50)]
         [PropertyOrder(-99)]

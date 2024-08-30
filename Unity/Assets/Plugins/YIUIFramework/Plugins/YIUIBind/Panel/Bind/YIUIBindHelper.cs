@@ -51,17 +51,14 @@ namespace YIUIFramework
                 return false;
             }
 
-            #if !UNITY_EDITOR || YIUIMACRO_SIMULATE_NONEEDITOR || ENABLE_DLL
             if (InternalGameGetUIBindVoFunc == null)
             {
-                Debug.LogError(@$"使用非反射注册绑定 但是方法未实现 请检查 建议在YIUI初始化的地方调用一次
+                Debug.LogError(@$"方法未实现 请检查 建议在YIUI初始化的地方调用一次下面的代码
             [ YIUIBindHelper.InternalGameGetUIBindVoFunc = YIUICodeGenerated.YIUIBindProvider.Get; ]");
                 return false;
             }
-            var binds = InternalGameGetUIBindVoFunc?.Invoke();
-            #else
-            var binds = new YIUIBindProvider().Get();
-            #endif
+
+            var binds = InternalGameGetUIBindVoFunc.Invoke();
 
             if (binds == null || binds.Length <= 0)
             {

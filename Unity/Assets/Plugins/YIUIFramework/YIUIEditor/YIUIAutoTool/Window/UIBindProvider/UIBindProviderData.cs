@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿/*#if UNITY_EDITOR
 
 namespace YIUIFramework.Editor
 {
@@ -11,4 +11,4 @@ namespace YIUIFramework.Editor
         public string Content;
     }
 }
-#endif
+#endif*/

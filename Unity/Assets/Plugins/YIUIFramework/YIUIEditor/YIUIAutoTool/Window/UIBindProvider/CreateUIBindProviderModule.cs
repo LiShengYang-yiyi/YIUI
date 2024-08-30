@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
@@ -80,4 +80,4 @@ namespace YIUIFramework.Editor
         }
     }
 }
-#endif
+#endif*/
