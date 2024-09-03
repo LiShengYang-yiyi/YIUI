@@ -41,6 +41,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="G:\Unity\Self Project\Gitee_ET7.2\Unity\Assets\Plugins\YIUI.BindSourceGenerator.dll" />
     <Analyzer Include="E:\Unity\Editor\2022.3.20f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\Unity\Editor\2022.3.20f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -91,7 +92,6 @@
     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\MenuItem\UIPanelSourceSplit.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Utils\RegisterGlobalParameters.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Panel\YIUIPanelComponent_HasFlag.cs" />
-    <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBindProvider\UIBindProviderData.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\ET\Component\Event\IYIUIEvent.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\TaskEvent\Code\Genericity\EventHandle\UITaskEventHandleP5.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Active\UITaskEventBindActive.cs" />
@@ -122,7 +122,6 @@
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Code\Event\Code\Genericity\Event\UIEventP4.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\LoopScrollRect\Runtime\LoopHorizontalScrollRectMulti.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUISingleton\Code\SingletonMgr.cs" />
-    <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBindProvider\CreateUIBindProviderModule.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\YIUIEditor\UIRedDot\Key\UICreateRedDotKeyCode.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIMono\Effect\UIEffectMaterialKey.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUI3DDisplay\Runtime\UI3DDisplay_Event.cs" />
@@ -238,7 +237,6 @@
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIETCode\UIETCodeModule.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Cache\DictionaryPool.cs" />
-    <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIBindProvider\CreateUIBindProviderCode.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\Manager\LocalizationManager_Translation.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBase\Extensions\UnityObjectExtensions.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIMono\Widget\UIBlock.cs" />
@@ -520,7 +518,6 @@
     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Event\Component\YIUIEventComponentSystem.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Drag\UIEventBindBeginDrag.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\UIBind\YIUIBindEventSystem.cs" />
-    <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Panel\Bind\YIUIBindProvider.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UICreate\System\UICreateSystemGenCode.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\ET\Event\SystemEvent\Open\IYIUIOpenSystem.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Factory\YIUIRectFactory.cs" />
@@ -579,7 +576,6 @@
     <None Include="Assets\Plugins\YIUIFramework\Plugins\UIEffect\Resources\UIDissolve.shader" />
     <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateCommonTemplate.txt" />
     <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreatePanelTemplate.txt" />
-    <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UIBindProviderTemplate.txt" />
     <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\ETScript\UICreateETScriptCommonTemplate.txt" />
     <None Include="Assets\Plugins\YIUIFramework\Plugins\UIEffect\Resources\UIEffect.cginc" />
     <None Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Template\UICreateViewTemplate.txt" />
