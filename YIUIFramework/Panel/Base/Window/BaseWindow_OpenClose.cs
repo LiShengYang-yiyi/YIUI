@@ -10,7 +10,6 @@ namespace YIUIFramework
         //2 ParamVo参数打开 也叫 ParamOpen 打开内部是List<obj>参数 所以可以支持无限长度
         //3 继承接口IOpen的 也叫 IOpen 打开 最高支持5个泛型参数
         //前2种都会自带 第三种根据需求自己继承
-
         /// <summary>
         /// 打开UI 无参
         /// </summary>
@@ -31,6 +30,11 @@ namespace YIUIFramework
             return await OnOpen();
         }
 
+        internal void OnWindowClose()
+        {
+            OnClose();
+        }
+
         /// <summary>
         /// UI被关闭
         /// 与OnDisable 不同  Disable 只是显影操作不代表被关闭
@@ -38,7 +42,7 @@ namespace YIUIFramework
         /// 这个时候你想要知道是不是被关闭了就必须通过OnClose
         /// baseView除外 因为view的关闭就是隐藏 所以 view的 OnDisable = OnClose
         /// </summary>
-        internal virtual void OnClose()
+        protected virtual void OnClose()
         {
         }
     }
