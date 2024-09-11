@@ -12,7 +12,7 @@ namespace YIUIFramework
         public async UniTask CloseAsync(bool tween = true)
         {
             await InternalOnWindowCloseTween(tween);
-            OnClose();
+            OnWindowClose();
         }
     }
 }

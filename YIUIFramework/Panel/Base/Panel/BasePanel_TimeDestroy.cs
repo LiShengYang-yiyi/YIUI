@@ -40,6 +40,7 @@ namespace YIUIFramework
                 return;
             }
 
+            m_Cts = null;
             UnityEngine.Object.Destroy(OwnerGameObject);
             PanelMgr.Inst.RemoveUIReset(UIResName);
         }
