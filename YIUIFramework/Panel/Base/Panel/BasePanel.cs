@@ -27,8 +27,6 @@
         /// </summary>
         public virtual int Priority => 0;
 
-        #region 密封生命周期
-
         protected sealed override void SealedInitialize()
         {
             InitPanelViewData();
@@ -41,7 +39,5 @@
         protected sealed override void SealedOnDestroy()
         {
         }
-
-        #endregion
     }
 }

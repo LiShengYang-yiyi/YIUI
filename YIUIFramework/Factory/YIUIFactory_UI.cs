@@ -18,6 +18,7 @@ namespace YIUIFramework
             self.AutoReset();
         }
 
+        /// <summary> 创建公共UI视图 </summary>
         internal static UIBase CreateCommon(string pkgName, string resName, GameObject obj)
         {
             var bingVo = UIBindHelper.GetBindVoByPath(pkgName, resName);

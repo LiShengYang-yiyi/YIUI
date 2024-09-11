@@ -12,8 +12,10 @@ namespace YIUIFramework
     {
         private UIPanelSplitData m_PanelSplitData;
 
+        /// <summary> 已经存在的视图 </summary>
         private Dictionary<string, BaseView> m_ExistView = new Dictionary<string, BaseView>();
 
+        /// <summary> 所有视图对应的父级映射 </summary>
         private Dictionary<string, RectTransform> m_ViewParent = new Dictionary<string, RectTransform>();
 
         private void InitPanelViewData()
@@ -27,15 +29,7 @@ namespace YIUIFramework
             AddViewParent(m_PanelSplitData.AllPopupView);
         }
 
-        private void AddViewParent(List<RectTransform> listParent)
-        {
-            foreach (var parent in listParent)
-            {
-                var viewName = parent.name.Replace(UIStaticHelper.UIParentName, "");
-                m_ViewParent.Add(viewName, parent);
-            }
-        }
-
+        /// <summary> 创建公共View窗口 </summary>
         private void CreateCommonView()
         {
             foreach (var commonParentView in m_PanelSplitData.AllCommonView)
@@ -68,6 +62,16 @@ namespace YIUIFramework
             }
         }
 
+        /// <summary> 添加视图父级 </summary>
+        private void AddViewParent(List<RectTransform> listParent)
+        {
+            foreach (var parent in listParent)
+            {
+                var viewName = parent.name.Replace(UIStaticHelper.UIParentName, "");
+                m_ViewParent.Add(viewName, parent);
+            }
+        }
+        
         private RectTransform GetViewParent(string viewName)
         {
             m_ViewParent.TryGetValue(viewName, out var value);
@@ -86,9 +90,9 @@ namespace YIUIFramework
 
             using var asyncLock = await AsyncLockMgr.Inst.Wait(viewName.GetHashCode());
 
-            if (m_ExistView.ContainsKey(viewName))
+            if (m_ExistView.TryGetValue(viewName, out var value))
             {
-                return (T)m_ExistView[viewName];
+                return (T)value;
             }
 
             var view = await YIUIFactory.InstantiateAsync<T>(parent);
@@ -101,23 +105,7 @@ namespace YIUIFramework
         public (bool, BaseView) ExistView<T>() where T : BaseView
         {
             var data = UIBindHelper.GetBindVoByType<T>();
-            if (data == null) return (false, null);
-            var vo = data.Value;
-
-            var viewName = vo.ResName;
-            var viewParent = GetViewParent(viewName);
-            if (viewParent == null)
-            {
-                Debug.LogError($"不存在这个View  请检查 {viewName}");
-                return (false, null);
-            }
-
-            if (m_ExistView.TryGetValue(viewName, out var baseView))
-            {
-                return (true, baseView);
-            }
-
-            return (false, null);
+            return data == null ? (false, null) : ExistView(data.Value.ResName);
         }
 
         public (bool, BaseView) ExistView(string viewName)
@@ -142,6 +130,7 @@ namespace YIUIFramework
         /// </summary>
         private async UniTask OpenViewBefore(BaseView view)
         {
+            // 如果窗口选项不是先开，则先关闭上一个窗口
             if (!view.WindowFirstOpen)
             {
                 await CloseLastView(view);
@@ -155,6 +144,7 @@ namespace YIUIFramework
         {
             if (success)
             {
+                // 如果窗口选项为先开，则在打开完关闭上一个窗口
                 if (view.WindowFirstOpen)
                 {
                     await CloseLastView(view);
@@ -169,19 +159,19 @@ namespace YIUIFramework
         /// <summary>
         /// 关闭上一个
         /// </summary>
-        /// <param name="view">当前</param>
-        private async UniTask CloseLastView(BaseView view)
+        /// <param name="nextView">接下来要打开的视图</param>
+        private async UniTask CloseLastView(BaseView nextView)
         {
             //其他需要被忽略
-            if (view.ViewWindowType != EViewWindowType.View)
+            if (nextView.ViewWindowType != EViewWindowType.View)
             {
                 return;
             }
 
             //View只有切换没有关闭
-            var skipTween = view.WindowSkipOtherCloseTween;
+            var skipTween = nextView.WindowSkipOtherCloseTween;
 
-            if (u_CurrentOpenView != null && u_CurrentOpenView != view)
+            if (u_CurrentOpenView != null && u_CurrentOpenView != nextView)
             {
                 //View 没有自动回退功能  比如AView 关闭 自动吧上一个BView 给打开 没有这种需求 也不能有这个需求
                 //只能有 打开一个新View 上一个View的自动处理 99% 都是吧上一个隐藏即可
@@ -204,7 +194,7 @@ namespace YIUIFramework
                 }
             }
 
-            u_CurrentOpenView = view;
+            u_CurrentOpenView = nextView;
         }
     }
 }

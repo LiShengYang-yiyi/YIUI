@@ -12,8 +12,6 @@ namespace YIUIFramework
     [HideReferenceObjectPicker]
     public abstract class UIBase
     {
-        #region 所有table表禁止public 不允许任何外界获取
-
         internal  UIBindCDETable m_CDETable;
         protected UIBindCDETable CDETable => m_CDETable;
 
@@ -25,8 +23,6 @@ namespace YIUIFramework
 
         internal  UIBindEventTable m_EventTable;
         protected UIBindEventTable EventTable => m_EventTable;
-
-        #endregion
 
         /// <summary>
         /// 当前UI的预设对象

@@ -9,8 +9,6 @@ namespace YIUIFramework
     /// </summary>
     public partial class BaseView
     {
-        #region Open 由BasePanel调用
-
         /// <summary>
         /// 使用基础Open 打开类
         /// </summary>
@@ -233,7 +231,5 @@ namespace YIUIFramework
 
             return success;
         }
-
-        #endregion
     }
 }

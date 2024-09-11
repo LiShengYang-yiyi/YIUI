@@ -68,6 +68,7 @@ namespace YIUIFramework
             }
         }
 
+        /// <summary> 移除UI增加堆栈 </summary>
         private async UniTask RemoveUIAddElse(PanelInfo info)
         {
             if (!(info.UIBasePanel is { Layer: EPanelLayer.Panel }))

@@ -26,6 +26,7 @@ namespace YIUIFramework
             var instance = (T)Create(vo);
             if (instance == null) return null;
 
+            // 无父级时自动放置在缓存层
             SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
 
             return instance;
@@ -45,6 +46,7 @@ namespace YIUIFramework
             var instance = Create(vo);
             if (instance == null) return null;
 
+            // 无父级时自动放置在缓存层
             SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
 
             return instance;

@@ -29,26 +29,16 @@ namespace YIUIFramework
             m_Cts = null;
         }
 
+        /// <summary> 当关闭面板后倒计时结束销毁面板 </summary>
         private async UniTaskVoid DoCountDownDestroyPanel(CancellationToken token)
         {
-            try
-            {
-                await UniTask.Delay(TimeSpan.FromSeconds(CachePanelTime), cancellationToken: token);
-            }
-            catch (OperationCanceledException e)
-            {
-                //取消倒计时 正常操作不需要日志
-                return;
-            }
-
-            /*
             var cancelled = await UniTask.Delay(TimeSpan.FromSeconds(CachePanelTime), cancellationToken: token)
                 .SuppressCancellationThrow();
+            // 被取消力
             if (cancelled)
             {
                 return;
             }
-            */
 
             UnityEngine.Object.Destroy(OwnerGameObject);
             PanelMgr.Inst.RemoveUIReset(UIResName);
