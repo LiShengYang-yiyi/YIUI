@@ -15,7 +15,7 @@ namespace YIUIFramework
     {
         private void OnDestroy()
         {
-            YIUIFactory.Destroy(gameObject);
+            YIUILoadHelper.ReleaseInstantiate(gameObject);
         }
     }
 }

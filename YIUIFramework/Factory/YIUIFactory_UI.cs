@@ -122,5 +122,17 @@ namespace YIUIFramework
                 }
             }
         }
+        
+        /// <summary> 预制体销毁 </summary>
+        internal static void Destroy(this UIBase uiBase)
+        {
+            if (uiBase.OwnerGameObject == null)
+            {
+                Debug.LogError($"此UI 是空对象 请检查{uiBase.UIBindVo.PkgName} {uiBase.UIBindVo.ResName}");
+                return;
+            }
+
+            Destroy(uiBase.OwnerGameObject);
+        }
     }
 }

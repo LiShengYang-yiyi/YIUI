@@ -8,7 +8,6 @@ using Sirenix.OdinInspector;
 
 namespace YIUIFramework
 {
-    //一个项目不可能随时换项目路径 这里就是强制设置的只可读 初始化项目的时候手动改这个一次就可以了
     /// <summary>
     /// UI静态助手
     /// </summary>

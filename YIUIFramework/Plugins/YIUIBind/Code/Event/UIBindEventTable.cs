@@ -124,7 +124,7 @@ namespace YIUIBind
             }
 
             var binds = ListPool<UIEventBind>.Get();
-            transform.GetComponents(binds);
+            transform.GetComponents<UIEventBind>(binds);
             foreach (var bind in binds)
             {
                 bind.Initialize(true);

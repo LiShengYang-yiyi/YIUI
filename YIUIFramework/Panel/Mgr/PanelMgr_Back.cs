@@ -26,8 +26,9 @@ namespace YIUIFramework
             }
 
             var layerList = GetLayerPanelInfoList(EPanelLayer.Panel);
-            var skipTween = info.UIBasePanel.WindowSkipOtherCloseTween;
+            var skipTween = info.UIBasePanel.WindowSkipOtherCloseTween; // 是否跳过其他UI关闭的动画
 
+            // 打开一个UI后再继续打开其他UI，那么已经被关闭的UI会被移动到缓存层
             for (var i = layerList.Count - 1; i >= 0; i--)
             {
                 var child = layerList[i];
@@ -83,7 +84,7 @@ namespace YIUIFramework
 
             var layerList = GetLayerPanelInfoList(EPanelLayer.Panel);
             var skipTween = info.UIBasePanel.WindowSkipOtherOpenTween;
-
+            
             for (var i = layerList.Count - 1; i >= 0; i--)
             {
                 var child = layerList[i];
@@ -99,6 +100,7 @@ namespace YIUIFramework
                 }
 
                 var isBreak = true;
+                // 这里都是已经放在缓存层里，被关闭了的UI,所以除非触发Omit忽略，否则只打开一个UI
                 switch (child.UIBasePanel.StackOption)
                 {
                     case EPanelStackOption.Omit: //不可能进入这里因为他已经被关闭了 如果进入则跳过这个界面

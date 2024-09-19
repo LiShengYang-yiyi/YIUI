@@ -39,7 +39,7 @@ namespace YIUIBind
         {
             if (string.IsNullOrEmpty(dataName)) return null;
 
-            return m_DataDic.TryGetValue(dataName, out var data) ? data : null;
+            return m_DataDic.GetValueOrDefault(dataName);
         }
 
         public T FindDataValue<T>(string dataName) where T : UIDataValue

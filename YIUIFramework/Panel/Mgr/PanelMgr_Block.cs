@@ -16,6 +16,13 @@ namespace YIUIFramework
 
         private float m_LastRecoverOptionTime; //下一次恢复操作时间
 
+        //当前是否正在被永久屏蔽
+        public bool IsForeverBlock => m_AllForeverBlockCode.Count >= 1;
+
+        //永久屏蔽引用计数 一定要成对使用且保证
+        //否则将会出现永久屏蔽的情况只能通过RecoverLayerOptionCountDown 强制恢复
+        private HashSet<int> m_AllForeverBlockCode = new HashSet<int>();
+        
         private void OnBlockDispose()
         {
             RemoveLastCountDown();
@@ -64,8 +71,6 @@ namespace YIUIFramework
             RemoveLastCountDown();
         }
 
-        #region 倒计时屏蔽
-
         /// <summary>
         /// 禁止层级操作
         /// 适合于知道想屏蔽多久 且可托管的操作
@@ -88,9 +93,9 @@ namespace YIUIFramework
             }
         }
 
-        private void OnCountDownLayerOption(double residuetime, double elapsetime, double totaltime)
+        private void OnCountDownLayerOption(double residueTime, double elapseTime, double totalTime)
         {
-            if (residuetime <= 0)
+            if (residueTime <= 0)
             {
                 m_LastCountDownGuid = 0;
 
@@ -103,17 +108,6 @@ namespace YIUIFramework
                 SetLayerBlockOption(true);
             }
         }
-
-        #endregion
-
-        #region 永久屏蔽 forever
-
-        //当前是否正在被永久屏蔽
-        public bool IsForeverBlock => m_AllForeverBlockCode.Count >= 1;
-
-        //永久屏蔽引用计数 一定要成对使用且保证
-        //否则将会出现永久屏蔽的情况只能通过RecoverLayerOptionCountDown 强制恢复
-        private HashSet<int> m_AllForeverBlockCode = new HashSet<int>();
 
         //永久屏蔽
         //适用于 不知道要屏蔽多久 但是能保证可以成对调用的
@@ -148,7 +142,5 @@ namespace YIUIFramework
                 }
             }
         }
-
-        #endregion
     }
 }

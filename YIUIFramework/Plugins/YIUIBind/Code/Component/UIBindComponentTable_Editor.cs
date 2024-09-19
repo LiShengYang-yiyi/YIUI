@@ -88,7 +88,7 @@ namespace YIUIBind
         {
             if (component == null)
             {
-                Logger.LogErrorContext(this, $"{name} 空对象  所以 {name} 已忽略");
+                Logger.ErrorContext(this, $"{name} 空对象  所以 {name} 已忽略");
                 return "";
             }
 
@@ -147,7 +147,7 @@ namespace YIUIBind
                 var newName = GetAutoGenName(component, oldName);
                 if (string.IsNullOrEmpty(newName))
                 {
-                    Logger.LogErrorContext(this, $"{name} 空名称  所以已忽略");
+                    Logger.ErrorContext(this, $"{name} 空名称  所以已忽略");
                     continue;
                 }
 

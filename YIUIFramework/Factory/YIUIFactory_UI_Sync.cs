@@ -41,6 +41,15 @@ namespace YIUIFramework
             return Instantiate(vo, parent);
         }
 
+        public static UIBase Instantiate(string pkgName, string resName, RectTransform parent = null)
+        {
+            var data = UIBindHelper.GetBindVoByPath(pkgName, resName);
+            if (data == null) return null;
+            var vo = data.Value;
+
+            return Instantiate(vo, parent);
+        }
+        
         public static UIBase Instantiate(UIBindVo vo, RectTransform parent = null)
         {
             var instance = Create(vo);
@@ -50,15 +59,6 @@ namespace YIUIFramework
             SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
 
             return instance;
-        }
-
-        public static UIBase Instantiate(string pkgName, string resName, RectTransform parent = null)
-        {
-            var data = UIBindHelper.GetBindVoByPath(pkgName, resName);
-            if (data == null) return null;
-            var vo = data.Value;
-
-            return Instantiate(vo, parent);
         }
     }
 }

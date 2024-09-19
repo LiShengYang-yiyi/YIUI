@@ -12,6 +12,18 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
+        private static async UniTask<UIBase> CreateAsync(UIBindVo vo)
+        {
+            var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(vo.PkgName, vo.ResName);
+            if (obj == null)
+            {
+                Debug.LogError($"没有加载到这个资源 {vo.PkgName}/{vo.ResName}");
+                return null;
+            }
+
+            return CreateByObjVo(vo, obj);
+        }
+        
         public static async UniTask<T> InstantiateAsync<T>(RectTransform parent = null) where T : UIBase
         {
             var data = UIBindHelper.GetBindVoByType<T>();
@@ -62,18 +74,6 @@ namespace YIUIFramework
             if (bingVo == null) return null;
             var uiBase = await CreateAsync(bingVo.Value);
             return uiBase;
-        }
-
-        private static async UniTask<UIBase> CreateAsync(UIBindVo vo)
-        {
-            var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(vo.PkgName, vo.ResName);
-            if (obj == null)
-            {
-                Debug.LogError($"没有加载到这个资源 {vo.PkgName}/{vo.ResName}");
-                return null;
-            }
-
-            return CreateByObjVo(vo, obj);
         }
     }
 }

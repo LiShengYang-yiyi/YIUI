@@ -43,10 +43,7 @@ namespace YIUIFramework
                         continue;
                     }
 
-                    if (layer == EPanelLayer.Any || info.UIBasePanel.Layer == layer)
-                    {
-                        return info;
-                    }
+                    return info;
                 }
             }
 
@@ -148,7 +145,8 @@ namespace YIUIFramework
 
             RemoveUI(info);
         }
-
+        
+        /// <summary> 关闭一个窗口（同步） </summary>
         public void ClosePanel(string panelName, bool tween = true, bool ignoreElse = false)
         {
             ClosePanelAsync(panelName, tween, ignoreElse).Forget();

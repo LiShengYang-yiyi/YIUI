@@ -207,7 +207,7 @@ namespace YIUIFramework
             UnUIBind();
             OnDestroy();
             SealedOnDestroy();
-            YIUIFactory.Destroy(this);
+            this.Destroy();
         }
 
         #region 密封虚方法由(下级继承后)重写后密封 其他人可以不用关心

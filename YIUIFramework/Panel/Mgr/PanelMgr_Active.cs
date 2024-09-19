@@ -2,24 +2,21 @@
 {
     public partial class PanelMgr
     {
-        #region 判断Panel是否存在且显示
-
+        /// <summary> 判断指定Panel是否显示 </summary>
         public bool ActiveSelf(string panelName)
         {
             var info = GetPanelInfo(panelName);
             return info?.ActiveSelf ?? false;
         }
 
+        /// <summary> 判断指定Panel是否显示 </summary>
         public bool ActiveSelf<T>() where T : BasePanel
         {
             var info = GetPanelInfo<T>();
             return info?.ActiveSelf ?? false;
         }
 
-        #endregion
-
-        #region 判断指定Panel的指定View是否存在且显示
-
+        /// <summary> 判断指定Panel下的View是否显示 </summary>
         public bool ActiveSelfView(string panelName, string viewName)
         {
             var info = GetPanelInfo(panelName);
@@ -30,6 +27,7 @@
             return entity.ActiveSelf;
         }
 
+        /// <summary> 判断指定Panel下的View是否显示 </summary>
         public bool ActiveSelfView<TPanel, TView>()
             where TPanel : BasePanel
             where TView : BaseView
@@ -42,6 +40,7 @@
             return entity.ActiveSelf;
         }
 
+        /// <summary> 判断指定Panel下的View是否显示 </summary>
         public bool ActiveSelfViewByViewName<TPanel>(string viewName)
             where TPanel : BasePanel
         {
@@ -53,6 +52,7 @@
             return entity.ActiveSelf;
         }
 
+        /// <summary> 判断指定Panel下的View是否显示 </summary>
         public bool ActiveSelfViewByPanelName<TView>(string panelName)
             where TView : BaseView
         {
@@ -63,7 +63,5 @@
             if (!exist) return false;
             return entity.ActiveSelf;
         }
-
-        #endregion
     }
 }
