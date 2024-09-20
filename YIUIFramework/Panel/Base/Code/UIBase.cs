@@ -12,8 +12,6 @@ namespace YIUIFramework
     [HideReferenceObjectPicker]
     public abstract class UIBase
     {
-        #region 所有table表禁止public 不允许任何外界获取
-
         internal  UIBindCDETable m_CDETable;
         protected UIBindCDETable CDETable => m_CDETable;
 
@@ -25,8 +23,6 @@ namespace YIUIFramework
 
         internal  UIBindEventTable m_EventTable;
         protected UIBindEventTable EventTable => m_EventTable;
-
-        #endregion
 
         /// <summary>
         /// 当前UI的预设对象
@@ -69,8 +65,6 @@ namespace YIUIFramework
 
         /// <summary>
         /// 当前显示状态  显示/隐藏
-        /// 不要使用这个设置显影
-        /// 应该使用控制器 或调用方法 SetActive();
         /// </summary>
         public bool ActiveSelf
         {
@@ -113,8 +107,6 @@ namespace YIUIFramework
             return true;
         }
 
-        #region 公共方法
-
         /// <summary>
         /// 设置显隐
         /// </summary>
@@ -123,12 +115,6 @@ namespace YIUIFramework
             if (OwnerGameObject == null) return;
             OwnerGameObject.SetActive(value);
         }
-
-        //其他的关于 RectTransform 相关的 不建议包一层
-        //就直接 OwnerRectTransform. 使用Unity API 就可以了 没必要包一成
-        //这么多方法 都有可能用到你都包一层嘛
-
-        #endregion
 
         #region 生命周期
 
@@ -214,12 +200,7 @@ namespace YIUIFramework
             YIUIFactory.Destroy(this);
         }
 
-        #region 密封虚方法由(下级继承后)重写后密封 其他人可以不用关心
-
         //这是给基类用的生命周期(BasePanel,BaseView) 为了防止有人重写时不调用基类 所以直接独立
-        //没有什么穿插需求怎么办
-        //基类会重写这个类且会密封你也调用不到
-        //不要问为什么...
         //UIBase 生命周期顺序 1
         protected virtual void SealedInitialize()
         {
@@ -234,8 +215,6 @@ namespace YIUIFramework
         protected virtual void SealedOnDestroy()
         {
         }
-
-        #endregion
 
         #endregion
     }

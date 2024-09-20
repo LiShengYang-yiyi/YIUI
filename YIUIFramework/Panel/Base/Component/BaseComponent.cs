@@ -5,8 +5,6 @@
     /// </summary>
     public partial class BaseComponent : UIBase
     {
-        #region 密封生命周期根据需求扩展
-
         protected sealed override void SealedInitialize()
         {
         }
@@ -18,7 +16,5 @@
         protected sealed override void SealedOnDestroy()
         {
         }
-
-        #endregion
     }
 }
