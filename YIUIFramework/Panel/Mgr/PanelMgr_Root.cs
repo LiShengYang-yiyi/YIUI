@@ -39,13 +39,9 @@ namespace YIUIFramework
         private const int RootPosOffset = 1000; // 修改可设置UI根位置
         private const int LayerDistance = 1000; // UI每个层级之间z轴的间距
 
-        #region 以下名称 禁止修改
-
         public const string UIRootName      = "YIUIRoot";
         public const string UILayerRootName = "YIUILayerRoot";
         public const string UIRootPkgName   = "Common";
-
-        #endregion
 
         //K1 = 层级枚举 V1 = 层级对应的rectRoot And PanelList
         //List = 当前层级中的当前所有UI 前面的代表这个UI在前面以此类推

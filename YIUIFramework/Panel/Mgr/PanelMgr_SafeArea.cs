@@ -3,36 +3,23 @@ using UnityEngine;
 
 namespace YIUIFramework
 {
-    /// <summary>
-    /// 安全区 刘海屏
-    /// </summary>
+    /// <summary> 安全区 刘海屏 </summary>
     public partial class PanelMgr
     {
-        /// <summary>
-        /// 在刘海屏机子时，是否打开黑边
-        /// </summary>
-        public const bool OpenBlackBorder = false;
+        public const bool DoubleSafe = false; // 启用2倍安全 则左右2边都会裁剪
 
-        //启用2倍安全 则左右2边都会裁剪
-        public const bool DoubleSafe = false;
+        
+        private static Rect g_SafeArea; // 安全区
 
-        //安全区
-        private static Rect g_SafeArea;
-
-        /// <summary>
-        /// 安全区
-        /// </summary>
+        /// <summary> 安全区 </summary>
         public static Rect SafeArea => g_SafeArea;
 
-        /// <summary>
-        /// 横屏设置时，界面左边离屏幕的距离
-        /// </summary>
+        /// <summary> 横屏设置时，界面左边离屏幕的距离 </summary>
         public static float SafeAreaLeft => Screen.orientation == ScreenOrientation.LandscapeRight
             ? Screen.width - g_SafeArea.xMax
             : g_SafeArea.x;
 
-        private ScreenOrientation ScreenOrientation = Screen.orientation;
-
+        /// <summary> 初始化设置安全区 </summary>
         private void InitSafeArea()
         {
             var safeAreaX = Math.Max(Screen.safeArea.x, Screen.width - Screen.safeArea.xMax);

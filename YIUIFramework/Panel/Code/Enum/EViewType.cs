@@ -10,6 +10,7 @@ namespace YIUIFramework
         [LabelText("窗口")]
         View = 0,
 
+        /// <summary> 只有Panel才能调用的弹窗 </summary>
         [LabelText("弹窗")]
         Popup = 1,
     }

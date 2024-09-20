@@ -122,7 +122,7 @@ namespace YIUIBind
         protected abstract void OnValueChanged();
 
         //没有特别需要处理的 但是为了结构一致 所以继承的都要调用
-        //要调用base.OnRefreshData(); 以免多重基础后的错误问题
+        //要调用base.OnRefreshData(); 以免多重继承后的错误问题
         protected override void OnRefreshData()
         {
         }

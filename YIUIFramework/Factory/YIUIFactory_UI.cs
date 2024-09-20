@@ -18,6 +18,7 @@ namespace YIUIFramework
             self.AutoReset();
         }
 
+        /// <summary> 创建公共UI视图 </summary>
         internal static UIBase CreateCommon(string pkgName, string resName, GameObject obj)
         {
             var bingVo = UIBindHelper.GetBindVoByPath(pkgName, resName);
@@ -120,6 +121,18 @@ namespace YIUIFramework
                     childCde.gameObject.SetActive(false);
                 }
             }
+        }
+        
+        /// <summary> 预制体销毁 </summary>
+        internal static void Destroy(this UIBase uiBase)
+        {
+            if (uiBase.OwnerGameObject == null)
+            {
+                Debug.LogError($"此UI 是空对象 请检查{uiBase.UIBindVo.PkgName} {uiBase.UIBindVo.ResName}");
+                return;
+            }
+
+            Destroy(uiBase.OwnerGameObject);
         }
     }
 }

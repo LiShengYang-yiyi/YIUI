@@ -18,40 +18,14 @@ namespace YIUIFramework
         /// <summary>
         /// 获取PanelInfo
         /// 没有则创建  相当于一个打开过了 UI基础配置档
-        /// 这个根据BindVo创建  为什么没有直接用VO  因为里面有Panel 实例对象
         /// 这个k 根据resName
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        private PanelInfo GetPanelInfo<T>() where T : BasePanel
-        {
-            var type = typeof(T);
-            var data = UIBindHelper.GetBindVoByType(type);
-            if (data == null) return null;
-            var vo   = data.Value;
-            var name = type.Name;
-
-            if (!m_PanelCfgMap.ContainsKey(name))
-            {
-                var info = new PanelInfo()
-                {
-                    Name    = name,
-                    PkgName = vo.PkgName,
-                    ResName = vo.ResName,
-                };
-
-                m_PanelCfgMap.Add(name, info);
-            }
-
-            return m_PanelCfgMap[name];
-        }
+        private PanelInfo GetPanelInfo<T>() where T : BasePanel => GetPanelInfo(typeof(T).Name);
 
         /// <summary>
         /// 获取UI名称 用字符串开界面 不用类型 减少GC
         /// 另外也方便之后有可能需要的扩展 字符串会更好使用
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         private string GetPanelName<T>() where T : BasePanel
         {
             var panelInfo = GetPanelInfo<T>();

@@ -12,6 +12,18 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
+        private static async UniTask<UIBase> CreateAsync(UIBindVo vo)
+        {
+            var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(vo.PkgName, vo.ResName);
+            if (obj == null)
+            {
+                Debug.LogError($"没有加载到这个资源 {vo.PkgName}/{vo.ResName}");
+                return null;
+            }
+
+            return CreateByObjVo(vo, obj);
+        }
+        
         public static async UniTask<T> InstantiateAsync<T>(RectTransform parent = null) where T : UIBase
         {
             var data = UIBindHelper.GetBindVoByType<T>();
@@ -24,6 +36,7 @@ namespace YIUIFramework
         public static async UniTask<T> InstantiateAsync<T>(UIBindVo vo, RectTransform parent = null) where T : UIBase
         {
             var uiBase = await CreateAsync(vo);
+            // 无父级时自动放置在缓存层
             SetParent(uiBase.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
             return (T)uiBase;
         }
@@ -31,6 +44,7 @@ namespace YIUIFramework
         public static async UniTask<UIBase> InstantiateAsync(UIBindVo vo, RectTransform parent = null)
         {
             var uiBase = await CreateAsync(vo);
+            // 无父级时自动放置在缓存层
             SetParent(uiBase.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
             return uiBase;
         }
@@ -60,18 +74,6 @@ namespace YIUIFramework
             if (bingVo == null) return null;
             var uiBase = await CreateAsync(bingVo.Value);
             return uiBase;
-        }
-
-        private static async UniTask<UIBase> CreateAsync(UIBindVo vo)
-        {
-            var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(vo.PkgName, vo.ResName);
-            if (obj == null)
-            {
-                Debug.LogError($"没有加载到这个资源 {vo.PkgName}/{vo.ResName}");
-                return null;
-            }
-
-            return CreateByObjVo(vo, obj);
         }
     }
 }

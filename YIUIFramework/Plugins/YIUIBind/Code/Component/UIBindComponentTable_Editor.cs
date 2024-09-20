@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using UnityEditor;
 using UnityEngine;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
@@ -49,6 +50,77 @@ namespace YIUIBind
             CheckAllBindName();
         }
 
+        public void EditorAddComponent(Component component, string setName = "")
+        {
+            if (!UIOperationHelper.CheckUIOperation(this)) return;
+
+            AutoCheck();
+
+            setName = GetAutoGenName(component, setName);
+
+            if (m_AllBindDic.ContainsValue(component))
+            {
+                UnityTipsHelper.CallBackOk(
+                    $" {name} 对象上的 {component.GetType()} 这个组件已经存在了 重复对象 {component.name} 相同组件只能有一个",
+                    () => { Selection.activeGameObject = this.gameObject; });
+                return;
+            }
+
+            if (m_AllBindDic.ContainsKey(setName))
+            {
+                UnityTipsHelper.CallBackOk(
+                    $"{setName} 这个命名已经存在了 重复添加 必须命名唯一的名称",
+                    () => { Selection.activeGameObject = this.gameObject; });
+                return;
+            }
+
+            m_AllBindPair.Add(
+                new UIBindPairData
+                {
+                    Name      = setName,
+                    Component = component
+                });
+
+            AutoCheck();
+        }
+
+        public string GetAutoGenName(Component component, string name)
+        {
+            if (component == null)
+            {
+                Logger.ErrorContext(this, $"{name} 空对象  所以 {name} 已忽略");
+                return "";
+            }
+
+            if (!name.CheckFirstName(NameUtility.ComponentName))
+            {
+                if (string.IsNullOrEmpty(name))
+                {
+                    if (!m_AutoSetNullName)
+                    {
+                        return "";
+                    }
+
+                    if (m_NullNameAddTypeName)
+                    {
+                        name = $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}{component.GetType().Name}";
+                    }
+                    else
+                    {
+                        name = $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}";
+                    }
+                }
+                else
+                {
+                    name = $"{NameUtility.FirstName}{NameUtility.ComponentName}{name}";
+                }
+            }
+
+            name = name.ChangeToBigName(NameUtility.ComponentName);
+
+            return name;
+        }
+
         /// <summary>
         /// 检查所有绑定命名
         /// 必须m_ 开头
@@ -72,41 +144,12 @@ namespace YIUIBind
                     continue;
                 }
 
-                var newName = oldName;
-
-                if (!oldName.CheckFirstName(NameUtility.ComponentName))
+                var newName = GetAutoGenName(component, oldName);
+                if (string.IsNullOrEmpty(newName))
                 {
-                    if (string.IsNullOrEmpty(newName))
-                    {
-                        if (!m_AutoSetNullName)
-                        {
-                            continue;
-                        }
-
-                        if (component != null)
-                        {
-                            if (m_NullNameAddTypeName)
-                            {
-                                newName =
-                                    $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}{component.GetType().Name}";
-                            }
-                            else
-                            {
-                                newName = $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}";
-                            }
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        newName = $"{NameUtility.FirstName}{NameUtility.ComponentName}{oldName}";
-                    }
+                    Logger.ErrorContext(this, $"{name} 空名称  所以已忽略");
+                    continue;
                 }
-
-                newName = newName.ChangeToBigName(NameUtility.ComponentName);
 
                 if (oldName != newName)
                 {

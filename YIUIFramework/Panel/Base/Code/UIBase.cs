@@ -197,7 +197,7 @@ namespace YIUIFramework
             UnUIBind();
             OnDestroy();
             SealedOnDestroy();
-            YIUIFactory.Destroy(this);
+            this.Destroy();
         }
 
         //这是给基类用的生命周期(BasePanel,BaseView) 为了防止有人重写时不调用基类 所以直接独立

@@ -1,8 +1,8 @@
 ﻿namespace YIUIFramework
 {
     /// <summary>
-    /// 当一个界面 EPanelOption.DisClose 时 (禁止关闭)
-    /// 且又被调用时 则会触发 可根据需求继承
+    /// 当一个界面 EPanelOption.DisClose(禁止关闭) 时 
+    /// 且又被调用关闭时则会触发 可根据需求继承
     /// </summary>
     public interface IYIUIBanClose
     {

@@ -43,8 +43,10 @@ namespace YIUIFramework
             for (var i = infoList.Count - 1; i >= 0; i--)
             {
                 var info         = infoList[i];
+                // FIXME:
                 var infoPriority = info.UIBasePanel?.Priority ?? 0;
 
+                // 如果刚加入的面板优先级大于顶层优先级，则无需排序，直接添加到最后即可
                 if (i == infoList.Count - 1 && priority >= infoPriority) break;
 
                 if (priority >= infoPriority)

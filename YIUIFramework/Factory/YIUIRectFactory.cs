@@ -7,16 +7,7 @@ namespace YIUIFramework
     /// </summary>
     public static class YIUIRectFactory
     {
-        public static RectTransform CreateUIRect(RectTransform parent)
-        {
-            var obj  = new GameObject();
-            var rect = obj.AddComponent<RectTransform>();
-            if (parent != null)
-                rect.SetParent(parent);
-            return rect;
-        }
-
-        //重置为全屏自适应UI
+        /// <summary> 重置为全屏自适应UI </summary>
         public static void ResetToFullScreen(this RectTransform self)
         {
             self.anchorMin          = Vector2.zero;
@@ -30,29 +21,23 @@ namespace YIUIFramework
             self.localScale         = Vector3.one;
         }
 
-        //重置位置与旋转
+        /// <summary> 重置位置与旋转 </summary>
         public static void ResetLocalPosAndRot(this RectTransform self)
         {
             self.localPosition = Vector3.zero;
             self.localRotation = Quaternion.identity;
         }
 
-        /// <summary>
-        /// 自动重置
-        /// 一般情况下就2种 全屏的 那就全部归一
-        /// 其他的 那就什么都不改 只修改大小就可以了
-        /// </summary>
+        /// <summary> 自动重置 </summary>
         public static void AutoReset(this RectTransform self)
         {
+            // 全屏的情况
             if (self.anchorMax == Vector2.one && self.anchorMin == Vector2.zero)
             {
                 self.ResetToFullScreen();
             }
-            else
-            {
-                self.localScale = Vector3.one;
-            }
-
+            
+            self.localScale = Vector3.one;
             self.ResetLocalPosAndRot();
         }
     }

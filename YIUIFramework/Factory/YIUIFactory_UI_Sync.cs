@@ -26,6 +26,7 @@ namespace YIUIFramework
             var instance = (T)Create(vo);
             if (instance == null) return null;
 
+            // 无父级时自动放置在缓存层
             SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
 
             return instance;
@@ -40,16 +41,6 @@ namespace YIUIFramework
             return Instantiate(vo, parent);
         }
 
-        public static UIBase Instantiate(UIBindVo vo, RectTransform parent = null)
-        {
-            var instance = Create(vo);
-            if (instance == null) return null;
-
-            SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
-
-            return instance;
-        }
-
         public static UIBase Instantiate(string pkgName, string resName, RectTransform parent = null)
         {
             var data = UIBindHelper.GetBindVoByPath(pkgName, resName);
@@ -57,6 +48,17 @@ namespace YIUIFramework
             var vo = data.Value;
 
             return Instantiate(vo, parent);
+        }
+        
+        public static UIBase Instantiate(UIBindVo vo, RectTransform parent = null)
+        {
+            var instance = Create(vo);
+            if (instance == null) return null;
+
+            // 无父级时自动放置在缓存层
+            SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
+
+            return instance;
         }
     }
 }

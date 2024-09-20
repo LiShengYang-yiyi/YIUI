@@ -96,47 +96,7 @@ namespace YIUIBind
 
         public static string GetValueToString(this UIDataValue self)
         {
-            //由每个泛型子类实现ToString方法;
             return self.ToString();
-
-            //以下为老的值tosytring 可能会存在某些引用类型无效的情况
-            //保留不删除
-            /*
-            switch (self.UIBindDataType)
-            {
-                case EUIBindDataType.Bool:
-                    return self.GetValue<bool>().ToString();
-                case EUIBindDataType.String:
-                    return self.GetValue<string>().ToString();
-                case EUIBindDataType.Int:
-                    return self.GetValue<int>().ToString();
-                case EUIBindDataType.Float:
-                    return self.GetValue<float>().ToString();
-                case EUIBindDataType.Vector3:
-                    return self.GetValue<Vector3>().ToString();
-                case EUIBindDataType.List_Int:
-                    return self.GetValue<List<int>>().ToString();
-                case EUIBindDataType.List_Long:
-                    return self.GetValue<List<long>>().ToString();
-                case EUIBindDataType.List_String:
-                    return self.GetValue<List<string>>().ToString();
-                case EUIBindDataType.Long:
-                    return self.GetValue<long>().ToString();
-                case EUIBindDataType.Uint:
-                    return self.GetValue<uint>().ToString();
-                case EUIBindDataType.Ulong:
-                    return self.GetValue<ulong>().ToString();
-                case EUIBindDataType.Double:
-                    return self.GetValue<double>().ToString();
-                case EUIBindDataType.Vector2:
-                    return self.GetValue<Vector2>().ToString();
-                case EUIBindDataType.Color:
-                    return self.GetValue<Color>().ToString();
-                default:
-                    Logger.LogError($"此类型未实现 {self.UIBindDataType}");
-                    return "null";
-            }
-            */
         }
 
         public static object GetValueObject(this UIData self)

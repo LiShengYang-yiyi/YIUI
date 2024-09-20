@@ -6,8 +6,6 @@ namespace YIUIFramework
 {
     public abstract partial class BasePanel
     {
-        #region Open 由PanelMgr调用
-
         /// <summary>
         /// 使用基础Open 打开类
         /// </summary>
@@ -230,7 +228,5 @@ namespace YIUIFramework
 
             return success;
         }
-
-        #endregion
     }
 }

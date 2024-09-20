@@ -43,10 +43,7 @@ namespace YIUIFramework
                         continue;
                     }
 
-                    if (layer == EPanelLayer.Any || info.UIBasePanel.Layer == layer)
-                    {
-                        return info;
-                    }
+                    return info;
                 }
             }
 
@@ -134,7 +131,7 @@ namespace YIUIFramework
             if (info.UIBasePanel is { WindowLastClose: false })
             {
                 await info.UIBasePanel.InternalOnWindowCloseTween(tween);
-                info.UIBasePanel?.OnClose();
+                info.UIBasePanel?.OnWindowClose();
             }
 
             if (!ignoreElse)
@@ -143,12 +140,13 @@ namespace YIUIFramework
             if (info.UIBasePanel is { WindowLastClose: true })
             {
                 await info.UIBasePanel.InternalOnWindowCloseTween(tween);
-                info.UIBasePanel?.OnClose();
+                info.UIBasePanel?.OnWindowClose();
             }
 
             RemoveUI(info);
         }
-
+        
+        /// <summary> 关闭一个窗口（同步） </summary>
         public void ClosePanel(string panelName, bool tween = true, bool ignoreElse = false)
         {
             ClosePanelAsync(panelName, tween, ignoreElse).Forget();

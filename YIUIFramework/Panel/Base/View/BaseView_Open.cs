@@ -10,7 +10,6 @@ namespace YIUIFramework
     /// </summary>
     public partial class BaseView
     {
-
         /// <summary>
         /// 使用基础Open 打开类
         /// </summary>

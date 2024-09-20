@@ -11,8 +11,8 @@ namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        //普通的UI预制体 创建与摧毁 一定要成对
-        //为了防止忘记 所以默认自动回收
+        /// <summary> 单纯的实例化一个预制体 </summary>
+        /// 与UI框架无关，由自己管理回收
         public static GameObject InstantiateGameObject(string pkgName, string resName)
         {
             var obj = YIUILoadHelper.LoadAssetInstantiate(pkgName, resName);
@@ -21,14 +21,15 @@ namespace YIUIFramework
                 Debug.LogError($"没有加载到这个资源 {pkgName}/{resName}");
                 return null;
             }
-
-            //强制添加 既然你要使用这个方法那就必须接受 否则请使用其他方式
-            //被摧毁时 自动回收 无需调用 UIFactory.Destroy
+            
+            // TIP: 想办法在预制体销毁的时候调用回收
             obj.AddComponent<YIUIReleaseInstantiate>();
 
             return obj;
         }
 
+        /// <summary> 单纯的实例化一个预制体 </summary>
+        /// 与UI框架无关，由自己管理回收
         public static async UniTask<GameObject> InstantiateGameObjectAsync(string pkgName, string resName)
         {
             var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(pkgName, resName);
@@ -38,9 +39,16 @@ namespace YIUIFramework
                 return null;
             }
 
+            // TIP: 想办法在预制体销毁的时候调用回收
             obj.AddComponent<YIUIReleaseInstantiate>();
 
             return obj;
+        }
+
+        /// <summary> 回收游戏对象 </summary>
+        public static void Destroy(GameObject obj)
+        {
+            YIUILoadHelper.ReleaseInstantiate(obj);
         }
     }
 }

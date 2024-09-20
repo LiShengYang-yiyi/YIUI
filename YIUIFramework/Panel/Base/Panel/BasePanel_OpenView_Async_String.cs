@@ -24,17 +24,13 @@ namespace YIUIFramework
             {
                 return m_ExistView[viewName];
             }
-
-            var value = UIBindHelper.GetBindVoByPath(UIPkgName, viewName);
-            if (value == null) return null;
-            var bindVo = value.Value;
-            var view = (BaseView)await YIUIFactory.InstantiateAsync(bindVo, parent);
+            
+            var view = await YIUIFactory.InstantiateAsync(UIPkgName, viewName) as BaseView;
+            
             m_ExistView.Add(viewName, view);
 
             return view;
         }
-
-        #region 打开泛型
 
         protected async UniTask<BaseView> OpenViewAsync(string viewName, object param = null)
         {
@@ -112,7 +108,5 @@ namespace YIUIFramework
             ListPool<object>.Put(paramList);
             return view;
         }
-
-        #endregion
     }
 }

@@ -4,7 +4,7 @@ namespace YIUIFramework
 {
     public partial class PanelMgr
     {
-        //当前层级屏蔽操作状态 true = 显示 = 无法操作 不要与可操作搞混
+        // 当前层级屏蔽操作状态 true = 显示 = 无法操作 不要与可操作搞混
         public bool LayerBlockActiveSelf => m_LayerBlock.activeSelf;
 
         //当前UI是否可以操作 true = 可以操作
