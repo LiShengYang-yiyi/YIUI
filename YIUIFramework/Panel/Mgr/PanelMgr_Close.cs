@@ -110,6 +110,8 @@ namespace YIUIFramework
             Debug.Log($"<color=yellow> 关闭UI: {panelName} </color>");
             #endif
 
+            using var asyncLock = await AsyncLockMgr.Inst.Wait(panelName.GetHashCode());
+
             m_PanelCfgMap.TryGetValue(panelName, out var info);
 
             if (info?.UIBasePanel == null) return;
