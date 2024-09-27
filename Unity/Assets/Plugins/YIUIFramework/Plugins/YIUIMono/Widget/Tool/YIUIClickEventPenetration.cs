@@ -1,38 +1,69 @@
-﻿using UnityEngine;
+﻿using ET;
+using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
+using EventSystem = UnityEngine.EventSystems.EventSystem;
 
 namespace YIUIFramework
 {
     /// <summary>
     /// 点击穿透
     /// 只支持穿透一层
+    /// 可嵌套使用 达到无限穿透效果
     /// </summary>
     [AddComponentMenu("YIUIFramework/Widget/点击穿透 【YIUIClickEventPenetration】")]
-    public class YIUIClickEventPenetration : MonoBehaviour, IPointerClickHandler
+    public class YIUIClickEventPenetration: MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
+        [LabelText("穿透 按下")]
+        public bool Down = true;
+
+        [LabelText("穿透 抬起")]
+        public bool Up = true;
+
+        [LabelText("穿透 点击")]
+        public bool Click = true;
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (!Down) return;
+            PassEvent(eventData, ExecuteEvents.pointerDownHandler);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (!Up) return;
+            PassEvent(eventData, ExecuteEvents.pointerUpHandler);
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (!Click) return;
             PassEvent(eventData, ExecuteEvents.pointerClickHandler);
         }
 
         private void PassEvent<T>(PointerEventData pointerEventData, ExecuteEvents.EventFunction<T> eventFunction) where T : IEventSystemHandler
         {
-            var raycastResults = new List<RaycastResult>();
+            using var raycastResults = ListComponent<RaycastResult>.Create();
 
-            //获取射线检测结果
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+            GameObject nextGameObject = null;
+
             for (int i = 0; i < raycastResults.Count; i++)
             {
-                GameObject resultGameObject = raycastResults[i].gameObject;
-
-                //如果不是自身则将事件传递下去
-                if (resultGameObject != null && resultGameObject != this.gameObject)
+                if (raycastResults[i].gameObject == gameObject)
                 {
-                    //目前只是传递一层如需多层把break去掉即可
-                    ExecuteEvents.Execute(resultGameObject, pointerEventData, eventFunction);
+                    if (i + 1 < raycastResults.Count)
+                    {
+                        nextGameObject = raycastResults[i + 1].gameObject;
+                    }
+
                     break;
                 }
+            }
+
+            if (nextGameObject != null && nextGameObject != gameObject)
+            {
+                ExecuteEvents.ExecuteHierarchy(nextGameObject, pointerEventData, eventFunction);
             }
         }
     }

@@ -30,8 +30,11 @@ namespace ET.Client
         [EntitySystem]
         private static async ETTask YIUIEvent(this TipsPanelComponent self, EventPutTipsView message)
         {
-            await self.PutTips(message.View, message.Tween);
-            self.CheckRefCount();
+            var result = await self.PutTips(message.View, message.Tween);
+            if (result)
+            {
+                self.CheckRefCount();
+            }
         }
 
         //对象池的实例化过程
@@ -98,33 +101,33 @@ namespace ET.Client
         }
 
         //回收
-        private static async ETTask PutTips(this TipsPanelComponent self, Entity view, bool tween = true)
+        private static async ETTask<bool> PutTips(this TipsPanelComponent self, Entity view, bool tween = true)
         {
             if (view == null)
             {
                 Debug.LogError($"null对象 请检查");
-                return;
+                return false;
             }
 
             var uiType = view.GetType();
             if (!self._AllPool.ContainsKey(uiType))
             {
                 Debug.LogError($"没有这个对象池 请检查 {uiType}");
-                return;
+                return false;
             }
 
             var uiComponent = view.GetParent<YIUIComponent>();
             if (uiComponent == null)
             {
                 Debug.LogError($"{uiType.Name} 实例化的对象非 YIUIComponent");
-                return;
+                return false;
             }
 
             var viewComponent = uiComponent.GetComponent<YIUIViewComponent>();
             if (viewComponent == null)
             {
                 Debug.LogError($"{uiType.Name} 实例化的对象非 YIUIViewComponent");
-                return;
+                return false;
             }
 
             await viewComponent.CloseAsync(tween);
@@ -134,6 +137,7 @@ namespace ET.Client
             var pool = self._AllPool[uiType];
             pool.Put(view);
             self._RefCount -= 1;
+            return true;
         }
 
         //检查引用计数 如果<=0 就自动关闭UI

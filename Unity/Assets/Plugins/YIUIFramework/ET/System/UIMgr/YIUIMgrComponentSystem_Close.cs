@@ -17,6 +17,8 @@ namespace ET.Client
             Debug.Log($"<color=yellow> 关闭UI: {panelName} </color>");
             #endif
 
+            using var coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, panelName.GetHashCode());
+
             self.m_PanelCfgMap.TryGetValue(panelName, out var info);
 
             if (info?.UIBase == null) return true; //没有也算成功关闭
