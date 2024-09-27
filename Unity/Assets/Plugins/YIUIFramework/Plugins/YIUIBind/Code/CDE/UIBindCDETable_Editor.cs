@@ -1,9 +1,10 @@
 ﻿#if UNITY_EDITOR
+using System;
+using System.Reflection;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-
 using YIUIFramework.Editor;
 
 namespace YIUIFramework
@@ -129,6 +130,64 @@ namespace YIUIFramework
             AutoCheck();
         }
 
+        [GUIColor(1, 1, 1)]
+        [Button("重置子预制", 20)]
+        [PropertyOrder(-100)]
+        [ShowIf("ShowAutoCheckBtn")]
+        private void RevertPrefabInstance()
+        {
+            UnityTipsHelper.CallBack("将会重置所有子CDE 还原到预制初始状态 \n(防止嵌套预制修改)",
+                () =>
+                {
+                    UICreateModule.RefreshChildCdeTable(this);
+                    foreach (var cdeTable in AllChildCdeTable)
+                    {
+                        try
+                        {
+                            PrefabUtility.RevertPrefabInstance(cdeTable.gameObject, InteractionMode.AutomatedAction);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogError($"这个CDETable 不是预制体 请检查 {cdeTable.name}\n{e.Message}", cdeTable.gameObject);
+                        }
+                    }
+                });
+        }
+
+        [GUIColor(0, 1, 1)]
+        [Button("保存选中", 50)]
+        [PropertyOrder(-100)]
+        [HideIf("ShowCreateBtn")]
+        private void SaveSelectSelf()
+        {
+            var stage = PrefabStageUtility.GetPrefabStage(gameObject);
+
+            if (stage == null)
+            {
+                Debug.LogError($"未知错误 没有找到预制 {gameObject.name}");
+                return;
+            }
+
+            var methodInfo = stage.GetType().GetMethod("Save", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            if (methodInfo != null)
+            {
+                bool result = (bool)methodInfo.Invoke(stage, null);
+                if (!result)
+                {
+                    Debug.LogError("自动保存失败 注意请手动保存");
+                }
+            }
+            else
+            {
+                Debug.LogError("Save方法不存在 自动保存失败 注意请手动保存");
+            }
+
+            var assetObj = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(stage.assetPath);
+            EditorGUIUtility.PingObject(assetObj);
+            Selection.activeObject = assetObj;
+        }
+
         internal bool AutoCheck()
         {
             if (!UIOperationHelper.CheckUIOperation(this)) return false;
@@ -201,7 +260,7 @@ namespace YIUIFramework
         internal void CreateUICode()
         {
             if (!UIOperationHelper.CheckUIOperation(this)) return;
-            
+
             CreateUICode(false, false);
             AssetDatabase.Refresh();
         }

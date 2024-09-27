@@ -139,6 +139,7 @@
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\LanguageSource\LanguageSourceData_Misc.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\ET\System\Panel\YIUIPanelComponentSystem_CloseView_Async.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\YIUIEditor\YIUIAutoTool\Window\UIMacro\MacroCustomData\TestMacroData.cs" />
+    <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIMono\Widget\Tool\YIUIClickEventPenetration.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIRedDot\YIUIEditor\UIRedDot\Config\RedDotConfigAsset_Extend.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\I2Localization\Scripts\EventCallback.cs" />
     <Compile Include="Assets\Plugins\YIUIFramework\Plugins\YIUIBind\Extend\Event\Click\Task\UITaskEventBindClickString.cs" />
