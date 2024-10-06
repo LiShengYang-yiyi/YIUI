@@ -33,7 +33,6 @@ namespace YIUIFramework
         [GUIColor(0, 1, 1)]
         [LabelText("空名称额外添加类型后缀")]
         [SerializeField]
-        [ShowIf("m_AutoSetNullName")]
         [HorizontalGroup("SetGroup")]
         [PropertyOrder(-99)]
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
