@@ -34,6 +34,9 @@
     <type fullname="MongoDB.Bson.Serialization.IBsonSerializer" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Options.DictionaryRepresentation" preserve="all" />
   </assembly>
+  <assembly fullname="Sirenix.OdinInspector.Attributes">
+    <type fullname="Sirenix.OdinInspector.LabelTextAttribute" preserve="all" />
+  </assembly>
   <assembly fullname="System">
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2" preserve="all" />
@@ -74,12 +77,14 @@
     <type fullname="ET.AwakeSystem`3" preserve="all" />
     <type fullname="ET.BaseAttribute" preserve="all" />
     <type fullname="ET.ByteHelper" preserve="all" />
+    <type fullname="ET.ChannelType" preserve="all" />
     <type fullname="ET.ChildOfAttribute" preserve="all" />
     <type fullname="ET.CodeAttribute" preserve="all" />
     <type fullname="ET.CodeTypes" preserve="all" />
     <type fullname="ET.ComponentOfAttribute" preserve="all" />
     <type fullname="ET.ConfigAttribute" preserve="all" />
     <type fullname="ET.ConfigLoader" preserve="all" />
+    <type fullname="ET.ConfigSystem`1" preserve="all" />
     <type fullname="ET.CoroutineLock" preserve="all" />
     <type fullname="ET.CoroutineLockComponent" preserve="all" />
     <type fullname="ET.CoroutineLockComponentSystem" preserve="all" />
@@ -103,6 +108,7 @@
     <type fullname="ET.FiberInit" preserve="all" />
     <type fullname="ET.FiberManager" preserve="all" />
     <type fullname="ET.FriendOfAttribute" preserve="all" />
+    <type fullname="ET.HandlerObject" preserve="all" />
     <type fullname="ET.IAwake" preserve="all" />
     <type fullname="ET.IAwake`1" preserve="all" />
     <type fullname="ET.IAwake`2" preserve="all" />
@@ -116,7 +122,6 @@
     <type fullname="ET.ILocationResponse" preserve="all" />
     <type fullname="ET.ILog" preserve="all" />
     <type fullname="ET.IMHandler" preserve="all" />
-    <type fullname="ET.IMerge" preserve="all" />
     <type fullname="ET.IMessage" preserve="all" />
     <type fullname="ET.IRequest" preserve="all" />
     <type fullname="ET.IResponse" preserve="all" />
@@ -156,7 +161,6 @@
     <type fullname="ET.OpcodeType" preserve="all" />
     <type fullname="ET.ProcessInnerSender" preserve="all" />
     <type fullname="ET.ProcessInnerSenderSystem" preserve="all" />
-    <type fullname="ET.ProtoObject" preserve="all" />
     <type fullname="ET.RandomGenerator" preserve="all" />
     <type fullname="ET.ResponseTypeAttribute" preserve="all" />
     <type fullname="ET.RpcException" preserve="all" />
@@ -169,6 +173,7 @@
     <type fullname="ET.StringHashHelper" preserve="all" />
     <type fullname="ET.StringHelper" preserve="all" />
     <type fullname="ET.StructBsonSerialize`1" preserve="all" />
+    <type fullname="ET.SystemObject" preserve="all" />
     <type fullname="ET.TimeInfo" preserve="all" />
     <type fullname="ET.TimerComponent" preserve="all" />
     <type fullname="ET.TimerComponentSystem" preserve="all" />
@@ -219,6 +224,9 @@
     <type fullname="ET.ETTaskCompleted" preserve="all" />
     <type fullname="ET.ETTaskHelper" preserve="all" />
     <type fullname="ET.ETTask`1" preserve="all" />
+    <type fullname="Luban.BeanBase" preserve="all" />
+    <type fullname="Luban.ByteBuf" preserve="all" />
+    <type fullname="Luban.StringUtil" preserve="all" />
     <type fullname="TrueSync.FP" preserve="all" />
     <type fullname="TrueSync.TSMatrix" preserve="all" />
     <type fullname="TrueSync.TSQuaternion" preserve="all" />
@@ -279,7 +287,7 @@
     <type fullname="ET.Client.IYIUIOpenParam" preserve="all" />
     <type fullname="ET.Client.IYIUIOpenTween" preserve="all" />
     <type fullname="ET.Client.IYIUIOpen`1" preserve="all" />
-    <type fullname="ET.Client.IYIUIOpen`2" preserve="all" />
+    <type fullname="ET.Client.IYIUIOpen`3" preserve="all" />
     <type fullname="ET.Client.YIUIBindSystem`1" preserve="all" />
     <type fullname="ET.Client.YIUICloseTweenSystem`1" preserve="all" />
     <type fullname="ET.Client.YIUIComponent" preserve="all" />
@@ -290,10 +298,12 @@
     <type fullname="ET.Client.YIUIMgrComponentSystem" preserve="all" />
     <type fullname="ET.Client.YIUIOpenSystem`1" preserve="all" />
     <type fullname="ET.Client.YIUIOpenSystem`2" preserve="all" />
-    <type fullname="ET.Client.YIUIOpenSystem`3" preserve="all" />
+    <type fullname="ET.Client.YIUIOpenSystem`4" preserve="all" />
     <type fullname="ET.Client.YIUIOpenTweenSystem`1" preserve="all" />
     <type fullname="ET.Client.YIUIPanelComponent" preserve="all" />
     <type fullname="ET.Client.YIUIPanelComponentSystem" preserve="all" />
+    <type fullname="ET.Client.YIUIRootComponent" preserve="all" />
+    <type fullname="ET.Client.YIUIRootComponentSystem" preserve="all" />
     <type fullname="ET.Client.YIUIViewComponent" preserve="all" />
     <type fullname="ET.Client.YIUIViewComponentSystem" preserve="all" />
     <type fullname="ET.Client.YIUIWindowComponent" preserve="all" />
@@ -359,19 +369,22 @@
     <type fullname="System.Action`1" preserve="all" />
     <type fullname="System.Action`2" preserve="all" />
     <type fullname="System.Activator" preserve="all" />
-    <type fullname="System.ArgumentOutOfRangeException" preserve="all" />
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Attribute" preserve="all" />
     <type fullname="System.AttributeTargets" preserve="all" />
     <type fullname="System.AttributeUsageAttribute" preserve="all" />
     <type fullname="System.Boolean" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
+    <type fullname="System.Collections.Generic.CollectionExtensions" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/Enumerator" preserve="all" />
+    <type fullname="System.Collections.Generic.Dictionary`2/KeyCollection" preserve="all" />
+    <type fullname="System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />
     <type fullname="System.Collections.Generic.IList`1" preserve="all" />
+    <type fullname="System.Collections.Generic.IReadOnlyDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
@@ -379,8 +392,11 @@
     <type fullname="System.Console" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerBrowsableAttribute" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerBrowsableState" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerDisplayAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerStepThroughAttribute" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
     <type fullname="System.Exception" preserve="all" />
     <type fullname="System.Func`1" preserve="all" />
@@ -399,6 +415,7 @@
     <type fullname="System.Object" preserve="all" />
     <type fullname="System.ParamArrayAttribute" preserve="all" />
     <type fullname="System.Reflection.BindingFlags" preserve="all" />
+    <type fullname="System.Reflection.CustomAttributeExtensions" preserve="all" />
     <type fullname="System.Reflection.DefaultMemberAttribute" preserve="all" />
     <type fullname="System.Reflection.FieldInfo" preserve="all" />
     <type fullname="System.Reflection.MemberInfo" preserve="all" />
