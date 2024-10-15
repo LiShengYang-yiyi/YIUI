@@ -10,15 +10,24 @@ namespace YIUIFramework
     [HideReferenceObjectPicker]
     public abstract partial class UIEventBase
     {
-        [LabelText("事件名称")]
+        [LabelText("同步事件")]
         [SerializeField]
         [ReadOnly]
+        [HideIf("IsTaskEvent")]
+        [PropertyOrder(-10)]
         #if UNITY_EDITOR
-        [InfoBox("此事件没有任何关联", InfoMessageType.Error, "ShowIfBindsTips")]
-        [ShowIf("ShowIfBindsTips")]
+        [InfoBox("此事件没有任何关联", InfoMessageType.Warning, "ShowIfBindsTips")]
         #endif
         private string m_EventName;
 
+        [LabelText("异步事件")]
+        [ReadOnly]
+        [ShowInInspector]
+        [ShowIf("IsTaskEvent")]
+        [PropertyOrder(-10)]
+        #if UNITY_EDITOR
+        [InfoBox("此事件没有任何关联", InfoMessageType.Warning, "ShowIfBindsTips")]
+        #endif
         public string EventName => m_EventName;
 
         [SerializeField]
