@@ -1,5 +1,4 @@
 # YIUI-ET7.2
-最新同步日期: 2024-02-18
 
 # [文档](https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh)
 
