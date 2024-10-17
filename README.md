@@ -49,3 +49,10 @@ ET9.0 [YIUI包目录](https://lib9kmxvq7k.feishu.cn/wiki/XJxLwzTlViqD5TkSAw1c32R
 
 # 支持
 [如果觉得YIUI对您有帮助!](https://github.com/LiShengYang-yiyi/YIUI/blob/main/Readme/支持.md)
+
+## 特别鸣谢
+
+感谢JetBrains公司提供的使用许可证！
+
+<p><a href="https://www.jetbrains.com/?from=fantasy">
+<img src="https://user-images.githubusercontent.com/8274346/223466125-611c027a-61f3-4ea0-a96d-4052283da746.png" alt="JetBrains的Logo" width="20%" height="20%"></a></p>
