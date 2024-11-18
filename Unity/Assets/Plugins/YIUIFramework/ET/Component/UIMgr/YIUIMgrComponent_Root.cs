@@ -20,7 +20,7 @@ namespace ET.Client
         public const  float         DesignScreenHeight_F = 1080f;
 
         public const int RootPosOffset = 1000;
-        public const int LayerDistance = 1000;
+        public const int LayerDistance = 0;
 
         #region 以下名称 禁止修改
 
@@ -150,7 +150,7 @@ namespace ET.Client
                 rect.anchorMin     = Vector2.zero;
                 rect.sizeDelta     = Vector2.zero;
                 rect.localRotation = Quaternion.identity;
-                rect.localPosition = new Vector3(0, 0, i * YIUIMgrComponent.LayerDistance); //这个是为了3D模型时穿插的问题
+                rect.localPosition = new Vector3(0, 0, i * YIUIMgrComponent.LayerDistance); //这个可解决 真实3D模型直接放在UI上的穿插问题
                 var rectDic = new Dictionary<RectTransform, List<PanelInfo>> { { rect, new List<PanelInfo>() } };
                 m_AllPanelLayer.Add((EPanelLayer)i, rectDic);
             }
@@ -158,7 +158,7 @@ namespace ET.Client
             InitAddUIBlock(); //所有层级初始化后添加一个终极屏蔽层 可根据API 定时屏蔽UI操作
 
             UICamera.transform.localPosition =
-                    new Vector3(UILayerRoot.localPosition.x, UILayerRoot.localPosition.y, -YIUIMgrComponent.LayerDistance);
+                    new Vector3(UILayerRoot.localPosition.x, UILayerRoot.localPosition.y, -1000);
 
             UICamera.clearFlags   = CameraClearFlags.Depth;
             UICamera.orthographic = true;

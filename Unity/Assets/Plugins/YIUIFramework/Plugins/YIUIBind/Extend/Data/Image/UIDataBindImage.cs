@@ -80,7 +80,7 @@ namespace YIUIFramework
 
         private async ETTask ChangeSprite(string resName)
         {
-            using var asyncLock = await SemaphoreSlimSingleton.Instance.Wait(this.GetHashCode());
+            using var coroutineLock = await EventSystem.Instance?.Invoke<YIUIInvokeCoroutineLock, ETTask<Entity>>(new YIUIInvokeCoroutineLock { Lock = this.GetHashCode() });
 
             if (m_LastSpriteName == resName)
             {
