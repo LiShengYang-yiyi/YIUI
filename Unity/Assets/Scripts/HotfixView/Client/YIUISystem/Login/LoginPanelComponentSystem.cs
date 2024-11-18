@@ -4,11 +4,6 @@ using System.Collections.Generic;
 
 namespace ET.Client
 {
-    /// <summary>
-    /// Author  Lsy
-    /// Date    2023.9.19
-    /// Desc
-    /// </summary>
     [FriendOf(typeof(LoginPanelComponent))]
     public static partial class LoginPanelComponentSystem
     {

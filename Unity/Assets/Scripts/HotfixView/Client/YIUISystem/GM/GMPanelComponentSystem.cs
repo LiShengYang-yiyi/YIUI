@@ -6,11 +6,6 @@ using UnityEngine.EventSystems;
 
 namespace ET.Client
 {
-    /// <summary>
-    /// Author  YIUI
-    /// Date    2023.11.30
-    /// Desc
-    /// </summary>
     [FriendOf(typeof(GMPanelComponent))]
     public static partial class GMPanelComponentSystem
     {
