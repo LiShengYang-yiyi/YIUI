@@ -100,7 +100,9 @@ namespace ET.Client
                 return null;
             }
 
-            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, panelName.GetHashCode());
+            var coroutineLockCode = info.PanelLayer == EPanelLayer.Panel? UIStaticHelper.UIProjectName.GetHashCode() : panelName.GetHashCode();
+
+            using var coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.YIUILoader, coroutineLockCode);
 
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");
