@@ -23,7 +23,7 @@ namespace ET.Client
         /// <returns></returns>
         internal PanelInfo GetPanelInfo<T>() where T : Entity
         {
-            var type = typeof (T);
+            var type = typeof(T);
             var name = type.Name;
             if (this.m_PanelCfgMap.TryGetValue(name, out var info))
             {
@@ -36,7 +36,7 @@ namespace ET.Client
 
             if (vo.CodeType != EUICodeType.Panel)
             {
-                Log.Error($"这个对象不是 Panel 无法打开 {typeof (T)}");
+                Log.Error($"这个对象不是 Panel 无法打开 {typeof(T)}");
                 return null;
             }
 
@@ -58,7 +58,7 @@ namespace ET.Client
             }
 
             var resName = componentName.Replace("Component", "");
-            var data = YIUIBindHelper.GetBindVoByResName(resName);
+            var data    = YIUIBindHelper.GetBindVoByResName(resName);
             if (data == null) return null;
             var vo = data.Value;
 
@@ -99,7 +99,9 @@ namespace ET.Client
                 return null;
             }
 
-            using var coroutineLock = await this.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, panelName.GetHashCode());
+            var coroutineLockCode = info.PanelLayer == EPanelLayer.Panel ? UIStaticHelper.UIProjectName.GetHashCode() : panelName.GetHashCode();
+
+            using var coroutineLock = await this.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, coroutineLockCode);
 
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> 打开UI: {panelName} </color>");

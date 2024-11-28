@@ -13,15 +13,21 @@ namespace ET.Client
         /// <param name="ignoreElse">忽略堆栈操作 -- 不要轻易忽略除非你明白 </param>
         public static async ETTask<bool> ClosePanelAsync(this YIUIMgrComponent self, string panelName, bool tween = true, bool ignoreElse = false)
         {
+            if (!self.m_PanelCfgMap.TryGetValue(panelName, out var info))
+            {
+                Debug.LogError($"请检查 {panelName} 没有获取到PanelInfo  1. panel上使用特性 [YIUI(typeof(XXPanelComponent))]  2. 检查是否没有注册上");
+                return true; //没有也算成功关闭
+            }
+
+            var coroutineLockCode = info.PanelLayer == EPanelLayer.Panel ? UIStaticHelper.UIProjectName.GetHashCode() : panelName.GetHashCode();
+
+            using var coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, coroutineLockCode);
+
             #if YIUIMACRO_PANEL_OPENCLOSE
             Debug.Log($"<color=yellow> 关闭UI: {panelName} </color>");
             #endif
 
-            using var coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.YIUILoader, panelName.GetHashCode());
-
-            self.m_PanelCfgMap.TryGetValue(panelName, out var info);
-
-            if (info?.UIBase == null) return true; //没有也算成功关闭
+            if (info.UIBase == null) return true; //没有也算成功关闭
 
             EventSystem.Instance.Publish(self.Root(), new YIUIEventPanelCloseBefore
             {
