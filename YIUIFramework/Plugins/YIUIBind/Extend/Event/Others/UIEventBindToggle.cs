@@ -24,6 +24,8 @@ namespace YIUIBind
             EUIEventParamType.Bool
         };
 
+        protected override bool IsTaskEvent => false;
+
         protected override List<EUIEventParamType> GetFilterParamType()
         {
             return m_FilterParamType;

@@ -28,9 +28,18 @@ namespace YIUIFramework.Editor
                 if (string.IsNullOrEmpty(name)) continue;
                 var uiEventBase = value.Value;
                 if (uiEventBase == null) continue;
-                sb.AppendFormat("        protected virtual void {0}({1}){{}}\r\n",
-                    $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}Action",
-                    GetEventMethodParam(uiEventBase));
+                if (uiEventBase.IsTaskEvent)
+                {
+                    sb.AppendFormat("        protected virtual async UniTask {0}({1}){{await UniTask.CompletedTask;}}\r\n", 
+                        $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}Action", 
+                        GetEventMethodParam(uiEventBase));
+                }
+                else
+                {
+                    sb.AppendFormat("        protected virtual void {0}({1}){{}}\r\n", 
+                        $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}Action", 
+                        GetEventMethodParam(uiEventBase));
+                }
             }
         }
 
@@ -78,11 +87,20 @@ namespace YIUIFramework.Editor
                 if (string.IsNullOrEmpty(name)) continue;
                 var uiEventBase = value.Value;
                 if (uiEventBase == null) continue;
-                var onEvent      = $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}";
-                var methodParam  = $"Action({GetEventMethodParam(uiEventBase)})";
-                var check        = $"void {onEvent}{methodParam}";
-                var firstContent = $"\r\n        protected override void {onEvent}{methodParam}";
-                var content      = firstContent + "\r\n        {\r\n            \r\n        }\r\n       ";
+                var onEvent     = $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}";
+                var methodParam = $"Action({GetEventMethodParam(uiEventBase)})";
+
+                string check;
+                if (uiEventBase.IsTaskEvent)
+                    check = $"protected override async UniTask {onEvent}{methodParam}";
+                else
+                    check = $"protected override void {onEvent}{methodParam}";
+                var    firstContent = $"\r\n        {check}";
+                string content;
+                if (uiEventBase.IsTaskEvent)
+                    content = firstContent + "\r\n        {\r\n            await UniTask.CompletedTask;\r\n        }\r\n        ";
+                else
+                    content = firstContent + "\r\n        {\r\n            \r\n        }\r\n        ";
                 newList.Add(new Dictionary<string, string> { { check, content } });
             }
 

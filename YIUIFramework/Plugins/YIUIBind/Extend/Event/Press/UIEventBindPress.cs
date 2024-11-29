@@ -34,6 +34,8 @@ namespace YIUIFramework
         [NonSerialized]
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { };
 
+        protected override bool IsTaskEvent => false;
+
         protected override List<EUIEventParamType> GetFilterParamType()
         {
             return m_FilterParamType;

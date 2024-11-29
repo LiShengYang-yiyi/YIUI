@@ -17,6 +17,8 @@ namespace YIUIBind
     [RequireComponent(typeof(UIDataBindChange))]
     public class UIEventBindChangeDataValue : UIEventBind
     {
+        protected override bool IsTaskEvent => false;
+
         [SerializeField]
         [ReadOnly]
         [Required("必须有此组件")]

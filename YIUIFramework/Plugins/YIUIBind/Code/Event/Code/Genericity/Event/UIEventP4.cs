@@ -7,6 +7,8 @@ namespace YIUIBind
 {
     public class UIEventP4<P1, P2, P3, P4> : UIEventBase, IUIEventInvoke<P1, P2, P3, P4>
     {
+        public override bool IsTaskEvent => false;
+
         private LinkedList<UIEventHandleP4<P1, P2, P3, P4>> m_UIEventDelegates;
         public  LinkedList<UIEventHandleP4<P1, P2, P3, P4>> UIEventDelegates => m_UIEventDelegates;
 
@@ -89,14 +91,12 @@ namespace YIUIBind
         #if UNITY_EDITOR
         public override string GetEventType()
         {
-            return
-                $"UIEventP4<{GetParamTypeString(0)},{GetParamTypeString(1)},{GetParamTypeString(2)},{GetParamTypeString(3)}>";
+            return $"UIEventP4<{GetParamTypeString(0)},{GetParamTypeString(1)},{GetParamTypeString(2)},{GetParamTypeString(3)}>";
         }
 
         public override string GetEventHandleType()
         {
-            return
-                $"UIEventHandleP4<{GetParamTypeString(0)},{GetParamTypeString(1)},{GetParamTypeString(2)},{GetParamTypeString(3)}>";
+            return $"UIEventHandleP4<{GetParamTypeString(0)},{GetParamTypeString(1)},{GetParamTypeString(2)},{GetParamTypeString(3)}>";
         }
         #endif
     }

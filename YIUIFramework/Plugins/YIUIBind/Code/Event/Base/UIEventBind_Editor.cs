@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using Logger = YIUIFramework.Logger;
 
@@ -17,11 +18,19 @@ namespace YIUIBind
             if (m_UIEvent == null)
             {
                 Logger.LogError($"未选择事件");
+                return;
             }
 
             try
             {
-                m_UIEvent?.Invoke();
+                if (m_UIEvent.IsTaskEvent)
+                {
+                    m_UIEvent.InvokeAsync().Forget();
+                }
+                else
+                {
+                    m_UIEvent.Invoke();
+                }
             }
             catch (Exception e)
             {
@@ -40,7 +49,7 @@ namespace YIUIBind
                 return null;
             }
 
-            var list = m_EventTable.GetFilterParamTypeEventName(GetFilterParamType());
+            var list = m_EventTable.GetFilterParamTypeEventName(GetFilterParamType(), IsTaskEvent);
 
             for (var i = list.Count - 1; i >= 0; i--)
             {

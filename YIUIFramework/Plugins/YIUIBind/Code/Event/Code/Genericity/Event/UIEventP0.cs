@@ -7,6 +7,8 @@ namespace YIUIBind
 {
     public class UIEventP0 : UIEventBase, IUIEventInvoke
     {
+        public override bool IsTaskEvent => false;
+
         private LinkedList<UIEventHandleP0> m_UIEventDelegates;
         public  LinkedList<UIEventHandleP0> UIEventDelegates => m_UIEventDelegates;
 

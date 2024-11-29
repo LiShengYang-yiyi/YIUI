@@ -25,6 +25,8 @@ namespace YIUIBind
         [LabelText("可选组件")]
         private Selectable m_Selectable;
 
+        protected override bool IsTaskEvent => false;
+
         public void OnPointerClick(PointerEventData eventData)
         {
             if (m_Selectable != null && !m_Selectable.interactable)

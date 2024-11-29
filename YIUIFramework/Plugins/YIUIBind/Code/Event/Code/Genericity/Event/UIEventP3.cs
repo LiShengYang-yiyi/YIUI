@@ -7,6 +7,8 @@ namespace YIUIBind
 {
     public class UIEventP3<P1, P2, P3> : UIEventBase, IUIEventInvoke<P1, P2, P3>
     {
+        public override bool IsTaskEvent => false;
+
         private LinkedList<UIEventHandleP3<P1, P2, P3>> m_UIEventDelegates;
         public  LinkedList<UIEventHandleP3<P1, P2, P3>> UIEventDelegates => m_UIEventDelegates;
 

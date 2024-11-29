@@ -60,6 +60,8 @@ namespace YIUIBind
             return uiEvent;
         }
 
+        protected abstract bool IsTaskEvent { get; }
+
         protected abstract List<EUIEventParamType> GetFilterParamType();
 
         private bool m_Binded;

@@ -11,6 +11,8 @@ namespace YIUIBind
     [AddComponentMenu("YIUIBind/Event/显隐 【Active】 UIEventBindActive")]
     public class UIEventBindActive : UIEventBind
     {
+        protected override bool IsTaskEvent => false;
+
         private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
         {
             EUIEventParamType.UnityGameObject,
