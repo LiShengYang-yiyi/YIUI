@@ -17,7 +17,8 @@ namespace ET.Client
 
         public async ETTask<bool> Run(Scene clientScene, ParamVo paramVo)
         {
-            TipsHelper.OpenSync<MessageTipsViewComponent>(paramVo);
+            var message = paramVo.Get<string>();
+            TipsHelper.OpenSync<MessageTipsViewComponent>(message);
             await ETTask.CompletedTask;
             return true;
         }
@@ -116,7 +117,8 @@ namespace ET.Client
 
         public async ETTask<bool> Run(Scene clientScene, ParamVo paramVo)
         {
-            TipsHelper.OpenSync<TextTipsViewComponent>(paramVo);
+            var message = paramVo.Get<string>();
+            TipsHelper.OpenSync<TextTipsViewComponent>(message);
             await ETTask.CompletedTask;
             return true;
         }
