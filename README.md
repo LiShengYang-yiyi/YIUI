@@ -1,3 +1,5 @@
+[<img src="https://api.gitsponsors.com/api/badge/img?id=672814176" height="50">](https://api.gitsponsors.com/api/badge/link?p=JGof2ys8nOpRy9/x8rprCp5EQ4H/VT1F1d+MOVX9pXLmDcm9aLNqfhg0tFvIHiDhQsEf519sBEfebPzAlDqllA==)
+
 # YIUI 框架
 
 # [YIUIET9 运行指南](https://lib9kmxvq7k.feishu.cn/wiki/H7SmwXozNiliN3kahZFcqQxqnub)
