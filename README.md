@@ -1,5 +1,3 @@
-[<img src="https://api.gitsponsors.com/api/badge/img?id=672814176" height="50">](https://api.gitsponsors.com/api/badge/link?p=JGof2ys8nOpRy9/x8rprCp5EQ4H/VT1F1d+MOVX9pXLmDcm9aLNqfhg0tFvIHiDhQsEf519sBEfebPzAlDqllA==)
-
 # YIUI-ET8.0
 最新同步日期: 2024-02-17
 
