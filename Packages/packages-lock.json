@@ -151,7 +151,7 @@
         "cn.etetet.loader": "3.0.1",
         "cn.etetet.demores": "3.0.0",
         "cn.etetet.mathematics": "0.0.2",
-        "cn.etetet.router": "3.0.0",
+        "cn.etetet.router": "3.0.1",
         "cn.etetet.console": "3.0.0",
         "cn.etetet.unit": "3.0.0",
         "cn.etetet.http": "3.0.0",
@@ -328,6 +328,13 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
