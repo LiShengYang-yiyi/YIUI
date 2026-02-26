@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!200 &-7618497264697703514
+ShaderVariantCollection:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShaderVariants
+  m_Shaders: {}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d43f626d9b5f4d729097092ded48bdb, type: 3}
+  m_Name: UIEffectProjectSettings
+  m_EditorClassIdentifier: 
+  m_TransformSensitivity: 1
+  m_RuntimePresets: []
+  m_UseHDRColorPicker: 1
+  m_ShaderVariantCollection: {fileID: 0}
+  m_ShaderVariantRegistry:
+    m_OptionalShaders: []
+    m_Asset: {fileID: -7618497264697703514}
+    m_ErrorOnUnregisteredVariant: 0
+    m_UnregisteredVariants: []
