@@ -60,4 +60,11 @@
     <ItemGroup>
         <CompilerVisibleProperty Include="DotNetAssembly" />
     </ItemGroup>
+
+    <!-- Sirenix references for yiuireddot -->
+    <ItemGroup>
+        <Reference Include="Sirenix.OdinInspector.Attributes">
+            <HintPath>$(SolutionDir)Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+        </Reference>
+    </ItemGroup>
 </Project>
