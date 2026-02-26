@@ -31,9 +31,14 @@ namespace YooAsset.Editor
             var cell = new ButtonCell(searchTag);
             Cells.Add(cell);
         }
-        public void AddAssetPathCell(string searchTag, string path)
+        public void AddAssetPathCell(string searchTag, string assetPath)
         {
-            var cell = new AssetPathCell(searchTag, path);
+            var cell = new AssetPathCell(searchTag, assetPath);
+            Cells.Add(cell);
+        }
+        public void AddAssetObjectCell(string searchTag, string assetPath)
+        {
+            var cell = new AssetObjectCell(searchTag, assetPath);
             Cells.Add(cell);
         }
         public void AddStringValueCell(string searchTag, string value)

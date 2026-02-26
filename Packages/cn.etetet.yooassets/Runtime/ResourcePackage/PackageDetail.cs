@@ -14,6 +14,11 @@ namespace YooAsset
         public bool EnableAddressable;
 
         /// <summary>
+        /// 支持无后缀名的资源定位地址
+        /// </summary>
+        public bool SupportExtensionless;
+
+        /// <summary>
         /// 资源定位地址大小写不敏感
         /// </summary>
         public bool LocationToLower;
@@ -22,6 +27,11 @@ namespace YooAsset
         /// 包含资源GUID数据
         /// </summary>
         public bool IncludeAssetGUID;
+
+        /// <summary>
+        /// 使用可寻址地址代替资源路径
+        /// </summary>
+        public bool ReplaceAssetPathWithAddress;
 
         /// <summary>
         /// 文件名称样式

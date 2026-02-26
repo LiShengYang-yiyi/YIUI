@@ -64,7 +64,7 @@ namespace YooAsset
                 if (_loadWebPackageManifestOp == null)
                 {
                     string packageHash = _requestWebPackageHashOp.PackageHash;
-                    _loadWebPackageManifestOp = new LoadWebServerPackageManifestOperation(_fileSystem, _packageVersion, packageHash);
+                    _loadWebPackageManifestOp = new LoadWebServerPackageManifestOperation(_fileSystem, _packageVersion, packageHash, _timeout);
                     _loadWebPackageManifestOp.StartOperation();
                     AddChildOperation(_loadWebPackageManifestOp);
                 }

@@ -9,8 +9,12 @@ using UnityEngine.UIElements;
 
 namespace YooAsset.Editor
 {
-    public partial class TreeViewer : VisualElement
+    public class TreeViewer : VisualElement
     {
+        public new class UxmlFactory : UxmlFactory<TreeViewer, UxmlTraits>
+        {
+        }
+
         private readonly ListView _listView;
         private readonly List<TreeNode> _flattenList = new List<TreeNode>(1000);
         private readonly List<TreeNode> _rootList = new List<TreeNode>(100);

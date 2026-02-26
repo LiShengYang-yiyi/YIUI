@@ -31,18 +31,19 @@ namespace YooAsset
         /// <summary>
         /// 清理缓存文件
         /// </summary>
-        ClearCacheFilesOperation ClearCacheFilesAsync(string clearMode, object clearParam);
-
+        ClearCacheFilesOperation ClearCacheFilesAsync(ClearCacheFilesOptions options);
+        
         // 下载相关
-        ResourceDownloaderOperation CreateResourceDownloaderByAll(int downloadingMaxNumber, int failedTryAgain, int timeout);
-        ResourceDownloaderOperation CreateResourceDownloaderByTags(string[] tags, int downloadingMaxNumber, int failedTryAgain, int timeout);
-        ResourceDownloaderOperation CreateResourceDownloaderByPaths(AssetInfo[] assetInfos, bool recursiveDownload, int downloadingMaxNumber, int failedTryAgain, int timeout);
+        ResourceDownloaderOperation CreateResourceDownloaderByAll(int downloadingMaxNumber, int failedTryAgain);
+        ResourceDownloaderOperation CreateResourceDownloaderByTags(string[] tags, int downloadingMaxNumber, int failedTryAgain);
+        ResourceDownloaderOperation CreateResourceDownloaderByPaths(AssetInfo[] assetInfos, bool recursiveDownload, int downloadingMaxNumber, int failedTryAgain);
 
         // 解压相关
-        ResourceUnpackerOperation CreateResourceUnpackerByAll(int upackingMaxNumber, int failedTryAgain, int timeout);
-        ResourceUnpackerOperation CreateResourceUnpackerByTags(string[] tags, int upackingMaxNumber, int failedTryAgain, int timeout);
-
+        ResourceUnpackerOperation CreateResourceUnpackerByAll(int upackingMaxNumber, int failedTryAgain);
+        ResourceUnpackerOperation CreateResourceUnpackerByTags(string[] tags, int upackingMaxNumber, int failedTryAgain);
+        
         // 导入相关
-        ResourceImporterOperation CreateResourceImporterByFilePaths(string[] filePaths, int importerMaxNumber, int failedTryAgain, int timeout);
+        ResourceImporterOperation CreateResourceImporterByFilePaths(string[] filePaths, int importingMaxNumber, int failedTryAgain);
+        ResourceImporterOperation CreateResourceImporterByFileInfos(ImportFileInfo[] fileInfos, int importingMaxNumber, int failedTryAgain);
     }
 }

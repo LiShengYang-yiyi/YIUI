@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -16,6 +17,8 @@ namespace YooAsset
 
         private static readonly List<AsyncOperationBase> _operations = new List<AsyncOperationBase>(1000);
         private static readonly List<AsyncOperationBase> _newList = new List<AsyncOperationBase>(1000);
+        private static Action<string, AsyncOperationBase> _startCallback = null;
+        private static Action<string, AsyncOperationBase> _finishCallback = null;
 
         // 计时器相关
         private static Stopwatch _watch;
@@ -33,6 +36,10 @@ namespace YooAsset
         {
             get
             {
+                if (_watch == null)
+                    return false;
+
+                // NOTE : 单次调用开销约1微秒
                 return _watch.ElapsedMilliseconds - _frameTime >= MaxTimeSlice;
             }
         }
@@ -57,7 +64,12 @@ namespace YooAsset
             {
                 var operation = _operations[i];
                 if (operation.IsFinish)
+                {
                     _operations.RemoveAt(i);
+
+                    if (_finishCallback != null)
+                        _finishCallback.Invoke(operation.PackageName, operation);
+                }
             }
 
             // 添加新增的异步操作
@@ -82,10 +94,11 @@ namespace YooAsset
             }
 
             // 更新进行中的异步操作
+            bool checkBusy = MaxTimeSlice < long.MaxValue;
             _frameTime = _watch.ElapsedMilliseconds;
             for (int i = 0; i < _operations.Count; i++)
             {
-                if (IsBusy)
+                if (checkBusy && IsBusy)
                     break;
 
                 var operation = _operations[i];
@@ -103,6 +116,8 @@ namespace YooAsset
         {
             _operations.Clear();
             _newList.Clear();
+            _startCallback = null;
+            _finishCallback = null;
             _watch = null;
             _frameTime = 0;
             MaxTimeSlice = long.MaxValue;
@@ -140,6 +155,25 @@ namespace YooAsset
             _newList.Add(operation);
             operation.SetPackageName(packageName);
             operation.StartOperation();
+
+            if (_startCallback != null)
+                _startCallback.Invoke(packageName, operation);
+        }
+
+        /// <summary>
+        /// 监听任务开始
+        /// </summary>
+        public static void RegisterStartCallback(Action<string, AsyncOperationBase> callback)
+        {
+            _startCallback = callback;
+        }
+
+        /// <summary>
+        /// 监听任务结束
+        /// </summary>
+        public static void RegisterFinishCallback(Action<string, AsyncOperationBase> callback)
+        {
+            _finishCallback = callback;
         }
 
         #region 调试信息

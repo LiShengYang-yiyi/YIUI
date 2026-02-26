@@ -10,7 +10,7 @@ namespace YooAsset
             buildParam.InvokeAssmeblyName = "ET.YooAssets.Editor";
             buildParam.InvokeClassFullName = "YooAsset.Editor.AssetBundleSimulateBuilder";
             buildParam.InvokeMethodName = "SimulateBuild";
-            return PakcageInvokeBuilder.InvokeBuilder(buildParam);
+            return PackageInvokeBuilder.InvokeBuilder(buildParam);
         }
     }
 }

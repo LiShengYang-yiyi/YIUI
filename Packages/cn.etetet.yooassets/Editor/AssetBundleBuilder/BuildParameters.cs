@@ -98,6 +98,15 @@ namespace YooAsset.Editor
         /// </summary>
         public IEncryptionServices EncryptionServices;
 
+        /// <summary>
+        /// 资源清单加密服务类
+        /// </summary>
+        public IManifestProcessServices ManifestProcessServices;
+
+        /// <summary>
+        /// 资源清单解密服务类
+        /// </summary>
+        public IManifestRestoreServices ManifestRestoreServices;
 
         private string _pipelineOutputDirectory = string.Empty;
         private string _packageOutputDirectory = string.Empty;

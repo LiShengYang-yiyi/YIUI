@@ -15,17 +15,15 @@ namespace YooAsset
         }
 
         private readonly PlayModeImpl _impl;
-        private readonly string _clearMode;
-        private readonly object _clearParam;
+        private readonly ClearCacheFilesOptions _options;
         private List<IFileSystem> _cloneList;
         private FSClearCacheFilesOperation _clearCacheFilesOp;
         private ESteps _steps = ESteps.None;
 
-        internal ClearCacheFilesOperation(PlayModeImpl impl, string clearMode, object clearParam)
+        internal ClearCacheFilesOperation(PlayModeImpl impl, ClearCacheFilesOptions options)
         {
             _impl = impl;
-            _clearMode = clearMode;
-            _clearParam = clearParam;
+            _options = options;
         }
         internal override void InternalStart()
         {
@@ -74,7 +72,7 @@ namespace YooAsset
                     var fileSystem = _cloneList[0];
                     _cloneList.RemoveAt(0);
 
-                    _clearCacheFilesOp = fileSystem.ClearCacheFilesAsync(_impl.ActiveManifest, _clearMode, _clearParam);
+                    _clearCacheFilesOp = fileSystem.ClearCacheFilesAsync(_impl.ActiveManifest, _options);
                     _clearCacheFilesOp.StartOperation();
                     AddChildOperation(_clearCacheFilesOp);
                     _steps = ESteps.CheckClearResult;
@@ -102,7 +100,7 @@ namespace YooAsset
         }
         internal override string InternalGetDesc()
         {
-            return $"ClearMode : {_clearMode}";
+            return $"ClearMode : {_options.ClearMode}";
         }
     }
 }

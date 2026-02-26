@@ -238,9 +238,8 @@ namespace YooAsset.Editor
             ReportAssetInfo assetInfo = assetTableData.AssetInfo;
 
             // 填充依赖数据
-            var mainBundle = _buildReport.GetBundleInfo(assetInfo.MainBundleName);
-            var sourceDatas = new List<ITableData>(mainBundle.DependBundles.Count);
-            foreach (string dependBundleName in mainBundle.DependBundles)
+            var sourceDatas = new List<ITableData>(assetInfo.DependBundles.Count);
+            foreach (string dependBundleName in assetInfo.DependBundles)
             {
                 var dependBundle = _buildReport.GetBundleInfo(dependBundleName);
                 var rowData = new DependTableData();

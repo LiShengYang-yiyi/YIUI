@@ -15,6 +15,7 @@ namespace YooAsset
         private readonly DefaultWebServerFileSystem _fileSystem;
         private readonly string _packageVersion;
         private readonly string _packageHash;
+        private readonly int _timeout;
         private UnityWebDataRequestOperation _webDataRequestOp;
         private DeserializeManifestOperation _deserializer;
         private ESteps _steps = ESteps.None;
@@ -25,11 +26,12 @@ namespace YooAsset
         public PackageManifest Manifest { private set; get; }
 
 
-        internal LoadWebServerPackageManifestOperation(DefaultWebServerFileSystem fileSystem, string packageVersion, string packageHash)
+        internal LoadWebServerPackageManifestOperation(DefaultWebServerFileSystem fileSystem, string packageVersion, string packageHash, int timeout)
         {
             _fileSystem = fileSystem;
             _packageVersion = packageVersion;
             _packageHash = packageHash;
+            _timeout = timeout;
         }
         internal override void InternalStart()
         {
@@ -46,7 +48,7 @@ namespace YooAsset
                 {
                     string filePath = _fileSystem.GetWebPackageManifestFilePath(_packageVersion);
                     string url = DownloadSystemHelper.ConvertToWWWPath(filePath);
-                    _webDataRequestOp = new UnityWebDataRequestOperation(url);
+                    _webDataRequestOp = new UnityWebDataRequestOperation(url, _timeout);
                     _webDataRequestOp.StartOperation();
                     AddChildOperation(_webDataRequestOp);
                 }
@@ -69,8 +71,7 @@ namespace YooAsset
 
             if (_steps == ESteps.VerifyFileData)
             {
-                string fileHash = HashUtility.BytesCRC32(_webDataRequestOp.Result);
-                if (fileHash == _packageHash)
+                if (ManifestTools.VerifyManifestData(_webDataRequestOp.Result, _packageHash))
                 {
                     _steps = ESteps.LoadManifest;
                 }
@@ -86,7 +87,7 @@ namespace YooAsset
             {
                 if (_deserializer == null)
                 {
-                    _deserializer = new DeserializeManifestOperation(_webDataRequestOp.Result);
+                    _deserializer = new DeserializeManifestOperation(_fileSystem.ManifestServices, _webDataRequestOp.Result);
                     _deserializer.StartOperation();
                     AddChildOperation(_deserializer);
                 }

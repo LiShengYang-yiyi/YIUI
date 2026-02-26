@@ -39,13 +39,19 @@ namespace ET
 
         protected override void Destroy()
         {
-            YooAssets.OnApplicationQuit();
+            YooAssets.Destroy();
         }
 
         public async ETTask CreatePackageAsync(string packageName, bool isDefault = false)
         {
             YooConfig yooConfig = Resources.Load<YooConfig>("YooConfig");
             ResourcePackage package = YooAssets.CreatePackage(packageName);
+            if (package == null)
+            {
+                Log.Error($"创建资源包失败: {packageName}");
+                return;
+            }
+
             if (isDefault)
             {
                 YooAssets.SetDefaultPackage(package);
@@ -56,7 +62,7 @@ namespace ET
             {
                 case EPlayMode.EditorSimulateMode:
                 {
-                    PackageInvokeBuildResult buildResult = EditorSimulateModeHelper.SimulateBuild(packageName);    
+                    PackageInvokeBuildResult buildResult = EditorSimulateModeHelper.SimulateBuild(packageName);
                     string packageRoot = buildResult.PackageRootDirectory;
                     FileSystemParameters editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
                     EditorSimulateModeParameters initParameters = new();
@@ -80,7 +86,7 @@ namespace ET
                     FileSystemParameters cacheFileSystemParams = FileSystemParameters.CreateDefaultCacheFileSystemParameters(remoteServices);
                     FileSystemParameters buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
                     HostPlayModeParameters initParameters = new();
-                    initParameters.BuildinFileSystemParameters = buildinFileSystemParams; 
+                    initParameters.BuildinFileSystemParameters = buildinFileSystemParams;
                     initParameters.CacheFileSystemParameters = cacheFileSystemParams;
                     await package.InitializeAsync(initParameters).Task;
                     break;
@@ -92,7 +98,7 @@ namespace ET
                     IRemoteServices remoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
                     FileSystemParameters webServerFileSystemParams = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
                     FileSystemParameters webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
-    
+
                     WebPlayModeParameters initParameters = new();
                     initParameters.WebServerFileSystemParameters = webServerFileSystemParams;
                     initParameters.WebRemoteFileSystemParameters = webRemoteFileSystemParams;
@@ -103,7 +109,7 @@ namespace ET
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             RequestPackageVersionOperation op = package.RequestPackageVersionAsync();
             await op.Task;
             await package.UpdatePackageManifestAsync(op.PackageVersion).Task;
@@ -114,9 +120,8 @@ namespace ET
             //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
             string hostServerIP = url;
             string appVersion = "v1.0";
-                
-                
-#if UNITY_EDITOR
+
+            #if UNITY_EDITOR
             switch (UnityEditor.EditorUserBuildSettings.activeBuildTarget)
             {
                 case UnityEditor.BuildTarget.Android:
@@ -130,7 +135,7 @@ namespace ET
                 default:
                     return $"{hostServerIP}/CDN/PC/{appVersion}";
             }
-#else
+            #else
 		        switch (Application.platform)
                 {
                     case RuntimePlatform.Android:
@@ -144,7 +149,7 @@ namespace ET
                     default:
                         return $"{hostServerIP}/CDN/PC/{appVersion}";
                 }
-#endif
+            #endif
         }
 
         public void DestroyPackage(string packageName)

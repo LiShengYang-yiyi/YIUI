@@ -1,19 +1,57 @@
 ﻿
 namespace YooAsset
 {
+    internal class DownloadFileOptions
+    {
+        /// <summary>
+        /// 失败后重试次数
+        /// </summary>
+        public readonly int FailedTryAgain;
+
+        /// <summary>
+        /// 主资源地址
+        /// </summary>
+        public string MainURL { private set; get; }
+
+        /// <summary>
+        /// 备用资源地址
+        /// </summary>
+        public string FallbackURL { private set; get; }
+
+        /// <summary>
+        /// 拷贝的本地文件路径
+        /// </summary>
+        public string ImportFilePath { set; get; }
+
+        public DownloadFileOptions(int failedTryAgain)
+        {
+            FailedTryAgain = failedTryAgain;
+        }
+
+        /// <summary>
+        /// 设置下载地址
+        /// </summary>
+        public void SetURL(string mainURL, string fallbackURL)
+        {
+            MainURL = mainURL;
+            FallbackURL = fallbackURL;
+        }
+
+        /// <summary>
+        /// 是否有效
+        /// </summary>
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(MainURL) || string.IsNullOrEmpty(FallbackURL))
+                return false;
+
+            return true;
+        }
+    }
+
     internal abstract class FSDownloadFileOperation : AsyncOperationBase
     {
         public PackageBundle Bundle { private set; get; }
-
-        /// <summary>
-        /// 引用计数
-        /// </summary>
-        public int RefCount { private set; get; }
-
-        /// <summary>
-        /// HTTP返回码
-        /// </summary>
-        public long HttpCode { protected set; get; }
 
         /// <summary>
         /// 当前下载的字节数
@@ -29,31 +67,8 @@ namespace YooAsset
         public FSDownloadFileOperation(PackageBundle bundle)
         {
             Bundle = bundle;
-            RefCount = 0;
-            HttpCode = 0;
             DownloadedBytes = 0;
             DownloadProgress = 0;
-        }
-
-        internal override string InternalGetDesc()
-        {
-            return $"RefCount : {RefCount}";
-        }
-
-        /// <summary>
-        /// 减少引用计数
-        /// </summary>
-        public virtual void Release()
-        {
-            RefCount--;
-        }
-
-        /// <summary>
-        /// 增加引用计数
-        /// </summary>
-        public virtual void Reference()
-        {
-            RefCount++;
         }
     }
 }

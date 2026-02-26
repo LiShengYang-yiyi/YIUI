@@ -97,51 +97,57 @@ namespace YooAsset
         /// <summary>
         /// 清理缓存文件
         /// </summary>
-        ClearCacheFilesOperation IPlayMode.ClearCacheFilesAsync(string clearMode, object clearParam)
+        ClearCacheFilesOperation IPlayMode.ClearCacheFilesAsync(ClearCacheFilesOptions options)
         {
-            var operation = new ClearCacheFilesOperation(this, clearMode, clearParam);
+            var operation = new ClearCacheFilesOperation(this, options);
             return operation;
         }
 
         // 下载相关
-        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByAll(int downloadingMaxNumber, int failedTryAgain, int timeout)
+        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByAll(int downloadingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> downloadList = GetDownloadListByAll(ActiveManifest);
-            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain);
             return operation;
         }
-        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByTags(string[] tags, int downloadingMaxNumber, int failedTryAgain, int timeout)
+        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByTags(string[] tags, int downloadingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> downloadList = GetDownloadListByTags(ActiveManifest, tags);
-            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain);
             return operation;
         }
-        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByPaths(AssetInfo[] assetInfos, bool recursiveDownload, int downloadingMaxNumber, int failedTryAgain, int timeout)
+        ResourceDownloaderOperation IPlayMode.CreateResourceDownloaderByPaths(AssetInfo[] assetInfos, bool recursiveDownload, int downloadingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> downloadList = GetDownloadListByPaths(ActiveManifest, assetInfos, recursiveDownload);
-            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceDownloaderOperation(PackageName, downloadList, downloadingMaxNumber, failedTryAgain);
             return operation;
         }
 
         // 解压相关
-        ResourceUnpackerOperation IPlayMode.CreateResourceUnpackerByAll(int upackingMaxNumber, int failedTryAgain, int timeout)
+        ResourceUnpackerOperation IPlayMode.CreateResourceUnpackerByAll(int upackingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> unpcakList = GetUnpackListByAll(ActiveManifest);
-            var operation = new ResourceUnpackerOperation(PackageName, unpcakList, upackingMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceUnpackerOperation(PackageName, unpcakList, upackingMaxNumber, failedTryAgain);
             return operation;
         }
-        ResourceUnpackerOperation IPlayMode.CreateResourceUnpackerByTags(string[] tags, int upackingMaxNumber, int failedTryAgain, int timeout)
+        ResourceUnpackerOperation IPlayMode.CreateResourceUnpackerByTags(string[] tags, int upackingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> unpcakList = GetUnpackListByTags(ActiveManifest, tags);
-            var operation = new ResourceUnpackerOperation(PackageName, unpcakList, upackingMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceUnpackerOperation(PackageName, unpcakList, upackingMaxNumber, failedTryAgain);
             return operation;
         }
 
         // 导入相关
-        ResourceImporterOperation IPlayMode.CreateResourceImporterByFilePaths(string[] filePaths, int importerMaxNumber, int failedTryAgain, int timeout)
+        ResourceImporterOperation IPlayMode.CreateResourceImporterByFilePaths(string[] filePaths, int importingMaxNumber, int failedTryAgain)
         {
             List<BundleInfo> importerList = GetImporterListByFilePaths(ActiveManifest, filePaths);
-            var operation = new ResourceImporterOperation(PackageName, importerList, importerMaxNumber, failedTryAgain, timeout);
+            var operation = new ResourceImporterOperation(PackageName, importerList, importingMaxNumber, failedTryAgain);
+            return operation;
+        }
+        ResourceImporterOperation IPlayMode.CreateResourceImporterByFileInfos(ImportFileInfo[] fileInfos, int importingMaxNumber, int failedTryAgain)
+        {
+            List<BundleInfo> importerList = GetImporterListByFileInfos(ActiveManifest, fileInfos);
+            var operation = new ResourceImporterOperation(PackageName, importerList, importingMaxNumber, failedTryAgain);
             return operation;
         }
         #endregion
@@ -170,59 +176,36 @@ namespace YooAsset
             var packageBundle = ActiveManifest.GetMainPackageBundle(assetInfo.Asset);
             return CreateBundleInfo(packageBundle);
         }
-        BundleInfo[] IBundleQuery.GetDependBundleInfos(AssetInfo assetInfo)
+        List<BundleInfo> IBundleQuery.GetDependBundleInfos(AssetInfo assetInfo)
         {
             if (assetInfo == null || assetInfo.IsInvalid)
                 throw new Exception("Should never get here !");
 
             // 注意：如果清单里未找到资源包会抛出异常！
-            PackageBundle[] depends;
+            List<PackageBundle> depends;
             if (assetInfo.LoadMethod == AssetInfo.ELoadMethod.LoadAllAssets)
             {
                 var mainBundle = ActiveManifest.GetMainPackageBundle(assetInfo.Asset);
-                depends = ActiveManifest.GetAllDependencies(mainBundle);
+                depends = ActiveManifest.GetBundleAllDependencies(mainBundle);
             }
             else
             {
-                depends = ActiveManifest.GetAllDependencies(assetInfo.Asset);
+                depends = ActiveManifest.GetAssetAllDependencies(assetInfo.Asset);
             }
 
-            List<BundleInfo> result = new List<BundleInfo>(depends.Length);
+            List<BundleInfo> result = new List<BundleInfo>(depends.Count);
             foreach (var packageBundle in depends)
             {
                 BundleInfo bundleInfo = CreateBundleInfo(packageBundle);
                 result.Add(bundleInfo);
             }
-            return result.ToArray();
+            return result;
         }
         string IBundleQuery.GetMainBundleName(int bundleID)
         {
             // 注意：如果清单里未找到资源包会抛出异常！
             var packageBundle = ActiveManifest.GetMainPackageBundle(bundleID);
             return packageBundle.BundleName;
-        }
-        string IBundleQuery.GetMainBundleName(AssetInfo assetInfo)
-        {
-            if (assetInfo == null || assetInfo.IsInvalid)
-                throw new Exception("Should never get here !");
-
-            // 注意：如果清单里未找到资源包会抛出异常！
-            var packageBundle = ActiveManifest.GetMainPackageBundle(assetInfo.Asset);
-            return packageBundle.BundleName;
-        }
-        string[] IBundleQuery.GetDependBundleNames(AssetInfo assetInfo)
-        {
-            if (assetInfo == null || assetInfo.IsInvalid)
-                throw new Exception("Should never get here !");
-
-            // 注意：如果清单里未找到资源包会抛出异常！
-            var depends = ActiveManifest.GetAllDependencies(assetInfo.Asset);
-            List<string> result = new List<string>(depends.Length);
-            foreach (var packageBundle in depends)
-            {
-                result.Add(packageBundle.BundleName);
-            }
-            return result.ToArray();
         }
         #endregion
 
@@ -330,7 +313,7 @@ namespace YooAsset
                     checkList.Add(mainBundle);
 
                 // 注意：如果清单里未找到资源包会抛出异常！
-                PackageBundle[] mainDependBundles = manifest.GetAllDependencies(assetInfo.Asset);
+                List<PackageBundle> mainDependBundles = manifest.GetAssetAllDependencies(assetInfo.Asset);
                 foreach (var dependBundle in mainDependBundles)
                 {
                     if (checkList.Contains(dependBundle) == false)
@@ -346,7 +329,7 @@ namespace YooAsset
                         if (checkList.Contains(otherMainBundle) == false)
                             checkList.Add(otherMainBundle);
 
-                        PackageBundle[] otherDependBundles = manifest.GetAllDependencies(otherMainAsset);
+                        List<PackageBundle> otherDependBundles = manifest.GetAssetAllDependencies(otherMainAsset);
                         foreach (var dependBundle in otherDependBundles)
                         {
                             if (checkList.Contains(dependBundle) == false)
@@ -419,11 +402,56 @@ namespace YooAsset
             if (manifest == null)
                 return new List<BundleInfo>();
 
-            List<BundleInfo> result = new List<BundleInfo>();
-            foreach (var filePath in filePaths)
+            ImportFileInfo[] fileInfos = new ImportFileInfo[filePaths.Length];
+            for (int i = 0; i < filePaths.Length; i++)
             {
-                string fileName = System.IO.Path.GetFileName(filePath);
-                if (manifest.TryGetPackageBundleByFileName(fileName, out PackageBundle packageBundle))
+                ImportFileInfo fileInfo = new ImportFileInfo();
+                fileInfo.FilePath = filePaths[i];
+                fileInfos[i] = fileInfo;
+            }
+
+            return GetImporterListByFileInfos(manifest, fileInfos);
+        }
+        public List<BundleInfo> GetImporterListByFileInfos(PackageManifest manifest, ImportFileInfo[] fileInfos)
+        {
+            if (manifest == null)
+                return new List<BundleInfo>();
+
+            List<BundleInfo> result = new List<BundleInfo>();
+            foreach (var fileInfo in fileInfos)
+            {
+                string filePath = fileInfo.FilePath;
+                if (string.IsNullOrEmpty(filePath))
+                    continue;
+
+                PackageBundle packageBundle = null;
+                if (string.IsNullOrEmpty(fileInfo.BundleName) == false)
+                {
+                    if (manifest.TryGetPackageBundleByBundleName(fileInfo.BundleName, out packageBundle) == false)
+                    {
+                        YooLogger.Warning($"Not found package bundle, bundle name : {fileInfo.BundleName}");
+                        continue;
+                    }
+                }
+                else if (string.IsNullOrEmpty(fileInfo.BundleGUID) == false)
+                {
+                    if (manifest.TryGetPackageBundleByBundleGUID(fileInfo.BundleGUID, out packageBundle) == false)
+                    {
+                        YooLogger.Warning($"Not found package bundle, bundle guid : {fileInfo.BundleGUID}");
+                        continue;
+                    }
+                }
+                else
+                {
+                    string fileName = System.IO.Path.GetFileName(filePath);
+                    if (manifest.TryGetPackageBundleByFileName(fileName, out packageBundle) == false)
+                    {
+                        YooLogger.Warning($"Not found package bundle, file name : {fileName}");
+                        continue;
+                    }
+                }
+
+                if (packageBundle != null)
                 {
                     var fileSystem = GetBelongFileSystem(packageBundle);
                     if (fileSystem == null)
@@ -434,10 +462,6 @@ namespace YooAsset
                         var bundleInfo = new BundleInfo(fileSystem, packageBundle, filePath);
                         result.Add(bundleInfo);
                     }
-                }
-                else
-                {
-                    YooLogger.Warning($"Not found package bundle, importer file path : {filePath}");
                 }
             }
             return result;

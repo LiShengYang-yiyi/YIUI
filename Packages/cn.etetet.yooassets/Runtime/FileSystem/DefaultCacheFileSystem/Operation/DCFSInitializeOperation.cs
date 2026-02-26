@@ -46,9 +46,32 @@ namespace YooAsset
                 // 如果水印发生变化，则说明覆盖安装后首次打开游戏
                 if (appFootPrint.IsDirty())
                 {
-                    _fileSystem.DeleteAllManifestFiles();
+                    if (_fileSystem.InstallClearMode == EOverwriteInstallClearMode.None)
+                    {
+                        YooLogger.Warning("Do nothing when overwrite install application !");
+                    }
+                    else if (_fileSystem.InstallClearMode == EOverwriteInstallClearMode.ClearAllCacheFiles)
+                    {
+                        _fileSystem.DeleteAllBundleFiles();
+                        _fileSystem.DeleteAllManifestFiles();
+                        YooLogger.Warning("Delete all cache files when overwrite install application !");
+                    }
+                    else if (_fileSystem.InstallClearMode == EOverwriteInstallClearMode.ClearAllBundleFiles)
+                    {
+                        _fileSystem.DeleteAllBundleFiles();
+                        YooLogger.Warning("Delete all bundle files when overwrite install application !");
+                    }
+                    else if (_fileSystem.InstallClearMode == EOverwriteInstallClearMode.ClearAllManifestFiles)
+                    {
+                        _fileSystem.DeleteAllManifestFiles();
+                        YooLogger.Warning("Delete all manifest files when overwrite install application !");
+                    }
+                    else
+                    {
+                        throw new System.NotImplementedException(_fileSystem.InstallClearMode.ToString());
+                    }
+
                     appFootPrint.Coverage(_fileSystem.PackageName);
-                    YooLogger.Warning("Delete manifest files when application foot print dirty !");
                 }
 
                 _steps = ESteps.SearchCacheFiles;
@@ -88,7 +111,7 @@ namespace YooAsset
                 if (_verifyCacheFilesOp.Status == EOperationStatus.Succeed)
                 {
                     _steps = ESteps.CreateDownloadCenter;
-                    YooLogger.Log($"Package '{_fileSystem.PackageName}' cached files count : {_fileSystem.FileCount}");
+                    YooLogger.Log($"Package '{_fileSystem.PackageName}' '{_fileSystem.GetType().Name}' cached files count : {_fileSystem.FileCount}");
                 }
                 else
                 {

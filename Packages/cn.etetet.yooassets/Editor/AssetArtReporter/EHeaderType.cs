@@ -9,6 +9,11 @@ namespace YooAsset.Editor
         AssetPath,
 
         /// <summary>
+        /// 资源对象
+        /// </summary>
+        AssetObject,
+
+        /// <summary>
         /// 字符串
         /// </summary>
         StringValue,

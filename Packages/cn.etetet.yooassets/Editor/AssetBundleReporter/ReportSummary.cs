@@ -61,6 +61,7 @@ namespace YooAsset.Editor
         // 收集器配置
         public bool UniqueBundleName;
         public bool EnableAddressable;
+        public bool SupportExtensionless;
         public bool LocationToLower;
         public bool IncludeAssetGUID;
         public bool AutoCollectShaders;
@@ -71,13 +72,16 @@ namespace YooAsset.Editor
         public bool UseAssetDependencyDB;
         public bool EnableSharePackRule;
         public bool SingleReferencedPackAlone;
-        public string EncryptionClassName;
+        public string EncryptionServicesClassName;
+        public string ManifestProcessServicesClassName;
+        public string ManifestRestoreServicesClassName;
         public EFileNameStyle FileNameStyle;
-
+        
         // 引擎参数
         public ECompressOption CompressOption;
         public bool DisableWriteTypeTree;
         public bool IgnoreTypeTreeChanges;
+        public bool ReplaceAssetPathWithAddress;
         public bool WriteLinkXML = true;
         public string CacheServerHost;
         public int CacheServerPort;

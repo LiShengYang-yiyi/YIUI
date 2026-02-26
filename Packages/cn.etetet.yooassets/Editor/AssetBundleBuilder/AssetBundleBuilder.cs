@@ -32,8 +32,9 @@ namespace YooAsset.Editor
             var buildParametersContext = new BuildParametersContext(buildParameters);
             _buildContext.SetContextObject(buildParametersContext);
 
-            // 初始化日志
-            BuildLogger.InitLogger(enableLog);
+            // 初始化日志系统
+            string logFilePath = $"{buildParametersContext.GetPipelineOutputDirectory()}/buildInfo.log";
+            BuildLogger.InitLogger(enableLog, logFilePath);
 
             // 执行构建流程
             BuildLogger.Log($"Begin to build package : {buildParameters.PackageName} by {buildParameters.BuildPipeline}");
@@ -49,6 +50,9 @@ namespace YooAsset.Editor
                 BuildLogger.Error($"An error occurred in build task {buildResult.FailedTask}");
                 BuildLogger.Error(buildResult.ErrorInfo);
             }
+
+            // 关闭日志系统
+            BuildLogger.Shuntdown();
 
             return buildResult;
         }

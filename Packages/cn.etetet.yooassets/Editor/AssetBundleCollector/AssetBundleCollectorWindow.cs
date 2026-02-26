@@ -38,6 +38,7 @@ namespace YooAsset.Editor
 
         private VisualElement _setting2Container;
         private Toggle _enableAddressableToogle;
+        private Toggle _supportExtensionlessToogle;
         private Toggle _locationToLowerToogle;
         private Toggle _includeAssetGUIDToogle;
         private Toggle _autoCollectShadersToogle;
@@ -127,6 +128,17 @@ namespace YooAsset.Editor
                     if (selectPackage != null)
                     {
                         selectPackage.EnableAddressable = evt.newValue;
+                        AssetBundleCollectorSettingData.ModifyPackage(selectPackage);
+                        RefreshWindow();
+                    }
+                });
+                _supportExtensionlessToogle = root.Q<Toggle>("SupportExtensionless");
+                _supportExtensionlessToogle.RegisterValueChangedCallback(evt =>
+                {
+                    var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
+                    if (selectPackage != null)
+                    {
+                        selectPackage.SupportExtensionless = evt.newValue;
                         AssetBundleCollectorSettingData.ModifyPackage(selectPackage);
                         RefreshWindow();
                     }
@@ -224,6 +236,7 @@ namespace YooAsset.Editor
 
                 // 包裹名称
                 _packageNameTxt = root.Q<TextField>("PackageName");
+                _packageNameTxt.isDelayed = true;
                 _packageNameTxt.RegisterValueChangedCallback(evt =>
                 {
                     var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
@@ -237,6 +250,7 @@ namespace YooAsset.Editor
 
                 // 包裹备注
                 _packageDescTxt = root.Q<TextField>("PackageDesc");
+                _packageDescTxt.isDelayed = true;
                 _packageDescTxt.RegisterValueChangedCallback(evt =>
                 {
                     var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
@@ -274,6 +288,7 @@ namespace YooAsset.Editor
 
                 // 分组名称
                 _groupNameTxt = root.Q<TextField>("GroupName");
+                _groupNameTxt.isDelayed = true;
                 _groupNameTxt.RegisterValueChangedCallback(evt =>
                 {
                     var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
@@ -288,6 +303,7 @@ namespace YooAsset.Editor
 
                 // 分组备注
                 _groupDescTxt = root.Q<TextField>("GroupDesc");
+                _groupDescTxt.isDelayed = true;
                 _groupDescTxt.RegisterValueChangedCallback(evt =>
                 {
                     var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
@@ -302,6 +318,7 @@ namespace YooAsset.Editor
 
                 // 分组的资源标签
                 _groupTagsTxt = root.Q<TextField>("GroupTags");
+                _groupTagsTxt.isDelayed = true;
                 _groupTagsTxt.RegisterValueChangedCallback(evt =>
                 {
                     var selectPackage = _packageListView.selectedItem as AssetBundleCollectorPackage;
@@ -487,6 +504,7 @@ namespace YooAsset.Editor
                 _packageSettingsButton.SetEnabled(true);
                 _packageSettingsButton.text = $"{packageSettingName} ({selectPackage.PackageName})";
                 _enableAddressableToogle.SetValueWithoutNotify(selectPackage.EnableAddressable);
+                _supportExtensionlessToogle.SetValueWithoutNotify(selectPackage.SupportExtensionless);
                 _locationToLowerToogle.SetValueWithoutNotify(selectPackage.LocationToLower);
                 _includeAssetGUIDToogle.SetValueWithoutNotify(selectPackage.IncludeAssetGUID);
                 _autoCollectShadersToogle.SetValueWithoutNotify(selectPackage.AutoCollectShaders);
@@ -762,6 +780,7 @@ namespace YooAsset.Editor
                 elementTop.Add(objectField);
                 var label = objectField.Q<Label>();
                 label.style.minWidth = 63;
+                UIElementsTools.SetObjectFieldShowPath(objectField);
             }
 
             // Bottom VisualElement
@@ -803,6 +822,7 @@ namespace YooAsset.Editor
                 var textField = new TextField();
                 textField.name = "TextField0";
                 textField.label = "User Data";
+                textField.isDelayed = true;
                 textField.style.width = 200;
                 elementBottom.Add(textField);
                 var label = textField.Q<Label>();
@@ -812,6 +832,7 @@ namespace YooAsset.Editor
                 var textField = new TextField();
                 textField.name = "TextField1";
                 textField.label = "Asset Tags";
+                textField.isDelayed = true;
                 textField.style.width = 100;
                 textField.style.marginLeft = 20;
                 textField.style.flexGrow = 1;
@@ -830,7 +851,7 @@ namespace YooAsset.Editor
                 var foldout = new Foldout();
                 foldout.name = "Foldout1";
                 foldout.value = false;
-                foldout.text = "Main Assets";
+                foldout.text = "Assets";
                 elementFoldout.Add(foldout);
             }
 
@@ -851,8 +872,6 @@ namespace YooAsset.Editor
 
             var collector = selectGroup.Collectors[index];
             var collectObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(collector.CollectPath);
-            if (collectObject != null)
-                collectObject.name = collector.CollectPath;
 
             // 注意：非主资源收集器的标签栏需要被冻结
             var textTags = element.Q<TextField>("TextField1");
@@ -865,11 +884,9 @@ namespace YooAsset.Editor
             var foldout = element.Q<Foldout>("Foldout1");
             foldout.RegisterValueChangedCallback(evt =>
             {
-                if (evt.newValue)
-                    RefreshFoldout(foldout, selectGroup, collector);
-                else
-                    foldout.Clear();
+                RefreshFoldoutContent(foldout, selectGroup, collector);
             });
+            RefreshFoldoutName(foldout, collector.CollectorType);
 
             // Remove Button
             var removeBtn = element.Q<Button>("Button1");
@@ -885,13 +902,10 @@ namespace YooAsset.Editor
             {
                 collector.CollectPath = AssetDatabase.GetAssetPath(evt.newValue);
                 collector.CollectorGUID = AssetDatabase.AssetPathToGUID(collector.CollectPath);
-                objectField1.value.name = collector.CollectPath;
                 AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
-                if (foldout.value)
-                {
-                    RefreshFoldout(foldout, selectGroup, collector);
-                }
+                RefreshFoldoutContent(foldout, selectGroup, collector);
             });
+            UIElementsTools.RefreshObjectFieldShowPath(objectField1);
 
             // Collector Type
             var popupField0 = element.Q<PopupField<string>>("PopupField0");
@@ -900,10 +914,7 @@ namespace YooAsset.Editor
             {
                 collector.CollectorType = EditorTools.NameToEnum<ECollectorType>(evt.newValue);
                 AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
-                if (foldout.value)
-                {
-                    RefreshFoldout(foldout, selectGroup, collector);
-                }
+                RefreshFoldoutContent(foldout, selectGroup, collector);
 
                 if (collector.CollectorType == ECollectorType.MainAssetCollector)
                     textTags.SetEnabled(true);
@@ -922,10 +933,7 @@ namespace YooAsset.Editor
                 {
                     collector.AddressRuleName = evt.newValue.ClassName;
                     AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
-                    if (foldout.value)
-                    {
-                        RefreshFoldout(foldout, selectGroup, collector);
-                    }
+                    RefreshFoldoutContent(foldout, selectGroup, collector);
                 });
             }
 
@@ -938,10 +946,7 @@ namespace YooAsset.Editor
             {
                 collector.PackRuleName = evt.newValue.ClassName;
                 AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
-                if (foldout.value)
-                {
-                    RefreshFoldout(foldout, selectGroup, collector);
-                }
+                RefreshFoldoutContent(foldout, selectGroup, collector);
             });
 
             // Filter Rule
@@ -953,10 +958,7 @@ namespace YooAsset.Editor
             {
                 collector.FilterRuleName = evt.newValue.ClassName;
                 AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
-                if (foldout.value)
-                {
-                    RefreshFoldout(foldout, selectGroup, collector);
-                }
+                RefreshFoldoutContent(foldout, selectGroup, collector);
             });
 
             // UserData
@@ -977,61 +979,101 @@ namespace YooAsset.Editor
                 AssetBundleCollectorSettingData.ModifyCollector(selectGroup, collector);
             });
         }
-        private void RefreshFoldout(Foldout foldout, AssetBundleCollectorGroup group, AssetBundleCollector collector)
+        private void RefreshFoldoutName(Foldout foldout, ECollectorType collectorType, int elementNumber = -1)
         {
+            if (collectorType == ECollectorType.MainAssetCollector)
+            {
+                if (elementNumber >= 0)
+                    foldout.text = $"Main Assets ({elementNumber})";
+                else
+                    foldout.text = $"Main Assets";
+            }
+            else if (collectorType == ECollectorType.StaticAssetCollector)
+            {
+                if (elementNumber >= 0)
+                    foldout.text = $"Static Assets ({elementNumber})";
+                else
+                    foldout.text = $"Static Assets";
+            }
+            else if (collectorType == ECollectorType.DependAssetCollector)
+            {
+                if (elementNumber >= 0)
+                    foldout.text = $"Depend Assets ({elementNumber})";
+                else
+                    foldout.text = $"Depend Assets";
+            }
+            else
+            {
+                throw new System.NotImplementedException(collectorType.ToString());
+            }
+        }
+        private void RefreshFoldoutContent(Foldout foldout, AssetBundleCollectorGroup group, AssetBundleCollector collector)
+        {
+            RefreshFoldoutName(foldout, collector.CollectorType);
+
+            // 折叠栏不可见
+            if (foldout.value == false)
+            {
+                foldout.Clear();
+                return;
+            }
+
             // 清空旧元素
             foldout.Clear();
 
+            // 检测配置是否有效
             if (collector.IsValid() == false)
             {
                 collector.CheckConfigError();
                 return;
             }
 
-            if (collector.CollectorType == ECollectorType.MainAssetCollector || collector.CollectorType == ECollectorType.StaticAssetCollector)
+            List<CollectAssetInfo> collectAssetInfos = null;
+
+            try
             {
-                List<CollectAssetInfo> collectAssetInfos = null;
+                IIgnoreRule ignoreRule = AssetBundleCollectorSettingData.GetIgnoreRuleInstance(_ignoreRulePopupField.value.ClassName);
+                string packageName = _packageNameTxt.value;
+                var command = new CollectCommand(packageName, ignoreRule);
+                command.SetFlag(ECollectFlags.IgnoreGetDependencies, true);
+                command.UniqueBundleName = _uniqueBundleNameToogle.value;
+                command.EnableAddressable = _enableAddressableToogle.value;
+                command.SupportExtensionless = _supportExtensionlessToogle.value;
+                command.LocationToLower = _locationToLowerToogle.value;
+                command.IncludeAssetGUID = _includeAssetGUIDToogle.value;
+                command.AutoCollectShaders = _autoCollectShadersToogle.value;
 
-                try
+                collector.CheckConfigError();
+                collectAssetInfos = collector.GetAllCollectAssets(command, group);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.ToString());
+            }
+
+            if (collectAssetInfos != null)
+            {
+                bool showAdress = false;
+                if (_enableAddressableToogle.value && collector.CollectorType == ECollectorType.MainAssetCollector)
+                    showAdress = true;
+
+                RefreshFoldoutName(foldout, collector.CollectorType, collectAssetInfos.Count);
+                foreach (var collectAsset in collectAssetInfos)
                 {
-                    IIgnoreRule ignoreRule = AssetBundleCollectorSettingData.GetIgnoreRuleInstance(_ignoreRulePopupField.value.ClassName);
-                    string packageName = _packageNameTxt.value;
-                    var command = new CollectCommand(packageName, ignoreRule);
-                    command.SimulateBuild = true;
-                    command.UniqueBundleName = _uniqueBundleNameToogle.value;
-                    command.UseAssetDependencyDB = true;
-                    command.EnableAddressable = _enableAddressableToogle.value;
-                    command.LocationToLower = _locationToLowerToogle.value;
-                    command.IncludeAssetGUID = _includeAssetGUIDToogle.value;
-                    command.AutoCollectShaders = _autoCollectShadersToogle.value;
+                    VisualElement elementRow = new VisualElement();
+                    elementRow.style.flexDirection = FlexDirection.Row;
+                    foldout.Add(elementRow);
 
-                    collector.CheckConfigError();
-                    collectAssetInfos = collector.GetAllCollectAssets(command, group);
-                }
-                catch (System.Exception e)
-                {
-                    Debug.LogError(e.ToString());
-                }
+                    string showInfo = collectAsset.AssetInfo.AssetPath;
+                    if (showAdress)
+                        showInfo = $"[{collectAsset.Address}] {collectAsset.AssetInfo.AssetPath}";
 
-                if (collectAssetInfos != null)
-                {
-                    foreach (var collectAsset in collectAssetInfos)
-                    {
-                        VisualElement elementRow = new VisualElement();
-                        elementRow.style.flexDirection = FlexDirection.Row;
-                        foldout.Add(elementRow);
-
-                        string showInfo = collectAsset.AssetInfo.AssetPath;
-                        if (_enableAddressableToogle.value)
-                            showInfo = $"[{collectAsset.Address}] {collectAsset.AssetInfo.AssetPath}";
-
-                        var label = new Label();
-                        label.text = showInfo;
-                        label.style.width = 300;
-                        label.style.marginLeft = 0;
-                        label.style.flexGrow = 1;
-                        elementRow.Add(label);
-                    }
+                    var label = new Label();
+                    label.text = showInfo;
+                    label.style.width = 300;
+                    label.style.marginLeft = 0;
+                    label.style.flexGrow = 1;
+                    elementRow.Add(label);
                 }
             }
         }

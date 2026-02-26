@@ -15,6 +15,7 @@ namespace YooAsset
 
         private readonly ResourceManager _resManager;
         private readonly int _loopCount;
+        private int _loopCounter = 0;
         private ESteps _steps = ESteps.None;
 
         internal UnloadUnusedAssetsOperation(ResourceManager resourceManager, int loopCount)
@@ -25,6 +26,7 @@ namespace YooAsset
         internal override void InternalStart()
         {
             _steps = ESteps.UnloadUnused;
+            _loopCounter = _loopCount;
         }
         internal override void InternalUpdate()
         {
@@ -33,13 +35,23 @@ namespace YooAsset
 
             if (_steps == ESteps.UnloadUnused)
             {
-                for (int i = 0; i < _loopCount; i++)
+                while (_loopCounter > 0)
                 {
+                    _loopCounter--;
                     LoopUnloadUnused();
+
+                    if (IsWaitForAsyncComplete == false)
+                    {
+                        if (OperationSystem.IsBusy)
+                            break;
+                    }
                 }
 
-                _steps = ESteps.Done;
-                Status = EOperationStatus.Succeed;
+                if (_loopCounter <= 0)
+                {
+                    _steps = ESteps.Done;
+                    Status = EOperationStatus.Succeed;
+                }
             }
         }
         internal override void InternalWaitForAsyncComplete()

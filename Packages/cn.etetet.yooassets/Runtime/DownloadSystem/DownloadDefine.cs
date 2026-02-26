@@ -94,4 +94,25 @@ namespace YooAsset
         /// </summary>
         public long FileSize;
     }
+
+    /// <summary>
+    /// 导入文件的信息
+    /// </summary>
+    public struct ImportFileInfo
+    {
+        /// <summary>
+        /// 本地文件路径
+        /// </summary>
+        public string FilePath;
+
+        /// <summary>
+        /// 资源包名称
+        /// </summary>
+        public string BundleName;
+
+        /// <summary>
+        /// 资源包GUID
+        /// </summary>
+        public string BundleGUID;
+    }
 }

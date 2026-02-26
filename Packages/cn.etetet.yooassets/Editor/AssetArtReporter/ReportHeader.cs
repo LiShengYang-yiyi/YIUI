@@ -126,6 +126,12 @@ namespace YooAsset.Editor
                 if (string.IsNullOrEmpty(guid))
                     throw new Exception($"{HeaderTitle} value is invalid asset path : {value}");
             }
+            else if (HeaderType == EHeaderType.AssetObject)
+            {
+                string guid = AssetDatabase.AssetPathToGUID(value);
+                if (string.IsNullOrEmpty(guid))
+                    throw new Exception($"{HeaderTitle} value is invalid asset object : {value}");
+            }
             else if (HeaderType == EHeaderType.DoubleValue)
             {
                 if (double.TryParse(value, out double doubleValue) == false)

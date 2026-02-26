@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 1
-  ShowEditorAlias: 0
+  ShowEditorAlias: 1
   UniqueBundleName: 1
   Packages:
   - PackageName: DefaultPackage
     PackageDesc: 
     EnableAddressable: 1
+    SupportExtensionless: 1
     LocationToLower: 0
     IncludeAssetGUID: 0
     AutoCollectShaders: 1

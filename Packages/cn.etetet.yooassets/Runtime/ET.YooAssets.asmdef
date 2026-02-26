@@ -2,7 +2,7 @@
     "name": "ET.YooAssets",
     "rootNamespace": "",
     "references": [
-        "GUID:9ef2053bcf13a254ab3940a767f7b1a5"
+        "ET.Core"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -11,6 +11,22 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.tuyoogame.yooasset",
+            "expression": "",
+            "define": "YOO_ASSET_2"
+        },
+        {
+            "name": "com.tuyoogame.yooasset",
+            "expression": "2.3",
+            "define": "YOO_ASSET_2_3"
+        },
+        {
+            "name": "com.tuyoogame.yooasset",
+            "expression": "2.3",
+            "define": "YOO_ASSET_2_3_OR_NEWER"
+        }
+    ],
     "noEngineReferences": false
 }

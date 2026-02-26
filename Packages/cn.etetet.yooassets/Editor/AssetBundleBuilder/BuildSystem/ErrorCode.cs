@@ -15,6 +15,7 @@ namespace YooAsset.Editor
         BuildPipelineIsNullOrEmpty = 116,
         BuildBundleTypeIsUnknown = 117,
         RecommendScriptBuildPipeline = 130,
+        BuiltinShadersBundleNameIsNull = 131,
 
         // TaskGetBuildMap
         RemoveInvalidTags = 200,

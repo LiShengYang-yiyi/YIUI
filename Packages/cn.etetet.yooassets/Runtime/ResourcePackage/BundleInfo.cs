@@ -36,11 +36,11 @@ namespace YooAsset
         /// <summary>
         /// 创建下载器
         /// </summary>
-        public FSDownloadFileOperation CreateDownloader(int failedTryAgain, int timeout)
+        public FSDownloadFileOperation CreateDownloader(int failedTryAgain)
         {
-            DownloadParam downloadParam = new DownloadParam(failedTryAgain, timeout);
-            downloadParam.ImportFilePath = _importFilePath;
-            return _fileSystem.DownloadFileAsync(Bundle, downloadParam);
+            DownloadFileOptions options = new DownloadFileOptions(failedTryAgain);
+            options.ImportFilePath = _importFilePath;
+            return _fileSystem.DownloadFileAsync(Bundle, options);
         }
 
         /// <summary>

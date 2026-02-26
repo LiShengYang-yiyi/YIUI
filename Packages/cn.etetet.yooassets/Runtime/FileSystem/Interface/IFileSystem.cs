@@ -37,13 +37,13 @@ namespace YooAsset
         /// <summary>
         /// 清理缓存文件
         /// </summary>
-        FSClearCacheFilesOperation ClearCacheFilesAsync(PackageManifest manifest, string clearMode, object clearParam);
+        FSClearCacheFilesOperation ClearCacheFilesAsync(PackageManifest manifest, ClearCacheFilesOptions options);
 
         /// <summary>
         /// 下载Bundle文件
         /// </summary>
-        FSDownloadFileOperation DownloadFileAsync(PackageBundle bundle, DownloadParam param);
-
+        FSDownloadFileOperation DownloadFileAsync(PackageBundle bundle, DownloadFileOptions options);
+        
         /// <summary>
         /// 加载Bundle文件
         /// </summary>

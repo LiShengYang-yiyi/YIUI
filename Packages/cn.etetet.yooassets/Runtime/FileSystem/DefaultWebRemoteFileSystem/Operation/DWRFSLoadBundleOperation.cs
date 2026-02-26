@@ -6,13 +6,13 @@ namespace YooAsset
         private enum ESteps
         {
             None,
-            DownloadAssetBundle,
+            LoadWebAssetBundle,
             Done,
         }
 
         private readonly DefaultWebRemoteFileSystem _fileSystem;
         private readonly PackageBundle _bundle;
-        private DownloadAssetBundleOperation _downloadAssetBundleOp;
+        private LoadWebAssetBundleOperation _loadWebAssetBundleOp;
         private ESteps _steps = ESteps.None;
 
 
@@ -23,50 +23,51 @@ namespace YooAsset
         }
         internal override void InternalStart()
         {
-            _steps = ESteps.DownloadAssetBundle;
+            _steps = ESteps.LoadWebAssetBundle;
         }
         internal override void InternalUpdate()
         {
             if (_steps == ESteps.None || _steps == ESteps.Done)
                 return;
 
-            if (_steps == ESteps.DownloadAssetBundle)
+            if (_steps == ESteps.LoadWebAssetBundle)
             {
-                if (_downloadAssetBundleOp == null)
+                if (_loadWebAssetBundleOp == null)
                 {
-                    DownloadParam downloadParam = new DownloadParam(int.MaxValue, 60);
-                    downloadParam.MainURL = _fileSystem.RemoteServices.GetRemoteMainURL(_bundle.FileName);
-                    downloadParam.FallbackURL = _fileSystem.RemoteServices.GetRemoteFallbackURL(_bundle.FileName);
-
+                    string mainURL = _fileSystem.RemoteServices.GetRemoteMainURL(_bundle.FileName);
+                    string fallbackURL = _fileSystem.RemoteServices.GetRemoteFallbackURL(_bundle.FileName);
+                    DownloadFileOptions options = new DownloadFileOptions(int.MaxValue);
+                    options.SetURL(mainURL, fallbackURL);
+                    
                     if (_bundle.Encrypted)
                     {
-                        _downloadAssetBundleOp = new DownloadWebEncryptAssetBundleOperation(true, _fileSystem.DecryptionServices, _bundle, downloadParam);
-                        _downloadAssetBundleOp.StartOperation();
-                        AddChildOperation(_downloadAssetBundleOp);
+                        _loadWebAssetBundleOp = new LoadWebEncryptAssetBundleOperation(_bundle, options, _fileSystem.DecryptionServices);
+                        _loadWebAssetBundleOp.StartOperation();
+                        AddChildOperation(_loadWebAssetBundleOp);
                     }
                     else
                     {
-                        _downloadAssetBundleOp = new DownloadWebNormalAssetBundleOperation(_fileSystem.DisableUnityWebCache, _bundle, downloadParam);
-                        _downloadAssetBundleOp.StartOperation();
-                        AddChildOperation(_downloadAssetBundleOp);
+                        _loadWebAssetBundleOp = new LoadWebNormalAssetBundleOperation(_bundle, options, _fileSystem.DisableUnityWebCache);
+                        _loadWebAssetBundleOp.StartOperation();
+                        AddChildOperation(_loadWebAssetBundleOp);
                     }
                 }
 
-                _downloadAssetBundleOp.UpdateOperation();
-                DownloadProgress = _downloadAssetBundleOp.DownloadProgress;
-                DownloadedBytes = _downloadAssetBundleOp.DownloadedBytes;
-                Progress = _downloadAssetBundleOp.Progress;
-                if (_downloadAssetBundleOp.IsDone == false)
+                _loadWebAssetBundleOp.UpdateOperation();
+                DownloadProgress = _loadWebAssetBundleOp.DownloadProgress;
+                DownloadedBytes = _loadWebAssetBundleOp.DownloadedBytes;
+                Progress = _loadWebAssetBundleOp.Progress;
+                if (_loadWebAssetBundleOp.IsDone == false)
                     return;
 
-                if (_downloadAssetBundleOp.Status == EOperationStatus.Succeed)
+                if (_loadWebAssetBundleOp.Status == EOperationStatus.Succeed)
                 {
-                    var assetBundle = _downloadAssetBundleOp.Result;
+                    var assetBundle = _loadWebAssetBundleOp.Result;
                     if (assetBundle == null)
                     {
                         _steps = ESteps.Done;
                         Status = EOperationStatus.Failed;
-                        Error = $"{nameof(DownloadAssetBundleOperation)} loaded asset bundle is null !";
+                        Error = $"{nameof(DWRFSLoadAssetBundleOperation)} loaded asset bundle is null !";
                     }
                     else
                     {
@@ -79,7 +80,7 @@ namespace YooAsset
                 {
                     _steps = ESteps.Done;
                     Status = EOperationStatus.Failed;
-                    Error = _downloadAssetBundleOp.Error;
+                    Error = _loadWebAssetBundleOp.Error;
                 }
             }
         }

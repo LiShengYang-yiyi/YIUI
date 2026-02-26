@@ -58,9 +58,14 @@ namespace YooAsset
         public bool DisableUnityWebCache { private set; get; } = false;
 
         /// <summary>
-        ///  自定义参数：解密方法类
+        ///  自定义参数：解密服务接口的实例类
         /// </summary>
         public IWebDecryptionServices DecryptionServices { private set; get; }
+
+        /// <summary>
+        /// 自定义参数：资源清单服务类
+        /// </summary>
+        public IManifestRestoreServices ManifestServices { private set; get; }
         #endregion
 
 
@@ -82,12 +87,12 @@ namespace YooAsset
             var operation = new DWSFSRequestPackageVersionOperation(this, timeout);
             return operation;
         }
-        public virtual FSClearCacheFilesOperation ClearCacheFilesAsync(PackageManifest manifest, string clearMode, object clearParam)
+        public virtual FSClearCacheFilesOperation ClearCacheFilesAsync(PackageManifest manifest, ClearCacheFilesOptions options)
         {
             var operation = new FSClearCacheFilesCompleteOperation();
             return operation;
         }
-        public virtual FSDownloadFileOperation DownloadFileAsync(PackageBundle bundle, DownloadParam param)
+        public virtual FSDownloadFileOperation DownloadFileAsync(PackageBundle bundle, DownloadFileOptions options)
         {
             throw new System.NotImplementedException();
         }
@@ -115,6 +120,10 @@ namespace YooAsset
             else if (name == FileSystemParametersDefine.DECRYPTION_SERVICES)
             {
                 DecryptionServices = (IWebDecryptionServices)value;
+            }
+            else if (name == FileSystemParametersDefine.MANIFEST_SERVICES)
+            {
+                ManifestServices = (IManifestRestoreServices)value;
             }
             else
             {

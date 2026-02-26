@@ -64,6 +64,29 @@ namespace YooAsset
         }
 
         /// <summary>
+        /// 销毁资源系统
+        /// </summary>
+        public static void Destroy()
+        {
+            if (_isInitialize)
+            {
+                _isInitialize = false;
+
+                if (_driver != null)
+                    GameObject.Destroy(_driver);
+
+                // 终止并清空所有包裹的异步操作
+                ClearAllPackageOperation();
+
+                // 卸载所有AssetBundle
+                AssetBundle.UnloadAllAssetBundles(true);
+
+                // 清空资源包裹列表
+                _packages.Clear();
+            }
+        }
+
+        /// <summary>
         /// 更新资源系统
         /// </summary>
         internal static void Update()
@@ -75,11 +98,10 @@ namespace YooAsset
         }
 
         /// <summary>
-        /// 应用程序退出处理
+        /// 终止并清空所有包裹的异步操作
         /// </summary>
-        internal static void OnApplicationQuit()
+        internal static void ClearAllPackageOperation()
         {
-            // 说明：在编辑器下确保播放被停止时IO类操作被终止。
             foreach (var package in _packages)
             {
                 OperationSystem.ClearPackageOperation(package.PackageName);
@@ -95,7 +117,7 @@ namespace YooAsset
         {
             CheckException(packageName);
             if (ContainsPackage(packageName))
-                throw new System.Exception($"Package {packageName} already existed !");
+                throw new Exception($"Package {packageName} already existed !");
 
             YooLogger.Log($"Create resource package : {packageName}");
             ResourcePackage package = new ResourcePackage(packageName);

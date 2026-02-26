@@ -38,6 +38,29 @@ namespace YooAsset
     /// </summary>
     public abstract class InitializeParameters
     {
+        /// <summary>
+        /// 同时加载Bundle文件的最大并发数
+        /// </summary>
+        public int BundleLoadingMaxConcurrency = int.MaxValue;
+
+        /// <summary>
+        /// 当资源引用计数为零的时候自动释放资源包
+        /// </summary>
+        public bool AutoUnloadBundleWhenUnused = false;
+
+        /// <summary>
+        /// WebGL平台强制同步加载资源对象
+        /// </summary>
+        public bool WebGLForceSyncLoadAsset = false;
+
+#if YOOASSET_EXPERIMENTAL
+        /// <summary>
+        /// 启用弱引用资源句柄
+        /// </summary>
+        public bool UseWeakReferenceHandle = false;
+#else
+        internal bool UseWeakReferenceHandle = false;
+#endif
     }
 
     /// <summary>

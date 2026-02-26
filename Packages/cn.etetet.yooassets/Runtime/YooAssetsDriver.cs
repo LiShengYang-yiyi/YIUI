@@ -24,7 +24,8 @@ namespace YooAsset
 #if UNITY_EDITOR
         void OnApplicationQuit()
         {
-            YooAssets.OnApplicationQuit();
+            // 说明：在编辑器下确保播放被停止时IO类操作被终止。
+            YooAssets.ClearAllPackageOperation();
         }
 #endif
 

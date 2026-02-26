@@ -240,7 +240,7 @@ namespace YooAsset.Editor
         }
         private void ScanAllBtn_clicked()
         {
-            if (EditorUtility.DisplayDialog("提示", $"开始全面扫描！", "Yes", "No"))
+            if (EditorUtility.DisplayDialog("Info", $"Start full scan!", "Yes", "No"))
             {
                 string searchKeyWord = _scannerSearchField.value;
                 AssetArtScannerSettingData.ScanAll(searchKeyWord);
@@ -248,7 +248,7 @@ namespace YooAsset.Editor
             }
             else
             {
-                Debug.LogWarning("全面扫描已经取消");
+                Debug.LogWarning("Full scan has been canceled.");
             }
         }
         private void ScanBtn_clicked()
@@ -293,6 +293,11 @@ namespace YooAsset.Editor
 #endif
                 _scannerListView.itemsSource = filterItems;
                 _scannerListView.Rebuild();
+            }
+
+            if (_lastModifyScannerIndex >= 0 && _lastModifyScannerIndex < _scannerListView.itemsSource.Count)
+            {
+                _scannerListView.selectedIndex = _lastModifyScannerIndex;
             }
         }
         private List<AssetArtScanner> FilterScanners()

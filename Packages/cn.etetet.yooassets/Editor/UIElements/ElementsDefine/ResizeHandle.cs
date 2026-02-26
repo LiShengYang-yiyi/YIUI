@@ -7,8 +7,12 @@ using UnityEngine.UIElements;
 
 namespace YooAsset.Editor
 {
-    public partial class ResizeHandle : VisualElement
+    public class ResizeHandle : VisualElement
     {
+        public new class UxmlFactory : UxmlFactory<ResizeHandle, UxmlTraits>
+        {
+        }
+
         private bool _isResizing = false;
         private float _initialWidth;
         private Vector2 _initialMousePos;

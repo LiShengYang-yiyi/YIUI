@@ -10,8 +10,12 @@ namespace YooAsset.Editor
     /// <summary>
     /// 折叠开关
     /// </summary>
-    public partial class ToggleFoldout : Toggle
+    public class ToggleFoldout : Toggle
     {
+        public new class UxmlFactory : UxmlFactory<ToggleFoldout, UxmlTraits>
+        {
+        }
+
         private readonly VisualElement _checkbox;
 
         public ToggleFoldout()
