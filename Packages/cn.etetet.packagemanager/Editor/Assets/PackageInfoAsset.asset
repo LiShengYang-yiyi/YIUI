@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7632af306142c89f6a8bd3e6d68e0f, type: 3}
+  m_Name: PackageInfoAsset
+  m_EditorClassIdentifier: 
+  AllLastPackageInfo:
+  - Name: com.halodi.halodi-unity-package-registry-manager
+    Version: 
+  - Name: com.etetet.init
+    Version: 
+  - Name: cn.etetet.yooassets
+    Version: 2.3.6
+  - Name: cn.etetet.yiuiyooassets
+    Version: 3.1.0
+  - Name: cn.etetet.yiuitips
+    Version: 3.0.3
+  - Name: cn.etetet.yiuireddot
+    Version: 3.0.0
+  - Name: cn.etetet.yiuiloopscrollrectasync
+    Version: 3.0.3
+  - Name: cn.etetet.yiuiinvoke
+    Version: 4.0.3
+  - Name: cn.etetet.yiuigm
+    Version: 3.0.4
+  - Name: cn.etetet.yiuiframework
+    Version: 3.1.4
+  - Name: cn.etetet.yiuieffect
+    Version: 3.0.0
+  - Name: cn.etetet.yiui3ddisplay
+    Version: 3.1.0
+  - Name: cn.etetet.yiui
+    Version: 
+  - Name: cn.etetet.watcher
+    Version: 3.0.0
+  - Name: cn.etetet.unit
+    Version: 3.0.0
+  - Name: cn.etetet.ui
+    Version: 3.0.0
+  - Name: cn.etetet.statesync
+    Version: 3.0.12
+  - Name: cn.etetet.startconfig
+    Version: 3.0.0
+  - Name: cn.etetet.sourcegenerator
+    Version: 3.0.1
+  - Name: cn.etetet.router
+    Version: 3.0.1
+  - Name: cn.etetet.referencecollector
+    Version: 3.0.0
+  - Name: cn.etetet.recast
+    Version: 3.0.0
+  - Name: cn.etetet.proto
+    Version: 3.0.2
+  - Name: cn.etetet.packagemanager
+    Version: 1.0.7
+  - Name: cn.etetet.numeric
+    Version: 3.0.0
+  - Name: cn.etetet.netinner
+    Version: 3.0.0
+  - Name: cn.etetet.move
+    Version: 3.0.0
+  - Name: cn.etetet.memorypack
+    Version: 1.10.1
+  - Name: cn.etetet.mathematics
+    Version: 0.0.2
+  - Name: cn.etetet.login
+    Version: 3.0.0
+  - Name: cn.etetet.loader
+    Version: 3.0.1
+  - Name: cn.etetet.hybridclr
+    Version: 7.8.1
+  - Name: cn.etetet.http
+    Version: 3.0.0
+  - Name: cn.etetet.excel
+    Version: 3.0.0
+  - Name: cn.etetet.demores
+    Version: 3.0.0
+  - Name: cn.etetet.core
+    Version: 3.0.3
+  - Name: cn.etetet.console
+    Version: 3.0.0
+  - Name: cn.etetet.aoi
+    Version: 3.0.0
+  - Name: cn.etetet.ai
+    Version: 3.0.0
+  - Name: cn.etetet.actorlocation
+    Version: 3.0.0
+  - Name: com.unity.modules.wind
+    Version: 1.0.0
+  - Name: com.unity.modules.video
+    Version: 1.0.0
+  - Name: com.unity.modules.vehicles
+    Version: 1.0.0
+  - Name: com.unity.modules.unitywebrequestwww
+    Version: 1.0.0
+  - Name: com.unity.modules.unitywebrequesttexture
+    Version: 1.0.0
+  - Name: com.unity.modules.unitywebrequestaudio
+    Version: 1.0.0
+  - Name: com.unity.modules.unitywebrequestassetbundle
+    Version: 1.0.0
+  - Name: com.unity.modules.unitywebrequest
+    Version: 1.0.0
+  - Name: com.unity.modules.unityanalytics
+    Version: 1.0.0
+  - Name: com.unity.modules.umbra
+    Version: 1.0.0
+  - Name: com.unity.modules.uielements
+    Version: 1.0.0
+  - Name: com.unity.modules.ui
+    Version: 1.0.0
+  - Name: com.unity.modules.tilemap
+    Version: 1.0.0
+  - Name: com.unity.modules.terrainphysics
+    Version: 1.0.0
+  - Name: com.unity.modules.terrain
+    Version: 1.0.0
+  - Name: com.unity.modules.screencapture
+    Version: 1.0.0
+  - Name: com.unity.modules.physics2d
+    Version: 1.0.0
+  - Name: com.unity.modules.physics
+    Version: 1.0.0
+  - Name: com.unity.modules.particlesystem
+    Version: 1.0.0
+  - Name: com.unity.modules.imgui
+    Version: 1.0.0
+  - Name: com.unity.modules.imageconversion
+    Version: 1.0.0
+  - Name: com.unity.modules.director
+    Version: 1.0.0
+  - Name: com.unity.modules.cloth
+    Version: 1.0.0
+  - Name: com.unity.modules.audio
+    Version: 1.0.0
+  - Name: com.unity.modules.assetbundle
+    Version: 1.0.0
+  - Name: com.unity.modules.animation
+    Version: 1.0.0
+  - Name: com.unity.modules.androidjni
+    Version: 1.0.0
+  - Name: com.unity.modules.ai
+    Version: 1.0.0
+  - Name: com.unity.ugui
+    Version: 3.0.0-exp.4
+  - Name: com.unity.timeline
+    Version: 1.8.11
+  - Name: com.unity.textmeshpro
+    Version: 4.0.0-pre.2
+  - Name: com.unity.render-pipelines.universal
+    Version: 14.0.9
+  - Name: com.unity.ide.visualstudio
+    Version: 2.0.27
+  - Name: com.unity.ide.rider
+    Version: 3.0.39
+  - Name: com.unity.ai.navigation
+    Version: 2.0.11
+  - Name: cn.etetet.yiuistatesync
+    Version: 3.0.2
+  BanPackageInfo: []
+  LastUpdateTime: 1772113803
+  UpdateInterval: 3600

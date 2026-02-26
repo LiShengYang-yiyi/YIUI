@@ -1,0 +1,16 @@
+{
+    "name": "Ignore.ET.YIUI.3DDisplay",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "IGNORE"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

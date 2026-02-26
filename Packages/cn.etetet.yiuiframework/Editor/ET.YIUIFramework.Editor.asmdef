@@ -1,0 +1,23 @@
+{
+    "name": "ET.YIUIFramework.Editor",
+    "rootNamespace": "",
+    "references": [
+        "ET.Core",
+        "ET.Core.Editor",
+        "ET.YIUIFramework",
+        "Unity.TextMeshPro",
+        "Unity.EditorCoroutines.Editor",
+        "ET.SourceGeneratorAttribute"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

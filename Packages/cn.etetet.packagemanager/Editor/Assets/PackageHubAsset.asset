@@ -1,0 +1,2650 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1033248b64b463a924ac350651e62cb, type: 3}
+  m_Name: PackageHubAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: AllPackageData
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ET.PackageManager.Editor.PackageHubData,
+        ET.PackageManager.Editor]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 51
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.demores
+    - Name: $v
+      Entry: 7
+      Data: 2|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.demores
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 3670
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.proto
+    - Name: $v
+      Entry: 7
+      Data: 3|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.proto
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 3430
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.excel
+    - Name: $v
+      Entry: 7
+      Data: 4|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.excel
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 3230
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.core
+    - Name: $v
+      Entry: 7
+      Data: 5|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.core
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2860
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.loader
+    - Name: $v
+      Entry: 7
+      Data: 6|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.loader
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2720
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.packagemanager
+    - Name: $v
+      Entry: 7
+      Data: 7|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.packagemanager
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2670
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.statesync
+    - Name: $v
+      Entry: 7
+      Data: 8|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.statesync
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2640
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.router
+    - Name: $v
+      Entry: 7
+      Data: 9|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.router
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2440
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.hybridclr
+    - Name: $v
+      Entry: 7
+      Data: 10|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.hybridclr
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2420
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.actorlocation
+    - Name: $v
+      Entry: 7
+      Data: 11|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.actorlocation
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2410
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.sourcegenerator
+    - Name: $v
+      Entry: 7
+      Data: 12|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.sourcegenerator
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2370
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.console
+    - Name: $v
+      Entry: 7
+      Data: 13|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.console
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2370
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.netinner
+    - Name: $v
+      Entry: 7
+      Data: 14|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.netinner
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2350
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.login
+    - Name: $v
+      Entry: 7
+      Data: 15|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.login
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2340
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.http
+    - Name: $v
+      Entry: 7
+      Data: 16|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.http
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2340
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yooassets
+    - Name: $v
+      Entry: 7
+      Data: 17|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yooassets
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2340
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.watcher
+    - Name: $v
+      Entry: 7
+      Data: 18|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.watcher
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2330
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.startconfig
+    - Name: $v
+      Entry: 7
+      Data: 19|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.startconfig
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2320
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.referencecollector
+    - Name: $v
+      Entry: 7
+      Data: 20|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.referencecollector
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2310
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.ui
+    - Name: $v
+      Entry: 7
+      Data: 21|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.ui
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 2290
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.unit
+    - Name: $v
+      Entry: 7
+      Data: 22|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.unit
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1980
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.recast
+    - Name: $v
+      Entry: 7
+      Data: 23|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.recast
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1980
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.move
+    - Name: $v
+      Entry: 7
+      Data: 24|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.move
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1980
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.aoi
+    - Name: $v
+      Entry: 7
+      Data: 25|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.aoi
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1970
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.numeric
+    - Name: $v
+      Entry: 7
+      Data: 26|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.numeric
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1960
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.memorypack
+    - Name: $v
+      Entry: 7
+      Data: 27|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.memorypack
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1920
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.mathematics
+    - Name: $v
+      Entry: 7
+      Data: 28|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.mathematics
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1850
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.ai
+    - Name: $v
+      Entry: 7
+      Data: 29|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.ai
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1730
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.db
+    - Name: $v
+      Entry: 7
+      Data: 30|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.db
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 1030
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuiframework
+    - Name: $v
+      Entry: 7
+      Data: 31|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuiframework
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 945
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuistatesync
+    - Name: $v
+      Entry: 7
+      Data: 32|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuistatesync
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 922
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiui3ddisplay
+    - Name: $v
+      Entry: 7
+      Data: 33|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiui3ddisplay
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 829
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuieffect
+    - Name: $v
+      Entry: 7
+      Data: 34|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuieffect
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 807
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuitips
+    - Name: $v
+      Entry: 7
+      Data: 35|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuitips
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 802
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuiyooassets
+    - Name: $v
+      Entry: 7
+      Data: 36|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuiyooassets
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 802
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuigm
+    - Name: $v
+      Entry: 7
+      Data: 37|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuigm
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 802
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuireddot
+    - Name: $v
+      Entry: 7
+      Data: 38|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuireddot
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 792
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuiloopscrollrectasync
+    - Name: $v
+      Entry: 7
+      Data: 39|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuiloopscrollrectasync
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 731
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.truesync
+    - Name: $v
+      Entry: 7
+      Data: 40|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.truesync
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 656
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.lockstep
+    - Name: $v
+      Entry: 7
+      Data: 41|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.lockstep
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 638
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuiinvoke
+    - Name: $v
+      Entry: 7
+      Data: 42|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuiinvoke
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 637
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.lsentity
+    - Name: $v
+      Entry: 7
+      Data: 43|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.lsentity
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 590
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuicodeanalysis
+    - Name: $v
+      Entry: 7
+      Data: 44|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuicodeanalysis
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 137
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.xetfui
+    - Name: $v
+      Entry: 7
+      Data: 45|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.xetfui
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 88
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.xetdemo
+    - Name: $v
+      Entry: 7
+      Data: 46|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.xetdemo
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 87
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.xetyooassets
+    - Name: $v
+      Entry: 7
+      Data: 47|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.xetyooassets
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 81
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuilocalization
+    - Name: $v
+      Entry: 7
+      Data: 48|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuilocalization
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 67
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.robotcase
+    - Name: $v
+      Entry: 7
+      Data: 49|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.robotcase
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 26
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuizstring
+    - Name: $v
+      Entry: 7
+      Data: 50|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuizstring
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 23
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.configauto
+    - Name: $v
+      Entry: 7
+      Data: 51|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.configauto
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 18
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cn.etetet.yiuinino
+    - Name: $v
+      Entry: 7
+      Data: 52|ET.PackageManager.Editor.PackageHubData, ET.PackageManager.Editor
+    - Name: PackageName
+      Entry: 1
+      Data: cn.etetet.yiuinino
+    - Name: PayInfo
+      Entry: 6
+      Data: 
+    - Name: PackageAuthor
+      Entry: 6
+      Data: 
+    - Name: PackageAuthorURL
+      Entry: 6
+      Data: 
+    - Name: PackageRepositoryURL
+      Entry: 6
+      Data: 
+    - Name: DownloadValue
+      Entry: 3
+      Data: 16
+    - Name: PackageDescription
+      Entry: 6
+      Data: 
+    - Name: PackageCurrentVersion
+      Entry: 6
+      Data: 
+    - Name: PackageLastVersion
+      Entry: 6
+      Data: 
+    - Name: PackageCategory
+      Entry: 6
+      Data: 
+    - Name: m_CanRemove
+      Entry: 5
+      Data: false
+    - Name: m_Install
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: LastUpdateTime
+      Entry: 3
+      Data: 1772114072
+    - Name: UpdateInterval
+      Entry: 3
+      Data: 3600

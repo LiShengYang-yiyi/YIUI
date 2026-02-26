@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663fe2ae1bff4a59b18bf05ec0377719, type: 3}
+  m_Name: RedDotKeyAsset
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: m_AllRedDotDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[YIUIFramework.RedDotKeyData,
+        ET.YIUIFramework]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 2|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 1
+    - Name: Des
+      Entry: 1
+      Data: "\u4E3B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 3|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 2
+    - Name: Des
+      Entry: 1
+      Data: "\u5546\u5E97"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 4|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 3
+    - Name: Des
+      Entry: 1
+      Data: "\u94BB\u77F3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 5|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 4
+    - Name: Des
+      Entry: 1
+      Data: "\u91D1\u5E01"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 6|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 5
+    - Name: Des
+      Entry: 1
+      Data: "\u88C5\u5907"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 7|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 6
+    - Name: Des
+      Entry: 1
+      Data: "\u5F3A\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 8|YIUIFramework.RedDotKeyData, ET.YIUIFramework
+    - Name: Id
+      Entry: 3
+      Data: 7
+    - Name: Des
+      Entry: 1
+      Data: "\u5347\u7EA7"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

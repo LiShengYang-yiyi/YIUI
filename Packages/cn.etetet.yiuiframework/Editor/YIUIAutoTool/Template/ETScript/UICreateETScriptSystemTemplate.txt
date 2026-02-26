@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace ${Namespace}
+{
+    /// <summary>
+    /// Author  ${Author}
+    /// Date    ${CreateDate}
+    /// Desc    ${Desc}
+    /// </summary>
+    [FriendOf(typeof(${Name}${ComponentType}))]
+    [EntitySystemOf(typeof(${Name}${ComponentType}))]
+    public static partial class ${Name}${ComponentType}System
+    {
+        #region ObjectSystem
+${ObjectSystem}
+        #endregion
+    }
+}

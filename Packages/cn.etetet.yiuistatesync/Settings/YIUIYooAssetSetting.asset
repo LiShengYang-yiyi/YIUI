@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93cb8e08c1142beafcc11f1d7756103, type: 3}
+  m_Name: YIUIYooAssetSetting
+  m_EditorClassIdentifier: 
+  ShowPackageView: 0
+  ShowEditorAlias: 1
+  UniqueBundleName: 1
+  Packages:
+  - PackageName: DefaultPackage
+    PackageDesc: 
+    EnableAddressable: 1
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    AutoCollectShaders: 1
+    IgnoreRuleName: NormalIgnoreRule
+    Groups:
+    - GroupName: YIUI
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Packages/cn.etetet.yiuigm/Assets/GameRes/YIUI/GM
+        CollectorGUID: 402b4d6cf6e56a34f86fb9b173431056
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuireddot/Assets/GameRes/YIUI/RedDot
+        CollectorGUID: 064901bcbdeacd040a95ac689b59f03b
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuireddot/Assets/GameRes/RedDot
+        CollectorGUID: 482fe48fe3ff5de42a40efdbc9e4d9f4
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuitips/Assets/GameRes/YIUI/Tips
+        CollectorGUID: cb1c91773e8a26749a29d3d8d2283b09
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuistatesync/Assets/GameRes/YIUI
+        CollectorGUID: 38aff9b4b3f3ca0459417ed8f1416685
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/YIUI
+        CollectorGUID: 7df93ffc8327ee443a9ffadd3c94bd53
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiui3ddisplay/Assets/GameRes/YIUI
+        CollectorGUID: fc254c93445b7b044924c9b531f8e1a2
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuiloopscrollrectasync/Assets/GameRes/YIUI/LoopScrollRectDemo
+        CollectorGUID: 9881c6d802eddfa46a3521cc088d1ba2
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Packages/cn.etetet.yiuiframework/Assets/GameRes/YIUI/YIUI
+        CollectorGUID: 390e2414befd53e4e83c786dc51e17eb
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameRes/YIUI/YIUISettings
+        CollectorGUID: 24e5acacda0e6884c9c09e92cc5cfc81
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

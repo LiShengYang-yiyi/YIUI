@@ -1,0 +1,18 @@
+{
+  "name": "cn.etetet.core",
+  "displayName": "ET.Core",
+  "version": "3.0.3",
+  "description": "et\u6846\u67b6\u6838\u5fc3, \u5b9e\u73b0\u4e86\u7ea4\u7a0b\uff0c\u7f51\u7edc\uff0centity\u7b49et\u57fa\u7840\u529f\u80fd",
+  "author": {
+    "name": "tanghai",
+    "url": "https://github.com/egametang/ET"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egametang/ET"
+  },
+  "relatedPackages": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
+  }
+}

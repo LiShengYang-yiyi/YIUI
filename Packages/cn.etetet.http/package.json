@@ -1,0 +1,19 @@
+﻿{
+  "name": "cn.etetet.http",
+  "displayName": "ET.Http",
+  "version": "3.0.0",
+  "unity": "2022.3",
+  "description": "简单的http库",
+  "author": {
+    "name": "tanghai",
+    "url": "https://github.com/egametang/ET"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egametang/ET"
+  },
+  "relatedPackages": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
+  }
+}

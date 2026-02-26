@@ -1,0 +1,17 @@
+﻿using System;
+using UnityEngine;
+using YIUIFramework;
+using System.Collections.Generic;
+
+namespace ${Namespace}
+{
+    /// <summary>
+    /// Author  ${Author}
+    /// Date    ${CreateDate}
+    /// Desc
+    /// </summary>
+    public partial class ${ResName}Component : Entity
+    {
+
+    }
+}

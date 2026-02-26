@@ -1,0 +1,32 @@
+﻿{
+  "name": "cn.etetet.yiuistatesync",
+  "displayName": "ET.YIUI.StateSync",
+  "version": "3.0.2",
+  "unity": "2022.3",
+  "category": "Demo/YIUI|UI/YIUI",
+  "description": "YIUI Demo >>> 文档: https://lib9kmxvq7k.feishu.cn/wiki/ES7Gwz4EAiVGKSkotY5cRbTznuh",
+  "author": {
+    "name": "YIYI",
+    "url": "https://github.com/LiShengYang-yiyi/YIUI/tree/YIUI-ET9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ET-Packages/cn.etetet.yiuistatesync"
+  },
+  "relatedPackages": {},
+  "dependencies": {
+    "cn.etetet.statesync": "3.0.11",
+    "cn.etetet.packagemanager": "1.0.7",
+    "cn.etetet.yiuiframework": "3.0.1",
+    "cn.etetet.yiuiyooassets": "3.0.0",
+    "cn.etetet.yiuiloopscrollrectasync": "3.0.0",
+    "cn.etetet.yiuigm": "3.0.0",
+    "cn.etetet.yiuireddot": "3.0.0",
+    "cn.etetet.yiuitips": "3.0.0",
+    "cn.etetet.yiui3ddisplay": "3.0.0",
+    "cn.etetet.yiuieffect": "3.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
+  }
+}

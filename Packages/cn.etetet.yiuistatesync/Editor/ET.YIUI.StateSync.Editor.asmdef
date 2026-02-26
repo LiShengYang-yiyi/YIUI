@@ -1,0 +1,20 @@
+{
+    "name": "ET.YIUI.StateSync.Editor",
+    "rootNamespace": "",
+    "references": [
+        "ET.YooAssets",
+        "ET.YooAssets.Editor",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,19 @@
+{
+    "name": "ET.YIUI.YooAssets.Editor",
+    "rootNamespace": "",
+    "references": [
+        "ET.YooAssets.Editor",
+        "ET.YIUIFramework"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
