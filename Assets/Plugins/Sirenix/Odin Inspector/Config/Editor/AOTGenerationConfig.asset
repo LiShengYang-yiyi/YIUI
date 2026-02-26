@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: AOTGenerationConfig
+  m_EditorClassIdentifier: 
+  automateBeforeBuilds: 0
+  deleteDllAfterBuilds: 1
+  AutomateForAllAOTPlatforms: 1
+  automateForPlatforms: 05000000
+  lastScan: 638640184344194856
+  supportSerializedTypes:
+  - TypeName: System.Action, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Action`1[[YIUIFramework.UIData, ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Action`1[[YIUIFramework.UIEventBase, ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Boolean, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Camera, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Component, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Component,
+      UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[YIUIFramework.UIData,
+      ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[YIUIFramework.UIDataSelect,
+      ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[YIUIFramework.UIEventBase,
+      ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.EUIEventParamType, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Single, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.GameObject, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.IEqualityComparer`1[[System.String, mscorlib]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Int32, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Light, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.EUIEventParamType,
+      ET.YIUIFramework]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIBindCDETable, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIBindPairData, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIDataBind, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIDataBoolRef, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIDataChangeRef, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[YIUIFramework.UIEventBind, ET.YIUIFramework]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Object, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.UI.RawImage, UnityEngine.UI
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.RectTransform, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.String, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Transform, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type[], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UI3DDisplayCamera, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIBindCDETable, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIBindEventTable, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIBindPairData, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UICompareModeEnum, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIData, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataBind, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataBoolRef, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataChangeRef, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataSelect, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataValue, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataValueBool, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataValueInt, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIDataValueString, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventBase, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventBind, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventP0, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventP1`1[[System.Boolean, mscorlib]], ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventP1`1[[System.Int32, mscorlib]], ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventP1`1[[System.Object, mscorlib]], ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIEventP1`1[[System.String, mscorlib]], ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UIPanelSplitData, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: YIUIFramework.UITaskEventP0, ET.YIUIFramework
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Vector2, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Vector3, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1

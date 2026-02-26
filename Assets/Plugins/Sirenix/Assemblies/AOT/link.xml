@@ -1,0 +1,3 @@
+<linker>
+       <assembly fullname="Sirenix.Serialization.AOTGenerated" preserve="all"/>
+</linker>
