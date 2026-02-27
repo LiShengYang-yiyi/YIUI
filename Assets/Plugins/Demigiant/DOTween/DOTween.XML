@@ -123,7 +123,14 @@
         </member>
         <member name="M:DG.Tweening.Core.Easing.EaseManager.Evaluate(DG.Tweening.Tween,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Returns a value between 0 and 1 (inclusive) based on the elapsed time and ease selected
+            Returns a value between 0 and 1 (inclusive) based on the elapsed time and ease selected.
+            Use this method if you don't care about <see cref="F:DG.Tweening.LoopType.Incremental"/>, otherwise use <see cref="M:DG.Tweening.Core.Easing.EaseManager.EvaluateUnclamped(DG.Tweening.Tween,System.Single,System.Single,System.Single,System.Single)"/>
+            </summary>
+        </member>
+        <member name="M:DG.Tweening.Core.Easing.EaseManager.EvaluateUnclamped(DG.Tweening.Tween,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            USE THIS FOR CUSTOM PLUGINS when you want to be able to use <see cref="F:DG.Tweening.LoopType.Incremental"/>.
+            Returns a value that is from 0 to 1 if <see cref="T:DG.Tweening.LoopType"/> is not incremental, otherwise from 0 to (1 * completed loops)
             </summary>
         </member>
         <member name="M:DG.Tweening.Core.Easing.EaseManager.Evaluate(DG.Tweening.Ease,DG.Tweening.EaseFunction,System.Single,System.Single,System.Single,System.Single)">
@@ -449,6 +456,14 @@
         <member name="F:DG.Tweening.DOTween.drawGizmos">
             <summary>If TRUE draws path gizmos in Unity Editor (if the gizmos button is active).
             Deactivate this if you want to avoid gizmos overhead while in Unity Editor</summary>
+        </member>
+        <member name="P:DG.Tweening.DOTween.tweenersCapacity">
+            <summary>Gets/sets the max Tweeners capacity (automatically increased by DOTween when necessary).
+            You can also set both Tweeners and Sequences capacity via the <see cref="M:DG.Tweening.DOTween.SetTweensCapacity(System.Int32,System.Int32)"/> static method</summary>
+        </member>
+        <member name="P:DG.Tweening.DOTween.sequencesCapacity">
+            <summary>Gets/sets the max Sequences capacity (automatically increased by DOTween when necessary).
+            You can also set both Tweeners and Sequences capacity via the <see cref="M:DG.Tweening.DOTween.SetTweensCapacity(System.Int32,System.Int32)"/> static method</summary>
         </member>
         <member name="F:DG.Tweening.DOTween.debugMode">
             <summary>If TRUE activates various debug options</summary>
@@ -1560,6 +1575,9 @@
         <member name="M:DG.Tweening.TweenExtensions.IsComplete(DG.Tweening.Tween)">
             <summary>Returns TRUE if the tween is complete
             (silently fails and returns FALSE if the tween has been killed)</summary>
+        </member>
+        <member name="M:DG.Tweening.TweenExtensions.IsTimeScaleIndependent(DG.Tweening.Tween)">
+            <summary>Returns TRUE if this tween was set to be timeScale independent via the <code>tween.SetUpdate</code> method</summary>
         </member>
         <member name="M:DG.Tweening.TweenExtensions.IsInitialized(DG.Tweening.Tween)">
             <summary>Returns TRUE if this tween has been initialized</summary>

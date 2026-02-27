@@ -166,7 +166,7 @@
             <summary>
             <para>
             Specify which folders to search in. Specifying no folders will make it search in your entire project.
-            You can decalir multiple paths using '|' as the seperator.
+            You can declare multiple paths using '|' as the separator.
             Example: <code>[AssetList(Paths = "Assets/Textures|Assets/Other/Textures")]</code>
             </para>
             <para>
@@ -2440,14 +2440,14 @@
             such as [<see cref="T:Sirenix.OdinInspector.HideInInlineEditorsAttribute"/>] and [<see cref="T:Sirenix.OdinInspector.DisableInInlineEditorsAttribute"/>].
             </summary>
         </member>
-        <member name="F:Sirenix.OdinInspector.InlineEditorAttribute.ObjectFieldMode">
-            <summary>
-            How the InlineEditor attribute drawer should draw the object field.
-            </summary>
-        </member>
         <member name="F:Sirenix.OdinInspector.InlineEditorAttribute.DisableGUIForVCSLockedAssets">
             <summary>
             Whether to set GUI.enabled = false when drawing an editor for an asset that is locked by source control. Defaults to true.
+            </summary>
+        </member>
+        <member name="F:Sirenix.OdinInspector.InlineEditorAttribute.ObjectFieldMode">
+            <summary>
+            How the InlineEditor attribute drawer should draw the object field.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.InlineEditorAttribute.PreviewAlignment">
@@ -3825,14 +3825,14 @@
             Whether to hide the group by default when all its children are not visible. True by default.
             </summary>
         </member>
-        <member name="F:Sirenix.OdinInspector.PropertyGroupAttribute.VisibleIf">
-            <summary>
-            If not null, this resolved string controls the group's visibility. Note that if <see cref="F:Sirenix.OdinInspector.PropertyGroupAttribute.HideWhenChildrenAreInvisible"/> is true, there must be *both* a visible child *and* this condition must be true, before the group is shown.
-            </summary>
-        </member>
         <member name="F:Sirenix.OdinInspector.PropertyGroupAttribute.AnimateVisibility">
             <summary>
             Whether to animate the visibility changes of this group or make the visual transition instantly. True by default.
+            </summary>
+        </member>
+        <member name="F:Sirenix.OdinInspector.PropertyGroupAttribute.VisibleIf">
+            <summary>
+            If not null, this resolved string controls the group's visibility. Note that if <see cref="F:Sirenix.OdinInspector.PropertyGroupAttribute.HideWhenChildrenAreInvisible"/> is true, there must be *both* a visible child *and* this condition must be true, before the group is shown.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.PropertyGroupAttribute.#ctor(System.String,System.Single)">
