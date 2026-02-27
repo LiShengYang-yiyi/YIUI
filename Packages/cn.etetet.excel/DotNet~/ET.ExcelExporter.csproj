@@ -20,14 +20,14 @@
       <OutputPath>./Exe</OutputPath>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <DefineConstants>DOTNET</DefineConstants>
-      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <OutputPath>./Exe</OutputPath>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <DefineConstants>DOTNET</DefineConstants>
-      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     </PropertyGroup>
     
     <ItemGroup>

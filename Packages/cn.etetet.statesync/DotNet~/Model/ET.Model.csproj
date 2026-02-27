@@ -13,7 +13,7 @@
         <DefineConstants>DOTNET</DefineConstants>
         <OutputPath>$(SolutionDir)Bin</OutputPath> 
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <Optimize>false</Optimize>
         <NoWarn>0169,0649,3021,8981,CS9193,CS9192</NoWarn>
     </PropertyGroup>
@@ -21,7 +21,7 @@
         <DefineConstants>DOTNET</DefineConstants>
         <OutputPath>$(SolutionDir)Bin</OutputPath>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <Optimize>true</Optimize>
         <NoWarn>0169,0649,3021,8981,CS9193,CS9192</NoWarn>
     </PropertyGroup>

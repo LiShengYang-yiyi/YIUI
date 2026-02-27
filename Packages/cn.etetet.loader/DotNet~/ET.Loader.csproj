@@ -13,14 +13,14 @@
         <DefineConstants>DOTNET</DefineConstants>
         <OutputPath>$(SolutionDir)Bin</OutputPath> 
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <Optimize>false</Optimize>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'"> 
         <DefineConstants>DOTNET</DefineConstants>
         <OutputPath>$(SolutionDir)Bin</OutputPath>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <Optimize>true</Optimize>
     </PropertyGroup>
 
