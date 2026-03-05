@@ -8,11 +8,7 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, AfterUnitCreate args)
         {
             Unit unit = args.Unit;
-            // Unit View层
-            string assetsName = $"Packages/cn.etetet.demores/Bundles/Unit/Unit.prefab";
-            GameObject bundleGameObject = await scene.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
-            GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
-
+            var prefab = await scene.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>("Skeleton");
             GlobalComponent globalComponent = scene.Root().GetComponent<GlobalComponent>();
             GameObject go = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
             go.transform.position = unit.Position;

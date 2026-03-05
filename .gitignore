@@ -14,7 +14,6 @@ _ReSharper.CSharp/
 
 #Unity相关目录
 .gradle
-Bundles
 Library
 Logs
 UserSettings
@@ -51,3 +50,4 @@ MongoDB/
 Unity.sln
 Unity.sln.DotSettings.user
 Assets/HybridCLR*
+Bundles/
