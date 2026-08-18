@@ -127,22 +127,6 @@ MonoBehaviour:
         FilterRuleName: YIUIFilterRule
         AssetTags: 
         UserData: 
-      - CollectPath: Packages/cn.etetet.yiuistatesync/Assets/GameRes/YIUI
-        CollectorGUID: 38aff9b4b3f3ca0459417ed8f1416685
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: YIUIFilterRule
-        AssetTags: 
-        UserData: 
-      - CollectPath: Packages/cn.etetet.wuxia/Assets/GameRes/YIUI
-        CollectorGUID: 72c576f4792f4142bb55fa575ac9ba43
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: YIUIFilterRule
-        AssetTags: 
-        UserData: 
       - CollectPath: Assets/GameRes/YIUI
         CollectorGUID: 7df93ffc8327ee443a9ffadd3c94bd53
         CollectorType: 0
@@ -175,11 +159,54 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+    - GroupName: WuXia
+      GroupDesc: "\u3010\u6B66\u4FA0\u5305\u5EFA\u8BBE 2026-08-18\u3011WuXia \u81EA\u6709\u8FD0\u884C\u8D44\u6E90\u53CA
+        YIUI \u9879\u76EE\u8BBE\u7F6E\u3002\u4F5C\u7528\uFF1A\u63D0\u4F9B Login\u3001Lobby\u3001Main\u3001YIUIRoot
+        \u548C\u6846\u67B6\u8FD0\u884C\u914D\u7F6E\u3002\u539F\u56E0\uFF1A\u4E1A\u52A1\u8D44\u6E90\u5FC5\u987B\u7531
+        cn.etetet.wuxia \u58F0\u660E\u6240\u6709\u6743\u3002"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Packages/cn.etetet.wuxia/Assets/GameRes/YIUI
+        CollectorGUID: d9cf264c33257404da371fec6a55e8cf
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: "\u3010\u6B66\u4FA0\u5305\u5EFA\u8BBE 2026-08-18\u3011\u6536\u96C6
+          WuXia \u81EA\u6709 YIUI \u9884\u5236\u4F53\u548C\u56FE\u7247\u3002"
       - CollectPath: Assets/GameRes/YIUI/YIUISettings
-        CollectorGUID: 24e5acacda0e6884c9c09e92cc5cfc81
+        CollectorGUID: 810e1f7daf62bab439e141db875bc8f6
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
-        UserData: 
+        UserData: "\u3010\u6B66\u4FA0\u5305\u5EFA\u8BBE 2026-08-18\u3011\u6536\u96C6\u7531
+          WuXia \u6A21\u677F\u751F\u6210\u7684 YIUIConstAsset \u548C YIUIAtlasData
+          \u5BBF\u4E3B\u9002\u914D\u6587\u4EF6\u3002"
+    - GroupName: YIUI_Demo_Disabled
+      GroupDesc: "\u3010\u6B66\u4FA0\u8FC1\u79FB 2026-08-18\u3011\u4FDD\u7559\u539F
+        Demo YIUI \u6536\u96C6\u5668\u5E76\u505C\u7528\u3002\u4F5C\u7528\uFF1A\u4FBF\u4E8E\u5BA1\u8BA1\u548C\u56DE\u6EDA\u3002\u539F\u56E0\uFF1A\u907F\u514D\u4E0E
+        cn.etetet.wuxia \u7684 Login\u3001Lobby\u3001Main \u8D44\u6E90\u5730\u5740\u51B2\u7A81\u3002"
+      AssetTags: 
+      ActiveRuleName: DisableGroup
+      Collectors:
+      - CollectPath: Packages/cn.etetet.yiuistatesync/Assets/GameRes/YIUI
+        CollectorGUID: 38aff9b4b3f3ca0459417ed8f1416685
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags: 
+        UserData: "\u3010\u6B66\u4FA0\u8FC1\u79FB 2026-08-18\u3011\u539F\u914D\u7F6E\u672A\u5220\u9664\uFF0C\u4EC5\u968F\u6240\u5728
+          DisableGroup \u505C\u7528\uFF1B\u56DE\u6EDA\u65F6\u5C06\u5206\u7EC4\u6539\u4E3A
+          EnableGroup\u3002"
+    - GroupName: WuXia_Conflicts_Disabled
+      GroupDesc: "\u3010\u6B66\u4FA0\u5305\u63A5\u5165 2026-08-18\u3011\u4FDD\u7559\u4F1A\u9020\u6210\u5730\u5740\u6216\u5165\u53E3\u51B2\u7A81\u7684\u539F\u6536\u96C6\u5668\u3002\u4F5C\u7528\uFF1A\u652F\u6301\u5BA1\u8BA1\u548C\u56DE\u6EDA\u3002\u539F\u56E0\uFF1AWuXia
+        \u6B63\u5E38\u8FD0\u884C\u53EA\u80FD\u542F\u7528\u4E00\u5957 Login\u3001Lobby\u3001Main
+        \u548C YIUIRoot\u3002"
+      AssetTags: 
+      ActiveRuleName: DisableGroup
+      Collectors: []

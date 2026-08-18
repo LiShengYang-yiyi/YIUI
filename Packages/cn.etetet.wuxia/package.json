@@ -1,16 +1,25 @@
 {
   "name": "cn.etetet.wuxia",
   "displayName": "ET.WuXia",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "unity": "2022.3",
   "category": "Game/WuXia",
-  "description": "WuXia project business package for ET9, StateSync, and YIUI.",
+  "description": "WuXia project business package for ET9 StateSync and YIUI, including package initialization and Login-Lobby-Main flow.",
   "author": {
     "name": "WuXia Team"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ET-Packages/cn.etetet.wuxia"
+  },
+  "relatedPackages": {},
   "dependencies": {
+    "cn.etetet.login": "3.0.0",
     "cn.etetet.statesync": "3.0.12",
     "cn.etetet.yiuiframework": "3.1.4",
     "cn.etetet.yiuiyooassets": "3.1.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
   }
 }

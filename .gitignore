@@ -3,6 +3,11 @@
 .idea/
 .vscode/
 _ReSharper.CSharp/
+# 【项目版本控制调整 2026-08-18】忽略 Rider 和 Visual Studio 的当前用户配置。
+# 作用：避免个人窗口布局、调试配置和解决方案偏好进入团队提交。
+# 原因：这些文件只对当前开发机有效，换电脑或换开发者后会自动重新生成。
+*.sln.DotSettings.user
+*.csproj.user
 
 #svn
 */.svn/
@@ -21,6 +26,23 @@ UserSettings
 *.vsconfig
 ProjectSettings/RiderScriptEditorPersistedState.asset
 HybridCLRData
+# 【项目版本控制调整 2026-08-18】忽略 Unity 诊断记录和本机构建输出。
+# 作用：阻止内存快照、录制文件以及 Build 目录中的成品进入源码提交。
+# 原因：这些内容体积大且可由当前源码重新生成，不属于可维护的项目源文件。
+MemoryCaptures/
+Recordings/
+/Build/
+/Builds/
+
+# 【项目版本控制 2026-08-18】忽略误建在 Embedded Package 内的本地缓存目录。
+# 作用：防止 npm、Unity 或验证工具产生的缓存和对应 meta 进入业务包发布内容。
+# 原因：Packages 下的源码和资源需要提交，但 Library、Temp、Logs 只属于当前开发机。
+/Packages/*/Library/
+/Packages/*/Library.meta
+/Packages/*/Temp/
+/Packages/*/Temp.meta
+/Packages/*/Logs/
+/Packages/*/Logs.meta
 
 #Unity/Assets
 Assets/Bundles/Code/*
@@ -32,6 +54,13 @@ Assets/StreamingAssets.meta
 .objs/
 .DS_Store
 /*.user
+# 【项目版本控制调整 2026-08-18】忽略包管理器缓存和本地打包产物。
+# 作用：防止 npm、NuGet、pnpm 产生的缓存或发布压缩包被误提交。
+# 原因：缓存可自动恢复，发布包应由版本标签或流水线重新构建，而不是纳入源码仓库。
+*.tgz
+*.nupkg
+.npm/
+.pnpm-store/
 bin/
 Bin/
 /Log

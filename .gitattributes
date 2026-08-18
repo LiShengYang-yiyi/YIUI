@@ -4,6 +4,31 @@
 * text=auto
 
 ###############################################################################
+# 【项目版本控制 2026-08-18】显式声明项目中的二进制文件。
+# 作用：禁止 Git 对工具程序、配置二进制和美术资源执行文本换行转换或文本差异比较。
+# 原因：仓库原有的“* text=auto”已负责文本规范化；继续强制全部旧文本使用同一种行尾会造成大范围伪修改。
+###############################################################################
+*.dll       binary
+*.pdb       binary
+*.exe       binary
+*.bytes     binary
+*.xlsx      binary
+*.xls       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.tga       binary
+*.psd       binary
+*.fbx       binary
+*.mp3       binary
+*.wav       binary
+*.ogg       binary
+*.mp4       binary
+*.zip       binary
+*.tgz       binary
+
+###############################################################################
 # Set default behavior for command prompt diff.
 #
 # This is need for earlier builds of msysgit that does not have it on by

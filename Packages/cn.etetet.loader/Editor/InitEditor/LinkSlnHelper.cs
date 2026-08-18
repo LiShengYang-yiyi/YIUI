@@ -6,6 +6,9 @@ using UnityEditor;
 
 namespace ET
 {
+    // 【框架适配 2026-08-18】保持 Loader 的 LinkSln 只负责通用 ET 方案链接。
+    // 作用：让具体业务包在自身 Editor 初始化器中完成 Rider 方案增量适配。
+    // 原因：基础 Loader 不应反向引用或识别 cn.etetet.wuxia 等项目业务包。
     public static class LinkSlnHelper
     {
         [MenuItem("ET/Loader/LinkSln")]

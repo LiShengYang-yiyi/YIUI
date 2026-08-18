@@ -197,6 +197,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "cn.etetet.login": "3.0.0",
         "cn.etetet.statesync": "3.0.12",
         "cn.etetet.yiuiframework": "3.1.4",
         "cn.etetet.yiuiyooassets": "3.1.0"

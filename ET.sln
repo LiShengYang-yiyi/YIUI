@@ -79,6 +79,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ET.YIUIFramework.Editor", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ET.YIUI.YooAssets.Editor", "ET.YIUI.YooAssets.Editor.csproj", "{7CDC4F73-B2FE-6A95-04DE-FF3EA7B5B6C7}"
 EndProject
+# 【武侠包接入 2026-08-18】将 WuXia 编辑器程序集加入 Rider 方案。作用：让包内初始化器、YooAsset 配置和迁移校验可以直接编辑与编译。原因：Unity 已生成对应 csproj，但旧 ET.sln 未同步新包项目。
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ET.WuXia.Editor", "ET.WuXia.Editor.csproj", "{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -521,6 +524,19 @@ Global
 		{7CDC4F73-B2FE-6A95-04DE-FF3EA7B5B6C7}.Release|x64.Build.0 = Debug|Any CPU
 		{7CDC4F73-B2FE-6A95-04DE-FF3EA7B5B6C7}.Release|x86.ActiveCfg = Debug|Any CPU
 		{7CDC4F73-B2FE-6A95-04DE-FF3EA7B5B6C7}.Release|x86.Build.0 = Debug|Any CPU
+		# 【武侠包接入 2026-08-18】为 WuXia 编辑器程序集补齐 Rider 的 Debug/Release 配置。作用：项目可在方案中正常加载、编译和调试。原因：仅添加 Project 节点会导致 Rider 显示项目但无法参与方案构建；Ignore.ET.WuXia 按 ET 原机制不加入方案，因为重生成流程会删除全部 Ignore.ET 项目文件。
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|x64.Build.0 = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Debug|x86.Build.0 = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|x64.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|x64.Build.0 = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|x86.ActiveCfg = Debug|Any CPU
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0}.Release|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -562,6 +578,8 @@ Global
 		{ACEB3426-BB7E-4964-0C2A-8172A207C8A2} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 		{BC1A6357-742D-8F38-27A8-AE44D543F2AA} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 		{7CDC4F73-B2FE-6A95-04DE-FF3EA7B5B6C7} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
+		# 【武侠包接入 2026-08-18】将 WuXia 工程归入 Unity 分组。作用：保持 Rider 方案树与 Unity.sln 的组织方式一致。原因：WuXia 是 Unity 包程序集，不属于 DotNet 工具程序集。
+		{30458FFB-53D7-9EB0-2B38-49D033EF4EF0} = {914C77C9-212A-4DD0-8D9A-074620E77FAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EABC01E3-3EB5-47EF-B46E-AAD8BB3585F1}

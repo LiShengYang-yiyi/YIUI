@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972021e1e4ad4a938b504a30d039061f, type: 3}
+  m_Name: WuXiaYooAssetSetting
+  m_EditorClassIdentifier:
+  Packages:
+  - PackageName: DefaultPackage
+    PackageDesc:
+    EnableAddressable: 1
+    SupportExtensionless: 1
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    AutoCollectShaders: 1
+    IgnoreRuleName: NormalIgnoreRule
+    Groups:
+    - GroupName: WuXia
+      GroupDesc: '【武侠包建设 2026-08-18】WuXia 自有运行资源及 YIUI 项目设置。作用：提供 Login、Lobby、Main、YIUIRoot 和框架运行配置。原因：业务资源必须由 cn.etetet.wuxia 声明所有权。'
+      AssetTags:
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Packages/cn.etetet.wuxia/Assets/GameRes/YIUI
+        CollectorGUID:
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: YIUIFilterRule
+        AssetTags:
+        UserData: '【武侠包建设 2026-08-18】收集 WuXia 自有 YIUI 预制体和图片。'
+      - CollectPath: Assets/GameRes/YIUI/YIUISettings
+        CollectorGUID:
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags:
+        UserData: '【武侠包建设 2026-08-18】收集由 WuXia 模板生成的 YIUIConstAsset 和 YIUIAtlasData 宿主适配文件。'
