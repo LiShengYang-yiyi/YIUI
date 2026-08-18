@@ -1,0 +1,14 @@
+{
+  "Id": 9001,
+  "Name": "WuXia",
+  "ScriptsReferences": {
+    "ModelView": [
+      "ET.YIUIFramework",
+      "Unity.TextMeshPro"
+    ],
+    "HotfixView": [
+      "ET.YIUIFramework",
+      "Unity.TextMeshPro"
+    ]
+  }
+}
